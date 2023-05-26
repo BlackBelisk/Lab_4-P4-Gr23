@@ -1,16 +1,14 @@
 
-//los nombres de los controllers estan mal, pero quiero que vean la idea de hacerlo asi.
-//supuse que hay que llamar a los controllers antes que a los casos de uso pero capaz estoy equivocado y es mas facil que eso.
+//faltan los parametros de las funciones.
+//tambien hay que dejar que el user pueda darle valores a esos parametros de manera interactiva. habria que hacer eso adentro de cada case.
 //no estoy seguro de como cargar los datos de prueba. tal vez se hace de otra forma.
 //cualquier cosa modifiquen lo que quieran.
 
 //y si, me ayudo mi ia favorita :)
 
-#include <iostream> 
-#include "UsuarioController.h"
-#include "IdiomaController.h"
-#include "CursoController.h"
-#include "NotificacionesController.h"
+#include <iostream>
+#include "algo.h"
+
 
 // Función para cargar los datos de prueba
 void cargarDatosPrueba() {
@@ -18,10 +16,10 @@ void cargarDatosPrueba() {
     // desde un archivo o inicializarlos manualmente.
     std::cout << "Cargando datos de prueba..." << std::endl;
     // Código para cargar los datos de prueba
-    // Llamadas a funciones de los controladores correspondientes
-    UsuarioController::altaUsuario("John Doe");
-    IdiomaController::altaIdioma("Inglés");
-    CursoController::altaCurso("Programación en C++");
+    // Llamadas a funciones correspondientes
+    altaUsuario("John Doe"...);
+    altaIdioma("Inglés"...);
+    altaCurso("Programación en C++"...);
     // ...
 }
 
@@ -30,67 +28,67 @@ void realizarAccion(int opcion) {
     switch (opcion) {
         case 1:
             // Alta de usuario
-            UsuarioController::altaUsuario();
+            altaUsuario();
             break;
         case 2:
             // Consulta de usuario
-            UsuarioController::consultarUsuario();
+            consultarUsuario();
             break;
         case 3:
             // Alta de idioma
-            IdiomaController::altaIdioma();
+            altaIdioma();
             break;
         case 4:
             // Consultar idiomas
-            IdiomaController::consultarIdiomas();
+            consultarIdiomas();
             break;
         case 5:
             // Alta de curso
-            CursoController::altaCurso();
+            altaCurso();
             break;
         case 6:
             // Agregar lección
-            CursoController::agregarLeccion();
+            agregarLeccion();
             break;
         case 7:
             // Agregar ejercicio
-            CursoController::agregarEjercicio();
+            agregarEjercicio();
             break;
         case 8:
             // Habilitar curso
-            CursoController::habilitarCurso();
+            habilitarCurso();
             break;
         case 9:
             // Eliminar curso
-            CursoController::eliminarCurso();
+            eliminarCurso();
             break;
         case 10:
             // Consultar curso
-            CursoController::consultarCurso();
+            consultarCurso();
             break;
         case 11:
             // Inscribirse a curso
-            CursoController::inscribirseACurso();
+            inscribirseACurso();
             break;
         case 12:
             // Realizar ejercicio
-            CursoController::realizarEjercicio();
+            realizarEjercicio();
             break;
         case 13:
             // Consultar estadísticas
-            CursoController::consultarEstadisticas();
+            consultarEstadisticas();
             break;
         case 14:
             // Suscribirse a notificaciones
-            NotificacionesController::suscribirseANotificaciones();
+            suscribirseANotificaciones();
             break;
         case 15:
             // Consulta de notificaciones
-            NotificacionesController::consultarNotificaciones();
+            consultarNotificaciones();
             break;
         case 16:
             // Eliminar suscripciones
-            NotificacionesController::eliminarSuscripciones();
+            eliminarSuscripciones();
             break;
         case 17:
             // Opción para cargar los datos de prueba
