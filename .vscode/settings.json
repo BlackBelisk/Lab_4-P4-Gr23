@@ -3,6 +3,14 @@
         "string": "cpp",
         "iostream": "cpp",
         "set": "cpp",
-        "new": "cpp"
+        "new": "cpp",
+        "iosfwd": "cpp",
+        "iterator": "cpp",
+        "system_error": "cpp",
+        "vector": "cpp",
+        "xlocale": "cpp",
+        "xstring": "cpp",
+        "xtree": "cpp",
+        "xutility": "cpp"
     }
 }
