@@ -6,5 +6,23 @@
 
 using namespace std;
 
+class Ejercicio{
+    private:
+            string descripcion;
+    public:
+            noAprobadoEj(Estudiante e);
+};
+
+class TipoTrad: public Ejercicio{
+    private:
+            string fraseTrad;
+            string solTrad;
+};
+
+class TipoComp: public Ejercicio{
+    private:
+            string fraseComp;
+            set<string> solComp;
+};
 
 #endif

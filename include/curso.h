@@ -11,20 +11,22 @@ class Usuario;
 class Idioma;
 class Inscripcion;
 class Leccion;
-
+/*
 class Lecciones{
         public:
-                Leccion lec;
+                Leccion* lec;
                 Lecciones* sigLec;
                 Lecciones();
                 Lecciones(Leccion lec);
 };
+*/
 
 class Curso{
     public:
             string nomCurso;
             string descripcion;
             dif dificultad;
+            set<Leccion*> lecciones;
 
             
     private:
