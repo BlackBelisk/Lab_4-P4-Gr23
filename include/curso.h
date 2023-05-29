@@ -1,5 +1,5 @@
-#ifndef _CLASSCHILD_H_
-#define _CLASSCHILD_H_
+#ifndef _CLASSCURSO_H_
+#define _CLASSCURSO_H_
 
 #include <iostream>
 #include <set>
@@ -10,12 +10,22 @@ enum dif {Principiante, Intermedio, Avanzado};
 class Usuario;
 class Idioma;
 class Inscripcion;
+class Leccion;
+
+class Lecciones{
+        public:
+                Leccion lec;
+                Lecciones* sigLec;
+                Lecciones();
+                Lecciones(Leccion lec);
+};
 
 class Curso{
     public:
             string nomCurso;
             string descripcion;
             dif dificultad;
+
             
     private:
             Inscripcion encontrarIns();
@@ -31,4 +41,5 @@ class Curso{
 #include "usuario.h"
 #include "idioma.h"
 #include "inscripcion.h"
+#include "leccion.h"
 #endif
