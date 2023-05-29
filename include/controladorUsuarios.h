@@ -8,7 +8,7 @@
 #include <IControladorUsuarios.h>
 using namespace std;
 
-class controladorUsuarios:IControladorUsuarios{
+class controladorUsuarios: public IControladorUsuarios{
     public:
     private:
 };

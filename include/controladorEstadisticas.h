@@ -8,7 +8,7 @@
 #include "IControladorEstadisticas.h"
 using namespace std;
 
-class ControladorEstadisticas:IControladorEstadisticas{
+class ControladorEstadisticas: public IControladorEstadisticas{
     public:
     private:
 };
