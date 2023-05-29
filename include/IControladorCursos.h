@@ -7,8 +7,8 @@
 using namespace std;
 //enum dif {Principiante, Intermedio, Avanzado};
 
-class Curso;
-class Estudiante;
+#include "curso.h"
+#include "estudiante.h"
 
 class IControladorCursos{//Interfaz
    public:
@@ -40,7 +40,4 @@ class IControladorCursos{//Interfaz
         virtual set<Curso*> listarCursos() = 0;
         virtual ~IControladorCursos(){};
 };
-
-#include "curso.h"
-#include "estudiante.h"
 #endif

@@ -7,6 +7,7 @@
 using namespace std;
 #include "IControladorCursos.h"
 #include "curso.h"
+
 class ControladorCursos : public IControladorCursos{
     private:
             set<Curso*> cursos;
