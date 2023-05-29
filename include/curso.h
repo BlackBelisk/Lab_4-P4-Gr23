@@ -21,7 +21,7 @@ class Curso{
             bool habilitado;  
             Idioma* idioma;
             Profesor* profe;
-            set<Leccion*> lecciones;
+            vector<Leccion*> lecciones;
             set<Inscripcion*> inscriptos;
             set<Curso*> previas;
             
@@ -38,7 +38,7 @@ class Curso{
 
             bool getHab();
             set<Curso*> getPrevias();
-            set<Leccion*> getLecciones();
+            vector<Leccion*> getLecciones();
 
             void setProfesor(Profesor* p);
             void setIdioma(Idioma* idi);

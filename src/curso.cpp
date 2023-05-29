@@ -33,7 +33,7 @@ Inscripcion* Curso::encontrarIns(Estudiante* e){
 
  void Curso::nuevaLeccion(string nomTema, string objLeccion){
     Leccion* L = new Leccion(nomTema, descripcion);
-    lecciones.insert(L);
+    lecciones.push_back(L);
  }
 
  void Curso::eliminarContenido(){
@@ -80,7 +80,7 @@ Inscripcion* Curso::encontrarIns(Estudiante* e){
     return previas;
  }
 
- set<Leccion*> Curso::getLecciones(){
+ vector<Leccion*> Curso::getLecciones(){
     return lecciones;
  }
 
