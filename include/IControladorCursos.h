@@ -28,7 +28,7 @@ class IControladorCursos{//Interfaz
         virtual set<Curso> obtenerCursosNoAprobadosEstudiante() = 0;
         virtual void seleccionarCurso(Curso c) = 0;
         virtual set<Ejercicio> listarEjerciciosNoAprobados() = 0;
-        virtual void ingresarSolEjercicioTrad(string resp);
+        virtual void ingresarSolEjercicioTrad(string resp) = 0;
         virtual bool comprobarSolucionEjercicio() = 0;
         virtual bool comprobarCompletarPalabra() = 0;
         virtual bool comprobarTraducir() = 0;

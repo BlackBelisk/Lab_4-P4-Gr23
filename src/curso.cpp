@@ -5,6 +5,12 @@
 
 using namespace std;
 
+Curso::Curso(string nombreCurso, string desc, dif Dif){
+    nomCurso = nombreCurso;
+    descripcion = desc;
+    dificultad = Dif;
+}
+
 Inscripcion* Curso::encontrarIns(Estudiante* e){
     set<Inscripcion*>::iterator it = inscriptos.begin();
     Inscripcion* ins = nullptr;

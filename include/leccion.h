@@ -6,14 +6,7 @@
 
 using namespace std;
 class Ejercicio;
-/*
-class Ejercicios{
-    public:
-            Ejercicio* ej;
-            Ejercicios* sigEj;
 
-};
-*/
 class Leccion{
     private:
             string tema;
@@ -21,9 +14,10 @@ class Leccion{
             set<Ejercicio*> ejs;
     public:
             Leccion(string, string);
-            void agregarEjercicio(Ejercicio);
+            void agregarEjercicio(Ejercicio*);
             void eliminarEjercicios();
             int obtenerCantEjerciciosLeccion();
+            ~Leccion();
 };
 
 #include "ejercicio.h"

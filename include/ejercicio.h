@@ -9,8 +9,6 @@ using namespace std;
 class Ejercicio{
     private:
             string descripcion;
-    public:
-            noAprobadoEj(Estudiante);
 };
 
 class TipoTrad: public Ejercicio{
