@@ -2,10 +2,82 @@
 #include <iostream>
 #include <set>
 #include "../include/controladorCursos.h"
-#include "../include/curso.h"
-#include "curso.cpp"
+
+
 using namespace std;
 
-void ControladorCursos::crearCurso(string nomCurso, string descCurso, dif difCurso){
-    Curso* curso = new Curso(nomCurso, descCurso, difCurso);
+Estudiante* ControladorCursos::getEstudianteSeleccionado(){
+    return estud;
 }
+
+Curso* ControladorCursos::getCurso(){
+    return curso;
+}
+
+Profesor* ControladorCursos::getProfesorElegido(){
+    return profe;
+}
+
+Idioma* ControladorCursos::getIdiomaElegido(){
+    return idi;
+}
+
+
+void ControladorCursos::crearCurso(string nomCurso, string descCurso, dif difCurso){
+    curso = new Curso(nomCurso, descCurso, difCurso);
+    cursos.insert(curso);
+}
+
+set<Curso*> ControladorCursos::cursosNoAprobadosEstudiante(){
+    Estudiante* e = getEstudianteSeleccionado();
+    set<Curso*> cursosNA;
+    for(auto it = cursos.begin(); it != cursos.end(); ++it){
+        if((*it)->noAprobadoCurso(e)){
+            cursosNA.insert(*it);
+        }
+    }
+    return cursosNA;
+}
+
+//Falta
+void ControladorCursos::elegirProfesor(string nickProfesor){
+    
+}
+
+set<Curso*> ControladorCursos::listarCursosHab(){
+    set<Curso*> cursosHab;
+    for(auto it = cursos.begin(); it != cursos.end(); ++it){
+        if((*it)->getHab()){
+            cursosHab.insert(*it);
+        }
+    }
+    return cursosHab;
+}
+
+void ControladorCursos::agregarPrevia(Curso* nPrevia){
+    Curso* c = getCurso();
+    c->getPrevias().insert(nPrevia);
+}
+
+void ControladorCursos::agregarLeccionCN(string nomTema, string objLeccion){
+    Curso* c = getCurso();
+    c->nuevaLeccion(nomTema, objLeccion);
+}
+
+//Falta
+ void ControladorCursos::agregarEjercicio(string desc, Leccion* lec){
+
+ }
+
+ void ControladorCursos::finalizarAltaCurso(){
+    Curso* c = getCurso();
+    Profesor* p = getProfesorElegido();
+    Idioma* i = getIdiomaElegido();
+    c->setProfesor(p);
+    c->setIdioma(i);
+    //Función agregar curso a profesor
+    i->notificarCursoNuevo(c);
+    delete curso;
+    delete idi;
+    delete profe;
+ }

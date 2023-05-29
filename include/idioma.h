@@ -26,8 +26,8 @@ class Idioma{
         void agregarUsuarioSuscripto(); //este y el de abajo aceptan un parametro de tipo IObserver, todavia no lo tenemos
         void removerObservador();
         void eliminarNotif(string);
-        void removerCurso(Curso);
-        void notificarCursoNuevo(Curso);
+        void removerCurso(Curso*);
+        void notificarCursoNuevo(Curso*);
         void eliminarNotificaciones();
 };
 

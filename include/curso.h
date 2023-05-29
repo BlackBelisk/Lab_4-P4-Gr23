@@ -18,11 +18,12 @@ class Curso{
             string nomCurso;
             string descripcion;
             dif dificultad;
+            bool habilitado;  
             Idioma* idioma;
             Profesor* profe;
             set<Leccion*> lecciones;
             set<Inscripcion*> inscriptos;
-
+            set<Curso*> previas;
             
     public:
             Curso(string, string, dif);    
@@ -34,6 +35,14 @@ class Curso{
             void eliminarNotificaciones();
             int obtenerCantEjerciciosCurso();
             int obtenerPromedioCurso();
+
+            bool getHab();
+            set<Curso*> getPrevias();
+            set<Leccion*> getLecciones();
+
+            void setProfesor(Profesor* p);
+            void setIdioma(Idioma* idi);
+
 };
 
 #include "profesor.h"
