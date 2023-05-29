@@ -2,6 +2,7 @@
 #define _CLASSCURSO_H_
 
 #include <iostream>
+#include <string>
 #include <set>
 #include <unordered_set>
 

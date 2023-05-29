@@ -2,6 +2,7 @@
 #define _CLASSEJERCICIO_H_
 
 #include <iostream>
+#include <string>
 #include <set>
 
 using namespace std;
