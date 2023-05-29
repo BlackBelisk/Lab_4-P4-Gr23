@@ -9,6 +9,7 @@ Curso::Curso(string nombreCurso, string desc, dif Dif){
     nomCurso = nombreCurso;
     descripcion = desc;
     dificultad = Dif;
+    habilitado = false;
 }
 
 Inscripcion* Curso::encontrarIns(Estudiante* e){
@@ -31,8 +32,8 @@ Inscripcion* Curso::encontrarIns(Estudiante* e){
  }
 
  void Curso::nuevaLeccion(string nomTema, string objLeccion){
-    Leccion L(nomTema, descripcion);
-    lecciones.insert(&L);
+    Leccion* L = new Leccion(nomTema, descripcion);
+    lecciones.insert(L);
  }
 
  void Curso::eliminarContenido(){
@@ -68,4 +69,25 @@ Inscripcion* Curso::encontrarIns(Estudiante* e){
         progT += (*it)->obtenerProgreso();
     }
     return progT/cantIns*100;
+ }
+
+
+ bool Curso::getHab(){
+    return habilitado;
+ }
+
+ set<Curso*> Curso::getPrevias(){
+    return previas;
+ }
+
+ set<Leccion*> Curso::getLecciones(){
+    return lecciones;
+ }
+
+ void Curso::setProfesor(Profesor* p){
+    profe = p;
+ }
+
+ void Curso::setIdioma(Idioma* idi){
+    idioma = idi;
  }

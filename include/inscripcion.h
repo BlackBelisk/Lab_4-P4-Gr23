@@ -15,15 +15,17 @@ class Inscripcion{
             Estudiante* estud;
             Curso* curso;
             Leccion* lecActual;
+            set<Ejercicio*> ejsCompletados;
 
     public:
             Inscripcion(Estudiante*, Curso*);
-            Estudiante* getEstudiante();
-            Curso* getCurso();
-            void agregarCompletado(Ejercicio*);
-            int obtenerProgreso();
             ~Inscripcion();
 
+            void agregarCompletado(Ejercicio*);
+            int obtenerProgreso();
+            
+            Estudiante* getEstudiante();
+            Curso* getCurso();
 
 };
 
