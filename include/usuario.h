@@ -4,11 +4,11 @@
 #include <iostream>
 #include <string>
 #include <set>
-
+#include "IObserver.h"
 using namespace std;
 class Idioma;
 
-class Usuario{
+class Usuario: IObserver{
     protected:
     //Atributos basicos de la clase Usuario
 
