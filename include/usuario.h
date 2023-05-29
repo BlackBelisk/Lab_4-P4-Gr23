@@ -8,7 +8,7 @@
 using namespace std;
 class Idioma;
 
-class Usuario: IObserver{
+class Usuario: public IObserver{
     protected:
     //Atributos basicos de la clase Usuario
 
