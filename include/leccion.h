@@ -2,7 +2,7 @@
 #define _CLASSEJERCICIO_H_
 
 #include <iostream>
-#include <set>
+#include <unordered_set>
 
 using namespace std;
 class Ejercicio;
@@ -11,7 +11,7 @@ class Leccion{
     private:
             string tema;
             string objetivo;
-            set<Ejercicio*> ejs;
+            unordered_set<Ejercicio*> ejs;
     public:
             Leccion(string, string);
             void agregarEjercicio(Ejercicio*);

@@ -28,9 +28,9 @@ void ControladorCursos::crearCurso(string nomCurso, string descCurso, dif difCur
     cursos.insert(curso);
 }
 
-set<Curso*> ControladorCursos::cursosNoAprobadosEstudiante(){
+unordered_set<Curso*> ControladorCursos::cursosNoAprobadosEstudiante(){
     Estudiante* e = getEstudianteSeleccionado();
-    set<Curso*> cursosNA;
+    unordered_set<Curso*> cursosNA;
     for(auto it = cursos.begin(); it != cursos.end(); ++it){
         if((*it)->noAprobadoCurso(e)){
             cursosNA.insert(*it);
@@ -44,8 +44,8 @@ void ControladorCursos::elegirProfesor(string nickProfesor){
     
 }
 
-set<Curso*> ControladorCursos::listarCursosHab(){
-    set<Curso*> cursosHab;
+unordered_set<Curso*> ControladorCursos::listarCursosHab(){
+    unordered_set<Curso*> cursosHab;
     for(auto it = cursos.begin(); it != cursos.end(); ++it){
         if((*it)->getHab()){
             cursosHab.insert(*it);

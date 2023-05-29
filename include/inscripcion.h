@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <set>
+#include <unordered_set>
 
 using namespace std;
 class Estudiante;
@@ -15,7 +16,7 @@ class Inscripcion{
             Estudiante* estud;
             Curso* curso;
             Leccion* lecActual;
-            set<Ejercicio*> ejsCompletados;
+            unordered_set<Ejercicio*> ejsCompletados;
 
     public:
             Inscripcion(Estudiante*, Curso*);

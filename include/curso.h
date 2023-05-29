@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <set>
+#include <unordered_set>
 
 using namespace std;
 
@@ -22,8 +23,8 @@ class Curso{
             Idioma* idioma;
             Profesor* profe;
             vector<Leccion*> lecciones;
-            set<Inscripcion*> inscriptos;
-            set<Curso*> previas;
+            unordered_set<Inscripcion*> inscriptos;
+            unordered_set<Curso*> previas;
             
     public:
             Curso(string, string, dif);    
@@ -37,7 +38,7 @@ class Curso{
             int obtenerPromedioCurso();
 
             bool getHab();
-            set<Curso*> getPrevias();
+            unordered_set<Curso*> getPrevias();
             vector<Leccion*> getLecciones();
 
             void setProfesor(Profesor* p);
