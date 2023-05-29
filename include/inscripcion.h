@@ -17,8 +17,10 @@ class Inscripcion{
             Leccion* lecActual;
 
     public:
-            Inscripcion(Estudiante* e, Curso* c);
-            void agregarCompletado(Ejercicio* e);
+            Inscripcion(Estudiante*, Curso*);
+            Estudiante* getEstudiante();
+            Curso* getCurso();
+            void agregarCompletado(Ejercicio*);
             int obtenerProgreso();
             ~Inscripcion();
 

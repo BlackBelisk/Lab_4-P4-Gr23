@@ -20,7 +20,8 @@ class Leccion{
             string objetivo;
             set<Ejercicio*> ejs;
     public:
-            void agregarEjercicio(Ejercicio e);
+            Leccion(string, string);
+            void agregarEjercicio(Ejercicio);
             void eliminarEjercicios();
             int obtenerCantEjerciciosLeccion();
 };

@@ -7,10 +7,11 @@
 using namespace std;
 
 enum dif {Principiante, Intermedio, Avanzado};
-class Usuario;
+class Profesor;
 class Idioma;
 class Inscripcion;
 class Leccion;
+
 /*
 class Lecciones{
         public:
@@ -26,13 +27,16 @@ class Curso{
             string nomCurso;
             string descripcion;
             dif dificultad;
+            Idioma* idioma;
+            Profesor* profe;
             set<Leccion*> lecciones;
+            set<Inscripcion*> inscriptos;
 
             
     private:
-            Inscripcion encontrarIns();
-            bool noAprobadoCurso();
-            void nuevaLeccion();
+            Inscripcion* encontrarIns(Estudiante*);
+            bool noAprobadoCurso(Estudiante*);
+            void nuevaLeccion(string, string);
             void eliminarContenido();
             void eliminarInscripciones();
             void eliminarNotificaciones();
@@ -40,7 +44,7 @@ class Curso{
             int obtenerPromedioCurso();
 };
 
-#include "usuario.h"
+#include "profesor.h"
 #include "idioma.h"
 #include "inscripcion.h"
 #include "leccion.h"

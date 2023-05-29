@@ -10,7 +10,7 @@ class Ejercicio{
     private:
             string descripcion;
     public:
-            noAprobadoEj(Estudiante e);
+            noAprobadoEj(Estudiante);
 };
 
 class TipoTrad: public Ejercicio{
