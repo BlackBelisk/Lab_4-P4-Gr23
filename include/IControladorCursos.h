@@ -36,8 +36,8 @@ class IControladorCursos{//Interfaz
         virtual string mostrarFraseATraducir() = 0;
         virtual string mostrarFraseACompletar() = 0;
         virtual void ingresarSolEjercicioComp(set<string> respuestas) = 0;
-        virtual Ejercicio enunciarEjercicio() = 0;
-        virtual void seleccionarEjercicio(Ejercicio ej) = 0;
+        virtual Ejercicio* enunciarEjercicio() = 0;
+        virtual void seleccionarEjercicio(Ejercicio* ej) = 0;
         virtual unordered_set<Curso*> listarCursos() = 0;
         virtual ~IControladorCursos(){};
 };

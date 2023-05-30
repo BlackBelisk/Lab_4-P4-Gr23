@@ -1,27 +1,77 @@
+// .h para Ejercicio con sus subClases
+
 #ifndef _CLASSEJERCICIO_H_
 #define _CLASSEJERCICIO_H_
 
-#include <iostream>
 #include <string>
-#include <set>
-
+#include <iostream>
+#include <queue>
+#include <stdio.h>
+#include <cstdlib>
 using namespace std;
 
-class Ejercicio{
-    private:
-            string descripcion;
+
+
+class Ejercicio {
+    protected:
+		string descripcion;
+
+		//Constructor de objeto por parametros, al ser una clase abstracta, solo es utilizado para simplificar
+		Ejercicio(string);
+    public:
+		//Destructor de Objeto
+		virtual ~Ejercicio();
+
+		//Retorna la descripcion del ejercicio
+		virtual string getDescripcion();
+
+		//Modifica la Descripcion del ejercicio
+		virtual void setDescripcion(string);
+
+		//Funcion esEjercicioCorrecto virtual pura, cada clase hija (Libro y JuegoMesa) tendra una implementacion distinta
+		virtual bool esEjercicioCorrecto() = 0;
+		
+		virtual queue<string> getSolucionComp() = 0;
 };
 
-class TipoTrad: public Ejercicio{
+
+class Traduccion : public Ejercicio {
     private:
-            string fraseTrad;
-            string solTrad;
+		string solucion;
+		string fraseTrad;
+	public:
+		//Constructor y Destructor de Clase
+		Traduccion(string, string);
+		~Traduccion();
+		
+		//Setters y Getters
+		void setSolucion(string);
+		void setFraseTrad(string);
+		string getSolucion();
+		string getFraseTrad();
+
+		//Funcion esEjericicioCorrecto para la subClase Traduccion
+		virtual bool esEjercicioCorrecto();
 };
 
-class TipoComp: public Ejercicio{
-    private:
-            string fraseComp;
-            set<string> solComp;
-};
 
+class CompletarPalabra : public Ejercicio {
+    private:
+		queue<string> solucion;
+		string frases;
+	public:
+	    //Constructor y Destructor de Clase
+		CompletarPalabra(string, queue<string>);
+		~CompletarPalabra();
+
+		//Setters y Getters
+		void setSolucion(queue<string>);
+		void setFrases(queue<string>);
+		queue<string> getSolucionComp();
+		string getFrases();
+
+		//Funcion esEjericicioCorrecto para la subClase Traduccion
+		virtual bool esEjercicioCorrecto();
+ 
+};
 #endif

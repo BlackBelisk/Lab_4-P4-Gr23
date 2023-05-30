@@ -16,6 +16,8 @@ class ControladorCursos : public IControladorCursos{
             Estudiante* estud;
             Profesor* profe;
             Idioma* idi;
+            Ejercicio* ejSel;
+            vector<string> resComp;
     public:
             void crearCurso(string nomCurso, string descCurso, dif difCurso) override;
             unordered_set<Curso*> cursosNoAprobadosEstudiante() override;
@@ -40,14 +42,16 @@ class ControladorCursos : public IControladorCursos{
             string mostrarFraseATraducir() override;
             string mostrarFraseACompletar() override;
             void ingresarSolEjercicioComp(set<string> respuestas) override;
-            Ejercicio enunciarEjercicio() override;
-            void seleccionarEjercicio(Ejercicio ej) override;
+            Ejercicio* enunciarEjercicio() override;
+            void seleccionarEjercicio(Ejercicio* ej) override;
             unordered_set<Curso*> listarCursos() override;
 
             Estudiante* getEstudianteSeleccionado();
             Curso* getCurso();
             Profesor* getProfesorElegido();
             Idioma* getIdiomaElegido();
+            Ejercicio* getEjercicioSeleccionado();
+            vector<string> getRespuestaEjercicioCompletar();
 };
 
 

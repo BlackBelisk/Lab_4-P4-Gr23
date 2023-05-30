@@ -1,5 +1,5 @@
-#ifndef _CLASSEJERCICIO_H_
-#define _CLASSEJERCICIO_H_
+#ifndef _CLASSLECCION_H_
+#define _CLASSLECCION_H_
 
 #include <iostream>
 #include <string>

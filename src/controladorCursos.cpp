@@ -22,6 +22,14 @@ Idioma* ControladorCursos::getIdiomaElegido(){
     return idi;
 }
 
+vector<string> ControladorCursos::getRespuestaEjercicioCompletar(){
+    return resComp;
+}
+
+Ejercicio* ControladorCursos::getEjercicioSeleccionado(){
+    return ejSel;
+}
+
 
 void ControladorCursos::crearCurso(string nomCurso, string descCurso, dif difCurso){
     curso = new Curso(nomCurso, descCurso, difCurso);
@@ -81,3 +89,11 @@ void ControladorCursos::agregarLeccionCN(string nomTema, string objLeccion){
     delete idi;
     delete profe;
  }
+/*
+ bool ControladorCursos::comprobarCompletarPalabra(){
+    Ejercicio* ej = getEjercicioSeleccionado();
+    vector<string> res = getRespuestaEjercicioCompletar();
+    vector<string> sol = ej->getSolucionComp();
+    return res == sol;
+ }
+ */
