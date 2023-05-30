@@ -7,6 +7,8 @@
 #include <cstdlib>
 using namespace std;
 
+// .cpp para Ejercicio con sus subClases
+
 //Metodos de Ejercicios
 
 Ejercicio::Ejercicio(string descr) {
@@ -50,24 +52,35 @@ bool Traduccion::esEjercicioCorrecto() {
 
 
 //Metodos de CompletarPalabra
-CompletarPalabra::CompletarPalabra(string descr, set<string> setSol):Ejercicio(descr){
+CompletarPalabra::CompletarPalabra(string descr, queue<string> setSol):Ejercicio(descr){
 	this->solucion = setSol;
 }
 CompletarPalabra::~CompletarPalabra(){}
-set<string> CompletarPalabra::getSolucion() {
+queue<string> CompletarPalabra::getSolucion() {
 	return this->solucion;
 }
-void CompletarPalabra::setSolucion(set<string> setSol) {
+void CompletarPalabra::setSolucion(queue<string> setSol) {
 	this->solucion = setSol;
 }
-set<string> CompletarPalabra::getFrases() {
+queue<string> CompletarPalabra::getFrases() {
 	return this->frases;
 }
 //PreCondicion: la variable setFrases contiene la misma cantidad de elementos que el setSolucion
-void CompletarPalabra::setFrases(set<string> setFrases) {
+void CompletarPalabra::setFrases(queue<string> setFrases) {
 	this->frases = setFrases;
 }
 //PreCondicion: Solucion y Frases tienen la misma cantidad de elementos
 bool CompletarPalabra::esEjercicioCorrecto() {
-	return (solucion==frases);
+
+	bool sonIguales = true;
+	while(!solucion.empty() && sonIguales){
+		if(solucion.front() == frases.front()){
+			solucion.pop();
+			frases.pop();
+		}else{
+			sonIguales = false;
+		}	
+	}
+	return sonIguales;
+
 }
