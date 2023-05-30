@@ -135,16 +135,7 @@ void CompletarPalabra::setFrases(set<string> setFrases) {
 }
 //PreCondicion: Solucion y Frases tienen la misma cantidad de elementos
 bool CompletarPalabra::esEjercicioCorrecto() {
-
-	/*bool sonIguales = false;
-	set<string>::iterator i = frases.begin();
-	set<string>::iterator s = solucion.begin();
-	for(i = solucion.begin(); i != solucion.end(); ++i){
-		sonIguales = (i == s);
-		++s;
-	}*/
 	return (solucion==frases);
-
 }
 
 
@@ -157,11 +148,11 @@ int main(){
 	cout << "Introduzca la traduccion de las siguientes palabras 'Hola', 'Tu' y 'Yo'" << "\n";
 	set<string> respuestas;
 	string frase;
-	for(int i = 0; i <= (c->getSolucion()).size(); ++i) {
+	for(int i = 0; i < (c->getSolucion()).size(); ++i) {
 		cin >> frase;
 		respuestas.insert(frase);
 	}
-	c->setSolucion(respuestas);
+	c->setFrases(respuestas);
 	if (c->esEjercicioCorrecto()) {
 		cout << "La solucion es correcta" << "\n";
 	}
@@ -181,6 +172,11 @@ int main(){
 	else {
 		cout << "\n" << "La solucion es incorrecta" << "\n";
 	}
+
+	delete t;
+	system("pause");
+	return 0;
+} 
 
 	delete t;
 	system("pause");
