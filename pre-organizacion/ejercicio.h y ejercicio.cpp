@@ -4,6 +4,8 @@
 #include <vector>
 #include <iostream>
 #include <set>
+#include <stdio.h>
+#include <cstdlib>
 using namespace std;
 
 
@@ -44,7 +46,7 @@ class Traduccion : public Ejercicio {
 		string getFraseTrad();
 
 		//Funcion esEjericicioCorrecto para la subClase Traduccion
-		bool esEjercicioCorrecto();
+		virtual bool esEjercicioCorrecto();
 };
 
 
@@ -54,7 +56,7 @@ class CompletarPalabra : public Ejercicio {
 		set<string> frases;
 	public:
 	    //Constructor y Destructor de Clase
-		CompletarPalabra(string descr, set<string> sol): Ejercicio(descr), solucion(sol){};
+		CompletarPalabra(string, set<string>);
 		~CompletarPalabra();
 
 		//Setters y Getters
@@ -64,7 +66,7 @@ class CompletarPalabra : public Ejercicio {
 		set<string> getFrases();
 
 		//Funcion esEjericicioCorrecto para la subClase Traduccion
-		bool esEjercicioCorrecto();
+		virtual bool esEjercicioCorrecto();
  
 };
 
@@ -91,10 +93,10 @@ void Ejercicio::setDescripcion(string descr) {
 
 //Metodos de Traduccion
 
-Traduccion::Traduccion(string descr, string sol): Ejercicio(descr) {
+Traduccion::Traduccion(string descr, string sol):Ejercicio(descr){
 	this->solucion = sol;
 }
-
+Traduccion::~Traduccion(){}
 string Traduccion::getSolucion(){
 	return this->solucion;
 }
@@ -114,8 +116,10 @@ bool Traduccion::esEjercicioCorrecto() {
 
 
 //Metodos de CompletarPalabra
-
-
+CompletarPalabra::CompletarPalabra(string descr, set<string> setSol):Ejercicio(descr){
+	this->solucion = setSol;
+}
+CompletarPalabra::~CompletarPalabra(){}
 set<string> CompletarPalabra::getSolucion() {
 	return this->solucion;
 }
@@ -132,13 +136,53 @@ void CompletarPalabra::setFrases(set<string> setFrases) {
 //PreCondicion: Solucion y Frases tienen la misma cantidad de elementos
 bool CompletarPalabra::esEjercicioCorrecto() {
 
-	bool sonIguales = false;
+	/*bool sonIguales = false;
 	set<string>::iterator i = frases.begin();
 	set<string>::iterator s = solucion.begin();
 	for(i = solucion.begin(); i != solucion.end(); ++i){
-		++s;
 		sonIguales = (i == s);
-	}
-	return sonIguales;
+		++s;
+	}*/
+	return (solucion==frases);
 
 }
+
+
+int main(){
+	set<string> palabras;
+	palabras.insert("hello");
+	palabras.insert("you");
+	palabras.insert("me");
+	CompletarPalabra *c = new CompletarPalabra("Descripcion de Prueba", palabras);
+	cout << "Introduzca la traduccion de las siguientes palabras 'Hola', 'Tu' y 'Yo'" << "\n";
+	set<string> respuestas;
+	string frase;
+	for(int i = 0; i <= (c->getSolucion()).size(); ++i) {
+		cin >> frase;
+		respuestas.insert(frase);
+	}
+	c->setSolucion(respuestas);
+	if (c->esEjercicioCorrecto()) {
+		cout << "La solucion es correcta" << "\n";
+	}
+	else {
+		cout << "La solucion es incorrecta" << "\n";
+	}
+	delete c;
+
+	Traduccion *t = new Traduccion("Descripcion", "Hello");
+	cout << t->getDescripcion() <<"Introduzca la traduccion de la siguiente palabra 'Hola'";
+	string respuesta;
+	cin >> respuesta;
+	t->setFraseTrad(respuesta);
+	if (t->esEjercicioCorrecto()) {
+		cout << "\n" << "La solucion es correcta" << "\n";
+	}
+	else {
+		cout << "\n" << "La solucion es incorrecta" << "\n";
+	}
+
+	delete t;
+	system("pause");
+	return 0;
+} 
