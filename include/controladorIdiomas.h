@@ -8,7 +8,7 @@
 #include "IControladorIdiomas.h"
 using namespace std;
 
-class ControladorEstadisticas: public IControladorIdiomas{
+class ControladorIdiomas: public IControladorIdiomas{
     public:
     private:
 };
