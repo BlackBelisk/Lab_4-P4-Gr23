@@ -10,6 +10,9 @@ using namespace std;
 
 class ControladorUsuarios: public IControladorUsuarios{
     public:
+        Estudiante* encontrarEstudiante(string) override;
+
+        static ControladorUsuarios& getInstance();
     private:
 };
     

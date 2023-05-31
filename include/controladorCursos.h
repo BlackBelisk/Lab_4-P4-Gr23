@@ -7,6 +7,7 @@
 
 using namespace std;
 #include "IControladorCursos.h"
+#include "controladorUsuarios.h"
 #include "curso.h"
 
 class ControladorCursos : public IControladorCursos{
@@ -43,6 +44,7 @@ class ControladorCursos : public IControladorCursos{
             set<Curso*> listarCursos() override;
             void habilitarCurso(Curso* c) override;
             void consultarCurso() override;
+            set<Curso*> listarCursosDisponibles(string nick);
 
 
             void elegirProfesor(string nickProfesor) override;
@@ -57,6 +59,9 @@ class ControladorCursos : public IControladorCursos{
             Idioma* getIdiomaElegido();
             Ejercicio* getEjercicioSeleccionado();
             vector<string> getRespuestaEjercicioCompletar();
+
+
+            static ControladorCursos& getInstance();
 };
 
 

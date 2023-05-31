@@ -25,14 +25,15 @@ class IControladorUsuarios{
     virtual void confirmarAltaEstudiante() = 0;
     virtual void nuevoEstudiante(string, string, string, string, Fecha, string) = 0;
     virtual void confirmarAltaProfesor() = 0;
-    virtual void nuevoProfesor(string, string, string, string, string, vector<Idioma>) = 0;
+    virtual void nuevoProfesor(string, string, string, string, string, vector<Idioma*>) = 0;
 
     virtual map<string, Profesor*> obtenerProfesores() = 0;
     virtual map<string, Estudiante*> obtenerEstudiantes() = 0;
 
-    virtual Profesor getDataProfesor(string) = 0;
-    virtual Usuario encontrarUsuario(string) = 0;
-    virtual void elegirIdiomaProfesor(Idioma) = 0;
+    virtual Profesor* getDataProfesor(string) = 0;
+    virtual Usuario* encontrarUsuario(string) = 0;
+    virtual Estudiante* encontrarEstudiante(string) = 0;
+    virtual void elegirIdiomaProfesor(Idioma*) = 0;
 
     virtual Notificacion consultarNotificaciones(string);
 };

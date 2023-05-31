@@ -17,6 +17,7 @@ class Inscripcion{
             Leccion* lecActual;
             set<Ejercicio*> ejsCompletados;
             Fecha fechaIns;
+            bool aprobado;
 
     public:
             Inscripcion(Estudiante*, Curso*, Fecha);

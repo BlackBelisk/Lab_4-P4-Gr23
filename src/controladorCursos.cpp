@@ -3,7 +3,6 @@
 #include <set>
 #include "../include/controladorCursos.h"
 
-
 using namespace std;
 
 Estudiante* ControladorCursos::getEstudianteSeleccionado(){
@@ -30,6 +29,11 @@ Ejercicio* ControladorCursos::getEjercicioSeleccionado(){
     return ejSel;
 }
 
+
+ControladorCursos& ControladorCursos::getInstance(){
+    static ControladorCursos instance;
+    return instance;
+}
 
 void ControladorCursos::crearCurso(string nomCurso, string descCurso, dif difCurso){
     curso = new Curso(nomCurso, descCurso, difCurso);
@@ -118,4 +122,14 @@ void ControladorCursos::eliminarCurso(Curso* c){
 void ControladorCursos::consultarCurso(){
     Curso* c = getCurso();
     cout << c << endl;
+}
+
+set<Curso*> ControladorCursos::listarCursosDisponibles(string nick){
+    set<Curso*> disponibles;
+    ControladorUsuarios& cu = ControladorUsuarios::getInstance();
+    Estudiante* e = cu.encontrarEstudiante(nick);
+    set<Inscripcion> aprobados;
+    //Necesito recorrer sobre las inscripciones del estudiante
+    
+    return disponibles;
 }

@@ -14,6 +14,7 @@ Inscripcion::Inscripcion(Estudiante* e, Curso* c, Fecha f){
     curso = c;
     lecActual = *c->getLecciones().begin();
     fechaIns = f;
+    aprobado = false;
 }
 
 void Inscripcion::agregarCompletado(Ejercicio* e){
