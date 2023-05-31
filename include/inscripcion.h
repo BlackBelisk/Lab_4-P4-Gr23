@@ -2,7 +2,7 @@
 #define _CLASSINSCRIPCION_H_
 
 #include <iostream>
-#include <unordered_set>
+#include <set>
 
 using namespace std;
 class Estudiante;
@@ -15,7 +15,7 @@ class Inscripcion{
             Estudiante* estud;
             Curso* curso;
             Leccion* lecActual;
-            unordered_set<Ejercicio*> ejsCompletados;
+            set<Ejercicio*> ejsCompletados;
 
     public:
             Inscripcion(Estudiante*, Curso*);

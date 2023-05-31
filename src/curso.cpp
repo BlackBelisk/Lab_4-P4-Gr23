@@ -13,7 +13,7 @@ Curso::Curso(string nombreCurso, string desc, dif Dif){
 }
 
 Inscripcion* Curso::encontrarIns(Estudiante* e){
-    unordered_set<Inscripcion*>::iterator it = inscriptos.begin();
+    set<Inscripcion*>::iterator it = inscriptos.begin();
     Inscripcion* ins = nullptr;
     while(it != inscriptos.end()){
         if((*it)->getEstudiante() == e){
@@ -76,7 +76,7 @@ Inscripcion* Curso::encontrarIns(Estudiante* e){
     return habilitado;
  }
 
- unordered_set<Curso*> Curso::getPrevias(){
+ set<Curso*> Curso::getPrevias(){
     return previas;
  }
 

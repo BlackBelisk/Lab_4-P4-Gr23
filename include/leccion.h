@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <string>
-#include <unordered_set>
+#include <set>
 
 using namespace std;
 class Ejercicio;
@@ -12,7 +12,7 @@ class Leccion{
     private:
             string tema;
             string objetivo;
-            unordered_set<Ejercicio*> ejs;
+            set<Ejercicio*> ejs;
     public:
             Leccion(string, string);
             void agregarEjercicio(Ejercicio*);
