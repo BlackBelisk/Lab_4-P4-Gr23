@@ -5,16 +5,18 @@
 #include <set>
 #include <string>
 #include <vector>
+#include <map>
 
-using namespace std;
 #include "usuario.h"
 #include "inscripcion.h"
+#include "fecha.h"
+using namespace std;
 
 class Estudiante : public Usuario{
     private:
     string Pais;
-    int fecNac; //Acá va fecha
-    vector<Inscripcion> inscripciones;
+    Fecha fecNac; //Acá va fecha
+    map<string, Inscripcion> inscripciones;
     public:
     
     void removerInscripcion(Inscripcion);
