@@ -32,6 +32,7 @@ class Ejercicio {
 		virtual bool esEjercicioCorrecto() = 0;
 		
 		virtual queue<string> getSolucionComp() = 0;
+		virtual string toString() = 0;
 };
 
 
@@ -52,12 +53,14 @@ class Traduccion : public Ejercicio {
 
 		//Funcion esEjericicioCorrecto para la subClase Traduccion
 		virtual bool esEjercicioCorrecto();
+
+		string toString() override;
 };
 
 
 class CompletarPalabra : public Ejercicio {
     private:
-		queue<string> solucion;
+		vector<string> solucion;
 		string frases;
 	public:
 	    //Constructor y Destructor de Clase
@@ -72,6 +75,9 @@ class CompletarPalabra : public Ejercicio {
 
 		//Funcion esEjericicioCorrecto para la subClase Traduccion
 		virtual bool esEjercicioCorrecto();
- 
+
+		string toString() override;
+		string solToString();
 };
+
 #endif

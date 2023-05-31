@@ -12,8 +12,10 @@ private:
 public:
 
   Fecha(int dia, int mes, int anio);
+  Fecha();
 
   friend std::ostream& operator<<(std::ostream& os, const Fecha& fecha);
+  string toString();
 };
 
 #endif  

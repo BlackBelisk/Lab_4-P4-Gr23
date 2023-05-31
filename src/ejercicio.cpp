@@ -95,3 +95,19 @@ bool CompletarPalabra::esEjercicioCorrecto() {
 
 }
 */
+
+string CompletarPalabra::solToString(){
+   string s = "";
+   for(int i = 0; i < solucion.size(); i++){
+      s += solucion[i] + " ";
+   }
+   return s;
+}
+
+string Traduccion::toString(){
+	return "Descripción: " + descripcion + "\n" + "Frase: " + fraseTrad + "\n" + "Solución: " + solucion + "\n";
+}
+
+string CompletarPalabra::toString(){
+	return "Descripción: " + descripcion + "\n" + "Frase: " + frases + "\n" + "Solución: " + solToString() + "\n";
+}

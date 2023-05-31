@@ -18,6 +18,8 @@ class Leccion{
             void agregarEjercicio(Ejercicio*);
             void eliminarEjercicios();
             int obtenerCantEjerciciosLeccion();
+            string toString();
+            string ejsToString();
             ~Leccion();
 };
 

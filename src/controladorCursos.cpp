@@ -97,3 +97,25 @@ void ControladorCursos::agregarLeccionCN(string nomTema, string objLeccion){
     return res == sol;
  }
  */
+
+//Pre: Un curso se puede habilitar solo si tiene al menos una lección y un ejercicio, y no tiene lecciones sin ejercicios.
+void ControladorCursos::habilitarCurso(Curso* c){
+    c->setHabilitado(true);
+}
+
+void ControladorCursos::eliminarCurso(Curso* c){
+    cursos.erase(c);
+    Profesor* prof = c->getProfesor();
+    Idioma* idi = c->getIdioma();
+    c->eliminarContenido();
+    c->eliminarInscripciones();
+    c->eliminarNotificaciones();
+    prof->removerCurso(c);
+    idi->removerCurso(c);
+    delete c;
+}
+
+void ControladorCursos::consultarCurso(){
+    Curso* c = getCurso();
+    cout << c << endl;
+}

@@ -16,13 +16,13 @@ class Estudiante : public Usuario{
     private:
     string Pais;
     Fecha fecNac; //Acá va fecha
-    map<string, Inscripcion> inscripciones;
+    map<string, Inscripcion*> inscripciones;
     public:
     
-    void removerInscripcion(Inscripcion);
-    Inscripcion encontrarInscripcion(Curso);
+    void removerInscripcion(Inscripcion*);
+    Inscripcion encontrarInscripcion(Curso*);
 
-    vector<Curso> obtenerCursosEstudiante();
+    vector<Curso*> obtenerCursosEstudiante();
     vector<int> obtenerProgresos();
 };
 

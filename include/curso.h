@@ -37,14 +37,25 @@ class Curso{
             void eliminarNotificaciones();
             int obtenerCantEjerciciosCurso();
             int obtenerPromedioCurso();
+            string leccionesToString();
+            string inscriptosToString();
+            string enumToString();
 
             bool getHab();
             set<Curso*> getPrevias();
             vector<Leccion*> getLecciones();
+            Profesor* getProfesor();
+            Idioma* getIdioma();
+            string getNombre();
+            string getDesc();
+            dif getDif();
+            
 
             void setProfesor(Profesor* p);
             void setIdioma(Idioma* idi);
+            void setHabilitado(bool);
 
+            friend std::ostream& operator<<(std::ostream& os, Curso*& c);
 };
 
 #include "profesor.h"

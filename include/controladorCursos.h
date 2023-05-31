@@ -21,7 +21,6 @@ class ControladorCursos : public IControladorCursos{
     public:
             void crearCurso(string nomCurso, string descCurso, dif difCurso) override;
             set<Curso*> cursosNoAprobadosEstudiante() override;
-            void elegirProfesor(string nickProfesor) override;
             set<Curso*> listarCursosHab() override;
             void agregarPrevia(Curso* nPrevia) override;
             void agregarLeccionCN(string nomTema, string objLeccion) override;
@@ -30,10 +29,8 @@ class ControladorCursos : public IControladorCursos{
             set<Idioma*> listarIdiomasProfesor() override;
             void crearTraducir(string desc, string fraseT, string solT) override;
             void crearCompletar(string desc, string fraseC, vector<string> solC) override;
-            void eliminarCurso(Curso c) override;
-            void seleccionarEstudiante(string nickE) override;
+            void eliminarCurso(Curso* c) override;
             set<Curso*> obtenerCursosNoAprobadosEstudiante() override;
-            void seleccionarCurso(Curso c) override;
             set<Ejercicio*> listarEjerciciosNoAprobados() override;
             void ingresarSolEjercicioTrad(string resp) override;
             bool comprobarSolucionEjercicio() override;
@@ -43,8 +40,16 @@ class ControladorCursos : public IControladorCursos{
             string mostrarFraseACompletar() override;
             void ingresarSolEjercicioComp(set<string> respuestas) override;
             Ejercicio* enunciarEjercicio() override;
-            void seleccionarEjercicio(Ejercicio* ej) override;
             set<Curso*> listarCursos() override;
+            void habilitarCurso(Curso* c) override;
+            void consultarCurso() override;
+
+
+            void elegirProfesor(string nickProfesor) override;
+            void seleccionarEstudiante(string nickE) override;
+            void seleccionarCurso(Curso* c) override;
+            void seleccionarEjercicio(Ejercicio* ej) override;
+
 
             Estudiante* getEstudianteSeleccionado();
             Curso* getCurso();

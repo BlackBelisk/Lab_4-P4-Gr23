@@ -38,6 +38,7 @@ Inscripcion* Curso::encontrarIns(Estudiante* e){
 
  void Curso::eliminarContenido(){
     for(auto it = lecciones.begin(); it != lecciones.end(); ++it){
+        (*it)->eliminarEjercicios();
         delete *it;
     }
     lecciones.clear();
@@ -45,7 +46,8 @@ Inscripcion* Curso::encontrarIns(Estudiante* e){
 
  void Curso::eliminarInscripciones(){
     for(auto it = inscriptos.begin(); it != inscriptos.end(); ++it){
-        delete *it;
+      (*it)->removerInscripcion();
+      delete *it;
     }
     inscriptos.clear();
  }
@@ -71,6 +73,55 @@ Inscripcion* Curso::encontrarIns(Estudiante* e){
     return progT/cantIns*100;
  }
 
+ string Curso::leccionesToString(){
+   string s = "";
+   for(int i = 0; i < lecciones.size(); i++){
+      s += lecciones[i]->toString() + "\n";
+   }
+   return s;
+ }
+
+ string Curso::inscriptosToString(){
+   string s = "";
+   for(auto it = inscriptos.begin(); it != inscriptos.end(); ++it){
+      s += (*it)->toString() + "\n";
+   }
+   return s;
+ }
+ 
+ string Curso::enumToString(){
+   dif c = dificultad;
+    switch (c)
+    {
+    case Principiante:
+        return "Principiante";
+    case Intermedio:
+        return "Intermedio";
+    case Avanzado:
+        return "Avanzado";
+    default: return "\0";
+    }
+ }
+
+ std::ostream& operator<<(std::ostream& os, Curso*& c) {
+   string s;
+   if (c->getHab() == true){
+      s = "Sí";
+   }else{
+      s = "No";
+   }
+
+    os << "Nombre: " << c->getNombre() << endl 
+    << "Descripción: " << c->getDesc() << endl 
+    << "Dificultad: " << c->enumToString() << endl
+    << "Idioma: " << c->getIdioma()->getNombre() << endl
+    << "Profesor: " << c->getProfesor()->getNombre() << endl
+    << "Habilitado: " << s << endl
+    << "Lecciones: " << c->leccionesToString() << endl //Si esto funciona me jubilo
+    << "Inscriptos: " << c->inscriptosToString() << endl; //Aquí también
+    return os;
+  }
+
 
  bool Curso::getHab(){
     return habilitado;
@@ -84,10 +135,22 @@ Inscripcion* Curso::encontrarIns(Estudiante* e){
     return lecciones;
  }
 
+ Profesor* Curso::getProfesor(){
+   return profe;
+ }
+
+ Idioma* Curso::getIdioma(){
+   return idioma;
+ }
+
  void Curso::setProfesor(Profesor* p){
     profe = p;
  }
 
  void Curso::setIdioma(Idioma* idi){
     idioma = idi;
+ }
+
+ void Curso::setHabilitado(bool t){
+   habilitado = t;
  }

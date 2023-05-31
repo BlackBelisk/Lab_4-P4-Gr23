@@ -16,14 +16,17 @@ class Inscripcion{
             Curso* curso;
             Leccion* lecActual;
             set<Ejercicio*> ejsCompletados;
+            Fecha fechaIns;
 
     public:
-            Inscripcion(Estudiante*, Curso*);
+            Inscripcion(Estudiante*, Curso*, Fecha);
             ~Inscripcion();
 
             void agregarCompletado(Ejercicio*);
             int obtenerProgreso();
-            
+            void removerInscripcion();
+            string toString();
+
             Estudiante* getEstudiante();
             Curso* getCurso();
 

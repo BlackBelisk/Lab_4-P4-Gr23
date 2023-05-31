@@ -25,10 +25,10 @@ class IControladorCursos{//Interfaz
         virtual set<Idioma*> listarIdiomasProfesor() = 0;
         virtual void crearTraducir(string desc, string fraseT, string solT) = 0;
         virtual void crearCompletar(string desc, string fraseC, vector<string> solC) = 0;
-        virtual void eliminarCurso(Curso c) = 0;
+        virtual void eliminarCurso(Curso* c) = 0;
         virtual void seleccionarEstudiante(string nickE) = 0;
         virtual set<Curso*> obtenerCursosNoAprobadosEstudiante() = 0;
-        virtual void seleccionarCurso(Curso c) = 0;
+        virtual void seleccionarCurso(Curso* c) = 0;
         virtual set<Ejercicio*> listarEjerciciosNoAprobados() = 0;
         virtual void ingresarSolEjercicioTrad(string resp) = 0;
         virtual bool comprobarSolucionEjercicio() = 0;
@@ -40,6 +40,8 @@ class IControladorCursos{//Interfaz
         virtual Ejercicio* enunciarEjercicio() = 0;
         virtual void seleccionarEjercicio(Ejercicio* ej) = 0;
         virtual set<Curso*> listarCursos() = 0;
+        virtual void habilitarCurso(Curso* c) = 0;
+        virtual void consultarCurso() = 0;
         virtual ~IControladorCursos(){};
 };
 #endif

@@ -9,10 +9,11 @@ Inscripcion::~Inscripcion(){
     
 }
 
-Inscripcion::Inscripcion(Estudiante* e, Curso* c){
+Inscripcion::Inscripcion(Estudiante* e, Curso* c, Fecha f){
     estud = e;
     curso = c;
     lecActual = *c->getLecciones().begin();
+    fechaIns = f;
 }
 
 void Inscripcion::agregarCompletado(Ejercicio* e){
@@ -24,6 +25,15 @@ int Inscripcion::obtenerProgreso(){
     int cec = curso->obtenerCantEjerciciosCurso();
     return cantEjRes/cec*100;
 }
+
+void Inscripcion::removerInscripcion(){
+    estud->removerInscripcion(this);
+}
+
+string Inscripcion::toString(){
+    return "Nombre: " + estud->getNombre() + "\n" + "Fecha de inscripción: " + fechaIns.toString() + "\n";
+}
+
 
  Estudiante* Inscripcion::getEstudiante(){
     return estud;

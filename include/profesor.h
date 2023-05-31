@@ -13,19 +13,19 @@ using namespace std;
 class Profesor : public Usuario{
     private:
     string instituto;
-    vector<Idioma> especializaciones;
-    vector<Curso> cursosPropuestos;
+    vector<Idioma*> especializaciones;
+    vector<Curso*> cursosPropuestos;
     public:
 
-    void agregarIdioma(Idioma);
+    void agregarIdioma(Idioma*);
 
-    void agregarCursoAProfesor(Curso);
-    void removerCurso(Curso);
+    void agregarCursoAProfesor(Curso*);
+    void removerCurso(Curso*);
     
     vector<int> obtenerPromediosProfesor();
 
 
-    vector<Idioma> obtenerIdiomasProfesor();
+    vector<Idioma*> obtenerIdiomasProfesor();
 
 
 };
