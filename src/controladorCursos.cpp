@@ -93,6 +93,7 @@ void ControladorCursos::agregarLeccionCN(string nomTema, string objLeccion){
     delete idi;
     delete profe;
  }
+ 
 /*
  bool ControladorCursos::comprobarCompletarPalabra(){
     Ejercicio* ej = getEjercicioSeleccionado();
@@ -122,6 +123,7 @@ void ControladorCursos::eliminarCurso(Curso* c){
 void ControladorCursos::consultarCurso(){
     Curso* c = getCurso();
     cout << c << endl;
+    delete c;
 }
 
 set<Curso*> ControladorCursos::listarCursosDisponibles(string nick){
@@ -130,6 +132,6 @@ set<Curso*> ControladorCursos::listarCursosDisponibles(string nick){
     Estudiante* e = cu.encontrarEstudiante(nick);
     set<Inscripcion> aprobados;
     //Necesito recorrer sobre las inscripciones del estudiante
-    
+
     return disponibles;
 }

@@ -10,7 +10,7 @@ using namespace std;
 
 class IObserver{
     public:
-    private:
+            virtual void notificar() = 0;
 };
 
 #endif

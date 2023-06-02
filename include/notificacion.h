@@ -8,6 +8,7 @@ using namespace std;
 class Notificacion{
 private:
     string CursoNuevo;
+    string idioma;
     //no estoy muy seguro si aca deberia haber una relacion con un usuario
 public:
     Notificacion(string);

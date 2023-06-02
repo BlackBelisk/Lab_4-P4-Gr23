@@ -10,7 +10,7 @@ using namespace std;
 
 class ControladorIdiomas: public IControladorIdiomas{
     public:
-    private:
+    
 };
 
 #endif

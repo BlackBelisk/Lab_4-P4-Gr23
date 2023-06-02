@@ -16,6 +16,7 @@ class Usuario: public IObserver{
     string contra;
     string descripcion;
     string nombre;
+    set<Notificacion*> notis;
 
     //Creador abstracto, unicamente para simplificar la creación de un Estudiante y Profesor
     Usuario(string, string, string, string);
@@ -34,6 +35,7 @@ class Usuario: public IObserver{
     virtual void setNombre(string);
 
     virtual set<Idioma> obtenerSuscripciones();
+    void notificar();
     
     bool operator==(const Usuario &user);
 };
