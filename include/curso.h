@@ -14,6 +14,7 @@ class Estudiante;
 class Idioma;
 class Inscripcion;
 class Leccion;
+class DataCurso;
 
 class Curso{
     private:
@@ -41,6 +42,7 @@ class Curso{
             string inscriptosToString();
             string enumToString();
 
+
             bool getHab();
             set<Curso*> getPrevias();
             vector<Leccion*> getLecciones();
@@ -63,4 +65,5 @@ class Curso{
 #include "idioma.h"
 #include "inscripcion.h"
 #include "leccion.h"
+#include "dataCurso.h"
 #endif
