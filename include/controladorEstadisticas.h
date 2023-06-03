@@ -9,8 +9,12 @@
 using namespace std;
 
 class ControladorEstadisticas: public IControladorEstadisticas{
-    public:
     private:
+        ControladorEstadisticas();
+    public:
+        static ControladorEstadisticas& getInstance();
+        void seleccionarEstadisticaDeseada(eleccion estad);
+        
 };
 
 #endif

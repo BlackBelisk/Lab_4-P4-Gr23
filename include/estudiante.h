@@ -15,7 +15,7 @@ using namespace std;
 
 class Estudiante : public Usuario{
     private:
-    string Pais;
+    string pais;
     Fecha fecNac; //Acá va fecha
     map<string, Inscripcion*> inscripciones;
 
@@ -25,11 +25,15 @@ class Estudiante : public Usuario{
         Estudiante(DataEstudiante);
 
         DataEstudiante getDataEstudiante();
+        //Remueve la inscripción ins del conjunto de inscripciones del Estudiante
+        void removerInscripcion(Inscripcion* ins);
 
-        void removerInscripcion(Inscripcion*);
-        Inscripcion encontrarInscripcion(Curso*);
+        //Devuelve la inscripción asociada al curso con nombre nomCurso 
+        Inscripcion* encontrarInscripcion(string nomCurso);
 
-    vector<Curso*> obtenerCursosEstudiante();
+        //Devuelve un set de cursos a los cuales el estudiante se encuentra isncripto
+        vector<Curso*> obtenerCursosEstudiante();
+
     vector<int> obtenerProgresos();
 };
 

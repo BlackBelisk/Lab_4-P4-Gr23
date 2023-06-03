@@ -30,7 +30,7 @@ class ControladorUsuarios: public IControladorUsuarios{
         DataUsuario getDataUsuarioIngresado();
         DataEstudiante getDataEstudianteIngresado();
         DataProfesor getDataProfesorIngresado();
-
+        ControladorUsuarios();
     public:
         static ControladorUsuarios& getInstance();
 

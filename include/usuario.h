@@ -23,9 +23,10 @@ class Usuario: public IObserver{
 
     //Links
     map<string, Inscripcion*> inscripciones; 
-    set<Idioma*> suscripciones;
+    map<string ,Idioma*> suscripciones;
 
     //Creador abstracto, unicamente para simplificar la creación de un Estudiante y Profesor
+    Usuario() = default;
     Usuario(string, string, string, string);
     public:
     virtual ~Usuario();
@@ -42,7 +43,7 @@ class Usuario: public IObserver{
 
     //Suscripciones
     virtual void agregarSuscripcion(Idioma*);
-    virtual set<Idioma*> obtenerSuscripciones(); 
+    virtual list<DataIdioma> obtenerSuscripciones(); 
     virtual void removerSuscripcionAIdioma(Idioma*);
     virtual bool estaSuscritoA(Idioma*);
     void notificar();

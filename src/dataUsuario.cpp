@@ -12,7 +12,11 @@ using namespace std;
 
 DataUsuario::DataUsuario(string nick, string contra, string descripcion, string nombre): nick(nick), contra(contra), descripcion(descripcion), nombre(nombre){}
 
+DataUsuario::DataUsuario(string nick, string descripcion, string nombre) : nick(nick), descripcion(descripcion), nombre(nombre){};
+
 string DataUsuario::getNick(){this->nick;};
+
+string DataUsuario::getContra(){this->contra;}
 
 string DataUsuario::getDescripcion(){this->descripcion;};
 

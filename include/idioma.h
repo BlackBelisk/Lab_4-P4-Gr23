@@ -21,7 +21,7 @@ class Idioma{
 
         void setNombre(string);//adivina que hace esto
         string getNombre();
-
+        DataIdioma getDataIdioma();
         //faltarian los setters y getters de los pseudoatributos que no tenemos hechos
 
         //y estas son las funciones que estaban en el DCD

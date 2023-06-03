@@ -22,8 +22,10 @@ class DataUsuario{
         string nombre;
     public:
         DataUsuario() = default;
+        DataUsuario(string, string, string);
         DataUsuario(string, string, string, string);
         string getNick();
+        string getContra(); //:XD:
         string getDescripcion();
         string getNombre();
 };
