@@ -10,6 +10,7 @@
 #include "usuario.h"
 #include "estudiante.h"
 #include "profesor.h"
+#include "dataUsuario.h"
 
 using namespace std;
 
@@ -19,10 +20,15 @@ class ControladorUsuarios: public IControladorUsuarios{
         map<string, Profesor*> profesores;
         map<string, Estudiante*> estudiantes;
         set<Idioma*> especializacionesProfesor;
+
+        DataUsuario usuarioIngresado;
     public:
         static ControladorUsuarios& getInstance();
 
-        void ingresarUsuario(string, string, string, string);
+        void ingresarUsuario(DataUsuario);
+        void setDataUsuarioIngresado(DataUsuario);
+        DataUsuario getDataUsuarioIngresado();
+
         void ingresarDatosEstudiante(string, Fecha);
         void ingresarInstituto(string);
         void agregarEspecializacion(Idioma);
@@ -31,12 +37,12 @@ class ControladorUsuarios: public IControladorUsuarios{
         void confirmarAltaEstudiante();
         void confirmarAltaProfesor();
 
-        void nuevoEstudiante(string, string, string, string, Fecha, string);
-        void nuevoProfesor(string, string, string, string, string, set<Idioma*>);
+        void nuevoEstudiante(DataUsuario, Fecha, string);
+        void nuevoProfesor(DataUsuario, string, set<Idioma*>);
 
-        set<Usuario*> obtenerUsuarios();
-        set<Estudiante*> obtenerEstudiantes();
-        set<Profesor*> obtenerProfesores();
+        set<DataUsuario> obtenerUsuarios();
+        set<DataEstudiante> obtenerEstudiantes();
+        set<DataProfesor> obtenerProfesores();
 
         Usuario* encontrarUsuario(string);
         Profesor* encontrarProfesor(string);

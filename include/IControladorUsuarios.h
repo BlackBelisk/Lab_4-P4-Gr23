@@ -30,9 +30,9 @@ class IControladorUsuarios{
     virtual void nuevoEstudiante(DataUsuario, Fecha, string) = 0;
     virtual void nuevoProfesor(string, string, string, string, string, set<Idioma*>) = 0;
 
-    virtual set<Usuario*> obtenerUsuarios() = 0;
-    virtual set<Estudiante*> obtenerEstudiantes() = 0;
-    virtual set<Profesor*> obtenerProfesores() = 0;
+    virtual set<DataUsuario> obtenerUsuarios() = 0;
+    virtual set<DataEstudiante> obtenerEstudiantes() = 0;
+    virtual set<DataProfesor> obtenerProfesores() = 0;
 
     virtual Usuario* encontrarUsuario(string) = 0;
     virtual Profesor* encontrarProfesor(string) = 0;
