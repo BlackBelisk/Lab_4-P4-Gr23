@@ -9,6 +9,11 @@ using namespace std;
 #include "IControladorCursos.h"
 #include "controladorUsuarios.h"
 #include "curso.h"
+#include "dataCurso.h"
+#include "dataIdioma.h"
+#include "dataUsuario.h"
+#include "dataLeccion.h"
+#include "dataEjercicio.h"
 
 class ControladorCursos : public IControladorCursos{
     private:
@@ -22,18 +27,18 @@ class ControladorCursos : public IControladorCursos{
 
     public:
             void crearCurso(string nomCurso, string descCurso, dif difCurso) override;
-            set<DataCurso> cursosNoAprobadosEstudiante() override;
-            set<DataCurso> listarCursosHab() override;
-            void agregarPrevia(DataCurso nPrevia) override;
+            set<DataCurso*> cursosNoAprobadosEstudiante() override;
+            set<DataCurso*> listarCursosHab() override;
+            void agregarPrevia(DataCurso* nPrevia) override;
             void agregarLeccionCN(string nomTema, string objLeccion) override;
-            void agregarEjercicio(string desc, DataLeccion lec) override;
+            void agregarEjercicio(string desc, DataLeccion* lec) override;
             void finalizarAltaCurso() override;
-            set<DataIdioma> listarIdiomasProfesor() override;
+            set<DataIdioma*> listarIdiomasProfesor() override;
             void crearTraducir(string desc, string fraseT, string solT) override;
             void crearCompletar(string desc, string fraseC, vector<string> solC) override;
-            void eliminarCurso(DataCurso c) override;
-            set<DataCurso> obtenerCursosNoAprobadosEstudiante() override;
-            set<DataEjercicio> listarEjerciciosNoAprobados() override;
+            void eliminarCurso(DataCurso* c) override;
+            set<DataCurso*> obtenerCursosNoAprobadosEstudiante() override;
+            set<DataEjercicio*> listarEjerciciosNoAprobados() override;
             void ingresarSolEjercicioTrad(string resp) override;
             bool comprobarSolucionEjercicio() override;
             bool comprobarCompletarPalabra() override;
@@ -41,17 +46,17 @@ class ControladorCursos : public IControladorCursos{
             string mostrarFraseATraducir() override;
             string mostrarFraseACompletar() override;
             void ingresarSolEjercicioComp(set<string> respuestas) override;
-            DataEjercicio enunciarEjercicio() override;
-            set<DataCurso> listarCursos() override;
-            void habilitarCurso(DataCurso c) override;
+            DataEjercicio* enunciarEjercicio() override;
+            set<DataCurso*> listarCursos() override;
+            void habilitarCurso(DataCurso* c) override;
             void consultarCurso() override;
-            set<DataCurso> listarCursosDisponibles(string nick);
+            set<DataCurso*> listarCursosDisponibles(string nick);
 
 
             void elegirProfesor(string nickProfesor) override;
             void seleccionarEstudiante(string nickE) override;
-            void seleccionarCurso(DataCurso c) override;
-            void seleccionarEjercicio(DataEjercicio ej) override;
+            void seleccionarCurso(DataCurso* c) override;
+            void seleccionarEjercicio(DataEjercicio* ej) override;
 
 
             Estudiante* getEstudianteSeleccionado();

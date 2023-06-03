@@ -18,7 +18,7 @@
 using namespace std;
 
 class Factory{
-    public:
+    private:
             static unique_ptr<IControladorCursos> getIControladorCursos();
             static unique_ptr<IControladorEstadisticas> getIControladorEstadisticas();
             static unique_ptr<IControladorIdiomas> getIControladorIdiomas();

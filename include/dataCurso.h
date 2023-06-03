@@ -5,10 +5,14 @@
 #include <string>
 #include <vector>
 #include <set>
+
+#include "curso.h"
 #include "dataUsuario.h"
 #include "dataIdioma.h"
+#include "dataInscripcion.h"
+#include "dataLeccion.h"
+
 using namespace std;
-class Curso;
 
 class DataCurso{
     public:
@@ -22,7 +26,8 @@ class DataCurso{
             set<DataInscripcion*> inscriptos;
             set<DataCurso*> previas;
             
-            DataCurso(Curso*);
+            DataCurso(string, string, dif, DataIdioma*, DataProfesor*, vector<DataLeccion*>, set<DataInscripcion*>, set<DataCurso*>);
 };
-#include "curso.h"
+
+
 #endif
