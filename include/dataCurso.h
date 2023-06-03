@@ -5,7 +5,8 @@
 #include <string>
 #include <vector>
 #include <set>
-
+#include "dataUsuario.h"
+#include "dataIdioma.h"
 using namespace std;
 class Curso;
 
