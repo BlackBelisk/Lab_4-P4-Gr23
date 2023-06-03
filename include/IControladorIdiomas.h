@@ -9,8 +9,8 @@
 using namespace std;
 
 class IControladorIdiomas{
-    public:
     private:
+    public:
 };
 
 #endif

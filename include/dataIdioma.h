@@ -9,7 +9,10 @@
 using namespace std;
 
 class DataIdioma{
-    public:
-    string A;
+    private:
+        string nombre;
+    public: 
+        DataIdioma(string);
+        string getNombre();
 };
 #endif

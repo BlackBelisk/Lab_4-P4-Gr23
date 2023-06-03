@@ -8,6 +8,7 @@
 #include "IObserver.h"
 #include "idioma.h"
 #include "inscripcion.h"
+#include "notificacion.h"
 using namespace std;
 class Idioma;
 
@@ -33,7 +34,7 @@ class Usuario: public IObserver{
     virtual string getNick();
     virtual string getDescripcion();
     virtual string getNombre();
-
+    virtual DataUsuario getDataUsuario();
     //Sets
     virtual void setNick(string);
     virtual void setDescripcion(string);

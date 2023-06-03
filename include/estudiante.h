@@ -10,6 +10,7 @@
 #include "usuario.h"
 #include "inscripcion.h"
 #include "fecha.h"
+#include "dataUsuario.h"
 using namespace std;
 
 class Estudiante : public Usuario{
@@ -17,10 +18,16 @@ class Estudiante : public Usuario{
     string Pais;
     Fecha fecNac; //Acá va fecha
     map<string, Inscripcion*> inscripciones;
+
     public:
-    
-    void removerInscripcion(Inscripcion*);
-    Inscripcion encontrarInscripcion(Curso*);
+        Estudiante(string, string, string, string, string, Fecha);
+        Estudiante(DataUsuario, DataEstudiante);
+        Estudiante(DataEstudiante);
+
+        DataEstudiante getDataEstudiante();
+
+        void removerInscripcion(Inscripcion*);
+        Inscripcion encontrarInscripcion(Curso*);
 
     vector<Curso*> obtenerCursosEstudiante();
     vector<int> obtenerProgresos();

@@ -4,9 +4,10 @@
 #include <iostream>
 #include <set>
 #include <vector>
+#include <list>
 #include <string>
 #include <map>
-#include <IControladorUsuarios.h>
+#include "IControladorUsuarios.h"
 #include "usuario.h"
 #include "estudiante.h"
 #include "profesor.h"
@@ -19,30 +20,37 @@ class ControladorUsuarios: public IControladorUsuarios{
         map<string, Usuario*> usuarios;
         map<string, Profesor*> profesores;
         map<string, Estudiante*> estudiantes;
-        set<Idioma*> especializacionesProfesor;
+        list<DataIdioma> especializacionesProfesor;
 
         DataUsuario usuarioIngresado;
+        DataEstudiante estudianteIngresado;
+        DataProfesor profesorIngresado;
+        
+        void setDataUsuarioIngresado(DataUsuario);
+        DataUsuario getDataUsuarioIngresado();
+        DataEstudiante getDataEstudianteIngresado();
+        DataProfesor getDataProfesorIngresado();
+
     public:
         static ControladorUsuarios& getInstance();
 
         void ingresarUsuario(DataUsuario);
-        void setDataUsuarioIngresado(DataUsuario);
-        DataUsuario getDataUsuarioIngresado();
+        
 
         void ingresarDatosEstudiante(string, Fecha);
         void ingresarInstituto(string);
-        void agregarEspecializacion(Idioma);
+        void agregarEspecializacion(DataIdioma);
 
-        void confirmarAltaUsuario();
+        void confirmarAltaUsuario(int);
         void confirmarAltaEstudiante();
         void confirmarAltaProfesor();
 
-        void nuevoEstudiante(DataUsuario, Fecha, string);
-        void nuevoProfesor(DataUsuario, string, set<Idioma*>);
+        void nuevoEstudiante(DataEstudiante);
+        void nuevoProfesor(DataProfesor);
 
-        set<DataUsuario> obtenerUsuarios();
-        set<DataEstudiante> obtenerEstudiantes();
-        set<DataProfesor> obtenerProfesores();
+        list<DataUsuario> obtenerUsuarios();
+        list<DataEstudiante> obtenerEstudiantes();
+        list<DataProfesor> obtenerProfesores();
 
         Usuario* encontrarUsuario(string);
         Profesor* encontrarProfesor(string);
