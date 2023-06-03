@@ -30,8 +30,9 @@ class Ejercicio {
 
 		//Funcion esEjercicioCorrecto virtual pura, cada clase hija (Libro y JuegoMesa) tendra una implementacion distinta
 		virtual bool esEjercicioCorrecto() = 0;
-		
-		virtual queue<string> getSolucionComp() = 0;
+		virtual DataEjercicio ejToData();
+
+		virtual vector<string> getSolucionComp() = 0;
 		virtual string toString() = 0;
 };
 
@@ -53,6 +54,7 @@ class Traduccion : public Ejercicio {
 
 		//Funcion esEjericicioCorrecto para la subClase Traduccion
 		virtual bool esEjercicioCorrecto();
+		
 
 		string toString() override;
 };
@@ -70,7 +72,7 @@ class CompletarPalabra : public Ejercicio {
 		//Setters y Getters
 		void setSolucion(queue<string>);
 		void setFrases(queue<string>);
-		queue<string> getSolucionComp();
+		vector<string> getSolucionComp();
 		string getFrases();
 
 		//Funcion esEjericicioCorrecto para la subClase Traduccion

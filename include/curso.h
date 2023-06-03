@@ -4,7 +4,8 @@
 #include <iostream>
 #include <string>
 #include <set>
-#include <set>
+#include <vector>
+#include <list>
 
 using namespace std;
 
@@ -41,6 +42,9 @@ class Curso{
             string leccionesToString();
             string inscriptosToString();
             string enumToString();
+            vector<DataLeccion> lecToData();
+            list<DataInscripcion> insToData();
+            list<DataCurso> preToData();
 
 
             bool getHab();

@@ -7,6 +7,7 @@
 
 using namespace std;
 class Ejercicio;
+class DataEjercicio;
 
 class Leccion{
     private:
@@ -20,8 +21,11 @@ class Leccion{
             int obtenerCantEjerciciosLeccion();
             string toString();
             string ejsToString();
+            list<DataEjercicio> ejsToData();    
+
             ~Leccion();
 };
 
 #include "ejercicio.h"
+#include "dataEjercicio.h"
 #endif

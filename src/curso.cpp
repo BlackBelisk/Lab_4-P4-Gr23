@@ -10,6 +10,8 @@ Curso::Curso(string nombreCurso, string desc, dif Dif){
     descripcion = desc;
     dificultad = Dif;
     habilitado = false;
+    profe = nullptr;
+    idioma = nullptr;
 }
 
 Inscripcion* Curso::encontrarIns(Estudiante* e){
