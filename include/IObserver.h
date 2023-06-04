@@ -8,8 +8,9 @@ using namespace std;
 
 class IObserver{
     public:
-            virtual void Notificar(Notificacion*, Idioma* idi) = 0;
+            virtual void Notificar(Notificacion*) = 0;
             virtual void eliminarNotificacion(string) = 0;
+            virtual void eliminarNotificaciones() = 0;
             virtual ~IObserver() = 0;
 };
 

@@ -29,10 +29,12 @@ void Idioma::removerObservador(IObserver* sus){
 void Idioma::Notificar(string nomCurso){
     for(auto it = this->suscriptores.begin(); it!= this->suscriptores.end();it++){
         Notificacion* n = new Notificacion(nomCurso,this->getNombre());
-        (*it)->Notificar(n, this);
+        (*it)->Notificar(n);
     }
 }
 
 void Idioma::eliminarNotif(string nomCurso){
-    
+    for(auto it = this->suscriptores.begin(); it != this->suscriptores.end();it++){
+        (*it)->eliminarNotificacion(nomCurso);
+    }
 }

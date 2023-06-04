@@ -45,13 +45,20 @@ bool Usuario::operator==(const Usuario &user){
    return this->getNick() == user.getNick();
 }
 
-void Usuario::Notificar(Notificacion* noti, Idioma* idi){
+void Usuario::Notificar(Notificacion* noti){
     this->notificaciones.insert(make_pair(noti->getCursoNuevo(),noti));
-    this->agregarSuscripcion(idi);
 }
 
 void Usuario::eliminarNotificacion(string nomCurso){
     Notificacion * borrar = this->notificaciones.find(nomCurso)->second;
     this->notificaciones.erase(nomCurso);
     delete(borrar);
+}
+
+void Usuario::eliminarNotificaciones(){
+    for(auto it = this->notificaciones.begin(); it != this->notificaciones.end();it++){
+        Notificacion * noti = it->second;
+        this->notificaciones.erase(it);
+        delete(noti);
+    }
 }
