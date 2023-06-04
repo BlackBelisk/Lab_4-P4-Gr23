@@ -2,17 +2,34 @@
 #define _CLASSCONTROLADORIDIOMAS_H_
 
 #include <iostream>
-#include <set>
-#include <vector>
+#include <map>
+#include <list>
 #include <string>
 #include "IControladorIdiomas.h"
+#include <idioma.h>
+#include "dataIdioma.h"
 
 using namespace std;
 
 class ControladorIdiomas: public IControladorIdiomas{
+    private:
+        static ControladorIdiomas * instancia;
+        ControladorIdiomas();
+
+        map<string, Idioma*> idiomas;
+        DataIdioma idiomaIngresado;
+        void setDataIdiomaIngresado(DataIdioma);
+        DataIdioma getDataIdiomaIngresado();
     public:
-    static ControladorIdiomas& getInstance();
-    Idioma* encontrarIdioma(string);
+        static ControladorIdiomas* getInstance();
+
+        list<DataIdioma> listarIdiomas();
+        Idioma* encontrarIdioma(string);
+
+        void ingresarIdioma(DataIdioma);
+        void confirmarAltaIdioma();
+
+        void nuevoIdioma(DataIdioma);
 };
 
 #endif

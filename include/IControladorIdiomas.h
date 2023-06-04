@@ -3,14 +3,23 @@
 
 #include <iostream>
 #include <set>
-#include <vector>
+#include <list>
 #include <string>
+#include <dataIdioma.h>
 
 using namespace std;
 
 class IControladorIdiomas{
-    private:
     public:
+    virtual list<DataIdioma> listarIdiomas() = 0;
+    virtual Idioma* encontrarIdioma(string) = 0;
+
+    virtual void ingresarIdioma(DataIdioma) = 0;
+    virtual void confirmarAltaIdioma() = 0;
+
+    virtual void nuevoIdioma(DataIdioma) = 0;
+
+    virtual ~IControladorIdiomas(){};
 };
 
 #endif

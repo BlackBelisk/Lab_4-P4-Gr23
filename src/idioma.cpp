@@ -1,3 +1,4 @@
+#include <string>
 #include "../include/idioma.h"
 
 Idioma::Idioma(string nom){

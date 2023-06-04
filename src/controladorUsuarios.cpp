@@ -1,7 +1,6 @@
 #include <iostream>
-#include <set>
-#include <vector>
 #include <string>
+#include <list>
 #include <map>
 #include "../include/IControladorUsuarios.h"
 #include "../include/controladorUsuarios.h"
@@ -19,10 +18,6 @@ ControladorUsuarios* ControladorUsuarios::getInstance() {
     return instancia;
 }
 
-void ControladorUsuarios::ingresarUsuario(DataUsuario dataU){
-    this->setDataUsuarioIngresado(dataU);
-};
-
 void ControladorUsuarios::setDataUsuarioIngresado(DataUsuario dataU){
     this->usuarioIngresado = dataU;
 };
@@ -30,6 +25,10 @@ void ControladorUsuarios::setDataUsuarioIngresado(DataUsuario dataU){
 DataUsuario ControladorUsuarios::getDataUsuarioIngresado(){
     return this->usuarioIngresado;
 }
+
+void ControladorUsuarios::ingresarUsuario(DataUsuario dataU){
+    this->setDataUsuarioIngresado(dataU);
+};
 
 DataEstudiante ControladorUsuarios::getDataEstudianteIngresado(){
     return this->estudianteIngresado;
@@ -75,10 +74,10 @@ void ControladorUsuarios::confirmarAltaProfesor(){
 
     Profesor * p = new Profesor(data, dataP);
     
-    ControladorIdiomas& ci = ControladorIdiomas::getInstance();
+    ControladorIdiomas* ci = ControladorIdiomas::getInstance();
     
     for(auto it = this->especializacionesProfesor.begin(); it != this->especializacionesProfesor.end(); ++it){
-        p->agregarIdioma(ci.encontrarIdioma(it->getNombre()));
+        p->agregarIdioma(ci->encontrarIdioma(it->getNombre()));
     }
 
     this->usuarios.insert(make_pair(data.getNick(),p));
@@ -94,9 +93,9 @@ void ControladorUsuarios::nuevoEstudiante(DataEstudiante dataE){
 
 void ControladorUsuarios::nuevoProfesor(DataProfesor dataP){
     Profesor * p = new Profesor(dataP);
-    ControladorIdiomas& ci = ControladorIdiomas::getInstance();
+    ControladorIdiomas* ci = ControladorIdiomas::getInstance();
     for(auto it = dataP.getIdiomas().begin(); it != dataP.getIdiomas().end(); ++it){
-        p->agregarIdioma(ci.encontrarIdioma(it->getNombre()));
+        p->agregarIdioma(ci->encontrarIdioma(it->getNombre()));
     }
     this->usuarios.insert(make_pair(dataP.getNick(),p));
     this->profesores.insert(make_pair(dataP.getNick(),p));

@@ -2,7 +2,7 @@
 #define IDIOMA_H
 
 #include <string>
-
+#include "dataIdioma.h"
 using namespace std;
 
 class Curso;
@@ -16,7 +16,7 @@ class Idioma{
         set<IObserver*> suscriptores;
     public:
         Idioma(string); //constructor, mientras no agreguemos las otras clases solo acepta 1 parametro
-
+        Idioma(DataIdioma);
         ~Idioma(); //destructor
 
         void setNombre(string);//adivina que hace esto

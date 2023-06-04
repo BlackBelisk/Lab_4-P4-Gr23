@@ -13,7 +13,7 @@
 #include "dataIdioma.h"
 
 using namespace std;
-
+//Me falta implementar la sobrecarga para la impresión
 class DataUsuario{
     protected:
         string nick;
