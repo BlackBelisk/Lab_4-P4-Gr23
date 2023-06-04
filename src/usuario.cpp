@@ -44,3 +44,14 @@ bool Usuario::estaSuscritoA(Idioma* idi){
 bool Usuario::operator==(const Usuario &user){
    return this->getNick() == user.getNick();
 }
+
+void Usuario::Notificar(Notificacion* noti, Idioma* idi){
+    this->notificaciones.insert(make_pair(noti->getCursoNuevo(),noti));
+    this->agregarSuscripcion(idi);
+}
+
+void Usuario::eliminarNotificacion(string nomCurso){
+    Notificacion * borrar = this->notificaciones.find(nomCurso)->second;
+    this->notificaciones.erase(nomCurso);
+    delete(borrar);
+}

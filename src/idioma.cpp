@@ -16,3 +16,23 @@ void Idioma::setNombre(string nom){
 string Idioma::getNombre(){
     return nombre;
 }
+
+
+void Idioma::agregarUsuarioSuscripto(IObserver* sus){
+    this->suscriptores.insert(sus);
+}
+
+void Idioma::removerObservador(IObserver* sus){
+    this->suscriptores.erase(sus);
+}
+
+void Idioma::Notificar(string nomCurso){
+    for(auto it = this->suscriptores.begin(); it!= this->suscriptores.end();it++){
+        Notificacion* n = new Notificacion(nomCurso,this->getNombre());
+        (*it)->Notificar(n, this);
+    }
+}
+
+void Idioma::eliminarNotif(string nomCurso){
+    
+}

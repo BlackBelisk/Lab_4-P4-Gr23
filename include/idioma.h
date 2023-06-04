@@ -29,7 +29,7 @@ class Idioma{
         void removerObservador(IObserver*);
         void eliminarNotif(string);
         void removerCurso(Curso*);
-        void notificarCursoNuevo(Curso*);//Esto podría recibir directamente el string del nombre del curso
+        void Notificar(string);//Esto podría recibir directamente el string del nombre del curso
         void eliminarNotificaciones();
 };
 

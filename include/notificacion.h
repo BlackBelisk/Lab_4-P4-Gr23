@@ -11,12 +11,13 @@ private:
     string idioma;
     //no estoy muy seguro si aca deberia haber una relacion con un usuario
 public:
-    Notificacion(string);
+    Notificacion(string, string);
     ~Notificacion();
 
     //creo que verdaderamente nunca se van a usar el set y get de esto pero lo hago igual por las dudas
     void setCursoNuevo(string);
-    string getCursoNuevo();
+    string getCursoNuevo() const;
+    string getIdioma() const;
 };
 
 #endif

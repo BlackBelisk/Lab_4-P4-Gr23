@@ -2,15 +2,15 @@
 #define _CLASSIOBSERVER_H_
 
 #include <iostream>
-#include <set>
-#include <vector>
 #include <string>
 
 using namespace std;
 
 class IObserver{
     public:
-            virtual void notificar() = 0;
+            virtual void Notificar(Notificacion*, Idioma* idi) = 0;
+            virtual void eliminarNotificacion(string) = 0;
+            virtual ~IObserver() = 0;
 };
 
 #endif

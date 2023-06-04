@@ -15,4 +15,5 @@ class DataIdioma{
         DataIdioma(string);
         string getNombre();
 };
+
 #endif

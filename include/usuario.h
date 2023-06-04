@@ -19,11 +19,16 @@ class Usuario: public IObserver{
     string contra;
     string descripcion;
     string nombre;
-    set<Notificacion*> notis;
-
     //Links
+    
+    //La key es el nombre del curso
     map<string, Inscripcion*> inscripciones; 
+
+    //La key es el nombre del idioma
     map<string ,Idioma*> suscripciones;
+
+    //La key es el nombre del curso
+    map<string,Notificacion*> notificaciones;
 
     //Creador abstracto, unicamente para simplificar la creación de un Estudiante y Profesor
     Usuario() = default;
@@ -46,7 +51,9 @@ class Usuario: public IObserver{
     virtual list<DataIdioma> obtenerSuscripciones(); 
     virtual void removerSuscripcionAIdioma(Idioma*);
     virtual bool estaSuscritoA(Idioma*);
-    void notificar();
+    void eliminarNotificacion(string);
+
+    void Notificar(Notificacion*, Idioma*);
     bool operator==(const Usuario &user);
 };
 
