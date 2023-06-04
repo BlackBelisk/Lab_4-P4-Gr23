@@ -6,11 +6,11 @@ using namespace std;
 
 Usuario::Usuario(string nick, string contra, string descripcion, string nombre):nick(nick), contra(contra), descripcion(descripcion), nombre(nombre){}
 
-string Usuario::getNick(){return this->nick;}
+string Usuario::getNick() const{return this->nick;}
 
-string Usuario::getDescripcion(){return this->descripcion;}
+string Usuario::getDescripcion() const{return this->descripcion;}
 
-string Usuario::getNombre(){return this->nombre;}
+string Usuario::getNombre() const{return this->nombre;}
 
 DataUsuario Usuario::getDataUsuario(){return DataUsuario(this->nick, this->descripcion, this->nombre);}
 
@@ -39,4 +39,8 @@ void Usuario::removerSuscripcionAIdioma(Idioma* idi){
 
 bool Usuario::estaSuscritoA(Idioma* idi){
     return (this->suscripciones.count(idi->getNombre()) == 1);
+}
+
+bool Usuario::operator==(const Usuario &user){
+   return this->getNick() == user.getNick();
 }

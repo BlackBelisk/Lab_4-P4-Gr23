@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include "IControladorEstadisticas.h"
+#include "dataUsuario.h"
 using namespace std;
 
 class ControladorEstadisticas: public IControladorEstadisticas{

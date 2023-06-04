@@ -32,9 +32,9 @@ class Usuario: public IObserver{
     virtual ~Usuario();
 
     //Gets
-    virtual string getNick();
-    virtual string getDescripcion();
-    virtual string getNombre();
+    virtual string getNick() const;
+    virtual string getDescripcion() const;
+    virtual string getNombre() const;
     virtual DataUsuario getDataUsuario();
     //Sets
     virtual void setNick(string);
