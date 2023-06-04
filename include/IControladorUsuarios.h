@@ -42,6 +42,7 @@ class IControladorUsuarios{
         virtual void elegirIdiomaProfesor(Idioma*) = 0;
 
         virtual Notificacion consultarNotificaciones(string) = 0;
+        virtual ~IControladorUsuarios(){};
 };
 
 #endif
