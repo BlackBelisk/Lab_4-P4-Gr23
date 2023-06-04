@@ -13,6 +13,12 @@
 
 using namespace std;
 
+ControladorUsuarios* ControladorUsuarios::instancia = nullptr;
+ControladorUsuarios* ControladorUsuarios::getInstance() {
+    if(instancia == nullptr){instancia = new ControladorUsuarios();}
+    return instancia;
+}
+
 void ControladorUsuarios::ingresarUsuario(DataUsuario dataU){
     this->setDataUsuarioIngresado(dataU);
 };

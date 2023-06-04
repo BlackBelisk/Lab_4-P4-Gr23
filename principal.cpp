@@ -6,7 +6,34 @@
 //y si, me ayudo mi ia favorita :)
 
 #include <iostream>
-#include "algo.h"
+#include <string>
+
+#include "usuario.h"
+#include "estudiante.h"
+#include "profesor.h"
+#include "idioma.h"
+#include "curso.h"
+#include "leccion.h"
+#include "ejercicio.h"
+
+
+//Controladores
+#include "factory.h"
+
+#include "include/IControladorCursos.h"
+#include "include/ControladorCursos.h"
+
+#include "include/IControladorUsuarios.h"
+#include "include/ControladorUsuarios.h"
+
+#include "include/IControladorIdiomas.h"
+#include "include/ControladorIdiomas.h"
+
+#include "include/IControladorEstadisticas.h"
+#include "include/controladorEstadisticas.h"
+//Controladores
+
+
 
 using namespace std;
 

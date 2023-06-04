@@ -17,6 +17,9 @@ using namespace std;
 
 class ControladorUsuarios: public IControladorUsuarios{
     private:
+        static ControladorUsuarios * instancia;
+        ControladorUsuarios();
+
         map<string, Usuario*> usuarios;
         map<string, Profesor*> profesores;
         map<string, Estudiante*> estudiantes;
@@ -30,9 +33,8 @@ class ControladorUsuarios: public IControladorUsuarios{
         DataUsuario getDataUsuarioIngresado();
         DataEstudiante getDataEstudianteIngresado();
         DataProfesor getDataProfesorIngresado();
-        ControladorUsuarios();
     public:
-        static ControladorUsuarios& getInstance();
+        static ControladorUsuarios* getInstance();
 
         void ingresarUsuario(DataUsuario);
         

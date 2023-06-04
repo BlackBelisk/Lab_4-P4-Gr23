@@ -22,14 +22,14 @@ class IControladorUsuarios{
         virtual void ingresarUsuario(DataUsuario) = 0;
         virtual void ingresarDatosEstudiante(string, Fecha) = 0;
         virtual void ingresarInstituto(string) = 0;
-        virtual void agregarEspecializacion(Idioma) = 0;
+        virtual void agregarEspecializacion(DataIdioma) = 0;
 
-        virtual void confirmarAltaUsuario() = 0;
+        virtual void confirmarAltaUsuario(int) = 0;
         virtual void confirmarAltaEstudiante() = 0;
         virtual void confirmarAltaProfesor() = 0;
 
-        virtual void nuevoEstudiante(DataUsuario, Fecha, string) = 0;
-        virtual void nuevoProfesor(string, string, string, string, string, set<Idioma*>) = 0;
+        virtual void nuevoEstudiante(DataEstudiante) = 0;
+        virtual void nuevoProfesor(DataProfesor) = 0;
 
         virtual list<DataUsuario> obtenerUsuarios() = 0;
         virtual list<DataEstudiante> obtenerEstudiantes() = 0;
