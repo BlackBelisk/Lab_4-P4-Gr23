@@ -1,17 +1,18 @@
 #include "../include/notificacion.h"
 
-Notificacion::Notificacion(string curso){
-    CursoNuevo = curso;
+Notificacion::Notificacion(string curso, string idioma){
+    this->CursoNuevo = curso;
+    this->idioma = idioma;
 }
 
 Notificacion::~Notificacion(){
     //seguramente haya que borrar alguna visibilidad
 }
 
-void Notificacion::setCursoNuevo(string curso){
-    CursoNuevo = curso;
+string Notificacion::getCursoNuevo() const{
+    return CursoNuevo;
 }
 
-string Notificacion::getCursoNuevo(){
-    return CursoNuevo;
+string Notificacion::getIdioma() const{
+    return idioma;
 }

@@ -13,7 +13,6 @@
 #include "dataIdioma.h"
 
 using namespace std;
-//Me falta implementar la sobrecarga para la impresión
 class DataUsuario{
     protected:
         string nick;
@@ -28,6 +27,7 @@ class DataUsuario{
         string getContra(); //:XD:
         string getDescripcion();
         string getNombre();
+        friend std::ostream& operator<<(std::ostream& os, const DataUsuario& du);
 };
 
 class DataEstudiante : public DataUsuario{
@@ -39,6 +39,7 @@ class DataEstudiante : public DataUsuario{
         DataEstudiante(string, Fecha);
         string getPais();
         Fecha getFechaNac();
+        friend std::ostream& operator<<(std::ostream& os, const DataEstudiante& de);
 };
 
 class DataProfesor : public DataUsuario{
@@ -51,6 +52,7 @@ class DataProfesor : public DataUsuario{
         DataProfesor(string, list<DataIdioma>);
         string getInstituto();
         list<DataIdioma> getIdiomas();
+        friend std::ostream& operator<<(std::ostream& os, const DataProfesor& dp);
 };
 
 #endif
