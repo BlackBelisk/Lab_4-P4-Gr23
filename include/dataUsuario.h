@@ -38,6 +38,7 @@ class DataEstudiante : public DataUsuario{
         string pais;
         Fecha fecNac;
     public:
+        DataEstudiante() = default;
         DataEstudiante(string, string, string, string, string, Fecha);
         DataEstudiante(string, Fecha);
         string getPais() const;
@@ -49,6 +50,7 @@ class DataProfesor : public DataUsuario{
         string instituto;
         list<DataIdioma> idiomas;
     public:
+        DataProfesor() = default;
         DataProfesor(string, string, string, string, string, list<DataIdioma>);
         DataProfesor(string);
         DataProfesor(string, list<DataIdioma>);

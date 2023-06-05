@@ -18,8 +18,13 @@ class Profesor : public Usuario{
         set<Idioma*> especializaciones;
         set<Curso*> cursosPropuestos;
     public:
+        //Creador directo de Profesor
         Profesor(string nick, string contra, string desc, string nombre, string instituto, set<Idioma*> idiomas);
+        
+        //Creador indirecto de Profesor por medio de Datatypes, los idiomas son setteados luego
         Profesor(DataUsuario, DataProfesor);
+
+        //Creador indirecto de Profesor por medio de Datatypes, los idiomas son setteados luego
         Profesor(DataProfesor);
 
         string getInstituto();
