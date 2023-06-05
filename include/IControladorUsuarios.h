@@ -40,7 +40,7 @@ class IControladorUsuarios{
         virtual Estudiante* encontrarEstudiante(string) = 0;
 
         virtual void elegirIdiomaProfesor(Idioma*) = 0;
-
+        //Me faltan las funciones relacionadas a la suscripciones y consulta de notificaciones
         virtual Notificacion consultarNotificaciones(string) = 0;
         virtual ~IControladorUsuarios(){};
 };

@@ -13,7 +13,7 @@ using namespace std;
 class Idioma;
 
 class Usuario: public IObserver{
-    protected:
+    private:
     //Atributos basicos de la clase Usuario
     string nick;
     string contra;
@@ -30,10 +30,10 @@ class Usuario: public IObserver{
     //La key es el nombre del curso
     map<string,Notificacion*> notificaciones;
 
+    public:
     //Creador abstracto, unicamente para simplificar la creación de un Estudiante y Profesor
     Usuario() = default;
     Usuario(string, string, string, string);
-    public:
     virtual ~Usuario();
 
     //Gets
@@ -43,6 +43,7 @@ class Usuario: public IObserver{
     virtual DataUsuario getDataUsuario();
     //Sets
     virtual void setNick(string);
+    virtual void setContra(string);
     virtual void setDescripcion(string);
     virtual void setNombre(string);
 

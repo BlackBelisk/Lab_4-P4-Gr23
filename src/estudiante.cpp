@@ -10,10 +10,10 @@ Estudiante::Estudiante(DataUsuario dataU, DataEstudiante dataE):Usuario(dataU.ge
 
 Estudiante::Estudiante(DataEstudiante dataE):Usuario(dataE.getNick(), dataE.getContra(),dataE.getDescripcion(),dataE.getNombre()), pais(dataE.getPais()), fecNac(dataE.getFechaNac()){}
 
-DataEstudiante Estudiante::getDataEstudiante(){return DataEstudiante(this->nick, "", this->descripcion, this->nombre, this->pais, this->fecNac);}
+DataEstudiante Estudiante::getDataEstudiante(){return DataEstudiante(this->getNick(), "", this->getDescripcion(), this->getNombre(), this->pais, this->fecNac);}
 
 void Estudiante::removerInscripcion(Inscripcion* ins){
     this->inscripciones.erase(ins->getCurso()->getNombre());
 }
 
-Inscripcion* Estudiante::encontrarInscripcion(string Curso){this->inscripciones.find(Curso);}
+Inscripcion* Estudiante::encontrarInscripcion(string Curso){this->inscripciones.find(Curso)->second;}

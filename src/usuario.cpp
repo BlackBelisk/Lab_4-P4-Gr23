@@ -16,6 +16,8 @@ DataUsuario Usuario::getDataUsuario(){return DataUsuario(this->nick, this->descr
 
 void Usuario::setNick(string nuevoNick){this->nick = nuevoNick;}
 
+void Usuario::setContra(string contra){this->contra = contra;}
+
 void Usuario::setDescripcion(string nuevaDesc){this->descripcion = nuevaDesc;}
 
 void Usuario::setNombre(string nuevoNombre){this->nombre = nuevoNombre;}

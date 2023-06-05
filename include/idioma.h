@@ -25,11 +25,16 @@ class Idioma{
         //faltarian los setters y getters de los pseudoatributos que no tenemos hechos
 
         //y estas son las funciones que estaban en el DCD
-        void agregarUsuarioSuscripto(IObserver*); //este y el de abajo aceptan un parametro de tipo IObserver, todavia no lo tenemos
+        void agregarUsuarioSuscripto(IObserver*);
         void removerObservador(IObserver*);
+
+        //Entrada: Nombre del curso del cual se eliminara la notificación
         void eliminarNotif(string);
+
         void removerCurso(Curso*);
-        void Notificar(string);//Esto podría recibir directamente el string del nombre del curso
+
+        //Entrada: Nombre del curso del que se notifica la creación
+        void Notificar(string nomCurso);//Esto podría recibir directamente el string del nombre del curso
         void eliminarNotificaciones();
 };
 

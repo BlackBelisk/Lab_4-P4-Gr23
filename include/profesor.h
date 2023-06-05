@@ -14,25 +14,26 @@ using namespace std;
 
 class Profesor : public Usuario{
     private:
-    string instituto;
-    set<Idioma*> especializaciones;
-    set<Curso*> cursosPropuestos;
+        string instituto;
+        set<Idioma*> especializaciones;
+        set<Curso*> cursosPropuestos;
     public:
-    Profesor(string, string, string, string, string, set<Idioma*>);
-    Profesor(DataUsuario, DataProfesor);
-    Profesor(DataProfesor);
+        Profesor(string nick, string contra, string desc, string nombre, string instituto, set<Idioma*> idiomas);
+        Profesor(DataUsuario, DataProfesor);
+        Profesor(DataProfesor);
 
-    DataProfesor getDataProfesor();
+        string getInstituto();
+
+        DataProfesor getDataProfesor();
     
-    void agregarIdioma(Idioma*);
+        void agregarIdioma(Idioma*);
 
-    void agregarCursoAProfesor(Curso*);
-    void removerCurso(Curso*);
+        void agregarCursoAProfesor(Curso*);
+        void removerCurso(Curso*);
     
-    vector<int> obtenerPromediosProfesor();
+        vector<int> obtenerPromediosProfesor();
 
-
-    vector<Idioma*> obtenerIdiomasProfesor();
+        vector<Idioma*> obtenerIdiomasProfesor();
 
 
 };

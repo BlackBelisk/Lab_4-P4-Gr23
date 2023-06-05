@@ -14,7 +14,7 @@
 
 using namespace std;
 class DataUsuario{
-    protected:
+    private:
         string nick;
         string contra;
         string descripcion;
@@ -23,36 +23,42 @@ class DataUsuario{
         DataUsuario() = default;
         DataUsuario(string, string, string);
         DataUsuario(string, string, string, string);
-        string getNick();
-        string getContra(); //:XD:
-        string getDescripcion();
-        string getNombre();
-        friend std::ostream& operator<<(std::ostream& os, const DataUsuario& du);
+        string getNick() const;
+        void setNick(string);
+        string getContra() const; //:XD:
+        void setContra(string);
+        string getDescripcion() const;
+        void setDescripcion(string);
+        string getNombre() const;
+        void setNombre(string);
 };
 
 class DataEstudiante : public DataUsuario{
-    protected:
+    private:
         string pais;
         Fecha fecNac;
     public:
         DataEstudiante(string, string, string, string, string, Fecha);
         DataEstudiante(string, Fecha);
-        string getPais();
-        Fecha getFechaNac();
-        friend std::ostream& operator<<(std::ostream& os, const DataEstudiante& de);
+        string getPais() const;
+        Fecha getFechaNac() const;
 };
 
 class DataProfesor : public DataUsuario{
-    protected:
+    private:
         string instituto;
         list<DataIdioma> idiomas;
     public:
         DataProfesor(string, string, string, string, string, list<DataIdioma>);
         DataProfesor(string);
         DataProfesor(string, list<DataIdioma>);
-        string getInstituto();
-        list<DataIdioma> getIdiomas();
-        friend std::ostream& operator<<(std::ostream& os, const DataProfesor& dp);
+        string getInstituto() const;
+        list<DataIdioma> getIdiomas() const;
 };
+
+std::ostream& operator<<(std::ostream& os, const DataUsuario& du);
+std::ostream& operator<<(std::ostream& os, const DataEstudiante& de);
+std::ostream& operator<<(std::ostream& os, const DataProfesor& dp);
+
 
 #endif
