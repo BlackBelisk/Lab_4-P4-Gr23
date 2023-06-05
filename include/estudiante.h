@@ -24,6 +24,7 @@ class Estudiante : public Usuario{
         Estudiante(DataUsuario, DataEstudiante);
         Estudiante(DataEstudiante);
 
+        //Tenemos que imprimir la información sobre las inscripciones de los estudiantes en algún punto?
         DataEstudiante getDataEstudiante();
         //Remueve la inscripción ins del conjunto de inscripciones del Estudiante
         void removerInscripcion(Inscripcion* ins);
@@ -31,10 +32,12 @@ class Estudiante : public Usuario{
         //Devuelve la inscripción asociada al curso con nombre nomCurso 
         Inscripcion* encontrarInscripcion(string nomCurso);
 
-        //Devuelve un set de cursos a los cuales el estudiante se encuentra isncripto
-        vector<Curso*> obtenerCursosEstudiante();
+        map<string, Inscripcion*> getInscripciones();
 
-    vector<int> obtenerProgresos();
+        //Devuelve un set de cursos a los cuales el estudiante se encuentra inscripto
+        set<Curso*> obtenerCursosEstudiante();
+
+        vector<int> obtenerProgresos();
 };
 
 #endif

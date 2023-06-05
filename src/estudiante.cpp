@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <list>
+#include <map>
 #include "../include/estudiante.h"
 using namespace std;
 
@@ -38,3 +39,7 @@ void Estudiante::removerInscripcion(Inscripcion* ins){
 }
 
 Inscripcion* Estudiante::encontrarInscripcion(string Curso){this->inscripciones.find(Curso)->second;}
+
+map<string, Inscripcion*> Estudiante::getInscripciones(){return this->inscripciones;}
+
+

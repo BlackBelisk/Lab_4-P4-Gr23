@@ -28,6 +28,12 @@ class Profesor : public Usuario{
         Profesor(DataProfesor);
 
         string getInstituto();
+        
+        //Devuelve el set de Idiomas en los que se especializa un profesor
+        set<Idioma*> getEspecializaciones();
+
+        //Devuelve una lista con los respectivos DataIdioma en los que se especializa un profesor
+        list<DataIdioma> obtenerIdiomas();
 
         DataProfesor getDataProfesor();
     
