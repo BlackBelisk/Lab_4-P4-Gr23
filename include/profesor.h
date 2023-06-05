@@ -27,20 +27,26 @@ class Profesor : public Usuario{
         //Creador indirecto de Profesor por medio de Datatypes, los idiomas son setteados luego
         Profesor(DataProfesor);
 
+        //Devuelve el instituto de profesor
         string getInstituto();
-        
-        //Devuelve el set de Idiomas en los que se especializa un profesor
+
+        //Devuelve un set<Idioma*> en los que se especializa un profesor
         set<Idioma*> getEspecializaciones();
 
-        //Devuelve una lista con los respectivos DataIdioma en los que se especializa un profesor
+        //Devuelve una list<DataIdioma> con los idiomas en los que se especializa un profesor
         list<DataIdioma> obtenerIdiomas();
 
+        //Devuelve el DataProfesor asociado a la información de profesor
         DataProfesor getDataProfesor();
     
-        void agregarIdioma(Idioma*);
+        //Agrega el Idioma idi a las especializaciones de profesor
+        void agregarIdioma(Idioma* idi);
 
-        void agregarCursoAProfesor(Curso*);
-        void removerCurso(Curso*);
+        //Agrega el curso c a los cursos del profesor
+        void agregarCursoAProfesor(Curso* c);
+
+        //Remueve el curso c de los cursos del profesors
+        void removerCurso(Curso* c);
     
         vector<int> obtenerPromediosProfesor();
 

@@ -40,6 +40,35 @@ void Estudiante::removerInscripcion(Inscripcion* ins){
 
 Inscripcion* Estudiante::encontrarInscripcion(string Curso){this->inscripciones.find(Curso)->second;}
 
+list<DataInscripcion> Estudiante::obtenerDataInscripciones(){
+    list<DataInscripcion> misInscripciones;
+    for (auto it = this->inscripciones.begin(); it != this->inscripciones.end(); it++)
+    {
+        misInscripciones.insert(misInscripciones.end(), it->second->insToData());
+    }
+    return misInscripciones;   
+}
+
 map<string, Inscripcion*> Estudiante::getInscripciones(){return this->inscripciones;}
+
+set<Curso*> Estudiante::obtenerCursosEstudiante(){
+    set<Curso*> misCursos;
+    for (auto it = this->inscripciones.begin(); it != this->inscripciones.end(); it++)
+    {
+        misCursos.insert(it->second->getCurso());
+    }
+    return misCursos;
+}
+
+list<DataCurso> Estudiante::obtenerDataCursosEstudiante(){
+    list<DataCurso> misCursos;
+    for (auto it = this->inscripciones.begin(); it != this->inscripciones.end(); it++)
+    {
+        misCursos.insert(misCursos.begin(),it->second->getCurso()->cursoToData());
+    }
+    return misCursos;
+}
+
+
 
 

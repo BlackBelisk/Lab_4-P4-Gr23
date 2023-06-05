@@ -34,8 +34,12 @@ class Estudiante : public Usuario{
 
         map<string, Inscripcion*> getInscripciones();
 
+        list<DataInscripcion> obtenerDataInscripciones();
+
         //Devuelve un set de cursos a los cuales el estudiante se encuentra inscripto
         set<Curso*> obtenerCursosEstudiante();
+
+        list<DataCurso> obtenerDataCursosEstudiante();
 
         vector<int> obtenerProgresos();
 };
