@@ -26,7 +26,9 @@ class ControladorCursos : public IControladorCursos{
             Idioma* idi;
             Ejercicio* ejSel;
             vector<string> resComp;
+            static ControladorCursos* instance;    
 
+            ControladorCursos() = default;
     public:
             void crearCurso(string nomCurso, string descCurso, dif difCurso) override;
             list<DataCurso> cursosNoAprobadosEstudiante() override;
@@ -69,7 +71,7 @@ class ControladorCursos : public IControladorCursos{
             vector<string> getRespuestaEjercicioCompletar();
 
 
-            static ControladorCursos& getInstance();
+            static ControladorCursos* getInstance();
 };
 
 

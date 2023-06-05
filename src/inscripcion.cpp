@@ -31,7 +31,7 @@ void Inscripcion::agregarCompletado(Ejercicio* e){
     ejsCompletados.insert(e);
 }
 
-int Inscripcion::obtenerProgreso(){
+float Inscripcion::obtenerProgreso(){
     int cantEjRes = ejsCompletados.size();
     int cec = curso->obtenerCantEjerciciosCurso();
     return cantEjRes/cec*100;

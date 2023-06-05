@@ -24,7 +24,7 @@ class Inscripcion{
             ~Inscripcion();
 
             void agregarCompletado(Ejercicio*);
-            int obtenerProgreso();
+            float obtenerProgreso();
             void removerInscripcion();
             string toString();
             DataInscripcion insToData();

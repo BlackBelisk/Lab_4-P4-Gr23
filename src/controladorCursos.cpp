@@ -29,9 +29,11 @@ Ejercicio* ControladorCursos::getEjercicioSeleccionado(){
     return ejSel;
 }
 
-
-ControladorCursos& ControladorCursos::getInstance(){
-    static ControladorCursos instance;
+ControladorCursos* ControladorCursos::instance = nullptr;
+ControladorCursos* ControladorCursos::getInstance(){
+    if(instance == nullptr){
+        instance = new ControladorCursos();
+    }
     return instance;
 }
 
@@ -130,8 +132,8 @@ void ControladorCursos::consultarCurso(){
 
 list<DataCurso> ControladorCursos::listarCursosDisponibles(string nick){
     list<DataCurso> disponibles;
-    ControladorUsuarios& cu = ControladorUsuarios::getInstance();
-    Estudiante* e = cu.encontrarEstudiante(nick);
+    ControladorUsuarios* cu = ControladorUsuarios::getInstance();
+    Estudiante* e = cu->encontrarEstudiante(nick);
     set<Inscripcion> aprobados;
     //Necesito recorrer sobre las inscripciones del estudiante
 

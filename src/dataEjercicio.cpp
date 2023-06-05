@@ -6,11 +6,11 @@
 
 
 
-DataEjercicio::DataEjercicio(string d, string f, string s): desc(d){
+DataEjercicio::DataEjercicio(string d): desc(d){
 }
 
-DataTraducir::DataTraducir(string d, string f, string sol): DataEjercicio(d, f, sol), fraseTrad(f), solucion(sol){
+DataTraducir::DataTraducir(string d, string f, string sol): DataEjercicio(d), fraseTrad(f), solucion(sol){
 }
 
-DataCompletar::DataCompletar(string d, string f, vector<string> sol): DataEjercicio(d, f, sol), fraseComp(f), solucion(sol){
+DataCompletar::DataCompletar(string d, string f, vector<string> sol): DataEjercicio(d), fraseComp(f), solucion(sol){
 }
