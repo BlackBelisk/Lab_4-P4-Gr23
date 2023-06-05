@@ -36,16 +36,16 @@ ControladorCursos& ControladorCursos::getInstance(){
 }
 
 void ControladorCursos::crearCurso(string nomCurso, string descCurso, dif difCurso){
-    curso = new Curso(nomCurso, descCurso, difCurso);
-    cursos.insert(curso);
+    Curso* curso = new Curso(nomCurso, descCurso, difCurso);
+    cursos.insert(make_pair(nomCurso, curso));
 }
 
-set<Curso*> ControladorCursos::cursosNoAprobadosEstudiante(){
+list<DataCurso> ControladorCursos::cursosNoAprobadosEstudiante(){
     Estudiante* e = getEstudianteSeleccionado();
-    set<Curso*> cursosNA;
+    list<DataCurso> cursosNA;
     for(auto it = cursos.begin(); it != cursos.end(); ++it){
-        if((*it)->noAprobadoCurso(e)){
-            cursosNA.insert(*it);
+        if((*it).second->noAprobadoCurso(e)){
+            cursosNA.insert(cursosNA.end(), (*it).second->cursoToData());
         }
     }
     return cursosNA;
@@ -56,19 +56,20 @@ void ControladorCursos::elegirProfesor(string nickProfesor){
     
 }
 
-set<Curso*> ControladorCursos::listarCursosHab(){
-    set<Curso*> cursosHab;
+list<DataCurso> ControladorCursos::listarCursosHab(){
+    list<DataCurso> cursosHab;
     for(auto it = cursos.begin(); it != cursos.end(); ++it){
-        if((*it)->getHab()){
-            cursosHab.insert(*it);
+        if((*it).second->getHab()){
+            DataCurso dc = (*it).second->cursoToData();
+            cursosHab.insert(cursosHab.end(), dc);
         }
     }
     return cursosHab;
 }
 
-void ControladorCursos::agregarPrevia(Curso* nPrevia){
+void ControladorCursos::agregarPrevia(string nPrevia){
     Curso* c = getCurso();
-    c->getPrevias().insert(nPrevia);
+    c->getPrevias().insert(cursos[nPrevia]);
 }
 
 void ControladorCursos::agregarLeccionCN(string nomTema, string objLeccion){
@@ -77,7 +78,7 @@ void ControladorCursos::agregarLeccionCN(string nomTema, string objLeccion){
 }
 
 //Falta
- void ControladorCursos::agregarEjercicio(string desc, Leccion* lec){
+ void ControladorCursos::agregarEjercicio(string desc, DataLeccion lec){
 
  }
 
@@ -87,11 +88,11 @@ void ControladorCursos::agregarLeccionCN(string nomTema, string objLeccion){
     Idioma* i = getIdiomaElegido();
     c->setProfesor(p);
     c->setIdioma(i);
-    //Función agregar curso a profesor
-    i->notificarCursoNuevo(c);
-    delete curso;
-    delete idi;
-    delete profe;
+    p->agregarCursoAProfesor(c);
+    i->Notificar(c->getNombre());
+    curso = nullptr;
+    idi = nullptr;
+    profe = nullptr;
  }
  
 /*
@@ -104,19 +105,20 @@ void ControladorCursos::agregarLeccionCN(string nomTema, string objLeccion){
  */
 
 //Pre: Un curso se puede habilitar solo si tiene al menos una lección y un ejercicio, y no tiene lecciones sin ejercicios.
-void ControladorCursos::habilitarCurso(Curso* c){
-    c->setHabilitado(true);
+void ControladorCursos::habilitarCurso(string c){
+    cursos[c]->setHabilitado(true);
 }
 
-void ControladorCursos::eliminarCurso(Curso* c){
-    cursos.erase(c);
+void ControladorCursos::eliminarCurso(string nc){
+    Curso* c = cursos[nc];
+    cursos.erase(nc);
     Profesor* prof = c->getProfesor();
-    Idioma* idi = c->getIdioma();
+    Idioma* id = c->getIdioma();
     c->eliminarContenido();
     c->eliminarInscripciones();
     c->eliminarNotificaciones();
     prof->removerCurso(c);
-    idi->removerCurso(c);
+    id->removerCurso(c);
     delete c;
 }
 
@@ -126,8 +128,8 @@ void ControladorCursos::consultarCurso(){
     delete c;
 }
 
-set<Curso*> ControladorCursos::listarCursosDisponibles(string nick){
-    set<Curso*> disponibles;
+list<DataCurso> ControladorCursos::listarCursosDisponibles(string nick){
+    list<DataCurso> disponibles;
     ControladorUsuarios& cu = ControladorUsuarios::getInstance();
     Estudiante* e = cu.encontrarEstudiante(nick);
     set<Inscripcion> aprobados;

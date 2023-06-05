@@ -14,6 +14,38 @@ Curso::Curso(string nombreCurso, string desc, dif Dif){
     idioma = nullptr;
 }
 
+vector<DataLeccion> Curso::lecToData(){
+   vector<DataLeccion> lecs;
+   for(int i = 0; i < lecciones.size(); i++){
+      DataLeccion l = lecciones[i]->lToData();
+      lecs.push_back(l);
+   }
+   return lecs;
+}
+
+list<DataInscripcion> Curso::insToData(){
+   list<DataInscripcion> in;
+    for(auto it = inscriptos.begin(); it != inscriptos.end(); ++it){
+        DataInscripcion di = (*it)->insToData();
+        in.insert(in.end(), di);            
+    }
+   return in;
+}
+
+list<DataCurso> Curso::preToData(){
+   list<DataCurso> pre;
+    for(auto it = previas.begin(); it != previas.end(); ++it){
+        DataCurso dc = (*it)->cursoToData();
+        pre.insert(pre.end(), dc);            
+    }
+   return pre;
+}
+
+DataCurso Curso::cursoToData(){
+   DataCurso dc(nomCurso, descripcion, dificultad, habilitado, idioma->getDataIdioma(), profe->getDataProfesor(), lecToData(), insToData(), preToData());
+   return dc;
+}
+
 Inscripcion* Curso::encontrarIns(Estudiante* e){
     set<Inscripcion*>::iterator it = inscriptos.begin();
     Inscripcion* ins = nullptr;

@@ -20,14 +20,13 @@ class DataCurso{
             string descripcion;
             dif dificultad;
             bool habilitado;  
-            DataIdioma* idioma;
-            DataProfesor* profe;
-            vector<DataLeccion*> lecciones;
-            set<DataInscripcion*> inscriptos;
-            set<DataCurso*> previas;
+            DataIdioma idioma;
+            DataProfesor profe;
+            vector<DataLeccion> lecciones;
+            list<DataInscripcion> inscriptos;
+            list<DataCurso> previas;
             
-            DataCurso(string, string, dif, DataIdioma*, DataProfesor*, vector<DataLeccion*>, set<DataInscripcion*>, set<DataCurso*>);
+            DataCurso(string, string, dif, bool, DataIdioma, DataProfesor, vector<DataLeccion>, list<DataInscripcion>, list<DataCurso>);
 };
-
 
 #endif

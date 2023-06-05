@@ -17,6 +17,16 @@ Inscripcion::Inscripcion(Estudiante* e, Curso* c, Fecha f){
     aprobado = false;
 }
 
+DataInscripcion Inscripcion::insToData(){
+    list<DataEjercicio> es;
+    for(auto it = ejsCompletados.begin(); it != ejsCompletados.end(); ++it){
+        DataEjercicio de = (*it)->ejToData();
+        es.insert(es.end(),de);            
+    }
+    DataInscripcion di(estud->getNombre(), curso->getNombre(), lecActual->lToData(), es, fechaIns, aprobado);
+    return di;
+}
+
 void Inscripcion::agregarCompletado(Ejercicio* e){
     ejsCompletados.insert(e);
 }

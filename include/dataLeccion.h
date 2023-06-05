@@ -15,7 +15,7 @@ class DataLeccion{
             string tema;
             string objetivo;
             list<DataEjercicio> ejs;
-
+    DataLeccion();
     DataLeccion(string, string, list<DataEjercicio>);
 };
 

@@ -21,9 +21,9 @@ string Ejercicio::getDescripcion() {
 	return descripcion;
 }
 
-void Ejercicio::setDescripcion(string descr) {
-	this->descripcion = descr;
-}
+//void Ejercicio::setDescripcion(string descr) {
+//	this->descripcion = descr;
+//}
 
 
 
@@ -36,29 +36,29 @@ Traduccion::~Traduccion(){}
 string Traduccion::getSolucion(){
 	return this->solucion;
 }
-void Traduccion::setSolucion(string sol){
-	this->solucion = sol;
-}
+//void Traduccion::setSolucion(string sol){
+//	this->solucion = sol;
+//}
 string Traduccion::getFraseTrad(){
 	return this->fraseTrad;
 }
-void Traduccion::setFraseTrad(string frase){
-	this->fraseTrad = frase;
-}
-bool Traduccion::esEjercicioCorrecto() {
-	return (this->solucion == this->fraseTrad);
-}
+//void Traduccion::setFraseTrad(string frase){
+//	this->fraseTrad = frase;
+//}
+//bool Traduccion::esEjercicioCorrecto() {
+//	return (this->solucion == this->fraseTrad);
+//}
 
 
 
 //Metodos de CompletarPalabra
-CompletarPalabra::CompletarPalabra(string descr, queue<string> setSol):Ejercicio(descr){
+CompletarPalabra::CompletarPalabra(string descr, vector<string> setSol):Ejercicio(descr){
 	this->solucion = setSol;
 }
 
 CompletarPalabra::~CompletarPalabra(){}
 
-queue<string> CompletarPalabra::getSolucionComp() {
+vector<string> CompletarPalabra::getSolucionComp() {
 	return this->solucion;
 }
 
@@ -110,4 +110,14 @@ string Traduccion::toString(){
 
 string CompletarPalabra::toString(){
 	return "Descripción: " + descripcion + "\n" + "Frase: " + frases + "\n" + "Solución: " + solToString() + "\n";
+}
+
+DataEjercicio Traduccion::ejToData(){
+	DataTraducir e(descripcion, fraseTrad, solucion);
+	return e;
+}
+
+DataEjercicio CompletarPalabra::ejToData(){
+	DataCompletar e(descripcion, frases, solucion);
+	return e;
 }

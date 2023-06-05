@@ -45,6 +45,7 @@ class Curso{
             vector<DataLeccion> lecToData();
             list<DataInscripcion> insToData();
             list<DataCurso> preToData();
+            DataCurso cursoToData();
 
 
             bool getHab();

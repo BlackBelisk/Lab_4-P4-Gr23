@@ -5,13 +5,14 @@
 #include "../include/dataCurso.h"
 
 
-DataCurso::DataCurso(string nom, string desc, dif d, DataIdioma* i, DataProfesor* p, vector<DataLeccion*> lec, set<DataInscripcion*> ins, set<DataCurso*> prevs){
-    nomCurso = nom;
-    descripcion = desc;
-    dificultad = d;
+DataCurso::DataCurso(string n, string d, dif Dif, bool b, DataIdioma i, DataProfesor p, vector<DataLeccion> ls, list<DataInscripcion> is, list<DataCurso> ps){
+    nomCurso = n;
+    descripcion = d;
+    dificultad = Dif;
+    habilitado = b;
     idioma = i;
     profe = p;
-    lecciones = lec;
-    inscriptos = ins;
-    previas = prevs;
+    lecciones = ls;
+    inscriptos = is;
+    previas = ps;
 }

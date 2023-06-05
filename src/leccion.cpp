@@ -9,16 +9,15 @@ using namespace std;
 list<DataEjercicio> Leccion::ejsToData(){ 
     list<DataEjercicio> es;
     for(auto it = ejs.begin(); it != ejs.end(); ++it){
-        if(Traduccion* t = dynamic_cast<Traduccion*>((*it))){
-            DataTraducir dt(t->getDescripcion(), t->getFraseTrad(), t->getSolucion());
-            es.insert(dt);
-        }else if(CompletarPalabra* c = dynamic_cast<CompletarPalabra*>((*it))){
-            DataCompletar dc(c->getDescripcion(), c->getFrases(), c->getSolucionComp());
-            es.insert(dc);
-        }
-        
+        DataEjercicio de = (*it)->ejToData();
+        es.insert(es.end(),de);            
     }
     return es;
+}
+
+DataLeccion Leccion::lToData(){
+    DataLeccion l(tema, objetivo, ejsToData());
+    return l;
 }
 
 void Leccion::agregarEjercicio(Ejercicio* e){

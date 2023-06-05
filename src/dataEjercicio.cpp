@@ -6,14 +6,11 @@
 
 
 
-DataTraducir::DataTraducir(string d, string f, string sol){
-    desc = d;
-    fraseTrad = f;
-    solucion = sol;
+DataEjercicio::DataEjercicio(string d, string f, string s): desc(d){
 }
 
-DataCompletar::DataCompletar(string d, string f, vector<string> sol){
-    desc = d;
-    fraseComp = f;
-    solucion = sol;
+DataTraducir::DataTraducir(string d, string f, string sol): DataEjercicio(d, f, sol), fraseTrad(f), solucion(sol){
+}
+
+DataCompletar::DataCompletar(string d, string f, vector<string> sol): DataEjercicio(d, f, sol), fraseComp(f), solucion(sol){
 }

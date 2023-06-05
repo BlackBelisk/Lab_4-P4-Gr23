@@ -27,6 +27,7 @@ class Inscripcion{
             int obtenerProgreso();
             void removerInscripcion();
             string toString();
+            DataInscripcion insToData();
 
             Estudiante* getEstudiante();
             Curso* getCurso();

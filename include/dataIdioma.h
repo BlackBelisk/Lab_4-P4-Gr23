@@ -13,6 +13,7 @@ class DataIdioma{
         string nombre;
     public: 
         DataIdioma(string);
+        DataIdioma();
         string getNombre();
 };
 

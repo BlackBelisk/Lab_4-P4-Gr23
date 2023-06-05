@@ -19,7 +19,7 @@ using namespace std;
 
 class ControladorCursos : public IControladorCursos{
     private:
-            set<Curso*> cursos;
+            map<string, Curso*> cursos;
             Curso* curso;
             Estudiante* estud;
             Profesor* profe;
@@ -31,14 +31,14 @@ class ControladorCursos : public IControladorCursos{
             void crearCurso(string nomCurso, string descCurso, dif difCurso) override;
             list<DataCurso> cursosNoAprobadosEstudiante() override;
             list<DataCurso> listarCursosHab() override;
-            void agregarPrevia(DataCurso nPrevia) override;
+            void agregarPrevia(string nPrevia) override;
             void agregarLeccionCN(string nomTema, string objLeccion) override;
             void agregarEjercicio(string desc, DataLeccion lec) override;
             void finalizarAltaCurso() override;
             list<DataIdioma> listarIdiomasProfesor() override;
             void crearTraducir(string desc, string fraseT, string solT) override;
             void crearCompletar(string desc, string fraseC, vector<string> solC) override;
-            void eliminarCurso(DataCurso c) override;
+            void eliminarCurso(string nc) override;
             list<DataCurso> obtenerCursosNoAprobadosEstudiante() override;
             list<DataEjercicio> listarEjerciciosNoAprobados() override;
             void ingresarSolEjercicioTrad(string resp) override;
@@ -50,7 +50,7 @@ class ControladorCursos : public IControladorCursos{
             void ingresarSolEjercicioComp(set<string> respuestas) override;
             DataEjercicio enunciarEjercicio() override;
             list<DataCurso> listarCursos() override;
-            void habilitarCurso(DataCurso c) override;
+            void habilitarCurso(string c) override;
             void consultarCurso() override;
             list<DataCurso> listarCursosDisponibles(string nick);
 

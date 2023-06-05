@@ -11,8 +11,7 @@ using namespace std;
 class DataEjercicio{
     public:
             string desc;
-            DataEjercicio(string, string, string);
-            DataEjercicio(string, string, vector<string>);
+            DataEjercicio(string);
             
 };
 
