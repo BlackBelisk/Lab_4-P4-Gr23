@@ -16,6 +16,7 @@ class IControladorEstadisticas{
         virtual DataEstadisticaEstudiante listarEstadisticaEstudiante(DataEstudiante) = 0;
         virtual DataEstadisticaProfesor listarEstadisticaProfesor(DataProfesor) = 0;
         virtual DataEstadisticaCurso listarEstadisticaCurso(DataCurso) = 0;
+        virtual ~IControladorEstadisticas(){};
 };
 
 #endif

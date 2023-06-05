@@ -68,7 +68,3 @@ list<DataCurso> Estudiante::obtenerDataCursosEstudiante(){
     }
     return misCursos;
 }
-
-
-
-
