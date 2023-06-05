@@ -4,11 +4,32 @@
 #include "../include/estudiante.h"
 using namespace std;
 
-Estudiante::Estudiante(string nick, string contra, string descripcion, string nombre, string pais, Fecha fecNac):Usuario(nick, contra, descripcion, nombre), pais(pais), fecNac(fecNac){};
+Estudiante::Estudiante(string nick, string contra, string descripcion, string nombre, string pais, Fecha fecNac){
+    this->setNick(nick);
+    this->setContra(contra);
+    this->setDescripcion(descripcion);
+    this->setNombre(nombre);
+    this->pais = pais;
+    this->fecNac = fecNac;
+};
 
-Estudiante::Estudiante(DataUsuario dataU, DataEstudiante dataE):Usuario(dataU.getNick(), dataU.getContra(),dataU.getDescripcion(),dataU.getNombre()), pais(dataE.getPais()), fecNac(dataE.getFechaNac()){}
+Estudiante::Estudiante(DataUsuario dataU, DataEstudiante dataE){
+    this->setNick(dataU.getNick());
+    this->setContra(dataU.getContra());
+    this->setDescripcion(dataU.getDescripcion());
+    this->setNombre(dataU.getNombre());
+    this->pais = dataE.getPais();
+    this->fecNac = dataE.getFechaNac();
+}
 
-Estudiante::Estudiante(DataEstudiante dataE):Usuario(dataE.getNick(), dataE.getContra(),dataE.getDescripcion(),dataE.getNombre()), pais(dataE.getPais()), fecNac(dataE.getFechaNac()){}
+Estudiante::Estudiante(DataEstudiante dataE){
+    this->setNick(dataE.getNick());
+    this->setContra(dataE.getContra());
+    this->setDescripcion(dataE.getDescripcion());
+    this->setNombre(dataE.getNombre());
+    this->pais = dataE.getPais();
+    this->fecNac = dataE.getFechaNac();
+}
 
 DataEstudiante Estudiante::getDataEstudiante(){return DataEstudiante(this->getNick(), "", this->getDescripcion(), this->getNombre(), this->pais, this->fecNac);}
 

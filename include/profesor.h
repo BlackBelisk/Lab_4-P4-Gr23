@@ -18,7 +18,7 @@ class Profesor : public Usuario{
         set<Idioma*> especializaciones;
         set<Curso*> cursosPropuestos;
     public:
-        //Creador directo de Profesor
+        //Creador directo de Profesor. El profesor creado NO es agregado a la lista de usuarios ni de profesores
         Profesor(string nick, string contra, string desc, string nombre, string instituto, set<Idioma*> idiomas);
         
         //Creador indirecto de Profesor por medio de Datatypes, los idiomas son setteados luego
