@@ -4,7 +4,7 @@ realizarEjercicio(Estudiante e){
 //crear funcion listarEjNoAprovadosUltimaLeccion a partir del set ejesCompletados en inscripcion.h
 //crear funcion en caso de que el estudiante al realizar el ejercicio complete y finalice el curso 
 
-    //lista los cursos a los que esta inscripto el estudiante e
+    //lista los cursos a los que esta inscripto el estudiante e y los imprime en pantalla
     list<DataCurso> cursos = cursosNoAprobadosEstudiante();
     for(int i=0; i < cursos.size(); ++i){
         cout >> i >> " - " >> cursos.getNombre(); 
@@ -14,7 +14,7 @@ realizarEjercicio(Estudiante e){
     cin >> i;
     Inscripcion *ins = encontrarInscripcion(cursos[i].getNombre());
 
-    //devuelve una lista con los ejercicios no aprovados de la leccion actual del curso
+    //devuelve una lista con los ejercicios no aprovados de la leccion actual del curso y los imprime en pantalla
     list<DataEjercicio> ejesNoAprob = ins.listarEjNoAprovadosUltimaLeccion();
     for(int i=0; i < ejesNoAprob.size(); ++i){
         cout >> i >> " - " >> ejesNoAprob.getDescripcion(); 
