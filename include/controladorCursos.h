@@ -55,7 +55,7 @@ class ControladorCursos : public IControladorCursos{
             void habilitarCurso(string c) override;
             void consultarCurso() override;
             list<DataCurso> listarCursosDisponibles(string nick);
-
+            void nuevoCurso(DataCurso);
 
             void elegirProfesor(string nickProfesor) override;
             void seleccionarEstudiante(string nickE) override;

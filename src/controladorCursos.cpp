@@ -137,3 +137,8 @@ list<DataCurso> ControladorCursos::listarCursosDisponibles(string nick){
 
     return disponibles;
 }
+
+void ControladorCursos::nuevoCurso(DataCurso dataC){
+    Curso *c = new Curso(dataC);
+    cursos.insert(make_pair(c->getNombre(), curso));
+}

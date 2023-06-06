@@ -3,10 +3,14 @@
 
 Idioma::Idioma(string nom){
     nombre = nom; 
-} //y se queda asi hasta que tengamos el resto de atributos
+}
+
+Idioma::Idioma(DataIdioma dataI){
+    nombre = dataI.getNombre();
+}
 
 Idioma::~Idioma(){
-    //por ahora no hay nada pero seguramente haga falta borrar los vectores o sets o loquesea que usemos para las relaciones
+    //ahora no me acuerdo si siquiera hace falta que esto exista pero por las dudas lo dejamos aca
 }
 
 void Idioma::setNombre(string nom){
