@@ -29,6 +29,7 @@ realizarEjercicio(Estudiante e){
 
     if(ejer.esCorrectoEjercicio(respuesta)){
         ins.agregarCompletado(ejer);
+        cout >> "Respuesta Correcta. Ejercicio Completado"
         if(ins.obtenerProgreso() == 100){
             //nueva funcion Curso Completado (Felicidades)
         }
