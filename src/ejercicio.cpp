@@ -2,7 +2,7 @@
 
 #include <string>
 #include <iostream>
-#include <queue>
+#include <vector>
 #include <stdio.h>
 #include <cstdlib>
 using namespace std;
@@ -18,12 +18,12 @@ Ejercicio::Ejercicio(string descr) {
 Ejercicio::~Ejercicio(){}
 
 string Ejercicio::getDescripcion() {
-	return descripcion;
+	return this->descripcion;
 }
 
-//void Ejercicio::setDescripcion(string descr) {
-//	this->descripcion = descr;
-//}
+void Ejercicio::setDescripcion(string descr) {
+	this->descripcion = descr;
+}
 
 
 
@@ -36,65 +36,58 @@ Traduccion::~Traduccion(){}
 string Traduccion::getSolucion(){
 	return this->solucion;
 }
-//void Traduccion::setSolucion(string sol){
-//	this->solucion = sol;
-//}
+void Traduccion::setSolucion(string sol){
+	this->solucion = sol;
+}
 string Traduccion::getFraseTrad(){
 	return this->fraseTrad;
 }
-//void Traduccion::setFraseTrad(string frase){
-//	this->fraseTrad = frase;
-//}
-//bool Traduccion::esEjercicioCorrecto() {
-//	return (this->solucion == this->fraseTrad);
-//}
+void Traduccion::setFraseTrad(string frase){
+	this->fraseTrad = frase;
+}
+bool Traduccion::esEjercicioCorrecto(string respuesta) {
+	return (this->solucion == respuesta);
+}
 
 
 
 //Metodos de CompletarPalabra
-CompletarPalabra::CompletarPalabra(string descr, vector<string> setSol):Ejercicio(descr){
-	this->solucion = setSol;
+
+//Constructor y Destructor
+CompletarPalabra::CompletarPalabra(string descr, vector<string> vectorSol):Ejercicio(descr){
+	this->solucion = vectorSol;
 }
 
 CompletarPalabra::~CompletarPalabra(){}
 
+//Gets y Sets
+
+void CompletarPalabra::setSolucionComp(vector<string> vectorSol) {
+	this->solucion = vectorSol;
+}
+void CompletarPalabra::setFraseAComp(string frase) {
+	this->fraseAComp = frase;
+} 
 vector<string> CompletarPalabra::getSolucionComp() {
 	return this->solucion;
 }
-
-/*
-void CompletarPalabra::setSolucion(queue<string> setSol) {
-	this->solucion = setSol;
-}
-*/
-
-string CompletarPalabra::getFrases() {
-	return this->frases;
+string CompletarPalabra::getFraseAComp() {
+	return this->fraseAComp;
 }
 
-/*
-//PreCondicion: la variable setFrases contiene la misma cantidad de elementos que el setSolucion
-void CompletarPalabra::setFrases(queue<string> setFrases) {
-	this->frases = setFrases;
-}
-*/
 
-/*
-//PreCondicion: Solucion y Frases tienen la misma cantidad de elementos
-bool CompletarPalabra::esEjercicioCorrecto() {
-	bool sonIguales = true;
-	while(!solucion.empty() && sonIguales){
-		if(solucion.front() == frases.front()){
-			solucion.pop();
-			frases.pop();
-		}else{
-			sonIguales = false;
-		}	
-	}
-	return sonIguales;
-
+//PreCondicion: Solucion y Respuesta tienen la misma cantidad de elementos
+bool CompletarPalabra::esEjercicioCorrecto(vector<string> respuesta) {
+    bool result = true;
+    int i = 0;
+    while(i < solucion.size() && result){
+      result = solucion[i]==respuesta[i];
+      i++;
+    }
+    return result;
+        	
 }
-*/
+
 
 string CompletarPalabra::solToString(){
    string s = "";
@@ -105,11 +98,11 @@ string CompletarPalabra::solToString(){
 }
 
 string Traduccion::toString(){
-	return "Descripción: " + descripcion + "\n" + "Frase: " + fraseTrad + "\n" + "Solución: " + solucion + "\n";
+	return "Descripcion: " + descripcion + "\n" + "Frase: " + fraseTrad + "\n" + "Solucion: " + solucion + "\n";
 }
 
 string CompletarPalabra::toString(){
-	return "Descripción: " + descripcion + "\n" + "Frase: " + frases + "\n" + "Solución: " + solToString() + "\n";
+	return "Descripcion: " + descripcion + "\n" + "Frase: " + fraseAComp + "\n" + "Solucion: " + solToString() + "\n";
 }
 
 DataEjercicio Traduccion::ejToData(){
