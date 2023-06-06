@@ -85,7 +85,7 @@ class CompletarPalabra : public Ejercicio {
 
 		string toString();
 		string solToString();
-		DataEjercicio ejToData();-
+		DataEjercicio ejToData();
 
 };
 
