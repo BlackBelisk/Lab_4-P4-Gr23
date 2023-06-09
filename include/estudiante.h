@@ -16,7 +16,7 @@ using namespace std;
 class Estudiante : public Usuario{
     private:
     string pais;
-    Fecha fecNac; //Acá va fecha
+    Fecha fecNac;
     map<string, Inscripcion*> inscripciones;
 
     public:
