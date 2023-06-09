@@ -34,7 +34,7 @@ class IControladorCursos{//Interfaz
         virtual void eliminarCurso(string nc) = 0;
         virtual void seleccionarEstudiante(string nickE) = 0;
         virtual list<DataCurso> obtenerCursosNoAprobadosEstudiante() = 0;
-        virtual void seleccionarCurso(DataCurso c) = 0;
+        virtual void seleccionarCurso(string nombre) = 0;
         virtual list<DataEjercicio> listarEjerciciosNoAprobados() = 0;
         virtual void ingresarSolEjercicioTrad(string resp) = 0;
         virtual bool comprobarSolucionEjercicio() = 0;

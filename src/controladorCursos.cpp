@@ -162,3 +162,19 @@ void ControladorCursos::nuevoCurso(DataCurso dataC){
     Curso *c = new Curso(dataC);
     cursos.insert(make_pair(c->getNombre(), curso));
 }
+
+//Inicio de realizar ejercicio
+
+void ControladorCursos::seleccionarEstudiante(string nickE){
+    ControladorUsuarios* cu = ControladorUsuarios::getInstance();
+    estud = cu->encontrarEstudiante(nickE);
+}
+
+list<DataCurso> ControladorCursos::obtenerCursosNoAprobadosEstudiante(){
+    Estudiante* e = getEstudianteSeleccionado();
+    return e->obtenerDataCursosSinCompletarEstudiante();
+}
+
+ void ControladorCursos::seleccionarCurso(string nombre){
+    curso = cursos[nombre];
+ }

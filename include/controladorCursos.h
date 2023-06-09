@@ -59,7 +59,7 @@ class ControladorCursos : public IControladorCursos{
 
             void elegirProfesor(string nickProfesor) override;
             void seleccionarEstudiante(string nickE) override;
-            void seleccionarCurso(DataCurso c) override;
+            void seleccionarCurso(string nombre) override;
             void seleccionarEjercicio(DataEjercicio ej) override;
 
 

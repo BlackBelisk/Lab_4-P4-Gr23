@@ -111,6 +111,6 @@ DataEjercicio Traduccion::ejToData(){
 }
 
 DataEjercicio CompletarPalabra::ejToData(){
-	DataCompletar e(descripcion, frases, solucion);
+	DataCompletar e(descripcion, fraseAComp, solucion);
 	return e;
 }

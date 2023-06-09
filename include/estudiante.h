@@ -17,7 +17,10 @@ class Estudiante : public Usuario{
     private:
     string pais;
     Fecha fecNac;
-    map<string, Inscripcion*> inscripciones;
+    map<string, Inscripcion*> inscripciones; //Y esto se iría
+    //Franco quiere
+    map<string, Inscripcion*> enCurso;
+    map<string, Inscripcion*> aprobados;
 
     public:
         Estudiante(string, string, string, string, string, Fecha);
@@ -42,6 +45,10 @@ class Estudiante : public Usuario{
         list<DataCurso> obtenerDataCursosEstudiante();
 
         vector<int> obtenerProgresos();
+
+        //Franco quiere
+        list<DataCurso> obtenerDataCursosSinCompletarEstudiante(); //Retorna los cursos del map enCurso como datas
+        void marcarAprobado(Inscripcion*); //Swap de maps
 };
 
 #endif
