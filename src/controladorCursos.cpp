@@ -5,6 +5,14 @@
 
 using namespace std;
 
+ControladorCursos* ControladorCursos::instance = nullptr;
+ControladorCursos* ControladorCursos::getInstance(){
+    if(instance == nullptr){
+        instance = new ControladorCursos();
+    }
+    return instance;
+}
+
 Estudiante* ControladorCursos::getEstudianteSeleccionado(){
     return estud;
 }
@@ -27,14 +35,6 @@ vector<string> ControladorCursos::getRespuestaEjercicioCompletar(){
 
 Ejercicio* ControladorCursos::getEjercicioSeleccionado(){
     return ejSel;
-}
-
-ControladorCursos* ControladorCursos::instance = nullptr;
-ControladorCursos* ControladorCursos::getInstance(){
-    if(instance == nullptr){
-        instance = new ControladorCursos();
-    }
-    return instance;
 }
 
 void ControladorCursos::crearCurso(string nomCurso, string descCurso, dif difCurso){
@@ -134,8 +134,28 @@ list<DataCurso> ControladorCursos::listarCursosDisponibles(string nick){
     list<DataCurso> disponibles;
     ControladorUsuarios* cu = ControladorUsuarios::getInstance();
     Estudiante* e = cu->encontrarEstudiante(nick);
-    set<Inscripcion> aprobados;
-    //Necesito recorrer sobre las inscripciones del estudiante
-
+    set<Curso*> aprobados;
+    set<Curso*> inscripto;
+    for(auto it = e->getInscripciones().begin(); it != e->getInscripciones().end(); ++it){
+        inscripto.insert((*it).second->getCurso());
+        if((*it).second->getAprobado()){
+            aprobados.insert((*it).second->getCurso());
+        }
+    }
+    for(auto it = cursos.begin(); it != cursos.end(); ++it){
+        bool pasa = false;
+        if(inscripto.count((*it).second) == 0){
+            pasa = true;
+            for(auto itt = (*it).second->getPrevias().begin(); itt != (*it).second->getPrevias().end(); ++itt){
+                if(aprobados.count((*itt)) == 0){
+                    pasa = false;
+                    break;
+                }
+            }
+        }
+        if(pasa){
+            disponibles.insert(disponibles.end(), (*it).second->cursoToData());
+        }
+    }
     return disponibles;
 }

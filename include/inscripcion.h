@@ -31,6 +31,7 @@ class Inscripcion{
 
             Estudiante* getEstudiante();
             Curso* getCurso();
+            bool getAprobado();
 
 };
 

@@ -53,3 +53,7 @@ string Inscripcion::toString(){
  Curso* Inscripcion::getCurso(){
     return curso;
  }
+
+ bool Inscripcion::getAprobado(){
+    return aprobado;
+ }
