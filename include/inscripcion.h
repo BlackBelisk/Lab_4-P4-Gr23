@@ -15,7 +15,7 @@ class Inscripcion{
             Estudiante* estud;
             Curso* curso;
             Leccion* lecActual;
-            set<Ejercicio*> ejsCompletados;
+            multimap<Leccion*, Ejercicio*> ejsCompletados;
             Fecha fechaIns;
             bool aprobado;
 
@@ -23,7 +23,7 @@ class Inscripcion{
             Inscripcion(Estudiante*, Curso*, Fecha);
             ~Inscripcion();
 
-            void agregarCompletado(Ejercicio*);
+            void agregarCompletado(Leccion*, Ejercicio*);
             float obtenerProgreso();
             void removerInscripcion();
             string toString();
@@ -32,6 +32,12 @@ class Inscripcion{
             Estudiante* getEstudiante();
             Curso* getCurso();
             bool getAprobado();
+            Leccion* getLecActual();
+            multimap<Leccion*, Ejercicio*> getEjsCompletados();
+            set<Ejercicio*> getEjsCompletadosLecActual();
+
+            void setLecActual(Leccion*);
+            void setAprobado();
 
 };
 

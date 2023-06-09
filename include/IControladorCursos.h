@@ -21,12 +21,13 @@ using namespace std;
 class IControladorCursos{//Interfaz
    public:
         virtual void crearCurso(string nomCurso, string descCurso, dif difCurso) = 0;
-        virtual list<DataCurso> cursosNoAprobadosEstudiante() = 0;
         virtual void elegirProfesor(string nickProfesor) = 0;
         virtual list<DataCurso> listarCursosHab() = 0;
+        virtual list<DataCurso> listarCursosNA() = 0;
         virtual void agregarPrevia(string nPrevia) = 0;
         virtual void agregarLeccionCN(string nomTema, string objLeccion) = 0;
-        virtual void agregarEjercicio(string desc, DataLeccion lec) = 0;
+        virtual void agregarEjercicio(string desc, string, string) = 0;
+        virtual void agregarEjercicio(string desc, string, vector<string>) = 0;
         virtual void finalizarAltaCurso() = 0;
         virtual list<DataIdioma> listarIdiomasProfesor() = 0;
         virtual void crearTraducir(string desc, string fraseT, string solT) = 0;
@@ -36,18 +37,19 @@ class IControladorCursos{//Interfaz
         virtual list<DataCurso> obtenerCursosNoAprobadosEstudiante() = 0;
         virtual void seleccionarCurso(string nombre) = 0;
         virtual list<DataEjercicio> listarEjerciciosNoAprobados() = 0;
-        virtual void ingresarSolEjercicioTrad(string resp) = 0;
-        virtual bool comprobarSolucionEjercicio() = 0;
+        virtual void ingresarSolEjercicio(string resp) = 0;
+        virtual void comprobarSolucionEjercicio() = 0;
         virtual bool comprobarCompletarPalabra() = 0;
         virtual bool comprobarTraducir() = 0;
         virtual string mostrarFraseATraducir() = 0;
         virtual string mostrarFraseACompletar() = 0;
-        virtual void ingresarSolEjercicioComp(set<string> respuestas) = 0;
-        virtual DataEjercicio enunciarEjercicio() = 0;
+        virtual void ingresarSolEjercicio(vector<string> respuestas) = 0;
+        virtual void enunciarEjercicio() = 0;
         virtual void seleccionarEjercicio(DataEjercicio ej) = 0;
         virtual list<DataCurso> listarCursos() = 0;
         virtual void habilitarCurso(string c) = 0;
-        virtual void consultarCurso() = 0;
+        virtual void obtenerInformacionCurso(DataCurso) = 0;
+        virtual void elegirIdiomaProfesor(DataIdioma) = 0;
         virtual ~IControladorCursos(){};
 };
 #endif

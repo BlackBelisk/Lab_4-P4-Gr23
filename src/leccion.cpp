@@ -50,3 +50,15 @@ string Leccion::toString(){
 Leccion::~Leccion(){
     eliminarEjercicios();
 }
+
+Ejercicio* Leccion::obtenerEj(string descEj){
+    for(auto it = ejs.begin(); it != ejs.end(); ++it){
+        if((*it)->getDescripcion() == descEj){
+            return (*it);
+        }
+    }
+}
+
+set<Ejercicio*> Leccion::getEjs(){
+    return ejs;
+}

@@ -29,8 +29,9 @@ void Ejercicio::setDescripcion(string descr) {
 
 //Metodos de Traduccion
 
-Traduccion::Traduccion(string descr, string sol):Ejercicio(descr){
+Traduccion::Traduccion(string descr, string frase, string sol):Ejercicio(descr){
 	this->solucion = sol;
+	this->fraseTrad = frase;
 }
 Traduccion::~Traduccion(){}
 string Traduccion::getSolucion(){
@@ -54,8 +55,9 @@ bool Traduccion::esEjercicioCorrecto(string respuesta) {
 //Metodos de CompletarPalabra
 
 //Constructor y Destructor
-CompletarPalabra::CompletarPalabra(string descr, vector<string> vectorSol):Ejercicio(descr){
+CompletarPalabra::CompletarPalabra(string descr, string frase, vector<string> vectorSol):Ejercicio(descr){
 	this->solucion = vectorSol;
+	this->fraseAComp = frase;
 }
 
 CompletarPalabra::~CompletarPalabra(){}

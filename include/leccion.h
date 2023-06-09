@@ -25,6 +25,9 @@ class Leccion{
             list<DataEjercicio> ejsToData();  
             DataLeccion lToData();  
 
+            set<Ejercicio*> getEjs();
+            Ejercicio* obtenerEj(string);
+
             ~Leccion();
 };
 

@@ -10,12 +10,15 @@
 using namespace std;
 #include "IControladorCursos.h"
 #include "controladorUsuarios.h"
+#include "controladorIdiomas.h"
 #include "curso.h"
 #include "dataCurso.h"
 #include "dataIdioma.h"
 #include "dataUsuario.h"
 #include "dataLeccion.h"
 #include "dataEjercicio.h"
+#include "dataInscripcion.h"
+
 
 class ControladorCursos : public IControladorCursos{
     private:
@@ -24,18 +27,24 @@ class ControladorCursos : public IControladorCursos{
             Estudiante* estud;
             Profesor* profe;
             Idioma* idi;
+            Leccion* lec;
             Ejercicio* ejSel;
             vector<string> resComp;
-            static ControladorCursos* instance;    
+            string resTrad;
+            int tipo;
+            Inscripcion* ins;
+            static ControladorCursos* instance;  
+
 
             ControladorCursos() = default;
     public:
             void crearCurso(string nomCurso, string descCurso, dif difCurso) override;
-            list<DataCurso> cursosNoAprobadosEstudiante() override;
             list<DataCurso> listarCursosHab() override;
+            list<DataCurso> listarCursosNA() override;
             void agregarPrevia(string nPrevia) override;
             void agregarLeccionCN(string nomTema, string objLeccion) override;
-            void agregarEjercicio(string desc, DataLeccion lec) override;
+            void agregarEjercicio(string desc, string, string) override;
+            void agregarEjercicio(string desc, string, vector<string>) override;
             void finalizarAltaCurso() override;
             list<DataIdioma> listarIdiomasProfesor() override;
             void crearTraducir(string desc, string fraseT, string solT) override;
@@ -43,21 +52,22 @@ class ControladorCursos : public IControladorCursos{
             void eliminarCurso(string nc) override;
             list<DataCurso> obtenerCursosNoAprobadosEstudiante() override;
             list<DataEjercicio> listarEjerciciosNoAprobados() override;
-            void ingresarSolEjercicioTrad(string resp) override;
-            bool comprobarSolucionEjercicio() override;
+            void ingresarSolEjercicio(string resp) override;
+            void comprobarSolucionEjercicio() override;
             bool comprobarCompletarPalabra() override;
             bool comprobarTraducir() override;
             string mostrarFraseATraducir() override;
             string mostrarFraseACompletar() override;
-            void ingresarSolEjercicioComp(set<string> respuestas) override;
-            DataEjercicio enunciarEjercicio() override;
+            void ingresarSolEjercicio(vector<string> respuestas) override;
+            void enunciarEjercicio() override;
             list<DataCurso> listarCursos() override;
             void habilitarCurso(string c) override;
-            void consultarCurso() override;
+            void obtenerInformacionCurso(DataCurso) override;
             list<DataCurso> listarCursosDisponibles(string nick);
             void nuevoCurso(DataCurso);
 
             void elegirProfesor(string nickProfesor) override;
+            void elegirIdiomaProfesor(DataIdioma) override;
             void seleccionarEstudiante(string nickE) override;
             void seleccionarCurso(string nombre) override;
             void seleccionarEjercicio(DataEjercicio ej) override;

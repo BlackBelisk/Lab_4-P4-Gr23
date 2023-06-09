@@ -47,7 +47,8 @@ class Curso{
             list<DataInscripcion> insToData();
             list<DataCurso> preToData();
             DataCurso cursoToData();
-
+            Leccion* siguienteLec(Leccion*);
+            
 
             bool getHab();
             set<Curso*> getPrevias();

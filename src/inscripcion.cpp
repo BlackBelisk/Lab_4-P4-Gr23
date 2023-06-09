@@ -20,21 +20,25 @@ Inscripcion::Inscripcion(Estudiante* e, Curso* c, Fecha f){
 DataInscripcion Inscripcion::insToData(){
     list<DataEjercicio> es;
     for(auto it = ejsCompletados.begin(); it != ejsCompletados.end(); ++it){
-        DataEjercicio de = (*it)->ejToData();
+        DataEjercicio de = (*it).second->ejToData();
         es.insert(es.end(),de);            
     }
     DataInscripcion di(estud->getNombre(), curso->getNombre(), lecActual->lToData(), es, fechaIns, aprobado);
     return di;
 }
 
-void Inscripcion::agregarCompletado(Ejercicio* e){
-    ejsCompletados.insert(e);
+void Inscripcion::agregarCompletado(Leccion* l, Ejercicio* e){
+    ejsCompletados.insert(make_pair(l,e));
 }
 
 float Inscripcion::obtenerProgreso(){
-    int cantEjRes = ejsCompletados.size();
-    int cec = curso->obtenerCantEjerciciosCurso();
-    return cantEjRes/cec*100;
+    if(aprobado){
+        return 100;
+    }else{
+        int cantEjRes = ejsCompletados.size();
+        int cec = curso->obtenerCantEjerciciosCurso();
+        return cantEjRes/cec*100;
+    }
 }
 
 void Inscripcion::removerInscripcion(){
@@ -56,4 +60,28 @@ string Inscripcion::toString(){
 
  bool Inscripcion::getAprobado(){
     return aprobado;
+ }
+
+ Leccion* Inscripcion::getLecActual(){
+    return lecActual;
+ }
+
+ void Inscripcion::setLecActual(Leccion* l){
+    lecActual = l;
+ }
+ void Inscripcion::setAprobado(){
+    aprobado = true;
+ }
+
+ multimap<Leccion*, Ejercicio*> Inscripcion::getEjsCompletados(){
+    return ejsCompletados;
+ }
+
+ set<Ejercicio*> Inscripcion::getEjsCompletadosLecActual(){
+    set<Ejercicio*> es;
+    auto r = ejsCompletados.equal_range(lecActual);
+    for(auto it = r.first; it != r.second; ++it){
+        es.insert((*it).second);
+    }
+    return es;
  }

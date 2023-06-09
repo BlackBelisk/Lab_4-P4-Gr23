@@ -43,7 +43,7 @@ class Traduccion : public Ejercicio {
 		string fraseTrad;
 	public:
 		//Constructor y Destructor de Clase
-		Traduccion(string, string);
+		Traduccion(string, string, string);
 		~Traduccion();
 		
 		//Setters y Getters
@@ -69,7 +69,7 @@ class CompletarPalabra : public Ejercicio {
 		string fraseAComp;
 	public:
 	    //Constructor y Destructor de Clase
-		CompletarPalabra(string, vector<string>);
+		CompletarPalabra(string, string, vector<string>);
 		~CompletarPalabra();
 
 		//Setters y Getters

@@ -111,6 +111,21 @@ Inscripcion* Curso::encontrarIns(Estudiante* e){
     return progT/cantIns*100;
  }
 
+ Leccion* Curso::siguienteLec(Leccion* l){
+   int p = 0;
+   for (int i = 0; i < lecciones.size(); i++) {
+        if (lecciones[i] == l) {
+            p = i;
+            break;  
+        }
+    }
+    if(p != lecciones.size() - 1){
+      return lecciones[p+1];
+    }else{
+      return nullptr;
+    }
+ }
+
  string Curso::leccionesToString(){
    string s = "";
    for(int i = 0; i < lecciones.size(); i++){

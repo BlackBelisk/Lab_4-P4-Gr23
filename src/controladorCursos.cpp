@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <iostream>
 #include <set>
+#include <vector>
+#include <map>
+#include <sstream>
 #include "../include/controladorCursos.h"
 
 using namespace std;
@@ -37,25 +40,32 @@ Ejercicio* ControladorCursos::getEjercicioSeleccionado(){
     return ejSel;
 }
 
+//
+//Inicio de alta de curso
+//
+
+//Función listarProfesores() del controlador de usuarios
+
+void ControladorCursos::elegirProfesor(string nickProfesor){
+    ControladorUsuarios* cu = ControladorUsuarios::getInstance();
+    profe = cu->encontrarProfesor(nickProfesor);
+}
+
+list<DataIdioma> ControladorCursos::listarIdiomasProfesor(){
+    return profe->obtenerIdiomas();
+}
+
+//Un cout entre una función y otra
+
+//El DataIdioma pertenece a los idiomas listados previamente
+void ControladorCursos::elegirIdiomaProfesor(DataIdioma di){
+    ControladorIdiomas* ci = ControladorIdiomas::getInstance();
+    idi = ci->encontrarIdioma(di.getNombre());
+}
+
 void ControladorCursos::crearCurso(string nomCurso, string descCurso, dif difCurso){
     Curso* curso = new Curso(nomCurso, descCurso, difCurso);
     cursos.insert(make_pair(nomCurso, curso));
-}
-
-list<DataCurso> ControladorCursos::cursosNoAprobadosEstudiante(){
-    Estudiante* e = getEstudianteSeleccionado();
-    list<DataCurso> cursosNA;
-    for(auto it = cursos.begin(); it != cursos.end(); ++it){
-        if((*it).second->noAprobadoCurso(e)){
-            cursosNA.insert(cursosNA.end(), (*it).second->cursoToData());
-        }
-    }
-    return cursosNA;
-}
-
-//Falta
-void ControladorCursos::elegirProfesor(string nickProfesor){
-    
 }
 
 list<DataCurso> ControladorCursos::listarCursosHab(){
@@ -69,19 +79,33 @@ list<DataCurso> ControladorCursos::listarCursosHab(){
     return cursosHab;
 }
 
+//Un cout entre una función y otra
+
+//Esto en un while mientras se quiera agregar más
+//nPrevia es el nombre de un curso de los listados previamente
 void ControladorCursos::agregarPrevia(string nPrevia){
     Curso* c = getCurso();
     c->getPrevias().insert(cursos[nPrevia]);
+    lec = c->getLecciones().back();
 }
 
+//Esto en un while mientras se quiera agregar más
 void ControladorCursos::agregarLeccionCN(string nomTema, string objLeccion){
     Curso* c = getCurso();
     c->nuevaLeccion(nomTema, objLeccion);
+
 }
 
-//Falta
- void ControladorCursos::agregarEjercicio(string desc, DataLeccion lec){
-
+//Estos en un while mientras se quiera agregar más
+//En caso de traducir
+ void ControladorCursos::agregarEjercicio(string desc, string fraseT, string solT){
+    Traduccion* t = new Traduccion(desc, fraseT, solT);
+    lec->agregarEjercicio(t);
+ }
+ //En caso de completar
+ void ControladorCursos::agregarEjercicio(string desc, string fraseC, vector<string> solC){
+    CompletarPalabra* c = new CompletarPalabra(desc, fraseC, solC);
+    lec->agregarEjercicio(c);
  }
 
  void ControladorCursos::finalizarAltaCurso(){
@@ -95,8 +119,14 @@ void ControladorCursos::agregarLeccionCN(string nomTema, string objLeccion){
     curso = nullptr;
     idi = nullptr;
     profe = nullptr;
+    lec = nullptr;
  }
- 
+
+// 
+//Fin de alta de curso
+//
+
+
 /*
  bool ControladorCursos::comprobarCompletarPalabra(){
     Ejercicio* ej = getEjercicioSeleccionado();
@@ -106,10 +136,47 @@ void ControladorCursos::agregarLeccionCN(string nomTema, string objLeccion){
  }
  */
 
+
+//
+//Inicio de habilitar curso
+//
+
+list<DataCurso> ControladorCursos::listarCursosNA(){
+    list<DataCurso> dc;
+    for(auto it = cursos.begin(); it != cursos.end(); ++it){
+        if(!(*it).second->getHab()){
+            dc.insert(dc.begin(), (*it).second->cursoToData());
+        }
+    }
+    return dc;
+}
+
+//Un cout entre una función y otra
+
 //Pre: Un curso se puede habilitar solo si tiene al menos una lección y un ejercicio, y no tiene lecciones sin ejercicios.
+//Pre: C es el nombre de un curso de los listados previamente
 void ControladorCursos::habilitarCurso(string c){
     cursos[c]->setHabilitado(true);
 }
+
+//
+//Fin de habilitar curso
+//
+
+
+//
+//Inicio de eliminar curso
+//
+
+list<DataCurso> ControladorCursos::listarCursos(){
+    list<DataCurso> dc;
+    for(auto it = cursos.begin(); it != cursos.end(); ++it){
+        dc.insert(dc.begin(), (*it).second->cursoToData());
+    }
+    return dc;
+}
+
+//Un cout entre una función y otra
 
 void ControladorCursos::eliminarCurso(string nc){
     Curso* c = cursos[nc];
@@ -122,11 +189,27 @@ void ControladorCursos::eliminarCurso(string nc){
     delete c;
 }
 
-void ControladorCursos::consultarCurso(){
-    Curso* c = getCurso();
+//
+//Fin de eliminar curso
+//
+
+
+//
+//Inicio de consultar curso
+//
+
+//Función listarCursos() ya definida
+
+//Un cout de la lista obtenida entre una función y otra
+
+//El DataCurso pertenece a los cursos listados previamente
+void ControladorCursos::obtenerInformacionCurso(DataCurso c){
     cout << c << endl;
-    delete c;
 }
+
+//
+//Fin de consultar curso
+//
 
 list<DataCurso> ControladorCursos::listarCursosDisponibles(string nick){
     list<DataCurso> disponibles;
@@ -163,7 +246,9 @@ void ControladorCursos::nuevoCurso(DataCurso dataC){
     cursos.insert(make_pair(c->getNombre(), curso));
 }
 
+//
 //Inicio de realizar ejercicio
+//
 
 void ControladorCursos::seleccionarEstudiante(string nickE){
     ControladorUsuarios* cu = ControladorUsuarios::getInstance();
@@ -175,6 +260,103 @@ list<DataCurso> ControladorCursos::obtenerCursosNoAprobadosEstudiante(){
     return e->obtenerDataCursosSinCompletarEstudiante();
 }
 
+//Un cout entre una función y otra
+
+//El nombre del curso pertenece a los cursos previamente listados
  void ControladorCursos::seleccionarCurso(string nombre){
     curso = cursos[nombre];
  }
+
+ list<DataEjercicio> ControladorCursos::listarEjerciciosNoAprobados(){
+    list<DataEjercicio> le;
+    Estudiante* e = getEstudianteSeleccionado();
+    Curso* c = getCurso();
+    Inscripcion* i = e->encontrarInscripcion(c->getNombre());
+    Leccion* l = i->getLecActual();
+    for(auto it = l->getEjs().begin(); it != l->getEjs().end(); ++it){
+        bool encontrado = false;
+        for (const auto& pair : i->getEjsCompletados()) {
+            if (pair.second == (*it)) {
+                encontrado = true;
+                break;
+            }
+        }
+        if(!encontrado){
+            le.insert(le.begin(), (*it)->ejToData());
+        }
+    }
+    return le;
+ }
+
+//Un cout entre una función y otra
+
+ //El DataEjercicio pertenece a los listados previamente
+ void ControladorCursos::seleccionarEjercicio(DataEjercicio e){
+    ejSel = ins->getLecActual()->obtenerEj(e.desc);
+ }
+
+ void ControladorCursos::enunciarEjercicio(){
+    cout << ejSel->getDescripcion() << endl;
+    if(CompletarPalabra* cp = dynamic_cast<CompletarPalabra*>(ejSel)){
+        cout << cp->getFraseAComp() << endl;
+        cout << "Ingrese las palabras faltantes separadas por un espacio: " << endl;
+    }else if (Traduccion* t = dynamic_cast<Traduccion*>(ejSel)){
+        cout << t->getFraseTrad() << endl;
+        cout << "Ingrese la frase traducida: " << endl;
+    }
+ }
+
+//Un getline entre funciones y una función auxiliar que lo convierta a vector en caso de tipo completar
+//Estructura: crear variable string s;
+//Utilizar función getline(cin, s);
+//Utilizar función convertirAVector();
+//En el hardcodeo solamente pasar a la función un string con la frase directamente
+
+//En caso de traducir
+void ControladorCursos::ingresarSolEjercicio(string s){
+    resTrad = s;
+    tipo = 0;
+}
+//En caso de completar
+void ControladorCursos::ingresarSolEjercicio(vector<string> s){
+    resComp = s;
+    tipo = 1;
+}
+
+void ControladorCursos::comprobarSolucionEjercicio(){
+    bool solucionado;
+    if(tipo == 0){
+        solucionado = comprobarTraducir();
+    }else if(tipo == 1){
+        solucionado = comprobarCompletarPalabra();
+    }
+    if(solucionado){
+        ins->agregarCompletado(ins->getLecActual(), ejSel);
+        if(ins->getEjsCompletadosLecActual().size() == ins->getLecActual()->getEjs().size()){
+            ins->setLecActual(ins->getCurso()->siguienteLec(ins->getLecActual()));
+            if(ins->getLecActual() == nullptr){
+                ins->setAprobado();
+                ins->getEstudiante()->marcarAprobado(ins);
+            }
+        }
+    }
+    ins = nullptr;
+    curso = nullptr;
+    ejSel = nullptr;
+    estud = nullptr;
+}
+
+//En caso traducir
+bool ControladorCursos::comprobarTraducir(){
+    Traduccion* ej = dynamic_cast<Traduccion*>(getEjercicioSeleccionado());
+    return ej->getSolucion() == resTrad;
+}
+//En caso completar
+bool ControladorCursos::comprobarCompletarPalabra(){
+    CompletarPalabra* ej = dynamic_cast<CompletarPalabra*>(getEjercicioSeleccionado());
+    return ej->getSolucionComp() == resComp;
+}
+
+//
+//Fin de realizar ejercicio
+//
