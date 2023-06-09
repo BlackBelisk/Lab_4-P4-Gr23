@@ -115,12 +115,10 @@ void ControladorCursos::eliminarCurso(string nc){
     Curso* c = cursos[nc];
     cursos.erase(nc);
     Profesor* prof = c->getProfesor();
-    Idioma* id = c->getIdioma();
     c->eliminarContenido();
     c->eliminarInscripciones();
     c->eliminarNotificaciones();
     prof->removerCurso(c);
-    id->removerCurso(c);
     delete c;
 }
 
@@ -158,4 +156,9 @@ list<DataCurso> ControladorCursos::listarCursosDisponibles(string nick){
         }
     }
     return disponibles;
+}
+
+void ControladorCursos::nuevoCurso(DataCurso dataC){
+    Curso *c = new Curso(dataC);
+    cursos.insert(make_pair(c->getNombre(), curso));
 }

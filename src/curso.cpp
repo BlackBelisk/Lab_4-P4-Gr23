@@ -14,6 +14,10 @@ Curso::Curso(string nombreCurso, string desc, dif Dif){
     idioma = nullptr;
 }
 
+Curso::Curso(DataCurso DataC){
+   
+}
+
 vector<DataLeccion> Curso::lecToData(){
    vector<DataLeccion> lecs;
    for(int i = 0; i < lecciones.size(); i++){

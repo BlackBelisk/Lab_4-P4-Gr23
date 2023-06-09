@@ -31,6 +31,7 @@ class Curso{
             
     public:
             Curso(string, string, dif);    
+            Curso(DataCurso);
             Inscripcion* encontrarIns(Estudiante*);
             bool noAprobadoCurso(Estudiante*);
             void nuevaLeccion(string, string);

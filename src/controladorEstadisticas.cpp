@@ -25,6 +25,20 @@ void ControladorEstadisticas::seleccionarEstadisticaDeseada(eleccion estad){
         {
             cout << p << ". " << it->getNick() << endl;
         }
+        // int estud;
+        // do
+        // {
+        //    cout << "Seleccione el estudiante ingresando el número ";
+        //     cin >> estud;
+        //     if (estud < 1 || estud > estudiantes.size())
+        //     {
+        //         cout << "Número de estudiante invalido. Intente nuevamente." <<endl;
+        //     }
+            
+        // } while (estud < 1 || estud > estudiantes.size());
+        // auto iter = estudiantes.begin();
+        // advance(iter,estud-1);
+
     }
     else if (estad == EstadProfesor)
     {
@@ -36,11 +50,10 @@ void ControladorEstadisticas::seleccionarEstadisticaDeseada(eleccion estad){
         {
             cout << p << ". " << it->getNick() << endl;
         }
-
     }
     else if (estad == EstadCurso)
     {
-        ControladorCursos& cu = ControladorCursos::getInstance();
+        ControladorCursos* cu = ControladorCursos::getInstance();
     }
     
 }

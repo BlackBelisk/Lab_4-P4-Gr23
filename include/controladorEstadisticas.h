@@ -6,17 +6,19 @@
 #include <vector>
 #include <string>
 #include "IControladorEstadisticas.h"
+#include "curso.h"
+#include "profesor.h"
 #include "estudiante.h"
+
 #include "dataUsuario.h"
 #include "dataEstadistica.h"
+#include "dataCurso.h"
 using namespace std;
 
 class ControladorEstadisticas: public IControladorEstadisticas{
     private:
         static ControladorEstadisticas * instancia;
-        Estudiante * estudSeleccionado;
-
-        ControladorEstadisticas();
+        ControladorEstadisticas() = default;
     public:
         static ControladorEstadisticas* getInstance();
 
