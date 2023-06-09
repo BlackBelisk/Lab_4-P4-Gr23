@@ -14,9 +14,6 @@ ControladorIdiomas* ControladorIdiomas::getInstance(){
     return instancia;
 }
 
-//map se llama idiomas
-//el idioma en memoria idiomaIngresado :)
-
 list<DataIdioma> ControladorIdiomas::listarIdiomas(){
     list<DataIdioma> dataIdiomas;
     for(auto it = this->idiomas.begin(); it!= this->idiomas.end();it++){
