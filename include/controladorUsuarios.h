@@ -36,9 +36,10 @@ class ControladorUsuarios: public IControladorUsuarios{
     public:
         static ControladorUsuarios* getInstance();
 
+        bool existeUsuario(string);
+
         void ingresarUsuario(DataUsuario);
         
-
         void ingresarDatosEstudiante(string, Fecha);
         void ingresarInstituto(string);
         void agregarEspecializacion(DataIdioma);

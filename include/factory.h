@@ -5,7 +5,6 @@
 #include <set>
 #include <string>
 #include <vector>
-#include <memory>
 
 #include "IControladorCursos.h"
 #include "controladorCursos.h"
@@ -19,10 +18,14 @@ using namespace std;
 
 class Factory{
     private:
-            static unique_ptr<IControladorCursos> getIControladorCursos();
-            static unique_ptr<IControladorEstadisticas> getIControladorEstadisticas();
-            static unique_ptr<IControladorIdiomas> getIControladorIdiomas();
-            static unique_ptr<IControladorUsuarios> getIControladorUsuarios();
+        static Factory * instancia;
+        Factory();
+    public:
+        static Factory* getInstance();
+        IControladorCursos* getIControladorCursos();
+        IControladorEstadisticas* getIControladorEstadisticas();
+        IControladorIdiomas* getIControladorIdiomas();
+        IControladorUsuarios* getIControladorUsuarios();
 };
 
 #endif

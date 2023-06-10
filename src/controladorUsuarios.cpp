@@ -26,6 +26,10 @@ DataUsuario ControladorUsuarios::getDataUsuarioIngresado(){
     return this->usuarioIngresado;
 }
 
+bool ControladorUsuarios::existeUsuario(string nickname){
+    return (this->usuarios.find(nickname) != this->usuarios.end());
+}
+
 void ControladorUsuarios::ingresarUsuario(DataUsuario dataU){
     this->setDataUsuarioIngresado(dataU);
 };

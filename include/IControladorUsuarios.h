@@ -18,7 +18,7 @@ using namespace std;
 class IControladorUsuarios{
     private:
     public:
-    
+        virtual bool existeUsuario(string) = 0;
         virtual void ingresarUsuario(DataUsuario) = 0;
         virtual void ingresarDatosEstudiante(string, Fecha) = 0;
         virtual void ingresarInstituto(string) = 0;

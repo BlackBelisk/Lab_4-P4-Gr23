@@ -4,6 +4,7 @@
 #include "dataEstadistica.h"
 #include "dataCurso.h"
 using namespace std;
+
 DataAvance::DataAvance(string curso, int avance): curso(curso), avance(avance){};
 
 string DataAvance::getCurso() const{return this->curso;}

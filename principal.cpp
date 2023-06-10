@@ -1,22 +1,15 @@
-//faltan los parametros de las funciones.
-//tambien hay que dejar que el user pueda darle valores a esos parametros de manera interactiva. habria que hacer eso adentro de cada case.
-//no estoy seguro de como cargar los datos de prueba. tal vez se hace de otra forma.
-//cualquier cosa modifiquen lo que quieran.
-
-//y si, me ayudo mi ia favorita :)
-
 #include <iostream>
 #include <string>
 
-#include "usuario.h"
-#include "estudiante.h"
-#include "profesor.h"
-#include "idioma.h"
-#include "curso.h"
-#include "leccion.h"
-#include "ejercicio.h"
+#include "include/usuario.h"
+#include "include/estudiante.h"
+#include "include/profesor.h"
+#include "include/idioma.h"
+#include "include/curso.h"
+#include "include/leccion.h"
+#include "include/ejercicio.h"
 
-
+#include "include/excepciones.h"
 //Controladores
 #include "factory.h"
 
@@ -33,29 +26,95 @@
 #include "include/controladorEstadisticas.h"
 //Controladores
 
-
+//Datausuarios 
+#include "include/dataCurso.h"
+#include "include/dataEjercicio.h"
+#include "include/dataLeccion.h"
+#include "include/dataEstadistica.h"
+#include "include/dataInscripcion.h"
+#include "include/dataNotificacion.h"
+#include "include/dataUsuario.h"
 
 using namespace std;
 
 // Función para cargar los datos de prueba
 void cargarDatosPrueba() {
-    // Aquí puedes incluir la lógica para cargar los datos de prueba
-    // desde un archivo o inicializarlos manualmente.
-    cout << "Cargando datos de prueba..." << endl;
-    // Código para cargar los datos de prueba
-    // Llamadas a funciones correspondientes
-    altaUsuario("John Doe"...);
-    altaIdioma("Inglés"...);
-    altaCurso("Programación en C++"...);
-    // ...
+   
+}
+
+void altaUsuario(){
+    Factory * factory = Factory::getInstance();
+    IControladorUsuarios * cu = factory->getIControladorUsuarios();
+    string nickname;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cout << "Ingrese nickname: " << endl;
+    getline(cin, nickname);
+    if (cu->existeUsuario(nickname))
+    {
+        throw ExYaExisteUsuario();
+    }
+    string contra;
+    do
+    {
+        cout << "Ingrese su contrasena (Debe tener al menos 6 caracteres): " << endl;
+        getline(cin, contra);
+        if (contra.length() < 6)
+        {
+            cout << "La contrasena debe tener al menos 6 caracteres. Intentelo de nuevo." << endl;
+        }
+    } while (contra.length() < 6);
+
+    string desc;
+    cout << "Ingrese una descripcion: " <<endl;
+    getline(cin, desc);
+
+    string nombre;
+    cout << "Ingrese su nombre: " << endl;
+    getline(cin, nombre);
+
+    DataUsuario dataU = DataUsuario(nickname, contra, desc, nombre);
+    cu->ingresarUsuario(dataU);
+    string tipo;
+    do
+    {
+        cout << "Ingrese tipo de usuario: " << endl << "1. Estudiante." << endl << "2. Profesor. " << endl;
+        getline(cin, tipo);
+        if (tipo == "1")
+        {
+            string pais;
+            cout << "Ingrese pais de nacimiento: " << endl;
+            getline(cin, pais);
+            string fecha;
+            cout << "Ingrese su fecha de nacimiento (DD/MM/AAAA): ";
+            getline(cin,fecha);
+            cu->ingresarDatosEstudiante(pais, Fecha(stoi(fecha.substr(0,2)), stoi(fecha.substr(3,2)), stoi(fecha.substr(6,4))));
+        }
+        else if (tipo == "2")
+        {
+            string instituto;
+            cout << "Ingrese instituto donde trabaja: " << endl;
+            getline(cin, instituto);
+            cu->ingresarInstituto(instituto);
+        }
+        else{
+            cout << "Opcion invalida. Por favor, seleccione una opcion valida." << endl;
+        }
+    } while (tipo != "1" && tipo != "2");
+    cu->confirmarAltaUsuario(stoi(tipo));
 }
 
 // Función para realizar una acción específica del menú
 void realizarAccion(int opcion) {
     switch (opcion) {
         case 1:
-            // Alta de usuario
-            altaUsuario();
+           try
+		{
+			altaUsuario();
+		}
+		catch (const ExYaExisteUsuario& ex)
+		{
+			cout << "Error: " << ex.what() << endl;
+		}
             break;
         case 2:
             // Consulta de usuario

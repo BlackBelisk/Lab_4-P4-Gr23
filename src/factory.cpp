@@ -1,23 +1,29 @@
 #include <stdio.h>
 #include <iostream>
-#include <memory>
 #include "../include/factory.h"
 
-
 using namespace std;
+Factory * Factory::instancia = nullptr;
 
-unique_ptr<IControladorCursos> Factory::getIControladorCursos(){
-    return make_unique<ControladorCursos>();
+Factory::Factory(){}
+
+Factory* Factory::getInstance(){
+    if(instancia == nullptr){instancia = new Factory();}
+    return instancia;
 }
 
-unique_ptr<IControladorEstadisticas> Factory::getIControladorEstadisticas(){
-    return make_unique<ControladorEstadisticas>();
+IControladorCursos* Factory::getIControladorCursos(){
+    return ControladorCursos::getInstance();
 }
 
-unique_ptr<IControladorIdiomas> Factory::getIControladorIdiomas(){
-    return make_unique<ControladorIdiomas>();
+IControladorEstadisticas* Factory::getIControladorEstadisticas(){
+    return ControladorEstadisticas::getInstance();
 }
 
-unique_ptr<IControladorUsuarios> Factory::getIControladorUsuarios(){
-     return make_unique<ControladorUsuarios>();
+IControladorIdiomas* Factory::getIControladorIdiomas(){
+    return ControladorIdiomas::getInstance();
+}
+
+IControladorUsuarios* Factory::getIControladorUsuarios(){
+    return ControladorUsuarios::getInstance();
 }
