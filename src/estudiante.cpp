@@ -34,26 +34,96 @@ Estudiante::Estudiante(DataEstudiante dataE){
 
 DataEstudiante Estudiante::getDataEstudiante(){return DataEstudiante(this->getNick(), "", this->getDescripcion(), this->getNombre(), this->pais, this->fecNac);}
 
-void Estudiante::removerInscripcion(Inscripcion* ins){
-    this->inscripciones.erase(ins->getCurso()->getNombre());
+void Estudiante::agregarInscripcion(Inscripcion* ins){
+    this->enCurso.insert(make_pair(ins->getCurso()->getNombre(), ins));
 }
 
-Inscripcion* Estudiante::encontrarInscripcion(string Curso){this->inscripciones.find(Curso)->second;}
+void Estudiante::marcarAprobado(Inscripcion* inscripcion){
+    if (this->enCurso.find(inscripcion->getCurso()->getNombre()) != this->enCurso.end())
+    {
+        this->enCurso.erase(inscripcion->getCurso()->getNombre());
+        this->aprobados.insert(make_pair(inscripcion->getCurso()->getNombre(), inscripcion));
+    }
+}
+
+void Estudiante::removerInscripcion(Inscripcion* ins){
+    this->enCurso.erase(ins->getCurso()->getNombre());
+    this->aprobados.erase(ins->getCurso()->getNombre());
+}
+
+Inscripcion* Estudiante::encontrarInscripcion(string Curso){
+    if (this->enCurso.find(Curso) != this->enCurso.end())
+    {
+        return this->enCurso.find(Curso)->second;
+    }
+    else if (this->aprobados.find(Curso) != this->aprobados.end())
+    {
+        return this->aprobados.find(Curso)->second;
+    }
+    return nullptr;
+}
+
+map<string, Inscripcion*> Estudiante::getenCurso(){return this->enCurso;}
+
+map<string, Inscripcion*> Estudiante::getAprobados(){return this->aprobados;}
 
 list<DataInscripcion> Estudiante::obtenerDataInscripciones(){
     list<DataInscripcion> misInscripciones;
-    for (auto it = this->inscripciones.begin(); it != this->inscripciones.end(); it++)
+    for (auto it = this->enCurso.begin(); it != this->enCurso.end(); it++)
+    {
+        misInscripciones.insert(misInscripciones.end(), it->second->insToData());
+    }
+
+    for (auto it = this->aprobados.begin(); it != this->aprobados.end(); it++)
     {
         misInscripciones.insert(misInscripciones.end(), it->second->insToData());
     }
     return misInscripciones;   
 }
 
-map<string, Inscripcion*> Estudiante::getInscripciones(){return this->inscripciones;}
+list<DataInscripcion> Estudiante::obtenerDataInscripcionesenCurso(){
+     list<DataInscripcion> misInscripciones;
+    for (auto it = this->enCurso.begin(); it != this->enCurso.end(); it++)
+    {
+        misInscripciones.insert(misInscripciones.end(), it->second->insToData());
+    }
+    return misInscripciones;
+}
+
+list<DataInscripcion> Estudiante::obtenerDataInscripcionesAprobados(){
+     list<DataInscripcion> misInscripciones;
+    for (auto it = this->aprobados.begin(); it != this->aprobados.end(); it++)
+    {
+        misInscripciones.insert(misInscripciones.end(), it->second->insToData());
+    }
+    return misInscripciones;
+}
 
 set<Curso*> Estudiante::obtenerCursosEstudiante(){
     set<Curso*> misCursos;
-    for (auto it = this->inscripciones.begin(); it != this->inscripciones.end(); it++)
+    for (auto it = this->enCurso.begin(); it != this->enCurso.end(); it++)
+    {
+        misCursos.insert(it->second->getCurso());
+    }
+    for (auto it = this->aprobados.begin(); it != this->aprobados.end(); it++)
+    {
+        misCursos.insert(it->second->getCurso());
+    }
+    return misCursos;
+}
+
+set<Curso*> Estudiante::obtenerCursosAprobados(){
+    set<Curso*> misCursos;
+    for (auto it = this->aprobados.begin(); it != this->aprobados.end(); it++)
+    {
+        misCursos.insert(it->second->getCurso());
+    }
+    return misCursos;
+}
+
+set<Curso*> Estudiante::obtenerCursosEnCurso(){
+    set<Curso*> misCursos;
+    for (auto it = this->enCurso.begin(); it != this->enCurso.end(); it++)
     {
         misCursos.insert(it->second->getCurso());
     }
@@ -62,9 +132,32 @@ set<Curso*> Estudiante::obtenerCursosEstudiante(){
 
 list<DataCurso> Estudiante::obtenerDataCursosEstudiante(){
     list<DataCurso> misCursos;
-    for (auto it = this->inscripciones.begin(); it != this->inscripciones.end(); it++)
+    for (auto it = this->enCurso.begin(); it != this->enCurso.end(); it++)
     {
-        misCursos.insert(misCursos.begin(),it->second->getCurso()->cursoToData());
+        misCursos.insert(misCursos.end(),it->second->getCurso()->cursoToData());
+    }
+    for (auto it = this->aprobados.begin(); it != this->aprobados.end(); it++)
+    {
+        misCursos.insert(misCursos.end(),it->second->getCurso()->cursoToData());
     }
     return misCursos;
 }
+
+list<DataCurso> Estudiante::obtenerDataCursosEnCurso(){
+    list<DataCurso> misCursos;
+    for (auto it = this->enCurso.begin(); it != this->enCurso.end(); it++)
+    {
+        misCursos.insert(misCursos.end(),it->second->getCurso()->cursoToData());
+    }
+    return misCursos;
+}
+
+list<DataCurso> Estudiante::obtenerDataCursosAprobados(){
+    list<DataCurso> misCursos;
+    for (auto it = this->aprobados.begin(); it != this->aprobados.end(); it++)
+    {
+        misCursos.insert(misCursos.end(),it->second->getCurso()->cursoToData());
+    }
+    return misCursos;
+}
+
