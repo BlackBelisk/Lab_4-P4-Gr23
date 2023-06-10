@@ -14,7 +14,7 @@ class DataAvance{
     public:
         DataAvance(string, int);
         string getCurso() const;
-        int getAvance() const;
+        float getAvance() const;
 };
 
 class DataEstadisticaEstudiante{
@@ -36,11 +36,11 @@ class DataEstadisticaProfesor{
 class DataEstadisticaCurso{
     private:
         DataCurso curso;
-        int promedioGeneral;
+        float promedioGeneral;
     public: 
         DataEstadisticaCurso(DataCurso, int);
         DataCurso getCurso() const;
-        int getPromedioGeneral() const;
+        float getPromedioGeneral() const;
 };
 
 #endif
