@@ -39,7 +39,7 @@ class Curso{
             void eliminarInscripciones();
             void eliminarNotificaciones();
             int obtenerCantEjerciciosCurso();
-            int obtenerPromedioCurso();
+            float obtenerPromedioCurso();
             string leccionesToString();
             string inscriptosToString();
             string enumToString();

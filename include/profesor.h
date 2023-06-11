@@ -30,6 +30,8 @@ class Profesor : public Usuario{
         //Devuelve el instituto de profesor
         string getInstituto();
 
+        set<Curso*> getCursosProp();
+
         //Devuelve un set<Idioma*> en los que se especializa un profesor
         set<Idioma*> getEspecializaciones();
 

@@ -102,7 +102,7 @@ Inscripcion* Curso::encontrarIns(Estudiante* e){
     return cec;
  }
 
- int Curso::obtenerPromedioCurso(){
+ float Curso::obtenerPromedioCurso(){
     int cantIns = inscriptos.size();
     int progT = 0;
     for(auto it = inscriptos.begin(); it != inscriptos.end(); ++it){
