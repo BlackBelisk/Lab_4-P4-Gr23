@@ -27,7 +27,15 @@ DataUsuario ControladorUsuarios::getDataUsuarioIngresado(){
 }
 
 bool ControladorUsuarios::existeUsuario(string nickname){
-    return (this->usuarios.find(nickname) != this->usuarios.end());
+    return this->usuarios.count(nickname) > 0;
+}
+
+bool ControladorUsuarios::esEstudiante(string nickname){
+    return this->estudiantes.count(nickname) > 0;
+}
+
+bool ControladorUsuarios::esProfesor(string nickname){
+    return this->profesores.count(nickname) > 0;
 }
 
 void ControladorUsuarios::ingresarUsuario(DataUsuario dataU){
@@ -130,13 +138,52 @@ list<DataProfesor> ControladorUsuarios::obtenerProfesores(){
 }
 
 Usuario* ControladorUsuarios::encontrarUsuario(string nickname){
-    return this->usuarios.find(nickname)->second;
+    if (existeUsuario(nickname))
+    {
+        return this->usuarios.find(nickname)->second;
+    }
+    return nullptr;
 };
 
 Estudiante* ControladorUsuarios::encontrarEstudiante(string nickname){
-    return this->estudiantes.find(nickname)->second;
+    if (esEstudiante(nickname))
+    {
+        return this->estudiantes.find(nickname)->second;
+    }
+    return nullptr;
 };
 
 Profesor* ControladorUsuarios::encontrarProfesor(string nickname){
-    return this->profesores.find(nickname)->second;
+    if (esProfesor(nickname))
+    {
+        return this->profesores.find(nickname)->second;
+    }
+    return nullptr;
 };
+
+DataUsuario ControladorUsuarios::obtenerDataUsuario(string nickname){
+    Usuario * user = encontrarUsuario(nickname);
+    if (user != nullptr)
+    {
+        return user->getDataUsuario();
+    }
+    return DataUsuario();
+}
+
+DataProfesor ControladorUsuarios::obtenerDataProfesor(string nickname){
+    Profesor* profe = encontrarProfesor(nickname);
+    if (profe != nullptr)
+    {
+        return profe->getDataProfesor();
+    }
+    return DataProfesor();
+}
+
+DataEstudiante ControladorUsuarios::obtenerDataEstudiante(string nickname){
+    Estudiante * estud = encontrarEstudiante(nickname);
+    if (estud != nullptr)
+    {
+        return estud->getDataEstudiante();
+    }
+    return DataEstudiante();
+}

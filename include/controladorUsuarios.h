@@ -37,6 +37,8 @@ class ControladorUsuarios: public IControladorUsuarios{
         static ControladorUsuarios* getInstance();
 
         bool existeUsuario(string);
+        bool esEstudiante(string);
+        bool esProfesor(string);
 
         void ingresarUsuario(DataUsuario);
         
@@ -58,6 +60,10 @@ class ControladorUsuarios: public IControladorUsuarios{
         Usuario* encontrarUsuario(string);
         Profesor* encontrarProfesor(string);
         Estudiante* encontrarEstudiante(string);
+
+        DataUsuario obtenerDataUsuario(string);
+        DataProfesor obtenerDataProfesor(string);
+        DataEstudiante obtenerDataEstudiante(string);
 
         void elegirIdiomaProfesor(Idioma*);
 

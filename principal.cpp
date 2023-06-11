@@ -126,6 +126,34 @@ void altaUsuario(){
     cu->confirmarAltaUsuario(stoi(tipo));
 }
 
+void consultarUsuario(){
+    Factory* factory = Factory::getInstance();
+    IControladorUsuarios* cu = factory->getIControladorUsuarios();
+    list<DataUsuario> usuarios = cu->obtenerUsuarios();
+    imprimirListaDataUsuarios(usuarios);
+    int user;
+    do
+    {
+        cout << "Seleccione el usuario ingresando el numero: " << endl;
+        cin >> user;
+        if (user < 0 || user > usuarios.size())
+        {
+            cout << "Numero de usuario invalido. Intente nuevamente" << endl; 
+        }
+    } while (user < 0 || user > usuarios.size());
+    auto it = usuarios.begin();
+    advance(it, user - 1);
+    if (cu->esEstudiante(it->getNick()))
+    {
+        DataEstudiante estudiante = cu->obtenerDataEstudiante(it->getNick());
+        cout << estudiante << endl;
+    }
+    else if(cu->esProfesor(it->getNick())){
+        DataProfesor profesor = cu->obtenerDataProfesor(it->getNick());
+        cout << profesor << endl;
+    }   
+}
+
 // Función para realizar una acción específica del menú
 void realizarAccion(int opcion) {
     switch (opcion) {

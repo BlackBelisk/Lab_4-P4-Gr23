@@ -7,11 +7,6 @@ using namespace std;
 
 vector<string> convertirAVector(string);
 
-void imprimirListaDataIdiomas(list<DataIdioma> idiomas){
-    int num = 1;
-    for (auto it = idiomas.begin(); it != idiomas.end(); it++)
-    {
-        cout << num << ". " << it->getNombre() << "." << endl;
-        num++;
-    }   
-}
+void imprimirListaDataIdiomas(list<DataIdioma> idiomas);
+
+void imprimirListaDataUsuarios(list<DataUsuario> usuarios);

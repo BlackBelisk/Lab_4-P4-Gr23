@@ -19,6 +19,8 @@ class IControladorUsuarios{
     private:
     public:
         virtual bool existeUsuario(string) = 0;
+        virtual bool esEstudiante(string) = 0;
+        virtual bool esProfesor(string) = 0;
         virtual void ingresarUsuario(DataUsuario) = 0;
         virtual void ingresarDatosEstudiante(string, Fecha) = 0;
         virtual void ingresarInstituto(string) = 0;
@@ -38,6 +40,11 @@ class IControladorUsuarios{
         virtual Usuario* encontrarUsuario(string) = 0;
         virtual Profesor* encontrarProfesor(string) = 0;
         virtual Estudiante* encontrarEstudiante(string) = 0;
+
+        virtual DataUsuario obtenerDataUsuario(string) = 0;
+        virtual DataProfesor obtenerDataProfesor(string) = 0;
+        virtual DataEstudiante obtenerDataEstudiante(string) = 0;
+
 
         virtual void elegirIdiomaProfesor(Idioma*) = 0;
         //Me faltan las funciones relacionadas a la suscripciones y consulta de notificaciones
