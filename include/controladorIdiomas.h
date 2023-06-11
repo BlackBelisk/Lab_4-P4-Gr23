@@ -22,13 +22,12 @@ class ControladorIdiomas: public IControladorIdiomas{
         DataIdioma getDataIdiomaIngresado();
     public:
         static ControladorIdiomas* getInstance();
-
+        bool existeIdioma(string);
         list<DataIdioma> listarIdiomas();
         Idioma* encontrarIdioma(string);
-
+        DataIdioma obtenerDataIdioma(string);
         void ingresarIdioma(DataIdioma);
         void confirmarAltaIdioma();
-
         void nuevoIdioma(DataIdioma);
 };
 

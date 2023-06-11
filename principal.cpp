@@ -154,6 +154,22 @@ void consultarUsuario(){
     }   
 }
 
+void altaIdioma(){
+    Factory * factory = Factory::getInstance();
+    IControladorIdiomas* ci = factory->getIControladorIdiomas();
+    string nomIdi;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cout << "Ingrese el nombre del idioma: " << endl;
+    getline(cin, nomIdi);
+    if (ci->existeIdioma(nomIdi))
+    {
+        throw ExYaExisteIdioma();
+    }
+    DataIdioma idioma = DataIdioma(nomIdi);
+    ci->ingresarIdioma(idioma);
+    ci->confirmarAltaIdioma();
+}
+
 // Función para realizar una acción específica del menú
 void realizarAccion(int opcion) {
     switch (opcion) {
@@ -172,8 +188,14 @@ void realizarAccion(int opcion) {
             consultarUsuario();
             break;
         case 3:
-            // Alta de idioma
-            altaIdioma();
+            try
+            {
+                altaIdioma();
+            }
+            catch (const ExYaExisteIdioma& ex)
+            {
+                cout << "Error: " << ex.what() << endl;
+            }
             break;
         case 4:
             // Consultar idiomas

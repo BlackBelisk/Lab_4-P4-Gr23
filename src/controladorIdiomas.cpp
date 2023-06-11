@@ -14,6 +14,16 @@ ControladorIdiomas* ControladorIdiomas::getInstance(){
     return instancia;
 }
 
+bool ControladorIdiomas::existeIdioma(string nombre){
+    return this->idiomas.count(nombre) > 0;
+}
+DataIdioma ControladorIdiomas::obtenerDataIdioma(string nombre){
+    if (existeIdioma(nombre))
+    {
+        return this->idiomas.find(nombre)->second->getDataIdioma();
+    }
+    return DataIdioma();
+}
 list<DataIdioma> ControladorIdiomas::listarIdiomas(){
     list<DataIdioma> dataIdiomas;
     for(auto it = this->idiomas.begin(); it!= this->idiomas.end();it++){
