@@ -95,3 +95,10 @@ DataEstadisticaProfesor ControladorEstadisticas::listarEstadisticaProfesor(DataP
     DataEstadisticaProfesor dep = DataEstadisticaProfesor(avancesProfe);
     return dep;  
 }
+
+DataEstadisticaCurso ControladorEstadisticas::listarEstadisticaCurso(DataCurso curso){
+    ControladorCursos * cc = ControladorCursos::getInstance();
+    Curso * c = cc->encontrarCurso(curso.getNomCurso());
+    DataEstadisticaCurso avancesCurso = DataEstadisticaCurso(curso, c->obtenerPromedioCurso());
+    return avancesCurso;
+}

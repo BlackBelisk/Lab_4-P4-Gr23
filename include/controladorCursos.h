@@ -80,6 +80,8 @@ class ControladorCursos : public IControladorCursos{
             Ejercicio* getEjercicioSeleccionado();
             vector<string> getRespuestaEjercicioCompletar();
 
+                //Luis quiere :XD:
+            Curso* encontrarCurso(string nomCurso);
 
             static ControladorCursos* getInstance();
 };

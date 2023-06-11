@@ -50,6 +50,7 @@ class IControladorCursos{//Interfaz
         virtual void habilitarCurso(string c) = 0;
         virtual void obtenerInformacionCurso(DataCurso) = 0;
         virtual void elegirIdiomaProfesor(DataIdioma) = 0;
+        virtual Curso* encontrarCurso(string nomCurso) = 0;
         virtual ~IControladorCursos(){};
 };
 #endif
