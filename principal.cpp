@@ -170,6 +170,13 @@ void altaIdioma(){
     ci->confirmarAltaIdioma();
 }
 
+void consultarIdiomas(){
+    Factory * factory = Factory::getInstance();
+    IControladorIdiomas* ci = factory->getIControladorIdiomas();
+    list<DataIdioma> listaIdiomas = ci->listarIdiomas();
+    imprimirListaDataIdiomas(listaIdiomas);
+} 
+
 // Función para realizar una acción específica del menú
 void realizarAccion(int opcion) {
     switch (opcion) {
