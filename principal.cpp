@@ -9,6 +9,7 @@
 #include "include/leccion.h"
 #include "include/ejercicio.h"
 
+#include "include/utils.h"
 #include "include/excepciones.h"
 //Controladores
 #include "factory.h"
@@ -95,6 +96,28 @@ void altaUsuario(){
             cout << "Ingrese instituto donde trabaja: " << endl;
             getline(cin, instituto);
             cu->ingresarInstituto(instituto);
+
+            IControladorIdiomas* ci = factory->getIControladorIdiomas();
+            list<DataIdioma> listaIdiomas = ci->listarIdiomas();
+            imprimirListaDataIdiomas(listaIdiomas);
+            cout << "0. Dejar de ingresar idiomas." << endl; 
+            int espec;
+            do
+            {
+                cout << "Seleccione el idioma a agregar ingresando el numero: " << endl;
+                cin >> espec;
+                if (espec < 0 || espec > listaIdiomas.size())
+                {
+                    cout << "Numero de idioma invalido. Intente nuevamente" << endl;
+                }
+                else if(espec > 0){
+                    auto it = listaIdiomas.begin();
+                    advance(it, espec - 1);
+                    cu->agregarEspecializacion(*it);
+                    cout << "Idioma agregado." << endl;
+                }
+            } while (espec <= 0 || espec > listaIdiomas.size());
+            
         }
         else{
             cout << "Opcion invalida. Por favor, seleccione una opcion valida." << endl;
