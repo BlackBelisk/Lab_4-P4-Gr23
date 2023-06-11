@@ -108,7 +108,7 @@ void altaUsuario(){
                 cin >> espec;
                 if (espec < 0 || espec > listaIdiomas.size())
                 {
-                    cout << "Numero de idioma invalido. Intente nuevamente" << endl;
+                    cout << "Numero de idioma invalido. Intente nuevamente." << endl;
                 }
                 else if(espec > 0){
                     auto it = listaIdiomas.begin();
@@ -177,7 +177,128 @@ void consultarIdiomas(){
     imprimirListaDataIdiomas(listaIdiomas);
 } 
 
-// Función para realizar una acción específica del menú
+void altaCurso(){
+
+}
+
+void agregarLeccion(){
+
+}
+
+void agregarEjercicio(){
+
+}
+
+void habilitarCurso(){
+
+}
+
+void eliminarCurso(){
+
+}
+
+void consultarCurso(){
+
+}
+
+void inscribirseACurso(){
+
+}
+
+void realizarEjercicio(){
+
+}
+
+void consultarEstadisticas(){
+    Factory* factory = Factory::getInstance();
+    IControladorEstadisticas* ce = factory->getIControladorEstadisticas();
+    int tipoEstad;
+    do
+    {
+        cout << "Ingrese el tipo de estadistica que quiere consultar: " 
+             << endl << "1. Estudiante. "
+             << endl << "2. Profesor. "
+             << endl << "3. Curso. " << endl;
+        if (tipoEstad < 0 || tipoEstad > 3)
+        {
+            cout << "Numero de estadistica invalida. Intente nuevamente" << endl;
+        }
+    } while (tipoEstad < 0 || tipoEstad > 3);
+
+    if (tipoEstad == 1)
+    {
+        IControladorUsuarios* cUsers = factory->getIControladorUsuarios();
+        list<DataEstudiante> estudiantes = cUsers->obtenerEstudiantes();
+        imprimirListaDataEstudiantes(estudiantes);
+        int estud;
+        do
+        {
+            cout << "Seleccione el estudiante ingresando el numero: " << endl;
+            cin >> estud;
+            if (estud < 0 || estud > estudiantes.size())
+            {
+                cout << "Numero de estudiante invalido. Intente nuevamente." << endl;
+            }
+            
+        } while (estud < 0 || estud > estudiantes.size());
+        auto it = estudiantes.begin();
+        advance(it, estud - 1);
+        DataEstadisticaEstudiante dataEstadEstud = ce->listarEstadisticaEstudiante(*it);
+    }
+    else if (tipoEstad == 2)
+    {
+        IControladorUsuarios* cUsers = factory->getIControladorUsuarios();
+        list<DataProfesor> profesores = cUsers->obtenerProfesores();
+        imprimirListaDataProfesores(profesores);
+        int profe;
+        do
+        {
+            cout << "Seleccione el profesor ingresando el numero: " << endl;
+            cin >> profe;
+            if (profe < 0 || profe > profesores.size())
+            {
+                cout << "Numero de profesor invalido. Intente nuevamente." << endl;
+            }
+            
+        } while (profe < 0 || profe > profesores.size());
+        auto it = profesores.begin();
+        advance(it, profe - 1);
+        DataEstadisticaProfesor dataEstadProfe = ce->listarEstadisticaProfesor(*it);
+    }
+    else if (tipoEstad == 3)
+    {
+        IControladorCursos* cc = factory->getIControladorCursos();
+        list<DataCurso> cursos = cc->listarCursosHab();
+        imprimirListaCursos(cursos);
+        int curso;
+        do
+        {
+            cout << "Seleccione el profesor ingresando el numero: " << endl;
+            cin >> curso;
+            if (curso < 0 || curso > cursos.size())
+            {
+                cout << "Numero de profesor invalido. Intente nuevamente." << endl;
+            }
+            
+        } while (curso < 0 || curso > cursos.size());
+        auto it = cursos.begin();
+        advance(it, curso - 1);
+        DataEstadisticaCurso dataEstadCurso = ce->listarEstadisticaCurso(*it);
+    }
+}
+
+void suscribirseANotificaciones(){
+
+}
+
+void consultarNotificaciones(){
+
+}
+
+void eliminarSuscripciones(){
+    
+}
+
 void realizarAccion(int opcion) {
     switch (opcion) {
         case 1:

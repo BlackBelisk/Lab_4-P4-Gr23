@@ -34,3 +34,30 @@ void imprimirListaDataUsuarios(list<DataUsuario> usuarios){
         num++;
     }   
 }
+
+void imprimirListaDataEstudiantes(list<DataEstudiante> estudiantes){
+    int num = 1;
+    for (auto it = estudiantes.begin(); it != estudiantes.end(); it++)
+    {
+        cout << num << ". " << it->getNick() << "." << endl;
+        num++;
+    } 
+}
+
+void imprimirListaDataEstudiantes(list<DataEstudiante> profesores){
+    int num = 1;
+    for (auto it = profesores.begin(); it != profesores.end(); it++)
+    {
+        cout << num << ". " << it->getNick() << "." << endl;
+        num++;
+    } 
+}
+
+void imprimirListaCursos(list<DataCurso> cursos){
+    int num = 1;
+    for (auto it = cursos.begin(); it != cursos.end(); it++)
+    {
+        cout << num << ". " << it->getNomCurso() << "." << endl;
+        num++;
+    } 
+}
