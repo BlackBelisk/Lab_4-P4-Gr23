@@ -24,3 +24,4 @@ DataEstadisticaCurso::DataEstadisticaCurso(DataCurso curso, int prom):curso(curs
 DataCurso DataEstadisticaCurso::getCurso() const{return this->curso;}
 
 float DataEstadisticaCurso::getPromedioGeneral() const{return this->promedioGeneral;}
+

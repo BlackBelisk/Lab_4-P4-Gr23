@@ -40,7 +40,7 @@ void Usuario::removerSuscripcionAIdioma(Idioma* idi){
 }
 
 bool Usuario::estaSuscritoA(Idioma* idi){
-    return (this->suscripciones.count(idi->getNombre()) == 1);
+    return this->suscripciones.count(idi->getNombre()) > 0;
 }
 
 bool Usuario::operator==(const Usuario &user){

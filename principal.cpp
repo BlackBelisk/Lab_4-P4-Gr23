@@ -244,6 +244,12 @@ void consultarEstadisticas(){
         auto it = estudiantes.begin();
         advance(it, estud - 1);
         DataEstadisticaEstudiante dataEstadEstud = ce->listarEstadisticaEstudiante(*it);
+        cout << "Estadisticas de: " << it->getNick() << endl;
+        for (auto it = dataEstadEstud.getAvances().begin(); it != dataEstadEstud.getAvances().end(); it++)
+        {
+            cout << "Curso: " << it->getCurso() << endl; 
+            cout << "Avance: " << it->getAvance() << "%" << endl;
+        }
     }
     else if (tipoEstad == 2)
     {
@@ -264,6 +270,12 @@ void consultarEstadisticas(){
         auto it = profesores.begin();
         advance(it, profe - 1);
         DataEstadisticaProfesor dataEstadProfe = ce->listarEstadisticaProfesor(*it);
+        cout << "Estadisticas de: " << it->getNick() << endl;
+        for (auto it = dataEstadProfe.getAvances().begin(); it != dataEstadProfe.getAvances().end(); it++)
+        {
+            cout << "Curso: " << it->getCurso() << endl;
+            cout << "Avance: " << it->getAvance() << "%" << endl;
+        }
     }
     else if (tipoEstad == 3)
     {
@@ -273,22 +285,38 @@ void consultarEstadisticas(){
         int curso;
         do
         {
-            cout << "Seleccione el profesor ingresando el numero: " << endl;
+            cout << "Seleccione el curso ingresando el numero: " << endl;
             cin >> curso;
             if (curso < 0 || curso > cursos.size())
             {
-                cout << "Numero de profesor invalido. Intente nuevamente." << endl;
+                cout << "Numero de curso invalido. Intente nuevamente." << endl;
             }
             
         } while (curso < 0 || curso > cursos.size());
         auto it = cursos.begin();
         advance(it, curso - 1);
         DataEstadisticaCurso dataEstadCurso = ce->listarEstadisticaCurso(*it);
+        //Imprimir las cosas del curso y el promedio
     }
 }
 
 void suscribirseANotificaciones(){
-
+    Factory * factory = Factory::getInstance();
+    IControladorUsuarios* cu = factory->getIControladorUsuarios();
+    list<DataUsuario> usuarios = cu->obtenerUsuarios();
+    imprimirListaDataUsuarios(usuarios);
+    int user;
+    do
+    {
+        cout << "Seleccione el usuario ingresando el numero: " << endl;
+        cin >> user;
+        if (user < 0 || user > usuarios.size())
+        {
+            cout << "Numero de usuario invalido. Intente nuevamente" << endl; 
+        }
+    } while (user < 0 || user > usuarios.size());
+    auto it = usuarios.begin();
+    advance(it, user - 1);
 }
 
 void consultarNotificaciones(){

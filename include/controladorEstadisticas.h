@@ -26,7 +26,6 @@ class ControladorEstadisticas: public IControladorEstadisticas{
         DataEstadisticaEstudiante listarEstadisticaEstudiante(DataEstudiante estud);
         DataEstadisticaProfesor listarEstadisticaProfesor(DataProfesor profe);
         DataEstadisticaCurso listarEstadisticaCurso(DataCurso curso);
-
 };
 
 #endif
