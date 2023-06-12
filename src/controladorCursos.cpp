@@ -430,3 +430,20 @@ list<DataCurso> ControladorCursos::listarCursosDisponibles(){
     }
     return disponibles;
 }
+
+//Un cout que muestre los datos básicos de cada curso, cantidad total de lecciones y de ejercicios
+
+//Función seleccionarCurso()
+
+void ControladorCursos::finalizarInscripcion(){
+    Fecha f;
+    Inscripcion* i = new Inscripcion(estud, curso, f);
+    estud->agregarInscripcion(i);
+    curso->agregarInscripto(i);
+    curso = nullptr;
+    estud = nullptr;
+}
+
+//
+//Fin de inscribirse a curso
+//

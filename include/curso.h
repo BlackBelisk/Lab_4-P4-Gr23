@@ -48,6 +48,7 @@ class Curso{
             list<DataCurso> preToData();
             DataCurso cursoToData();
             Leccion* siguienteLec(Leccion*);
+            void agregarInscripto(Inscripcion*);
             
 
             bool getHab();

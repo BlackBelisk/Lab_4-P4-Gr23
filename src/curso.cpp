@@ -129,6 +129,10 @@ Inscripcion* Curso::encontrarIns(Estudiante* e){
     }
  }
 
+ void Curso::agregarInscripto(Inscripcion* i){
+   inscriptos.insert(i);
+ }
+
  string Curso::leccionesToString(){
    string s = "";
    for(int i = 0; i < lecciones.size(); i++){

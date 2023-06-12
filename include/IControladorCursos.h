@@ -58,6 +58,7 @@ class IControladorCursos{//Interfaz
         virtual vector<DataLeccion> listarLecciones() = 0;
         virtual void darAltaEjercicio() = 0;
         virtual void seleccionarLeccion(DataLeccion l) = 0;
+        virtual void finalizarInscripcion() = 0;
         virtual ~IControladorCursos(){};
 };
 #endif

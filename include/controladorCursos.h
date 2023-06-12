@@ -69,6 +69,7 @@ class ControladorCursos : public IControladorCursos{
             void finalizarAgLec() override;
             vector<DataLeccion> listarLecciones() override;
             void darAltaEjercicio() override;
+            void finalizarInscripcion() override;
 
             void elegirProfesor(string nickProfesor) override;
             void elegirIdiomaProfesor(DataIdioma) override;
