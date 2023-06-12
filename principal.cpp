@@ -359,7 +359,24 @@ void eliminarCurso(){
 }
 
 void consultarCurso(){
-
+    Factory* factory = Factory::getInstance();
+    IControladorCursos* cc = factory->getIControladorCursos();
+    list<DataCurso> cursos = cc->listarCursos();
+    imprimirListaCursos(cursos);
+    int curso;
+    do
+    {
+        cout << "Seleccione el curso ingresando el numero: " << endl;
+        cin >> curso;
+        if (curso < 0 || curso > cursos.size())
+        {
+            cout << "Numero de curso invalido. Intente nuevamente." << endl;
+        }
+        
+    } while (curso < 0 || curso > cursos.size());
+    auto iter = cursos.begin();
+    advance(iter, curso - 1);
+    cout << *iter << endl;
 }
 
 void inscribirseACurso(){
