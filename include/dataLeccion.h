@@ -21,6 +21,9 @@ class DataLeccion{
             string getTema()const;
             string getObjetivo()const;
             list<DataEjercicio> getEjs()const;
+
+            string toString();
+            string ejsToString();
 };
 
 #include "dataEjercicio.h"

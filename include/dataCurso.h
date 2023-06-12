@@ -35,6 +35,10 @@ class DataCurso{
             vector<DataLeccion> getLecciones()const;
             list<DataInscripcion> getIns()const;
             list<DataCurso> getPrevias()const;
+
+            string enumToString();
+            string leccionesToString();
+            string inscriptosToString();
             friend std::ostream& operator<<(std::ostream& os, DataCurso& c);
             DataCurso(string, string, dif, bool, DataIdioma, DataProfesor, vector<DataLeccion>, list<DataInscripcion>, list<DataCurso>);
 };

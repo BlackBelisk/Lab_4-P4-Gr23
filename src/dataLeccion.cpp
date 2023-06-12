@@ -22,3 +22,15 @@ string DataLeccion::getObjetivo()const{
 list<DataEjercicio> DataLeccion::getEjs()const{
     return ejs;
 }
+
+string DataLeccion::ejsToString(){
+   string s = "";
+   for(auto it = ejs.begin(); it != ejs.end(); ++it){
+      s += (*it).toString() + "\n";
+   }
+   return s;
+}
+
+string DataLeccion::toString(){
+    return "Tema: " + tema + "\n" + "Objetivo: " + objetivo + "\n" + "Ejercicios: " + ejsToString() + "\n";
+}

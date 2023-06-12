@@ -46,6 +46,35 @@ DataCurso::DataCurso(string n, string d, dif Dif, bool b, DataIdioma i, DataProf
     previas = ps;
 }
 
+string DataCurso::enumToString(){
+   dif c = dificultad;
+    switch (c)
+    {
+    case Principiante:
+        return "Principiante";
+    case Intermedio:
+        return "Intermedio";
+    case Avanzado:
+        return "Avanzado";
+    default: return "\0";
+    }
+ }
+
+ string DataCurso::leccionesToString(){
+   string s = "";
+   for(int i = 0; i < lecciones.size(); i++){
+      s += lecciones[i].toString() + "\n";
+   }
+   return s;
+ }
+
+ string DataCurso::inscriptosToString(){
+   string s = "";
+   for(auto it = inscriptos.begin(); it != inscriptos.end(); ++it){
+      s += (*it).toString() + "\n";
+   }
+   return s;
+ }
 
 //Luego lo termino, me duele la cabeza
 std::ostream& operator<<(std::ostream& os, DataCurso& c) {
@@ -58,11 +87,11 @@ std::ostream& operator<<(std::ostream& os, DataCurso& c) {
 
     os << "Nombre: " << c.nomCurso << endl 
     << "Descripción: " << c.descripcion << endl 
-    << "Dificultad: " << c->enumToString() << endl
-    << "Idioma: " << c->getIdioma()->getNombre() << endl
-    << "Profesor: " << c->getProfesor()->getNombre() << endl
+    << "Dificultad: " << c.enumToString() << endl
+    << "Idioma: " << c.getIdi().getNombre() << endl
+    << "Profesor: " << c.getProfe().getNombre() << endl
     << "Habilitado: " << s << endl
-    << "Lecciones: " << c->leccionesToString() << endl //Si esto funciona me jubilo
-    << "Inscriptos: " << c->inscriptosToString() << endl; //Aquí también
+    << "Lecciones: " << c.leccionesToString() << endl //Si esto funciona me jubilo
+    << "Inscriptos: " << c.inscriptosToString() << endl; //Aquí también
     return os;
   }

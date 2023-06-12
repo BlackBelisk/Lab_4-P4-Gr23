@@ -13,7 +13,8 @@ class DataEjercicio{
             string desc;
     public:
             DataEjercicio(string);
-            string getDesc() const;        
+            string getDesc() const; 
+            string toString();//Pendiente       
 };
 
 class DataCompletar: public DataEjercicio{
@@ -24,6 +25,8 @@ class DataCompletar: public DataEjercicio{
             string getFrase()const;
             vector<string> getSol()const;
             DataCompletar(string, string, vector<string>);
+            string solToString();
+            string toString();
 };
 
 class DataTraducir: public DataEjercicio{
@@ -34,5 +37,6 @@ class DataTraducir: public DataEjercicio{
             string getFrase()const;
             string getSol()const;
             DataTraducir(string, string, string);
+            string toString();
 };
 #endif

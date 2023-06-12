@@ -62,3 +62,7 @@ Ejercicio* Leccion::obtenerEj(string descEj){
 set<Ejercicio*> Leccion::getEjs(){
     return ejs;
 }
+
+string Leccion::getObj(){
+    return objetivo;
+}

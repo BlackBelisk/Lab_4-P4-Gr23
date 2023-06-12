@@ -63,15 +63,19 @@ class ControladorCursos : public IControladorCursos{
             list<DataCurso> listarCursos() override;
             void habilitarCurso(string c) override;
             void obtenerInformacionCurso(DataCurso) override;
-            list<DataCurso> listarCursosDisponibles(string nick);
-            void nuevoCurso(DataCurso);
-            
+            list<DataCurso> listarCursosDisponibles(string nick) override;
+            void nuevoCurso(DataCurso) override;
+            void insLeccion(string nomCurso, string nomTema, string obj) override;
+            void finalizarAgLec() override;
+            vector<DataLeccion> listarLecciones() override;
+            void darAltaEjercicio() override;
 
             void elegirProfesor(string nickProfesor) override;
             void elegirIdiomaProfesor(DataIdioma) override;
             void seleccionarEstudiante(string nickE) override;
             void seleccionarCurso(string nombre) override;
             void seleccionarEjercicio(DataEjercicio ej) override;
+            void seleccionarLeccion(DataLeccion l) override;
 
 
             Estudiante* getEstudianteSeleccionado();
@@ -81,7 +85,7 @@ class ControladorCursos : public IControladorCursos{
             Ejercicio* getEjercicioSeleccionado();
             vector<string> getRespuestaEjercicioCompletar();
             Curso* encontrarCurso(string nomCurso);
-            
+
             static ControladorCursos* getInstance();
 };
 

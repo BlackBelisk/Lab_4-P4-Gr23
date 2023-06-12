@@ -12,3 +12,7 @@ DataInscripcion::DataInscripcion(string e, string c, DataLeccion l, list<DataEje
     fechaIns = f;
     aprobado = a;
 }
+
+string DataInscripcion::toString(){
+    return "Nombre: " + estud + "\n" + "Fecha de inscripción: " + fechaIns.toString() + "\n";
+}

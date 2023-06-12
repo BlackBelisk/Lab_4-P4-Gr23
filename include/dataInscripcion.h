@@ -23,6 +23,7 @@ class DataInscripcion{
             bool aprobado;
 
             DataInscripcion(string, string, DataLeccion, list<DataEjercicio>, Fecha, bool);
+            string toString();
 };
 
 #include "dataCurso.h"

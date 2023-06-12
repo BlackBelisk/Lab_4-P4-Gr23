@@ -27,6 +27,7 @@ class Leccion{
 
             set<Ejercicio*> getEjs();
             Ejercicio* obtenerEj(string);
+            string getObj();
 
             ~Leccion();
 };

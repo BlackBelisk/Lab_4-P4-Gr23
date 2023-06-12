@@ -34,3 +34,19 @@ string DataTraducir::getFrase()const{
 string DataTraducir::getSol()const{
     return solucion;
 }
+
+string DataCompletar::solToString(){
+   string s = "";
+   for(int i = 0; i < solucion.size(); i++){
+      s += solucion[i] + " ";
+   }
+   return s;
+}
+
+string DataTraducir::toString(){
+	return "Descripcion: " + getDesc() + "\n" + "Frase: " + fraseTrad + "\n" + "Solucion: " + solucion + "\n";
+}
+
+string DataCompletar::toString(){
+	return "Descripcion: " + getDesc() + "\n" + "Frase: " + fraseComp + "\n" + "Solucion: " + solToString() + "\n";
+}

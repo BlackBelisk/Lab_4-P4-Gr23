@@ -362,3 +362,65 @@ bool ControladorCursos::comprobarCompletarPalabra(){
 //
 //Fin de realizar ejercicio
 //
+
+
+
+//
+//Inicio de agregar lección
+//
+
+//Función listarCursosNA()
+
+void ControladorCursos::insLeccion(string nomCurso, string nomTema, string obj){
+    Leccion* l = new Leccion(nomTema, obj);
+    cursos[nomCurso]->getLecciones().push_back(l);
+    lec = l;
+}
+
+//Función agregarEjercicio() y un loop mientras se quiera seguir agregando
+
+void ControladorCursos::finalizarAgLec(){
+    lec = nullptr;
+}
+
+//
+//Fin de agregar lección
+//
+
+
+
+//
+//Inicio de agregar ejercicio
+//
+
+//Función listarCursosNA()
+
+//Función seleccionarCurso()
+
+vector<DataLeccion> ControladorCursos::listarLecciones(){
+    DataCurso c = curso->cursoToData();
+    return c.getLecciones();
+}
+
+//Un cout entre una función y otra
+
+void ControladorCursos::seleccionarLeccion(DataLeccion l){
+    for(auto it = curso->getLecciones().begin(); it != curso->getLecciones().end(); ++it){
+        if(l.getObjetivo() == (*it)->getObj()){
+            lec = (*it);
+            break;
+        }
+    }
+}
+
+//Función agregarEjercicio()
+
+void ControladorCursos::darAltaEjercicio(){
+    curso = nullptr;
+    lec = nullptr;
+}
+
+//
+//Fin de agregar ejercicio
+//
+
