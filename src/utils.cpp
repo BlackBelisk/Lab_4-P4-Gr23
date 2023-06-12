@@ -69,6 +69,7 @@ void imprimirListaNotificaciones(list<DataNotificacion> notificaciones){
         cout << "Notificacion " << num << "." << endl;
         cout << "Idioma: " << it->getnomIdioma() << "." << endl;
         cout << "Curso: " << it->getnomCurso() << "." << endl << endl;
+        num++;
     }
     
 }

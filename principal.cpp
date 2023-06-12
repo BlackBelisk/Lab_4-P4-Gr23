@@ -428,6 +428,25 @@ void inscribirseACurso(){
 }
 
 void realizarEjercicio(){
+    Factory* factory = Factory::getInstance();
+    IControladorCursos* cc = factory->getIControladorCursos();
+    IControladorUsuarios* cu = factory->getIControladorUsuarios();
+    list<DataEstudiante> estudiantes = cu->obtenerEstudiantes();
+    imprimirListaDataEstudiantes(estudiantes);
+    int estud;
+    do
+    {
+        cout << "Seleccione el estudiante ingresando el numero: " << endl;
+        cin >> estud;
+        if (estud < 0 || estud > estudiantes.size())
+        {
+            cout << "Numero de estudiante invalido. Intente nuevamente." << endl;
+        }
+        
+    } while (estud < 0 || estud > estudiantes.size());
+    auto iterador = estudiantes.begin();
+    advance(iterador, estud - 1);
+    cc->seleccionarEstudiante(iterador->getNick());
 
 }
 
