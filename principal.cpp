@@ -212,7 +212,7 @@ void habilitarCurso(){
 void eliminarCurso(){
     Factory* factory = Factory::getInstance();
     IControladorCursos* cc = factory->getIControladorCursos();
-    list<DataCurso> cursos = cc->listarCursosNA(); //Estoy seguramente está mal
+    list<DataCurso> cursos = cc->listarCursos();
     imprimirListaCursos(cursos);
     int course;
     do
