@@ -61,3 +61,14 @@ void imprimirListaCursos(list<DataCurso> cursos){
         num++;
     } 
 }
+
+void imprimirListaNotificaciones(list<DataNotificacion> notificaciones){
+    int num = 1;
+    for (auto it = notificaciones.begin(); it != notificaciones.end(); it++)
+    {
+        cout << "Notificacion " << num << "." << endl;
+        cout << "Idioma: " << it->getnomIdioma() << "." << endl;
+        cout << "Curso: " << it->getnomCurso() << "." << endl << endl;
+    }
+    
+}

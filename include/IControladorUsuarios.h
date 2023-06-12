@@ -10,6 +10,7 @@
 #include "idioma.h"
 #include "usuario.h"
 #include "dataUsuario.h"
+#include "dataNotificacion.h"
 #include "profesor.h"
 #include "estudiante.h"
 #include "notificacion.h"
@@ -48,7 +49,12 @@ class IControladorUsuarios{
 
         virtual void elegirIdiomaProfesor(Idioma*) = 0;
         //Me faltan las funciones relacionadas a la suscripciones y consulta de notificaciones
-        virtual Notificacion consultarNotificaciones(string) = 0;
+        virtual list<DataNotificacion> consultarNotificaciones(DataUsuario) = 0;
+        virtual void limpiarNotificaciones(DataUsuario) = 0;
+        virtual list<DataIdioma> suscripcionesDisponibles(DataUsuario) = 0;
+        virtual list<DataIdioma> obtenerSuscripciones(DataUsuario) = 0;
+        virtual void agregarSuscripcionAUsuario(DataUsuario, DataIdioma) = 0;
+        virtual void eliminarSuscripcionDeUsuario(DataUsuario, DataIdioma) = 0;
         virtual ~IControladorUsuarios(){};
 };
 

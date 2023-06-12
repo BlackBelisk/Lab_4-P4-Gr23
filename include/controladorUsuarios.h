@@ -67,8 +67,9 @@ class ControladorUsuarios: public IControladorUsuarios{
 
         void elegirIdiomaProfesor(Idioma*);
 
-        Notificacion consultarNotificaciones(string);
+        list<DataNotificacion> consultarNotificaciones(DataUsuario);
 
+        list<DataIdioma> suscripcionesDisponibles(DataUsuario);
 };
     
 #endif

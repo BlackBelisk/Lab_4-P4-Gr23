@@ -117,7 +117,6 @@ void altaUsuario(){
                     cout << "Idioma agregado." << endl;
                 }
             } while (espec <= 0 || espec > listaIdiomas.size());
-            
         }
         else{
             cout << "Opcion invalida. Por favor, seleccione una opcion valida." << endl;
@@ -303,6 +302,7 @@ void consultarEstadisticas(){
 void suscribirseANotificaciones(){
     Factory * factory = Factory::getInstance();
     IControladorUsuarios* cu = factory->getIControladorUsuarios();
+    IControladorIdiomas* ci = factory->getIControladorIdiomas();
     list<DataUsuario> usuarios = cu->obtenerUsuarios();
     imprimirListaDataUsuarios(usuarios);
     int user;
@@ -317,14 +317,92 @@ void suscribirseANotificaciones(){
     } while (user < 0 || user > usuarios.size());
     auto it = usuarios.begin();
     advance(it, user - 1);
+    list<DataIdioma> idiomasDisp = cu->suscripcionesDisponibles(*it);
+    imprimirListaDataIdiomas(idiomasDisp);
+    cout << "0. Dejar de ingresar idiomas." << endl;
+    int susc;
+    do
+    {
+        cout << "Seleccione el idioma al que quiere suscribirse ingresando el numero: " << endl;
+        cin >> susc;
+        if (susc < 0 || susc > idiomasDisp.size())
+        {
+            cout << "Numero de idioma invalido. Intente nuevamente." << endl;
+        }
+        else if (susc > 0)
+        {
+            auto sus = idiomasDisp.begin();
+            advance(sus, susc - 1);
+            cu->agregarSuscripcionAUsuario(*it,*sus);
+            ci->ingresarSuscripcionDeUsuarioA(*sus,*it);
+            cout << "Suscripción añadida." << endl;
+        }
+    } while (susc < 0 || susc > idiomasDisp.size());
 }
 
 void consultarNotificaciones(){
-
+    Factory * factory = Factory::getInstance();
+    IControladorUsuarios* cu = factory->getIControladorUsuarios();
+    list<DataUsuario> usuarios = cu->obtenerUsuarios();
+    imprimirListaDataUsuarios(usuarios);
+    int user;
+    do
+    {
+        cout << "Seleccione el usuario ingresando el numero: " << endl;
+        cin >> user;
+        if (user < 0 || user > usuarios.size())
+        {
+            cout << "Numero de usuario invalido. Intente nuevamente" << endl; 
+        }
+    } while (user < 0 || user > usuarios.size());
+    auto it = usuarios.begin();
+    advance(it, user - 1);
+    list<DataNotificacion> notificaciones = cu->consultarNotificaciones(*it);
+    imprimirListaNotificaciones(notificaciones);
+    cout << "Presione enter para continuar.";
+    getchar();
+    cu->limpiarNotificaciones(*it);
 }
 
 void eliminarSuscripciones(){
-    
+    Factory * factory = Factory::getInstance();
+    IControladorUsuarios* cu = factory->getIControladorUsuarios();
+    IControladorIdiomas* ci = factory->getIControladorIdiomas();
+    list<DataUsuario> usuarios = cu->obtenerUsuarios();
+    imprimirListaDataUsuarios(usuarios);
+    int user;
+    do
+    {
+        cout << "Seleccione el usuario ingresando el numero: " << endl;
+        cin >> user;
+        if (user < 0 || user > usuarios.size())
+        {
+            cout << "Numero de usuario invalido. Intente nuevamente" << endl; 
+        }
+    } while (user < 0 || user > usuarios.size());
+    auto it = usuarios.begin();
+    advance(it, user - 1);
+    list<DataIdioma> suscripcionesActuales = cu->obtenerSuscripciones(*it);
+    imprimirListaDataIdiomas(suscripcionesActuales);
+    cout << "0. Dejar de ingresar idiomas." << endl;
+    int susc;
+    do
+    {
+        cout << "Seleccione el idioma del que quiere eliminar su suscripcion ingresando el numero: " << endl;
+        cin >> susc;
+        if (susc < 0 || susc > suscripcionesActuales.size())
+        {
+            cout << "Numero de idioma invalido. Intente nuevamente." << endl;
+        }
+        else if (susc > 0)
+        {
+            auto sus = suscripcionesActuales.begin();
+            advance(sus, susc - 1);
+            ci->eliminarSuscriptor(*sus, *it);
+            cu->eliminarSuscripcionDeUsuario(*it,*sus);
+            cout << "Suscripcion removida." << endl;
+        }
+    } while (susc < 0 || susc > suscripcionesActuales.size());
 }
 
 void realizarAccion(int opcion) {

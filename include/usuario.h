@@ -20,9 +20,6 @@ class Usuario: public IObserver{
     string descripcion;
     string nombre;
     //Links
-    
-    //La key es el nombre del curso
-    map<string, Inscripcion*> inscripciones; 
 
     //La key es el nombre del idioma
     map<string ,Idioma*> suscripciones;
