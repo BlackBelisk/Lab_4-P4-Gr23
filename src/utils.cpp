@@ -44,7 +44,7 @@ void imprimirListaDataEstudiantes(list<DataEstudiante> estudiantes){
     } 
 }
 
-void imprimirListaDataProfesores(list<DataEstudiante> profesores){
+void imprimirListaDataEstudiantes(list<DataEstudiante> profesores){
     int num = 1;
     for (auto it = profesores.begin(); it != profesores.end(); it++)
     {

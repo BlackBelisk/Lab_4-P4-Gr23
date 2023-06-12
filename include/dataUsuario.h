@@ -25,7 +25,7 @@ class DataUsuario{
         DataUsuario(string, string, string, string);
         string getNick() const;
         void setNick(string);
-        string getContra() const;
+        string getContra() const; //:XD:
         void setContra(string);
         string getDescripcion() const;
         void setDescripcion(string);

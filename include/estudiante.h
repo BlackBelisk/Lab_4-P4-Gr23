@@ -72,6 +72,8 @@ class Estudiante : public Usuario{
         list<DataCurso> obtenerDataCursosEnCurso();
         //Devuelve una list<DataCurso> con los datos de todos los cursos aprobados por el estudiante
         list<DataCurso> obtenerDataCursosAprobados();
+
+        vector<int> obtenerProgresos();
 };
 
 #endif

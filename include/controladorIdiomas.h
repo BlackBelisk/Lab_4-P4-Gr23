@@ -29,8 +29,6 @@ class ControladorIdiomas: public IControladorIdiomas{
         void ingresarIdioma(DataIdioma);
         void confirmarAltaIdioma();
         void nuevoIdioma(DataIdioma);
-        bool estaSuscritoA(IObserver*, Idioma*);
-        list<DataIdioma> suscripcionesDisponiblesPara(IObserver*);
         void ingresarSuscripcionDeUsuarioA(DataIdioma, DataUsuario);
         void eliminarSuscriptor(DataIdioma, DataUsuario);
 };

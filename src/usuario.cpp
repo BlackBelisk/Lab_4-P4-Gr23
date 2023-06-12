@@ -2,7 +2,6 @@
 #include <string>
 #include <list>
 #include "../include/usuario.h"
-#include "../include/dataNotificacion.h"
 using namespace std;
 
 Usuario::Usuario(string nick, string contra, string descripcion, string nombre):nick(nick), contra(contra), descripcion(descripcion), nombre(nombre){}
@@ -50,15 +49,6 @@ bool Usuario::operator==(const Usuario &user){
 
 void Usuario::Notificar(Notificacion* noti){
     this->notificaciones.insert(make_pair(noti->getCursoNuevo(),noti));
-}
-
-list<DataNotificacion> Usuario::obtenerNotificaciones(){
-    list<DataNotificacion> notis;
-    for (auto it = this->notificaciones.begin(); it != this->notificaciones.end(); it++)
-    {
-        notis.push_back(it->second->getDataNotificacion());
-    }
-    return notis;
 }
 
 void Usuario::eliminarNotificacion(string nomCurso){
