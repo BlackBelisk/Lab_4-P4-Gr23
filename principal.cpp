@@ -373,7 +373,7 @@ void suscribirseANotificaciones(){
         {
             auto sus = idiomasDisp.begin();
             advance(sus, susc - 1);
-            cu->agregarSuscripcionAUsuario(*it,*sus);
+            cu->agregarSuscripcionAusuario(*it,*sus);
             ci->ingresarSuscripcionDeUsuarioA(*sus,*it);
             cout << "Suscripción añadida." << endl;
         }

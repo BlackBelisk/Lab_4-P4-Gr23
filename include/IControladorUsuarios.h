@@ -50,7 +50,7 @@ class IControladorUsuarios{
         virtual void limpiarNotificaciones(DataUsuario) = 0;
         virtual list<DataIdioma> obtenerSuscripciones(DataUsuario) = 0;
         virtual list<DataIdioma> suscripcionesDisponibles(DataUsuario) = 0;
-        virtual void agregarSuscripcionAUsuario(DataUsuario, DataIdioma) = 0;
+        virtual void agregarSuscripcionAusuario(DataUsuario, DataIdioma) = 0;
         virtual void eliminarSuscripcionDeUsuario(DataUsuario, DataIdioma) = 0;
         virtual ~IControladorUsuarios(){};
 };
