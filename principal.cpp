@@ -216,11 +216,36 @@ int course;
     advance(it, course - 1);
 	
     if (it->getCantEjercicios() > 0)
-    habilitarCurso(it->getNomCurso);
+    habilitarCurso(it->getNomCurso());
 
 }
 void eliminarCurso(){
+    Factory* factory = Factory::getInstance();
+    IControladorCursos* cc = factory->getIControladorCursos();
+    list<DataCurso> cursos = cc->listarCursosNA();
 
+
+ int num = 1;
+    for (auto it = cursos.begin(); it != cursos.end(); it++)
+    {
+        cout << num << ". " << it->getNomCurso() << "." << endl;
+        num++;
+    }   
+
+int course;
+    do
+    {
+        cout << "Seleccione el curso a eliminar ingresando el numero: " << endl;
+        cin >> course;
+        if (course < 0 || course > cursos.size())
+        {
+            cout << "Numero de curso invalido. Intente nuevamente" << endl; 
+        }
+    } while (course < 0 || course > cursos.size());
+    auto it = cursos.begin();
+    advance(it, course - 1);
+
+    eliminarCurso(it->getNomCurso());
 }
 
 void consultarCurso(){
