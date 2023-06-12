@@ -21,8 +21,6 @@ class ControladorEstadisticas: public IControladorEstadisticas{
         ControladorEstadisticas() = default;
     public:
         static ControladorEstadisticas* getInstance();
-
-        void seleccionarEstadisticaDeseada(eleccion estad);
         DataEstadisticaEstudiante listarEstadisticaEstudiante(DataEstudiante estud);
         DataEstadisticaProfesor listarEstadisticaProfesor(DataProfesor profe);
         DataEstadisticaCurso listarEstadisticaCurso(DataCurso curso);
