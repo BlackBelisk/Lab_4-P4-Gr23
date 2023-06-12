@@ -206,10 +206,7 @@ void ControladorCursos::eliminarCurso(string nc){
 
 //Un cout de la lista obtenida entre una función y otra
 
-//El DataCurso pertenece a los cursos listados previamente
-void ControladorCursos::obtenerInformacionCurso(DataCurso c){
-    cout << c << endl;
-}
+//Un cout del dataCurso que se haya elegido el cual tiene sobrecarga del operador <<
 
 //
 //Fin de consultar curso
