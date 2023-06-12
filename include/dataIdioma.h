@@ -12,9 +12,11 @@ class DataIdioma{
     private:
         string nombre;
     public: 
+        DataIdioma() = default;
         DataIdioma(string);
-        DataIdioma();
-        string getNombre();
+        string getNombre() const;
+        bool operator==(const DataIdioma&);
+        bool operator!=(const DataIdioma&);
 };
 
 #endif

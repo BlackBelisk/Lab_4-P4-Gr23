@@ -59,6 +59,22 @@ void ControladorIdiomas::nuevoIdioma(DataIdioma dataI){
     this->idiomas.insert(make_pair(dataI.getNombre(),i));
 };
 
+bool ControladorIdiomas::estaSuscritoA(IObserver* susc, Idioma* idi){
+    return idi->estaSuscrito(susc);
+}
+
+list<DataIdioma> ControladorIdiomas::suscripcionesDisponiblesPara(IObserver* obs){
+    list<DataIdioma> disp;
+    for (auto it = idiomas.begin(); it != idiomas.end(); it++)
+    {
+        if (!estaSuscritoA(obs,it->second))
+        {
+            disp.push_back(it->second->getDataIdioma());
+        }
+    }
+    return disp;
+}
+
 void ControladorIdiomas::ingresarSuscripcionDeUsuarioA(DataIdioma idi, DataUsuario susc){
         Idioma* idioma = this->encontrarIdioma(idi.getNombre());
         ControladorUsuarios* cu = ControladorUsuarios::getInstance();

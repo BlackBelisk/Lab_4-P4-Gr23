@@ -51,10 +51,10 @@ class Usuario: public IObserver{
     virtual bool estaSuscritoA(Idioma*);
 
     void Notificar(Notificacion*);
+    virtual list<DataNotificacion> obtenerNotificaciones();
     void eliminarNotificacion(string);
     void eliminarNotificaciones();
-
-
+    
     bool operator==(const Usuario &user);
 };
 
