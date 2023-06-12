@@ -234,51 +234,7 @@ void consultarCurso(){
 }
 
 void inscribirseACurso(){
-    Factory* factory = Factory::getInstance();
-    IControladorCursos* cc = factory->getIControladorCursos();
-    IControladorUsuarios* cu = factory->getIControladorUsuarios();
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    list<DataEstudiante> estudiantes = cu->obtenerEstudiantes();
-    imprimirListaDataEstudiantes(estudiantes);
-    int estud;
-    do
-    {
-        cout << "Seleccione el estudiante ingresando el numero: " << endl;
-        cin >> estud;
-        if (estud < 0 || estud > estudiantes.size())
-        {
-            cout << "Numero de estudiante invalido. Intente nuevamente." << endl;
-        }
-        
-    } while (estud < 0 || estud > estudiantes.size());
-    auto it = estudiantes.begin();
-    advance(it, estud - 1);
-    cc->seleccionarEstudiante(it->getNick());
-    list<DataCurso> disponibles = cc->listarCursosDisponibles();
-    int num = 1;
-    for (auto it = disponibles.begin(); it != disponibles.end(); it++){
-        cout << num << ". " << "Nombre: " << it->getNomCurso() 
-            << endl << "Descripcion: " << it->getDesc()
-            << endl << "Profesor: " << it->getProfe()
-            << endl << "Dificultad: " << it->enumToString()
-            << endl << "Cantidad de Lecciones: " << it->getLecciones().size()
-            << endl << "Cantidad de Ejercicios: " << it -> getCantEjercicios();
-        num++;
-    }
-    int curso;
-    do
-    {
-        cout << "Seleccione el curso ingresando el numero: " << endl;
-        cin >> curso;
-        if (curso < 0 || curso > disponibles.size())
-        {
-            cout << "Numero de curso invalido. Intente nuevamente." << endl;
-        }
-        
-    } while (curso < 0 || curso > disponibles.size());
-    auto iter = disponibles.begin();
-    advance(iter, curso - 1);
-    cc->seleccionarCurso(iter->getNomCurso());
+
 }
 
 void realizarEjercicio(){
