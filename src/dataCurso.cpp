@@ -34,7 +34,11 @@
       return previas;
    }
 
-DataCurso::DataCurso(string n, string d, dif Dif, bool b, DataIdioma i, DataProfesor p, vector<DataLeccion> ls, list<DataInscripcion> is, list<DataCurso> ps){
+   int DataCurso::getCantEjercicios()const{
+      return cantEjercicios;
+   }
+
+DataCurso::DataCurso(string n, string d, dif Dif, bool b, DataIdioma i, DataProfesor p, vector<DataLeccion> ls, list<DataInscripcion> is, list<DataCurso> ps, int ce){
     nomCurso = n;
     descripcion = d;
     dificultad = Dif;
@@ -44,6 +48,7 @@ DataCurso::DataCurso(string n, string d, dif Dif, bool b, DataIdioma i, DataProf
     lecciones = ls;
     inscriptos = is;
     previas = ps;
+    cantEjercicios = ce;
 }
 
 string DataCurso::enumToString(){

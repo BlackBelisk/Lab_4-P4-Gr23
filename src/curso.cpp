@@ -46,7 +46,7 @@ list<DataCurso> Curso::preToData(){
 }
 
 DataCurso Curso::cursoToData(){
-   DataCurso dc(nomCurso, descripcion, dificultad, habilitado, idioma->getDataIdioma(), profe->getDataProfesor(), lecToData(), insToData(), preToData());
+   DataCurso dc(nomCurso, descripcion, dificultad, habilitado, idioma->getDataIdioma(), profe->getDataProfesor(), lecToData(), insToData(), preToData(), this->obtenerCantEjerciciosCurso());
    return dc;
 }
 
