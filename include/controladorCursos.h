@@ -65,6 +65,7 @@ class ControladorCursos : public IControladorCursos{
             void obtenerInformacionCurso(DataCurso) override;
             list<DataCurso> listarCursosDisponibles(string nick);
             void nuevoCurso(DataCurso);
+            
 
             void elegirProfesor(string nickProfesor) override;
             void elegirIdiomaProfesor(DataIdioma) override;
@@ -79,10 +80,8 @@ class ControladorCursos : public IControladorCursos{
             Idioma* getIdiomaElegido();
             Ejercicio* getEjercicioSeleccionado();
             vector<string> getRespuestaEjercicioCompletar();
-
-                //Luis quiere :XD:
             Curso* encontrarCurso(string nomCurso);
-
+            
             static ControladorCursos* getInstance();
 };
 

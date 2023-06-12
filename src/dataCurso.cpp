@@ -5,6 +5,35 @@
 #include "../include/dataCurso.h"
 
 
+
+   string DataCurso::getNomCurso()const{
+      return nomCurso;
+   }
+   string DataCurso::getDesc()const{
+      return descripcion;
+   }
+   dif DataCurso::getDif()const{
+      return dificultad;
+   }
+   bool DataCurso::getHab()const{
+      return habilitado;
+   }
+   DataIdioma DataCurso::getIdi()const{
+      return idioma;
+   }
+   DataProfesor DataCurso::getProfe()const{
+      return profe;
+   }
+   vector<DataLeccion> DataCurso::getLecciones()const{
+      return lecciones;
+   }
+   list<DataInscripcion> DataCurso::getIns()const{
+      return inscriptos;
+   }
+   list<DataCurso> DataCurso::getPrevias()const{
+      return previas;
+   }
+
 DataCurso::DataCurso(string n, string d, dif Dif, bool b, DataIdioma i, DataProfesor p, vector<DataLeccion> ls, list<DataInscripcion> is, list<DataCurso> ps){
     nomCurso = n;
     descripcion = d;

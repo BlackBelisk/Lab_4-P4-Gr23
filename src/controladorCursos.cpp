@@ -40,6 +40,10 @@ Ejercicio* ControladorCursos::getEjercicioSeleccionado(){
     return ejSel;
 }
 
+Curso* ControladorCursos::encontrarCurso(string nomCurso){
+    return cursos[nomCurso];
+}
+
 //
 //Inicio de alta de curso
 //
@@ -217,11 +221,9 @@ list<DataCurso> ControladorCursos::listarCursosDisponibles(string nick){
     Estudiante* e = cu->encontrarEstudiante(nick);
     set<Curso*> aprobados;
     set<Curso*> inscripto;
-    for(auto it = e->getInscripciones().begin(); it != e->getInscripciones().end(); ++it){
-        inscripto.insert((*it).second->getCurso());
-        if((*it).second->getAprobado()){
-            aprobados.insert((*it).second->getCurso());
-        }
+    map<string, Inscripcion*> aps = e->getAprobados();
+    for(auto it = aps.begin(); it != aps.end(); ++it){
+        aprobados.insert((*it).second->getCurso());
     }
     for(auto it = cursos.begin(); it != cursos.end(); ++it){
         bool pasa = false;
@@ -257,7 +259,7 @@ void ControladorCursos::seleccionarEstudiante(string nickE){
 
 list<DataCurso> ControladorCursos::obtenerCursosNoAprobadosEstudiante(){
     Estudiante* e = getEstudianteSeleccionado();
-    return e->obtenerDataCursosSinCompletarEstudiante();
+    return e->obtenerDataCursosEnCurso();
 }
 
 //Un cout entre una función y otra
@@ -292,7 +294,7 @@ list<DataCurso> ControladorCursos::obtenerCursosNoAprobadosEstudiante(){
 
  //El DataEjercicio pertenece a los listados previamente
  void ControladorCursos::seleccionarEjercicio(DataEjercicio e){
-    ejSel = ins->getLecActual()->obtenerEj(e.desc);
+    ejSel = ins->getLecActual()->obtenerEj(e.getDesc());
  }
 
  void ControladorCursos::enunciarEjercicio(){

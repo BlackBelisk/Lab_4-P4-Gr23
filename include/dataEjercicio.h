@@ -9,24 +9,30 @@
 using namespace std;
 
 class DataEjercicio{
-    public:
+    private:
             string desc;
+    public:
             DataEjercicio(string);
-            
+            string getDesc() const;        
 };
 
 class DataCompletar: public DataEjercicio{
-    public:
+    private:
             vector<string> solucion;
 		    string fraseComp;
-
+    public:
+            string getFrase()const;
+            vector<string> getSol()const;
             DataCompletar(string, string, vector<string>);
 };
 
 class DataTraducir: public DataEjercicio{
-    public:
+    private:
             string solucion;
 		    string fraseTrad;
+    public:        
+            string getFrase()const;
+            string getSol()const;
             DataTraducir(string, string, string);
 };
 #endif

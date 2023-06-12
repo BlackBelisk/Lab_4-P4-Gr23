@@ -10,3 +10,15 @@ DataLeccion::DataLeccion(string t, string o, list<DataEjercicio> e){
     objetivo = o;
     ejs = e;
 }
+
+string DataLeccion::getTema()const{
+    return tema;
+}
+
+string DataLeccion::getObjetivo()const{
+    return objetivo;
+}
+
+list<DataEjercicio> DataLeccion::getEjs()const{
+    return ejs;
+}

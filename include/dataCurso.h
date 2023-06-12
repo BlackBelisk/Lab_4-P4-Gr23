@@ -15,7 +15,7 @@
 using namespace std;
 
 class DataCurso{
-    public:
+    private:
             string nomCurso;
             string descripcion;
             dif dificultad;
@@ -25,9 +25,16 @@ class DataCurso{
             vector<DataLeccion> lecciones;
             list<DataInscripcion> inscriptos;
             list<DataCurso> previas;
-            
-            //Luis necesita
-            string getNomCurso();
+    public:
+            string getNomCurso()const;
+            string getDesc()const;
+            dif getDif()const;
+            bool getHab()const;
+            DataIdioma getIdi()const;
+            DataProfesor getProfe()const;
+            vector<DataLeccion> getLecciones()const;
+            list<DataInscripcion> getIns()const;
+            list<DataCurso> getPrevias()const;
             friend std::ostream& operator<<(std::ostream& os, DataCurso& c);
             DataCurso(string, string, dif, bool, DataIdioma, DataProfesor, vector<DataLeccion>, list<DataInscripcion>, list<DataCurso>);
 };

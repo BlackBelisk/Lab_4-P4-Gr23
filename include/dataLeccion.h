@@ -11,12 +11,16 @@ using namespace std;
 
 class DataEjercicio;
 class DataLeccion{
-    public:
+    private:
             string tema;
             string objetivo;
             list<DataEjercicio> ejs;
-    DataLeccion();
-    DataLeccion(string, string, list<DataEjercicio>);
+    public:
+            DataLeccion() = default;
+            DataLeccion(string, string, list<DataEjercicio>);
+            string getTema()const;
+            string getObjetivo()const;
+            list<DataEjercicio> getEjs()const;
 };
 
 #include "dataEjercicio.h"

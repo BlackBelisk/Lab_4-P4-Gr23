@@ -104,11 +104,14 @@ Inscripcion* Curso::encontrarIns(Estudiante* e){
 
  float Curso::obtenerPromedioCurso(){
     int cantIns = inscriptos.size();
-    int progT = 0;
-    for(auto it = inscriptos.begin(); it != inscriptos.end(); ++it){
-        progT += (*it)->obtenerProgreso();
+    if(cantIns != 0){
+      int progT = 0;
+      for(auto it = inscriptos.begin(); it != inscriptos.end(); ++it){
+          progT += (*it)->obtenerProgreso();
+      }
+      return progT/cantIns*100;
     }
-    return progT/cantIns*100;
+    return 0;
  }
 
  Leccion* Curso::siguienteLec(Leccion* l){
