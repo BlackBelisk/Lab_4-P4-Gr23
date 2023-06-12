@@ -21,6 +21,14 @@ string Idioma::getNombre(){
     return nombre;
 }
 
+DataIdioma Idioma::getDataIdioma(){
+    DataIdioma self = DataIdioma(this->nombre);
+    return self;
+}
+
+bool Idioma::estaSuscrito(IObserver* obs){
+    return this->suscriptores.count(obs) > 0;
+}
 
 void Idioma::agregarUsuarioSuscripto(IObserver* sus){
     this->suscriptores.insert(sus);

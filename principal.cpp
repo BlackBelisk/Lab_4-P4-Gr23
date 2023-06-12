@@ -212,7 +212,7 @@ void habilitarCurso(){
 void eliminarCurso(){
     Factory* factory = Factory::getInstance();
     IControladorCursos* cc = factory->getIControladorCursos();
-    list<DataCurso> cursos = cc->listarCursosNA(); //Estoy seguramente está mal
+    list<DataCurso> cursos = cc->listarCursos();
     imprimirListaCursos(cursos);
     int course;
     do
@@ -417,7 +417,7 @@ void suscribirseANotificaciones(){
         {
             auto sus = idiomasDisp.begin();
             advance(sus, susc - 1);
-            cu->agregarSuscripcionAUsuario(*it,*sus);
+            cu->agregarSuscripcionAusuario(*it,*sus);
             ci->ingresarSuscripcionDeUsuarioA(*sus,*it);
             cout << "Suscripción añadida." << endl;
         }

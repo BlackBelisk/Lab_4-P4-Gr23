@@ -9,6 +9,7 @@ class DataNotificacion{
         string nomCurso;
         string nomIdioma;
     public:
+        DataNotificacion() = default;
         DataNotificacion(string, string);
         string getnomCurso();
         string getnomIdioma();      

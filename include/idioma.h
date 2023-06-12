@@ -23,6 +23,7 @@ class Idioma{
         DataIdioma getDataIdioma();
 
         //y estas son las funciones que estaban en el DCD
+        bool estaSuscrito(IObserver*);
         void agregarUsuarioSuscripto(IObserver*);
         void removerObservador(IObserver*);
 

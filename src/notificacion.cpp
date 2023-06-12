@@ -1,4 +1,6 @@
+#include <string>
 #include "../include/notificacion.h"
+using namespace std;
 
 Notificacion::Notificacion(string curso, string idioma){
     this->CursoNuevo = curso;
@@ -15,4 +17,9 @@ string Notificacion::getCursoNuevo() const{
 
 string Notificacion::getIdioma() const{
     return idioma;
+}
+
+DataNotificacion Notificacion::getDataNotificacion(){
+    DataNotificacion info = DataNotificacion(this->getCursoNuevo(),this->getIdioma());
+    return info;
 }
