@@ -49,6 +49,9 @@ class Estudiante : public Usuario{
         //Key: nomCurso, es el nombre del curso
         map<string, Inscripcion*> getAprobados();
 
+        //Franco te chupará el pene si creas:
+        map<string, Inscripcion*> getInscripciones();
+
         //Devuelve una list<DataInscripcion> con todas las inscripciones del estudiante
         list <DataInscripcion> obtenerDataInscripciones();
         //Devuelve una list<DataInscripcion> con las inscripciones a cursos en curso del estudiante

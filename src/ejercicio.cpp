@@ -108,11 +108,11 @@ string CompletarPalabra::toString(){
 }
 
 DataEjercicio Traduccion::ejToData(){
-	DataTraducir e(descripcion, fraseTrad, solucion);
+	DataEjercicio e(descripcion, fraseTrad, solucion);
 	return e;
 }
 
 DataEjercicio CompletarPalabra::ejToData(){
-	DataCompletar e(descripcion, fraseAComp, solucion);
+	DataEjercicio e(descripcion, fraseAComp, solucion);
 	return e;
 }

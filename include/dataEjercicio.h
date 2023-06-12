@@ -11,12 +11,27 @@ using namespace std;
 class DataEjercicio{
     private:
             string desc;
+            string fraseComp;
+            vector<string> solComp;
+            string fraseTrad;
+            string solTrad;
+            bool tipo;
     public:
-            DataEjercicio(string);
+            DataEjercicio(string, string, string);
+            DataEjercicio(string, string, vector<string>);
             string getDesc() const; 
-            string toString();//Pendiente       
-};
+            string toString();//Pendiente      
 
+            //Traducir
+            string getFraseT()const;
+            string getSolT()const; 
+
+            //Completar
+            string getFraseC()const;
+            vector<string> getSolC()const;
+            string solToString();
+};
+/*
 class DataCompletar: public DataEjercicio{
     private:
             vector<string> solucion;
@@ -38,5 +53,5 @@ class DataTraducir: public DataEjercicio{
             string getSol()const;
             DataTraducir(string, string, string);
             string toString();
-};
+};*/
 #endif

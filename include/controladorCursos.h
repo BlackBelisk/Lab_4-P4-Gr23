@@ -63,7 +63,7 @@ class ControladorCursos : public IControladorCursos{
             list<DataCurso> listarCursos() override;
             void habilitarCurso(string c) override;
             void obtenerInformacionCurso(DataCurso) override;
-            list<DataCurso> listarCursosDisponibles(string nick) override;
+            list<DataCurso> listarCursosDisponibles() override;
             void nuevoCurso(DataCurso) override;
             void insLeccion(string nomCurso, string nomTema, string obj) override;
             void finalizarAgLec() override;

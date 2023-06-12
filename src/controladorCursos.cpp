@@ -215,34 +215,6 @@ void ControladorCursos::obtenerInformacionCurso(DataCurso c){
 //Fin de consultar curso
 //
 
-list<DataCurso> ControladorCursos::listarCursosDisponibles(string nick){
-    list<DataCurso> disponibles;
-    ControladorUsuarios* cu = ControladorUsuarios::getInstance();
-    Estudiante* e = cu->encontrarEstudiante(nick);
-    set<Curso*> aprobados;
-    set<Curso*> inscripto;
-    map<string, Inscripcion*> aps = e->getAprobados();
-    for(auto it = aps.begin(); it != aps.end(); ++it){
-        aprobados.insert((*it).second->getCurso());
-    }
-    for(auto it = cursos.begin(); it != cursos.end(); ++it){
-        bool pasa = false;
-        if(inscripto.count((*it).second) == 0){
-            pasa = true;
-            for(auto itt = (*it).second->getPrevias().begin(); itt != (*it).second->getPrevias().end(); ++itt){
-                if(aprobados.count((*itt)) == 0){
-                    pasa = false;
-                    break;
-                }
-            }
-        }
-        if(pasa){
-            disponibles.insert(disponibles.end(), (*it).second->cursoToData());
-        }
-    }
-    return disponibles;
-}
-
 void ControladorCursos::nuevoCurso(DataCurso dataC){
     Curso *c = new Curso(dataC);
     cursos.insert(make_pair(c->getNombre(), curso));
@@ -424,3 +396,37 @@ void ControladorCursos::darAltaEjercicio(){
 //Fin de agregar ejercicio
 //
 
+//
+//Inicio de inscribirse a curso
+//
+
+//Función listarEstudiantes() de controlador de usuarios
+
+//Función seleccionarEstudiante()
+
+list<DataCurso> ControladorCursos::listarCursosDisponibles(){
+    list<DataCurso> disponibles;
+    ControladorUsuarios* cu = ControladorUsuarios::getInstance();
+    set<Curso*> inscripto;
+    map<string, Inscripcion*> aps = estud->getAprobados();
+    map<string, Inscripcion*> ins = estud->getInscripciones();
+    for(auto it = ins.begin(); it != ins.end(); ++it){
+        inscripto.insert((*it).second->getCurso());
+    }
+    for(auto it = cursos.begin(); it != cursos.end(); ++it){
+        bool pasa = false;
+        if((*it).second->cursoToData().getHab() && inscripto.count((*it).second) == 0){
+            pasa = true;
+            for(auto itt = (*it).second->getPrevias().begin(); itt != (*it).second->getPrevias().end(); ++itt){
+                if(aps.count((*itt)->getNombre()) == 0){
+                    pasa = false;
+                    break;
+                }
+            }
+        }
+        if(pasa){
+            disponibles.insert(disponibles.end(), (*it).second->cursoToData());
+        }
+    }
+    return disponibles;
+}

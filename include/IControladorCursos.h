@@ -51,7 +51,7 @@ class IControladorCursos{//Interfaz
         virtual void obtenerInformacionCurso(DataCurso) = 0;
         virtual void elegirIdiomaProfesor(DataIdioma) = 0;
         virtual Curso* encontrarCurso(string nomCurso) = 0;
-        virtual list<DataCurso> listarCursosDisponibles(string nick) = 0;
+        virtual list<DataCurso> listarCursosDisponibles() = 0;
         virtual void nuevoCurso(DataCurso) = 0;
         virtual void insLeccion(string nomCurso, string nomTema, string obj) = 0;
         virtual void finalizarAgLec() = 0;

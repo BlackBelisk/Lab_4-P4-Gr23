@@ -6,47 +6,46 @@
 
 
 
-DataEjercicio::DataEjercicio(string d): desc(d){
+DataEjercicio::DataEjercicio(string d, string f, string s): desc(d), fraseTrad(f), solTrad(s){
+    tipo = 0;
 }
 
-DataTraducir::DataTraducir(string d, string f, string sol): DataEjercicio(d), fraseTrad(f), solucion(sol){
-}
-
-DataCompletar::DataCompletar(string d, string f, vector<string> sol): DataEjercicio(d), fraseComp(f), solucion(sol){
+DataEjercicio::DataEjercicio(string d, string f, vector<string> sol): desc(d), fraseComp(f), solComp(sol){
+    tipo = 1;
 }
 
 string DataEjercicio::getDesc()const{
     return desc;
 }
 
-string DataCompletar::getFrase()const{
+string DataEjercicio::getFraseC()const{
     return fraseComp;
 }
 
-vector<string> DataCompletar::getSol()const{
-    return solucion;
+vector<string> DataEjercicio::getSolC()const{
+    return solComp;
 }
 
-string DataTraducir::getFrase()const{
+string DataEjercicio::getFraseT()const{
     return fraseTrad;
 }
 
-string DataTraducir::getSol()const{
-    return solucion;
+string DataEjercicio::getSolT()const{
+    return solTrad;
 }
 
-string DataCompletar::solToString(){
+string DataEjercicio::solToString(){
    string s = "";
-   for(int i = 0; i < solucion.size(); i++){
-      s += solucion[i] + " ";
+   for(int i = 0; i < solComp.size(); i++){
+      s += solComp[i] + " ";
    }
    return s;
 }
 
-string DataTraducir::toString(){
-	return "Descripcion: " + getDesc() + "\n" + "Frase: " + fraseTrad + "\n" + "Solucion: " + solucion + "\n";
-}
-
-string DataCompletar::toString(){
-	return "Descripcion: " + getDesc() + "\n" + "Frase: " + fraseComp + "\n" + "Solucion: " + solToString() + "\n";
+string DataEjercicio::toString(){
+    if(tipo == 0){
+	    return "Descripcion: " + desc + "\n" + "Frase: " + fraseTrad + "\n" + "Solucion: " + solTrad + "\n";
+    }else{
+        return "Descripcion: " + desc + "\n" + "Frase: " + fraseComp + "\n" + "Solucion: " + solToString() + "\n";
+    }
 }
