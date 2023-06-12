@@ -2,6 +2,7 @@
 #include <list>
 #include <sstream>
 #include <string>
+#include <vector>
 #include "dataIdioma.h"
 #include "dataUsuario.h"
 #include "dataNotificacion.h"
@@ -20,3 +21,5 @@ void imprimirListaDataProfesores(list<DataProfesor> profesores);
 void imprimirListaCursos(list<DataCurso> cursos);
 
 void imprimirListaNotificaciones(list<DataNotificacion> notificaciones);
+
+int cantidadDeEjerciciosEn(vector<DataLeccion> lecciones);

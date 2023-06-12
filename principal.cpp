@@ -295,7 +295,14 @@ void consultarEstadisticas(){
         auto it = cursos.begin();
         advance(it, curso - 1);
         DataEstadisticaCurso dataEstadCurso = ce->listarEstadisticaCurso(*it);
-        //Imprimir las cosas del curso y el promedio
+        cout << "Nombre del curso: " << dataEstadCurso.getCurso().getNomCurso() << endl;
+        cout << "Idioma: " << dataEstadCurso.getCurso().getIdi().getNombre() << endl;
+        //Se debe imprimir el nickname o el nombre del profesoR?
+        cout << "Profesor: " << dataEstadCurso.getCurso().getProfe().getNick() << endl;
+        cout << "Descripción: " << dataEstadCurso.getCurso().getDesc() << endl;
+        cout << "Cantidad de lecciones: " << dataEstadCurso.getCurso().getLecciones().size() << endl;
+        cout << "Cantidad de ejercicios: " << cantidadDeEjerciciosEn(dataEstadCurso.getCurso().getLecciones()) << endl;
+        cout << "Promedio general del curso: " << dataEstadCurso.getPromedioGeneral() << "%" << endl;
     }
 }
 
