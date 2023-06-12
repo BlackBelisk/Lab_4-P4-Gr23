@@ -366,7 +366,6 @@ void inscribirseACurso(){
     Factory* factory = Factory::getInstance();
     IControladorCursos* cc = factory->getIControladorCursos();
     IControladorUsuarios* cu = factory->getIControladorUsuarios();
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     list<DataEstudiante> estudiantes = cu->obtenerEstudiantes();
     imprimirListaDataEstudiantes(estudiantes);
     int estud;
@@ -380,9 +379,9 @@ void inscribirseACurso(){
         }
         
     } while (estud < 0 || estud > estudiantes.size());
-    auto it = estudiantes.begin();
-    advance(it, estud - 1);
-    cc->seleccionarEstudiante(it->getNick());
+    auto iterador = estudiantes.begin();
+    advance(iterador, estud - 1);
+    cc->seleccionarEstudiante(iterador->getNick());
     list<DataCurso> disponibles = cc->listarCursosDisponibles();
     int num = 1;
     for (auto it = disponibles.begin(); it != disponibles.end(); it++){
@@ -391,7 +390,7 @@ void inscribirseACurso(){
             << endl << "Profesor: " << it->getProfe()
             << endl << "Dificultad: " << it->enumToString()
             << endl << "Cantidad de Lecciones: " << it->getLecciones().size()
-            << endl << "Cantidad de Ejercicios: " << it -> getCantEjercicios();
+            << endl << "Cantidad de Ejercicios: " << it -> getCantEjercicios() << endl;
         num++;
     }
     int curso;
@@ -408,6 +407,7 @@ void inscribirseACurso(){
     auto iter = disponibles.begin();
     advance(iter, curso - 1);
     cc->seleccionarCurso(iter->getNomCurso());
+    cc->finalizarInscripcion();
 }
 
 void realizarEjercicio(){
