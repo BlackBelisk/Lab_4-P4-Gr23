@@ -29,6 +29,8 @@ class ControladorIdiomas: public IControladorIdiomas{
         void ingresarIdioma(DataIdioma);
         void confirmarAltaIdioma();
         void nuevoIdioma(DataIdioma);
+        void ingresarSuscripcionDeUsuarioA(DataIdioma, DataUsuario);
+        void eliminarSuscriptor(DataIdioma, DataUsuario);
 };
 
 #endif

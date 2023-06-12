@@ -31,7 +31,6 @@ class Idioma{
 
         //Entrada: Nombre del curso del que se notifica la creación
         void Notificar(string nomCurso);
-        void eliminarNotificaciones();
 };
 
 #include "curso.h"

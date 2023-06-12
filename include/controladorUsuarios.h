@@ -65,11 +65,12 @@ class ControladorUsuarios: public IControladorUsuarios{
         DataProfesor obtenerDataProfesor(string);
         DataEstudiante obtenerDataEstudiante(string);
 
-        void elegirIdiomaProfesor(Idioma*);
-
         list<DataNotificacion> consultarNotificaciones(DataUsuario);
-
+        void limpiarNotificaciones(DataUsuario);
+        list<DataIdioma> obtenerSuscripciones(DataUsuario);
         list<DataIdioma> suscripcionesDisponibles(DataUsuario);
+        void agregarSuscripcionAusuario(DataUsuario, DataIdioma);
+        void eliminarSuscripcionDeUsuario(DataUsuario, DataIdioma);
 };
     
 #endif

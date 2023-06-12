@@ -3,6 +3,7 @@
 #include <map>
 #include "../include/IControladorIdiomas.h"
 #include "../include/ControladorIdiomas.h"
+#include "../include/controladorUsuarios.h"
 #include "../include/idioma.h"
 #include "../include/dataIdioma.h"
 
@@ -57,3 +58,17 @@ void ControladorIdiomas::nuevoIdioma(DataIdioma dataI){
     Idioma* i = new Idioma(dataI);
     this->idiomas.insert(make_pair(dataI.getNombre(),i));
 };
+
+void ControladorIdiomas::ingresarSuscripcionDeUsuarioA(DataIdioma idi, DataUsuario susc){
+        Idioma* idioma = this->encontrarIdioma(idi.getNombre());
+        ControladorUsuarios* cu = ControladorUsuarios::getInstance();
+        Usuario* user = cu->encontrarUsuario(susc.getNick());
+        idioma->agregarUsuarioSuscripto(user);
+}
+
+void ControladorIdiomas::eliminarSuscriptor(DataIdioma idi, DataUsuario susc){
+    Idioma* idioma = this->encontrarIdioma(idi.getNombre());
+        ControladorUsuarios* cu = ControladorUsuarios::getInstance();
+        Usuario* user = cu->encontrarUsuario(susc.getNick());
+        idioma->removerObservador(user);
+}

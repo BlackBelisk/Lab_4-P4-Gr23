@@ -46,13 +46,10 @@ class IControladorUsuarios{
         virtual DataProfesor obtenerDataProfesor(string) = 0;
         virtual DataEstudiante obtenerDataEstudiante(string) = 0;
 
-
-        virtual void elegirIdiomaProfesor(Idioma*) = 0;
-        //Me faltan las funciones relacionadas a la suscripciones y consulta de notificaciones
         virtual list<DataNotificacion> consultarNotificaciones(DataUsuario) = 0;
         virtual void limpiarNotificaciones(DataUsuario) = 0;
-        virtual list<DataIdioma> suscripcionesDisponibles(DataUsuario) = 0;
         virtual list<DataIdioma> obtenerSuscripciones(DataUsuario) = 0;
+        virtual list<DataIdioma> suscripcionesDisponibles(DataUsuario) = 0;
         virtual void agregarSuscripcionAUsuario(DataUsuario, DataIdioma) = 0;
         virtual void eliminarSuscripcionDeUsuario(DataUsuario, DataIdioma) = 0;
         virtual ~IControladorUsuarios(){};

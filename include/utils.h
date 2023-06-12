@@ -21,5 +21,3 @@ void imprimirListaDataProfesores(list<DataProfesor> profesores);
 void imprimirListaCursos(list<DataCurso> cursos);
 
 void imprimirListaNotificaciones(list<DataNotificacion> notificaciones);
-
-int cantidadDeEjerciciosEn(vector<DataLeccion> lecciones);

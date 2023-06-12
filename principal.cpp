@@ -353,7 +353,7 @@ void consultarEstadisticas(){
         cout << "Profesor: " << dataEstadCurso.getCurso().getProfe().getNick() << endl;
         cout << "Descripción: " << dataEstadCurso.getCurso().getDesc() << endl;
         cout << "Cantidad de lecciones: " << dataEstadCurso.getCurso().getLecciones().size() << endl;
-        cout << "Cantidad de ejercicios: " << cantidadDeEjerciciosEn(dataEstadCurso.getCurso().getLecciones()) << endl;
+        cout << "Cantidad de ejercicios: " << dataEstadCurso.getCurso().getCantEjercicios() << endl;
         cout << "Promedio general del curso: " << dataEstadCurso.getPromedioGeneral() << "%" << endl;
     }
 }
