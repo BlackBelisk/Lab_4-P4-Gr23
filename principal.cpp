@@ -47,10 +47,22 @@ using namespace std;
 
 // Función para cargar los datos de prueba
 void cargarDatosPrueba() {
-   Factory * factory = Factory::getInstance();
-   IControladorUsuarios* cu = factory->getIControladorUsuarios();
-   cu->nuevoEstudiante(DataEstudiante("jpidiom","asdfg123","Soy un apasionado del aprendizaje de idiomas.","Juan Perez", "Argentina", Fecha(15,07,1995)));
-}
+    Factory * factory = Factory::getInstance();
+    IControladorIdiomas* ci = factory->getIControladorIdiomas();
+    IControladorUsuarios* cu = factory->getIControladorUsuarios();
+    //Idiomas
+    ci->nuevoIdioma(DataIdioma("Ingles"));
+    ci->nuevoIdioma(DataIdioma("Aleman"));
+    ci->nuevoIdioma(DataIdioma("Portugues"));
+    //Idiomas
+
+    cu->nuevoEstudiante(DataEstudiante("jpidiom","asdfg123","Soy un apasionado del aprendizaje de idiomas.","Juan Perez", "Argentina", Fecha(15,07,1995)));
+    cu->nuevoEstudiante(DataEstudiante("marsilva", "qwer456", "Como amante de los idiomas disfruto explorando nuevas formas de interactuar.", "Maria Silva", "Ecuador", Fecha(28,02,1998)));
+    cu->nuevoEstudiante(DataEstudiante("pero12", "789werty", "Soy un entusiasta del aprendizaje de idiomas.", "Pedro Rodriguez", "Peru", Fecha(10,11,1994)));
+    cu->nuevoEstudiante(DataEstudiante("laugu", "c1v2b3m4", "Estoy fascinada por la forma en que las palabras pueden unir a las personas.", "Laura Gutierrez", "Chile", Fecha(22,04,1997)));
+    cu->nuevoEstudiante(DataEstudiante("","","","","",Fecha()));
+
+}  
 
 void altaUsuario(){
     Factory * factory = Factory::getInstance();
@@ -74,13 +86,13 @@ void altaUsuario(){
         }
     } while (contra.length() < 6);
 
-    string desc;
-    cout << "Ingrese una descripcion: " <<endl;
-    getline(cin, desc);
-
     string nombre;
     cout << "Ingrese su nombre: " << endl;
     getline(cin, nombre);
+
+    string desc;
+    cout << "Ingrese una descripcion: " <<endl;
+    getline(cin, desc);
 
     DataUsuario dataU = DataUsuario(nickname, contra, desc, nombre);
     cu->ingresarUsuario(dataU);

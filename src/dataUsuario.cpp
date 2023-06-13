@@ -50,15 +50,15 @@ list<DataIdioma> DataProfesor::getIdiomas()const{return this->idiomas;}
 
 std::ostream & operator<<(std::ostream& os, const DataUsuario& du){
     os << "Nickname: " << du.getNick() << endl 
-       << "Descripcion: " << du.getDescripcion() << endl
-       <<  "Nombre: " << du.getNombre() << endl;
+       <<  "Nombre: " << du.getNombre() << endl
+       << "Descripcion: " << du.getDescripcion() << endl;
     return os;
 }
 
 std::ostream & operator<<(std::ostream& os, const DataEstudiante& de){
     os << "Nickname: " << de.getNick() << endl 
-       << "Descripcion: " << de.getDescripcion() << endl
        << "Nombre: " << de.getNombre() << endl
+       << "Descripcion: " << de.getDescripcion() << endl
        << "Pais: " << de.getPais() << endl
        << "Fecha de Nacimiento: " << de.getFechaNac() <<endl;
     return os;
@@ -83,8 +83,8 @@ static string listaAString(list<DataIdioma> idiomas){
 
 std::ostream & operator<<(std::ostream& os, const DataProfesor& dp){
     os << "Nickname: " << dp.getNick() << endl 
-       << "Descripcion: " << dp.getDescripcion() << endl
        << "Nombre: " << dp.getNombre() << endl
+       << "Descripcion: " << dp.getDescripcion() << endl
        << "Instituto: " << dp.getInstituto() <<endl
        << listaAString(dp.getIdiomas()) << endl;
     return os;
