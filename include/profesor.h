@@ -3,12 +3,18 @@
 
 #include <iostream>
 #include <set>
+#include <vector>
+#include <map>
 #include <string>
 
-#include "usuario.h"
-#include "idioma.h"
-#include "dataUsuario.h"
 using namespace std;
+#include "usuario.h"
+
+class Curso;
+class DataUsuario;
+class DataProfesor;
+class Idioma;
+class DataIdioma;
 
 class Profesor : public Usuario{
     private:
@@ -49,4 +55,8 @@ class Profesor : public Usuario{
         void removerCurso(Curso* c);
 };
 
+#include "dataUsuario.h"
+#include "curso.h"
+#include "idioma.h"
+#include "dataIdioma.h"
 #endif
