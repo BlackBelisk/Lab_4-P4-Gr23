@@ -15,7 +15,7 @@ using namespace std;
 class ControladorIdiomas: public IControladorIdiomas{
     private:
         static ControladorIdiomas * instancia;
-        ControladorIdiomas();
+        ControladorIdiomas() = default;
 
         map<string, Idioma*> idiomas;
         DataIdioma idiomaIngresado;

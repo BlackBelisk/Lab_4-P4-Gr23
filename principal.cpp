@@ -16,6 +16,7 @@
 #include "include/dataEstadistica.h"
 #include "include/dataInscripcion.h"
 #include "include/dataNotificacion.h"
+#include "include/utils.h"
 
 #include "include/usuario.h"
 #include "include/estudiante.h"
@@ -25,7 +26,6 @@
 #include "include/leccion.h"
 #include "include/ejercicio.h"
 
-#include "include/utils.h"
 #include "include/factory.h"
 #include "include/IControladorCursos.h"
 #include "include/ControladorCursos.h"

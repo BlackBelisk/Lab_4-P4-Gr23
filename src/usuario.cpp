@@ -13,7 +13,9 @@ string Usuario::getDescripcion() const{return this->descripcion;}
 
 string Usuario::getNombre() const{return this->nombre;}
 
-DataUsuario Usuario::getDataUsuario(){return DataUsuario(this->nick, this->descripcion, this->nombre);}
+DataUsuario Usuario::getDataUsuario(){
+    DataUsuario data = DataUsuario(this->nick, this->descripcion, this->nombre);
+    return data;}
 
 void Usuario::setNick(string nuevoNick){this->nick = nuevoNick;}
 
