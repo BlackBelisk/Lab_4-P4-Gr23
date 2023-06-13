@@ -83,7 +83,7 @@ void imprimirListaEjercicios(list<DataEjercicio> ejercicios){
     
 }
 
-void imprimirListaLeccion(list<DataLeccion> lecciones){
+void imprimirListaLeccion(vector<DataLeccion> lecciones){
     int num = 1;
     for (auto it = lecciones.begin(); it != lecciones.end(); it++)
     {
