@@ -7,6 +7,7 @@
 #include "dataUsuario.h"
 #include "dataNotificacion.h"
 #include "dataLeccion.h"
+#include "dataCurso.h"
 using namespace std;
 
 vector<string> convertirAVector(string);

@@ -5,12 +5,13 @@
 #include <set>
 #include <map>
 #include "fecha.h"
+
 using namespace std;
 class Estudiante;
 class Curso;
 class Leccion;
 class Ejercicio;
-
+class DataInscripcion;
 class Inscripcion{
     private:
             Estudiante* estud;
@@ -46,4 +47,5 @@ class Inscripcion{
 #include "curso.h"
 #include "leccion.h"
 #include "ejercicio.h"
+#include "dataInscripcion.h"
 #endif

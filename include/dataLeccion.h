@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <set>
+#include <list>
 #include "leccion.h"
 
 using namespace std;
