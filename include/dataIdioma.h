@@ -3,8 +3,6 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
-#include <set>
 #include "idioma.h"
 using namespace std;
 
