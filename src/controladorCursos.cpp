@@ -157,11 +157,14 @@ list<DataCurso> ControladorCursos::listarCursosNA(){
 
 bool ControladorCursos::esCursoHabilitable(string c){
     Curso* cur = cursos[c];
+    cout << cur->getNombre();
     bool pasa = true;
-    int cantLecs = cur->getLecciones().size();
+    vector<Leccion*> ls = cur->getLecciones();
+    int cantLecs = ls.size();
     if(cantLecs != 0){
-        for(auto it = cur->getLecciones().begin(); it != cur->getLecciones().end(); ++it){
-            if((*it)->obtenerCantEjerciciosLeccion() == 0){
+        for(int i = 0; i < ls.size(); i++){
+            cout << ls[i]->obtenerCantEjerciciosLeccion() << (ls[i])->getObj();
+            if(ls[i]->obtenerCantEjerciciosLeccion() == 0){
                 pasa = false;
                 break;
             }
@@ -361,9 +364,8 @@ bool ControladorCursos::comprobarCompletarPalabra(){
 //Función listarCursosNA()
 
 void ControladorCursos::insLeccion(string nomCurso, string nomTema, string obj){
-    Leccion* l = new Leccion(nomTema, obj);
-    cursos[nomCurso]->getLecciones().push_back(l);
-    lec = l;
+    cursos[nomCurso]->nuevaLeccion(nomTema, obj);
+    lec = cursos[nomCurso]->getLecciones().back();
 }
 
 //Función agregarEjercicio() y un loop mientras se quiera seguir agregando

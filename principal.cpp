@@ -570,7 +570,9 @@ void habilitarCurso(){
         } while (course <= 0 || course > cursos.size());
     auto it = cursos.begin();
     advance(it, course - 1);    
-    if (cc->esCursoHabilitable((*it).getNomCurso())){cc->habilitarCurso((*it).getNomCurso());}
+    if (cc->esCursoHabilitable((*it).getNomCurso())){cc->habilitarCurso((*it).getNomCurso());}else{
+        cout << "Curso no habilitable." << endl;
+    }
 }
 
 void eliminarCurso(){

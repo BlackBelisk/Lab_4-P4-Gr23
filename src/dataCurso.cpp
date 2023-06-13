@@ -67,8 +67,12 @@ string DataCurso::enumToString(){
 
  string DataCurso::leccionesToString(){
    string s = "";
-   for(int i = 0; i < lecciones.size(); i++){
-      s += lecciones[i].toString() + "\n";
+   if(lecciones.size() == 0){
+      s = "No tiene";
+   }else{
+      for(int i = 0; i < lecciones.size(); i++){
+         s += "Leccion " + to_string(i+1) + ": " + "\n" + lecciones[i].toString() + "\n";
+      }
    }
    return s;
  }

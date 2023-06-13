@@ -9,6 +9,7 @@ using namespace std;
 Leccion::Leccion(string t, string o){
     this->tema = t;
     this->objetivo = o;
+    this->ejs = set<Ejercicio*>();
 }
 
 list<DataEjercicio> Leccion::ejsToData(){ 
