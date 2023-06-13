@@ -25,4 +25,4 @@ void imprimirListaNotificaciones(list<DataNotificacion> notificaciones);
 
 void imprimirListaEjercicios(list<DataEjercicio> ejercicios);
 
-void imprimirListaLeccion(list<DataLeccion> lecciones);
+void imprimirListaLeccion(vector<DataLeccion> lecciones);
