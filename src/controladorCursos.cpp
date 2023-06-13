@@ -157,6 +157,23 @@ list<DataCurso> ControladorCursos::listarCursosNA(){
 
 //Un cout entre una función y otra
 
+bool ControladorCursos::esCursoHabilitable(string c){
+    Curso* cur = cursos[c];
+    bool pasa = true;
+    int cantLecs = cur->getLecciones().size();
+    if(cantLecs != 0){
+        for(auto it = cur->getLecciones().begin(); it != cur->getLecciones().end(); ++it){
+            if((*it)->obtenerCantEjerciciosLeccion() == 0){
+                pasa = false;
+                break;
+            }
+        }
+    }else{
+        pasa = false;
+    }
+    return pasa;
+}
+
 //Pre: Un curso se puede habilitar solo si tiene al menos una lección y un ejercicio, y no tiene lecciones sin ejercicios.
 //Pre: C es el nombre de un curso de los listados previamente
 void ControladorCursos::habilitarCurso(string c){

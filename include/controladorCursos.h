@@ -70,6 +70,8 @@ class ControladorCursos : public IControladorCursos{
             vector<DataLeccion> listarLecciones() override;
             void darAltaEjercicio() override;
             void finalizarInscripcion() override;
+            bool getTipoEjercicio() override;
+            bool esCursoHabilitable(string c) override;
 
             void elegirProfesor(string nickProfesor) override;
             void elegirIdiomaProfesor(DataIdioma) override;

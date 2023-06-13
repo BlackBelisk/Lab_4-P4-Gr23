@@ -59,6 +59,8 @@ class IControladorCursos{//Interfaz
         virtual void darAltaEjercicio() = 0;
         virtual void seleccionarLeccion(DataLeccion l) = 0;
         virtual void finalizarInscripcion() = 0;
+        virtual bool getTipoEjercicio() = 0;
+        virtual bool esCursoHabilitable(string c) = 0;
         virtual ~IControladorCursos(){};
 };
 #endif
