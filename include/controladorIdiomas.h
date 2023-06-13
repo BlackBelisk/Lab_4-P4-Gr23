@@ -7,6 +7,7 @@
 #include <string>
 #include "IControladorIdiomas.h"
 #include "idioma.h"
+#include "dataUsuario.h"
 #include "dataIdioma.h"
 
 using namespace std;

@@ -4,10 +4,8 @@
 #include <string>
 #include <set>
 #include "dataIdioma.h"
+#include "IObserver.h"
 using namespace std;
-
-class Curso;
-class IObserver;
 
 class Idioma{
     private:
@@ -35,6 +33,4 @@ class Idioma{
         void Notificar(string nomCurso);
 };
 
-#include "curso.h"
-#include "IObserver.h"
 #endif

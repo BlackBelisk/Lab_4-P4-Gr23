@@ -7,6 +7,7 @@
 #include <string>
 #include "idioma.h"
 #include "dataIdioma.h"
+#include "dataUsuario.h"
 
 using namespace std;
 
