@@ -123,7 +123,7 @@ void altaUsuario(){
                     cu->agregarEspecializacion(*it);
                     cout << "Idioma agregado." << endl;
                 }
-            } while (espec <= 0 || espec > listaIdiomas.size());
+            } while (espec != 0);
         }
         else{
             cout << "Opcion invalida. Por favor, seleccione una opcion valida." << endl;
@@ -190,6 +190,9 @@ void altaCurso(){
     //Selecciona el profesor que dictara el curso
     IControladorUsuarios* cUsers = factory->getIControladorUsuarios();
     list<DataProfesor> profesores = cUsers->obtenerProfesores();
+    if(profesores.size() == 0){
+        throw ExNoHayProfesor();
+    }
     imprimirListaDataProfesores(profesores);
     int profe;
     do {
@@ -208,6 +211,9 @@ void altaCurso(){
     //Selecciona el idioma del curso a partir del profesor seleccionado
     IControladorIdiomas* ci = factory->getIControladorIdiomas();
     list<DataIdioma> idprof = cc->listarIdiomasProfesor();
+    if(idprof.size() == 0){
+        throw ExProfesorSinIdiomas();
+    }
     imprimirListaDataIdiomas(idprof);
     int idioma;
     do
@@ -227,6 +233,7 @@ void altaCurso(){
     //Se crea el curso
     string nombreCurso;
     cout << "Ingrese el nombre del curso: " << endl;
+    cin.ignore();
     getline(cin, nombreCurso);
 
     string descripcionCurso;
@@ -263,16 +270,19 @@ void altaCurso(){
         {
             cout << "Si desea agregar previas al curso ingrese 1, si no desea hacerlo, ingrese 0." << endl;
             cin >> seleccionador;
-            if (seleccionador != 0 || seleccionador != 1)
+            if (seleccionador < 0 || seleccionador > 1)
             {
                 cout << "Accion Incorrecta. Intente nuevamente." << endl;
             }
             
-        } while (seleccionador != 0 || seleccionador != 1);
+        } while (seleccionador < 0 || seleccionador > 1);
 
-    if (seleccionador = 1){
+    if (seleccionador == 1){
         //Agregar previas
         list<DataCurso> cursos = cc->listarCursosHab();
+        if(cursos.size() == 0){
+            throw ExNoExistenCursos();
+        }
         imprimirListaCursos(cursos);
         int curso;
 
@@ -303,12 +313,12 @@ void altaCurso(){
         {
             cout << "Si desea agregar lecciones al curso ingrese 1, si no desea hacerlo, ingrese 0." << endl;
             cin >> seleccionador;
-            if (seleccionador != 0 || seleccionador != 1)
+            if (seleccionador != 0 && seleccionador != 1)
             {
                 cout << "Accion incorrecta. Intente nuevamente." << endl;
             }
             
-        } while (seleccionador != 0 || seleccionador != 1);
+        } while (seleccionador != 0 && seleccionador != 1);
     if (seleccionador == 1){
         do
         {
@@ -324,11 +334,11 @@ void altaCurso(){
             {
                 cout << "Si desea agregar ejercicios a la leccion ingrese 1, si no desea hacerlo, ingrese 0." << endl;
                 cin >> seleccionador;
-                if (seleccionador != 0 || seleccionador != 1)
+                if (seleccionador != 0 && seleccionador != 1)
                 {
                     cout << "Accion incorrecta. Intente nuevamente." << endl;
                 }
-            } while (seleccionador != 0 || seleccionador != 1);
+            } while (seleccionador != 0 && seleccionador != 1);
 
             if(seleccionador == 1){
                 do{
@@ -371,11 +381,11 @@ void altaCurso(){
             {
                 cout << "Si desea agregar otra leccion, ingrese 1. Si no, ingrese 0." << endl;
                 cin >> seleccionador;
-                if (seleccionador != 0 || seleccionador != 1)
+                if (seleccionador != 0 && seleccionador != 1)
                 {
                     cout << "Accion incorrecta. Intente nuevamente." << endl;
                 }
-            } while (seleccionador != 0 || seleccionador != 1);
+            } while (seleccionador != 0 && seleccionador != 1);
         }while(seleccionador != 0);
     }
     cc->finalizarAltaCurso();
@@ -952,8 +962,17 @@ void realizarAccion(int opcion) {
             consultarIdiomas();
             break;
         case 5:
-            // Alta de curso
-            altaCurso();
+        // Alta de curso
+            try
+		    {
+                altaCurso();
+		    }catch (const ExNoHayProfesor& ex){
+		    	cout << "Error: " << ex.what() << endl;
+		    }catch (const ExProfesorSinIdiomas& ex){
+		    	cout << "Error: " << ex.what() << endl;
+		    }catch (const ExNoExistenCursos& ex){
+		    	cout << "Error: " << ex.what() << endl;
+		    }           
             break;
         case 6:
             // Agregar lección
