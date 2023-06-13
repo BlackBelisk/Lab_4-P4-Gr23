@@ -464,8 +464,22 @@ void realizarEjercicio(){
     advance(iter, cur - 1);
     cc->seleccionarCurso(iter->getNomCurso());
     list<DataEjercicio> ejercicios = cc->listarEjerciciosNoAprobados();
-    
-
+    int ej;
+    do
+    {
+        cout << "Seleccione el ejercicio ingresando el numero: " << endl;
+        cin >> ej;
+        if (ej < 0 || ej > ejercicios.size())
+        {
+            cout << "Numero de ejercicio invalido. Intente nuevamente." << endl;
+        }
+        
+    } while (ej < 0 || ej > ejercicios.size());
+    auto otroiter = ejercicios.begin();
+    advance(otroiter, ej - 1);
+    cc->seleccionarEjercicio(*otroiter);
+    cc->enunciarEjercicio();
+    cc->comprobarSolucionEjercicio();
 }
 
 void consultarEstadisticas(){

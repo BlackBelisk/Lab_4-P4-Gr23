@@ -74,9 +74,10 @@ void imprimirListaNotificaciones(list<DataNotificacion> notificaciones){
     
 }
 
-/*void imprimirListaEjercicios(list<DataEjercicio> ejercicios){
+void imprimirListaEjercicios(list<DataEjercicio> ejercicios){
     int num = 1;
     for (auto it = ejercicios.begin(); it != ejercicios.end(); it++){
+        cout << num << ". " << it->getDesc() << endl;
         num++;
     }
-}*/ //esto no esta completo asi que lo comento por ahora
+}

@@ -5,7 +5,7 @@
 #include <map>
 #include <sstream>
 #include "../include/controladorCursos.h"
-
+#include "../include/utils.h"
 using namespace std;
 
 ControladorCursos* ControladorCursos::instance = nullptr;
@@ -271,9 +271,18 @@ list<DataCurso> ControladorCursos::obtenerCursosNoAprobadosEstudiante(){
     if(CompletarPalabra* cp = dynamic_cast<CompletarPalabra*>(ejSel)){
         cout << cp->getFraseAComp() << endl;
         cout << "Ingrese las palabras faltantes separadas por un espacio: " << endl;
+        string s;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        getline(cin, s);
+        ingresarSolEjercicio(convertirAVector(s));
+        
     }else if (Traduccion* t = dynamic_cast<Traduccion*>(ejSel)){
         cout << t->getFraseTrad() << endl;
         cout << "Ingrese la frase traducida: " << endl;
+        string s;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        getline(cin, s);
+        ingresarSolEjercicio(s);
     }
  }
 
@@ -282,6 +291,8 @@ list<DataCurso> ControladorCursos::obtenerCursosNoAprobadosEstudiante(){
 //Utilizar función getline(cin, s);
 //Utilizar función convertirAVector();
 //En el hardcodeo solamente pasar a la función un string con la frase directamente
+
+//cambie esto porque si no era medio dificil determinar que tipo de ejercicio es sin que reviente algo, en vez de estar separado viene todo incluido en enunciar ejercicio()
 
 //En caso de traducir
 void ControladorCursos::ingresarSolEjercicio(string s){

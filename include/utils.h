@@ -21,3 +21,5 @@ void imprimirListaDataProfesores(list<DataProfesor> profesores);
 void imprimirListaCursos(list<DataCurso> cursos);
 
 void imprimirListaNotificaciones(list<DataNotificacion> notificaciones);
+
+void imprimirListaEjercicios(list<DataEjercicio> ejercicios);
