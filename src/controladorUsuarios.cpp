@@ -5,10 +5,6 @@
 #include "../include/IControladorUsuarios.h"
 #include "../include/controladorUsuarios.h"
 #include "../include/controladorIdiomas.h"
-#include "../include/usuario.h"
-#include "../include/estudiante.h"
-#include "../include/profesor.h"
-#include "../include/dataUsuario.h"
 
 using namespace std;
 

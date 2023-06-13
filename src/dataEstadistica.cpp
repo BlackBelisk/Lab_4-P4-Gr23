@@ -2,7 +2,7 @@
 #include <string>
 #include <list>
 #include "../include/dataEstadistica.h"
-#include "dataCurso.h"
+#include "../include/dataCurso.h"
 using namespace std;
 
 DataAvance::DataAvance(string curso, int avance): curso(curso), avance(avance){};

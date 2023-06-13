@@ -3,14 +3,12 @@
 
 #include <iostream>
 #include <string>
-#include <set>
 #include <map>
 #include "IObserver.h"
 #include "idioma.h"
-#include "inscripcion.h"
 #include "notificacion.h"
+#include "dataUsuario.h"
 using namespace std;
-class Idioma;
 
 class Usuario: public IObserver{
     private:
@@ -31,7 +29,7 @@ class Usuario: public IObserver{
     //Creador abstracto, unicamente para simplificar la creación de un Estudiante y Profesor
     Usuario() = default;
     Usuario(string, string, string, string);
-    virtual ~Usuario();
+    virtual ~Usuario(){};
 
     //Gets
     virtual string getNick() const;
@@ -58,5 +56,4 @@ class Usuario: public IObserver{
     bool operator==(const Usuario &user);
 };
 
-#include "idioma.h"
 #endif

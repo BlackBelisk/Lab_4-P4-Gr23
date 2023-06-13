@@ -3,12 +3,10 @@
 
 #include <iostream>
 #include <set>
-#include <vector>
-#include <map>
 #include <string>
+#include "usuario.h"
 
 using namespace std;
-#include "usuario.h"
 
 class Curso;
 class DataUsuario;
