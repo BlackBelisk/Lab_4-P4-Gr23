@@ -447,6 +447,24 @@ void realizarEjercicio(){
     auto iterador = estudiantes.begin();
     advance(iterador, estud - 1);
     cc->seleccionarEstudiante(iterador->getNick());
+    list<DataCurso> cursos = cc->obtenerCursosNoAprobadosEstudiante();
+    imprimirListaCursos(cursos);
+    int cur;
+    do
+    {
+        cout << "Seleccione el curso ingresando el numero: " << endl;
+        cin >> cur;
+        if (cur < 0 || cur > cursos.size())
+        {
+            cout << "Numero de curso invalido. Intente nuevamente." << endl;
+        }
+        
+    } while (cur < 0 || cur > cursos.size());
+    auto iter = cursos.begin();
+    advance(iter, cur - 1);
+    cc->seleccionarCurso(iter->getNomCurso());
+    list<DataEjercicio> ejercicios = cc->listarEjerciciosNoAprobados();
+    
 
 }
 
