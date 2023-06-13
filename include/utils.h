@@ -6,6 +6,7 @@
 #include "dataIdioma.h"
 #include "dataUsuario.h"
 #include "dataNotificacion.h"
+#include "dataLeccion.h"
 using namespace std;
 
 vector<string> convertirAVector(string);
@@ -23,3 +24,5 @@ void imprimirListaCursos(list<DataCurso> cursos);
 void imprimirListaNotificaciones(list<DataNotificacion> notificaciones);
 
 void imprimirListaEjercicios(list<DataEjercicio> ejercicios);
+
+void imprimirListaLeccion(list<DataLeccion> lecciones);
