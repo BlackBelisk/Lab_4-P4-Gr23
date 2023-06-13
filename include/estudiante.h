@@ -4,22 +4,20 @@
 #include <iostream>
 #include <set>
 #include <string>
-#include <vector>
 #include <map>
 
 #include "usuario.h"
+#include "dataUsuario.h"
 #include "inscripcion.h"
 #include "fecha.h"
 
 using namespace std;
 
-class DataUsuario;
-class DataEstudiante;
 class Inscripcion;
 class DataInscripcion;
 class Curso;
 
-class Estudiante : public Usuario{
+class Estudiante: public Usuario{
     private:
         string pais;
         Fecha fecNac;
@@ -79,7 +77,6 @@ class Estudiante : public Usuario{
         list<DataCurso> obtenerDataCursosAprobados();
 };
 
-#include "dataUsuario.h"
 #include "curso.h"
 #include "inscripcion.h"
 #include "dataInscripcion.h"

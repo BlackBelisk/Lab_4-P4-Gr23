@@ -32,24 +32,24 @@ class Usuario: public IObserver{
     virtual ~Usuario(){};
 
     //Gets
-    virtual string getNick() const;
-    virtual string getDescripcion() const;
-    virtual string getNombre() const;
-    virtual DataUsuario getDataUsuario();
+    string getNick() const;
+    string getDescripcion() const;
+    string getNombre() const;
+    DataUsuario getDataUsuario();
     //Sets
-    virtual void setNick(string);
-    virtual void setContra(string);
-    virtual void setDescripcion(string);
-    virtual void setNombre(string);
+    void setNick(string);
+    void setContra(string);
+    void setDescripcion(string);
+    void setNombre(string);
 
     //Suscripciones
-    virtual void agregarSuscripcion(Idioma*);
-    virtual list<DataIdioma> obtenerSuscripciones(); 
-    virtual void removerSuscripcionAIdioma(Idioma*);
-    virtual bool estaSuscritoA(Idioma*);
+    void agregarSuscripcion(Idioma*);
+    list<DataIdioma> obtenerSuscripciones(); 
+    void removerSuscripcionAIdioma(Idioma*);
+    bool estaSuscritoA(Idioma*);
 
     void Notificar(Notificacion*);
-    virtual list<DataNotificacion> obtenerNotificaciones();
+    list<DataNotificacion> obtenerNotificaciones();
     void eliminarNotificacion(string);
     void eliminarNotificaciones();
     
