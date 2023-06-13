@@ -15,7 +15,9 @@ using namespace std;
 
 class DataUsuario;
 class DataEstudiante;
-
+class Inscripcion;
+class DataInscripcion;
+class Curso;
 
 class Estudiante : public Usuario{
     private:
@@ -79,4 +81,7 @@ class Estudiante : public Usuario{
 };
 
 #include "dataUsuario.h"
+#include "curso.h"
+#include "inscripcion.h"
+#include "dataInscripcion.h"
 #endif

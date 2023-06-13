@@ -6,7 +6,7 @@
 #include <vector>
 #include <list>
 #include <set>
-#include "Usuario.h"
+#include "usuario.h"
 #include "estudiante.h"
 #include "profesor.h"
 #include "fecha.h"

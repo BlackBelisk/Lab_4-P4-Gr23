@@ -9,8 +9,12 @@
 
 using namespace std;
 #include "usuario.h"
-#include "idioma.h"
-#include "dataUsuario.h"
+
+class Curso;
+class DataUsuario;
+class DataProfesor;
+class Idioma;
+class DataIdioma;
 
 class Profesor : public Usuario{
     private:
@@ -57,4 +61,8 @@ class Profesor : public Usuario{
 
 };
 
+#include "dataUsuario.h"
+#include "curso.h"
+#include "idioma.h"
+#include "dataIdioma.h"
 #endif
