@@ -288,11 +288,13 @@ list<DataCurso> ControladorCursos::obtenerCursosNoAprobadosEstudiante(){
  }
 
  bool ControladorCursos::getTipoEjercicio(){
+    bool b;
     if(CompletarPalabra* cp = dynamic_cast<CompletarPalabra*>(ejSel)){
-        return true;
+        b = true;
     }else if (Traduccion* t = dynamic_cast<Traduccion*>(ejSel)){
-        return false;
+        b = false;
     }
+    return b;
  }
 
 //Un getline entre funciones y una función auxiliar que lo convierta a vector en caso de tipo completar
