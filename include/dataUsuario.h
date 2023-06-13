@@ -3,12 +3,7 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
 #include <list>
-#include <set>
-#include "usuario.h"
-#include "estudiante.h"
-#include "profesor.h"
 #include "fecha.h"
 #include "dataIdioma.h"
 
