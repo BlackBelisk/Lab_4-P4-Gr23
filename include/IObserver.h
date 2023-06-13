@@ -12,7 +12,7 @@ class IObserver{
             virtual void Notificar(Notificacion*) = 0;
             virtual void eliminarNotificacion(string) = 0;
             virtual void eliminarNotificaciones() = 0;
-            virtual ~IObserver() = 0;
+            virtual ~IObserver(){};
 };
 
 #endif
