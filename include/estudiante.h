@@ -28,7 +28,6 @@ class Estudiante: public Usuario{
         Estudiante(string, string, string, string, string, Fecha);
         Estudiante(DataUsuario, DataEstudiante);
         Estudiante(DataEstudiante);
-
         //Devuelte la data del estudiante
         DataEstudiante getDataEstudiante();
 
