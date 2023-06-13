@@ -1,5 +1,3 @@
-// .h para Ejercicio con sus subClases
-
 #ifndef _CLASSEJERCICIO_H_
 #define _CLASSEJERCICIO_H_
 
