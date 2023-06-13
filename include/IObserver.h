@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <string>
-
 #include "notificacion.h"
 
 using namespace std;

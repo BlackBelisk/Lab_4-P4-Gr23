@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <list>
 #include "IObserver.h"
 #include "idioma.h"
 #include "notificacion.h"
