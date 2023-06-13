@@ -161,3 +161,15 @@ list<DataCurso> Estudiante::obtenerDataCursosAprobados(){
     return misCursos;
 }
 
+map<string, Inscripcion*> Estudiante::getInscripciones(){
+    map<string, Inscripcion*> inscripciones;
+    for (auto it = this->enCurso.begin(); it != this->enCurso.end(); it++)
+    {
+        inscripciones.insert(make_pair(it->second->getCurso()->getNombre(),it->second));
+    }
+    for (auto it = this->aprobados.begin(); it != this->aprobados.end(); it++)
+    {
+        inscripciones.insert(make_pair(it->second->getCurso()->getNombre(),it->second));
+    }
+    return inscripciones;
+}

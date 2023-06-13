@@ -6,13 +6,13 @@
 #include <vector>
 #include <list>
 #include "inscripcion.h"
+#include "dataLeccion.h"
+#include "dataEjercicio.h"
+
 using namespace std;
 
 class DataEstudiante;
 class DataCurso;
-class DataLeccion;
-class DataEjercicio;
-
 class DataInscripcion{
     public:
             string estud;
@@ -27,7 +27,5 @@ class DataInscripcion{
 };
 
 #include "dataCurso.h"
-#include "dataEjercicio.h"
-#include "dataLeccion.h"
 #include "dataUsuario.h"
 #endif

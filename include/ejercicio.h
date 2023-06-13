@@ -8,6 +8,7 @@
 #include <vector>
 #include <stdio.h>
 #include <cstdlib>
+#include "dataEjercicio.h"
 using namespace std;
 
 

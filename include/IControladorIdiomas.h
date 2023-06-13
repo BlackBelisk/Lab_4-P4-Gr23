@@ -5,6 +5,7 @@
 #include <set>
 #include <list>
 #include <string>
+#include "idioma.h"
 #include "dataIdioma.h"
 
 using namespace std;

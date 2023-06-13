@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <set>
-
+#include <map>
 #include "fecha.h"
 using namespace std;
 class Estudiante;
