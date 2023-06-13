@@ -6,6 +6,11 @@
 using namespace std;
 
 
+Leccion::Leccion(string t, string o){
+    tema = t;
+    objetivo = o;
+}
+
 list<DataEjercicio> Leccion::ejsToData(){ 
     list<DataEjercicio> es;
     for(auto it = ejs.begin(); it != ejs.end(); ++it){
