@@ -214,3 +214,13 @@ Inscripcion* Curso::encontrarIns(Estudiante* e){
  void Curso::setHabilitado(bool t){
    habilitado = t;
  }
+
+ string Curso::getNombre(){
+   return nomCurso;
+ }
+string Curso::getDesc(){
+   return descripcion;
+}
+dif Curso::getDif(){
+   return dificultad;
+}

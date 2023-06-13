@@ -6,7 +6,6 @@
 using namespace std;
 
 Inscripcion::~Inscripcion(){
-    
 }
 
 Inscripcion::Inscripcion(Estudiante* e, Curso* c, Fecha f){
