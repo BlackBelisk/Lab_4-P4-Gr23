@@ -44,7 +44,7 @@ class IControladorCursos{//Interfaz
         virtual string mostrarFraseATraducir() = 0;
         virtual string mostrarFraseACompletar() = 0;
         virtual void ingresarSolEjercicio(vector<string> respuestas) = 0;
-        virtual void enunciarEjercicio() = 0;
+        virtual string enunciarEjercicio() = 0;
         virtual void seleccionarEjercicio(DataEjercicio ej) = 0;
         virtual list<DataCurso> listarCursos() = 0;
         virtual void habilitarCurso(string c) = 0;

@@ -59,7 +59,7 @@ class ControladorCursos : public IControladorCursos{
             string mostrarFraseATraducir() override;
             string mostrarFraseACompletar() override;
             void ingresarSolEjercicio(vector<string> respuestas) override;
-            void enunciarEjercicio() override;
+            string enunciarEjercicio() override;
             list<DataCurso> listarCursos() override;
             void habilitarCurso(string c) override;
             void obtenerInformacionCurso(DataCurso) override;

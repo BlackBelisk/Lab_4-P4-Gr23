@@ -49,3 +49,11 @@ string DataEjercicio::toString(){
         return "Descripcion: " + desc + "\n" + "Frase: " + fraseComp + "\n" + "Solucion: " + solToString() + "\n";
     }
 }
+
+string DataEjercicio::mostrarEj(){
+     if(tipo == 0){
+	    return "Descripcion: " + desc + "\n" + "Traduzca la frase: " + fraseTrad + "\n";
+    }else{
+        return "Descripcion: " + desc + "\n" + "Complete la frase: " + fraseComp + "\n";
+    }
+}

@@ -1,6 +1,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <limits>
+#include <map>
+#include <list>
+#include <set>
 
 #include "include/usuario.h"
 #include "include/estudiante.h"
@@ -181,80 +185,81 @@ void altaCurso(){
     Factory * factory = Factory::getInstance();
     IControladorCursos* cc = factory->getIControladorCursos();
 
-    //Se crea el curso
-    string nombreCurso;
-    cout << "Ingrese el nombre del curso: " << endl;
-    cin >> nombreCurso;
-
-    string descripcionCurso;
-    cout << "Ingrese la descripcion del curso: " << endl;
-    cin >> nombreCurso;
-
-    dif dificultadCurso;
-    do
-        {
-            cout << "Seleccione la dificultad del curso: " << endl << "0. Principiante" << endl << "1. Intermedio" << endl << "2. Avanzado" << endl;
-            cin >> dificultadCurso;
-            if (dificultadCurso < 0 || dificultadCurso > 2)
-            {
-                cout << "Numero de dificultad invalido. Intente nuevamente." << endl;
-            }
-            
-        } while (dificultadCurso < 0 || dificultadCurso > 2);
-    
-    //CREACION DEL CURSO
-    cc->crearCurso(nombreCurso, descripcionCurso, dificultadCurso);
-
-
     //Selecciona el profesor que dictara el curso
     IControladorUsuarios* cUsers = factory->getIControladorUsuarios();
     list<DataProfesor> profesores = cUsers->obtenerProfesores();
     imprimirListaDataProfesores(profesores);
     int profe;
-    do
-        {
+    do {
             cout << "Seleccione el profesor que dictara el curso ingresando el numero: " << endl;
             cin >> profe;
-            if (profe < 0 || profe > profesores.size())
+            if (profe < 0 || profe >= profesores.size())
             {
                 cout << "Numero de profesor invalido. Intente nuevamente." << endl;
             }
             
-        } while (profe < 0 || profe > profesores.size());
+        } while (profe < 0 || profe >= profesores.size());
     auto it = profesores.begin();
     advance(it, profe - 1);
-
-    //AQUI
-    cc->encontrarCurso(nombreCurso)->elegirProfesor(it->getNick());
-
+    cc->elegirProfesor(it->getNick());
 
     //Selecciona el idioma del curso a partir del profesor seleccionado
     IControladorIdiomas* ci = factory->getIControladorIdiomas();
-    list<DataIdioma> idprof = profesor.listarIdiomasProfesor();
+    list<DataIdioma> idprof = cc->listarIdiomasProfesor();
     imprimirListaDataIdiomas(idprof);
     int idioma;
     do
         {
             cout << "Seleccione el idioma del curso ingresando el numero: " << endl;
             cin >> idioma;
-            if (idioma < 0 || idioma > idprof.size())
+            if (idioma < 0 || idioma >= idprof.size())
             {
                 cout << "Numero de idioma invalido. Intente nuevamente." << endl;
             }
             
-        } while (idioma < 0 || idioma > idprof.size());
+        } while (idioma < 0 || idioma >= idprof.size());
     auto it2 = idprof.begin();
     advance(it2, idioma - 1);
+    cc->elegirIdiomaProfesor(*it2);
 
-    //AQUI
-    cc->encontrarCurso(nombreCurso)->elegirIdiomaProfesor(it2->getNombre());
+    //Se crea el curso
+    string nombreCurso;
+    cout << "Ingrese el nombre del curso: " << endl;
+    getline(cin, nombreCurso);
 
+    string descripcionCurso;
+    cout << "Ingrese la descripcion del curso: " << endl;
+    getline(cin,nombreCurso);
 
-    //Selecciona las Previas que contiene el curso (puede contener o no)
+    int dificultadCurso;
+    dif dc;
+    do
+        {
+            cout << "Seleccione la dificultad del curso: " << endl << "0. Principiante" << endl << "1. Intermedio" << endl << "2. Avanzado" << endl;
+            cin >> dificultadCurso;
+            switch(dificultadCurso){
+                case 0:
+                    dc = Principiante;
+                    break;
+                case 1:
+                    dc = Intermedio;
+                    break;
+                case 2:
+                    dc = Avanzado;
+                    break;
+                default:
+                    cout << "Numero de dificultad invalido. Intente nuevamente." << endl;
+                    break;
+            }
+            
+        } while (dificultadCurso < 0 || dificultadCurso > 2);
+    cc->crearCurso(nombreCurso, descripcionCurso, dc);
+
+    //Selecciona las Previas que contendrá el curso (puede contener o no)
     int seleccionador;
     do
         {
-            cout << "Si el curso contiene previas presione 1, sino seleccione 0" << endl;
+            cout << "Si desea agregar previas al curso ingrese 1, si no desea hacerlo, ingrese 0." << endl;
             cin >> seleccionador;
             if (seleccionador != 0 || seleccionador != 1)
             {
@@ -274,40 +279,103 @@ void altaCurso(){
         {
             do
             {
-                cout << "Seleccione el curso ingresando el numero: " << endl;
+                cout << "Seleccione el curso ingresando el numero o -1 para detenerse: " << endl;
                 cin >> curso;
-                if (curso < 0 || curso > cursos.size())
+                if (curso < -1 || curso >= cursos.size())
                 {
                     cout << "Numero de curso invalido. Intente nuevamente." << endl;
                 }
-            
-            } while (curso < 0 || curso > cursos.size());
-
-            //Agrega la previa seleccionada
-            auto it3 = cursos.begin();
-            advance(it3, curso - 1);
-
-            //AQUI
-            cc->encontrarCurso(nombreCurso)->agregarPrevia(it3->getNomCurso());
-
-            //Seguir agregando previas??
-            do
-            {
-                cout << "Para seguir seleccionando previas presione 1, para dejar de seleccionar presione 0" << endl;
-                cin >> seleccionador;
-                if (seleccionador != 0 || seleccionador != 1)
-                {
-                    cout << "Accion Incorrecta. Intente nuevamente." << endl;
-                    }
-            
-            } while (seleccionador != 0 || seleccionador != 1);
-            
-        } while (seleccionador != 0);
+            } while (curso < -1 || curso >= cursos.size());
+            if(curso != -1){
+                //Agrega la previa seleccionada
+                auto it3 = cursos.begin();
+                advance(it3, curso - 1);
+                cc->agregarPrevia(it3->getNomCurso());
+            }
+        } while (seleccionador != -1);
     }
 
 
     //Agregar Lecciones y Ejercicios al Curso (puede no agregar)
+    do
+        {
+            cout << "Si desea agregar lecciones al curso ingrese 1, si no desea hacerlo, ingrese 0." << endl;
+            cin >> seleccionador;
+            if (seleccionador != 0 || seleccionador != 1)
+            {
+                cout << "Accion incorrecta. Intente nuevamente." << endl;
+            }
+            
+        } while (seleccionador != 0 || seleccionador != 1);
+    if (seleccionador == 1){
+        do
+        {
+            //Agregar lecciones
+            cout << "Ingrese el tema del que tratara la leccion: " << endl;
+            string tema;
+            getline(cin, tema);
+            cout << "Ingrese el objetivo de la leccion: " << endl;
+            string obj;
+            getline(cin, obj);
+            cc->agregarLeccionCN(tema, obj);
+            do
+            {
+                cout << "Si desea agregar ejercicios a la leccion ingrese 1, si no desea hacerlo, ingrese 0." << endl;
+                cin >> seleccionador;
+                if (seleccionador != 0 || seleccionador != 1)
+                {
+                    cout << "Accion incorrecta. Intente nuevamente." << endl;
+                }
+            } while (seleccionador != 0 || seleccionador != 1);
 
+            if(seleccionador == 1){
+                do{
+                do
+                {
+                    cout << "Si desea agregar un ejercicio de tipo completar ingrese 1, si desea agregar uno de tipo traducir, ingrese 0. Si desea detenerse ingrese -1." << endl;
+                    cin >> seleccionador;
+                    if (seleccionador < -1 || seleccionador > 1)
+                    {
+                        cout << "Accion incorrecta. Intente nuevamente." << endl;
+                    }
+                } while (seleccionador < -1 || seleccionador > 1);
+                //Agregar ejercicios
+                if(seleccionador != -1){
+                    cout << "Ingrese la descripcion del ejercicio: " << endl;
+                    string desc;
+                    getline(cin, desc);
+                    if(seleccionador == 1){
+                        cout << "Ingrese la frase a completar con '-' donde va una palabra: " << endl;
+                        string fraseC;
+                        getline(cin, fraseC);
+                        cout << "Ingrese el conjunto de palabras solucion separadas por un espacio: " << endl;
+                        string solS;
+                        getline(cin, solS);
+                        vector<string> solC = convertirAVector(solS);
+                        cc->agregarEjercicio(desc, fraseC, solC);
+                    }else{
+                        cout << "Ingrese la frase a traducir: " << endl;
+                        string fraseT;
+                        getline(cin, fraseT);
+                        cout << "Ingrese la solucion: " << endl;
+                        string solT;
+                        getline(cin, solT);
+                        cc->agregarEjercicio(desc, fraseT, solT);
+                    }
+                }
+                }while(seleccionador != -1);
+            }
+            do
+            {
+                cout << "Si desea agregar otra leccion, ingrese 1. Si no, ingrese 0." << endl;
+                cin >> seleccionador;
+                if (seleccionador != 0 || seleccionador != 1)
+                {
+                    cout << "Accion incorrecta. Intente nuevamente." << endl;
+                }
+            } while (seleccionador != 0 || seleccionador != 1);
+        }while(seleccionador != 0);
+    }
 }
 
 void agregarLeccion(){
@@ -346,7 +414,7 @@ void agregarLeccion(){
         cout << "2. Agregar Completar Palabra." << endl;
         cout << "3. No agregar ejercicio." << endl;
         cout << endl;
-        cin<<num;
+        cin >> num;
         if (num == 1){
             string descT,fraseT,solT;
             cout << "Ingrese la descripcion del ejercicio: " << endl;
@@ -402,7 +470,7 @@ void agregarEjercicio(){
     auto itC = cursos.begin();
     advance(itC, course - 1); 
 
-    seleccionarCurso(itC->getNomCurso());
+    cc->seleccionarCurso(itC->getNomCurso());
     vector<DataLeccion> lex = cc->listarLecciones();
 
     imprimirListaLeccion(lex);//esta es nueva. si, es con vectores, no con listas como las otras :o
@@ -418,14 +486,14 @@ void agregarEjercicio(){
         } while (numLec < 0 || numLec > lex.size());
     auto itL = lex.begin();
     advance(itL, numLec - 1);
-    cc->seleccionarLeccion(itL);
+    cc->seleccionarLeccion(*itL);
 
     int num;
     do{
         cout << "Selecciona el tipo de ejercicio para agregar: " << endl;
         cout << "1. Agregar Traduccion." << endl;
         cout << "2. Agregar Completar Palabra." << endl;
-        cin<<num;
+        cin >> num;
         if (num == 1){
             string descT,fraseT,solT;
             cout << "Ingrese la descripcion del ejercicio: " << endl;
@@ -583,12 +651,12 @@ void realizarEjercicio(){
     {
         cout << "Seleccione el estudiante ingresando el numero: " << endl;
         cin >> estud;
-        if (estud < 0 || estud > estudiantes.size())
+        if (estud < 0 || estud >= estudiantes.size())
         {
             cout << "Numero de estudiante invalido. Intente nuevamente." << endl;
         }
         
-    } while (estud < 0 || estud > estudiantes.size());
+    } while (estud < 0 || estud >= estudiantes.size());
     auto iterador = estudiantes.begin();
     advance(iterador, estud - 1);
     cc->seleccionarEstudiante(iterador->getNick());
@@ -599,12 +667,12 @@ void realizarEjercicio(){
     {
         cout << "Seleccione el curso ingresando el numero: " << endl;
         cin >> cur;
-        if (cur < 0 || cur > cursos.size())
+        if (cur < 0 || cur >= cursos.size())
         {
             cout << "Numero de curso invalido. Intente nuevamente." << endl;
         }
         
-    } while (cur < 0 || cur > cursos.size());
+    } while (cur < 0 || cur >= cursos.size());
     auto iter = cursos.begin();
     advance(iter, cur - 1);
     cc->seleccionarCurso(iter->getNomCurso());
@@ -614,16 +682,33 @@ void realizarEjercicio(){
     {
         cout << "Seleccione el ejercicio ingresando el numero: " << endl;
         cin >> ej;
-        if (ej < 0 || ej > ejercicios.size())
+        if (ej < 0 || ej >= ejercicios.size())
         {
             cout << "Numero de ejercicio invalido. Intente nuevamente." << endl;
         }
         
-    } while (ej < 0 || ej > ejercicios.size());
+    } while (ej < 0 || ej >= ejercicios.size());
     auto otroiter = ejercicios.begin();
     advance(otroiter, ej - 1);
     cc->seleccionarEjercicio(*otroiter);
-    cc->enunciarEjercicio();
+    string letra = cc->enunciarEjercicio();
+    cout << letra << endl;
+    if(cc->getTipoEjercicio()){
+        cout << (*otroiter).getFraseC() << endl;
+        cout << "Ingrese las palabras faltantes separadas por un espacio: " << endl;
+        string s;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        getline(cin, s);
+        cc->ingresarSolEjercicio(convertirAVector(s));
+        
+    }else{
+        cout << (*otroiter).getFraseT() << endl;
+        cout << "Ingrese la frase traducida: " << endl;
+        string s;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        getline(cin, s);
+        cc->ingresarSolEjercicio(s);
+    }
     cc->comprobarSolucionEjercicio();
 }
 

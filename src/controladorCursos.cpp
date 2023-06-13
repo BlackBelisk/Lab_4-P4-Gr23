@@ -266,23 +266,15 @@ list<DataCurso> ControladorCursos::obtenerCursosNoAprobadosEstudiante(){
     ejSel = ins->getLecActual()->obtenerEj(e.getDesc());
  }
 
- void ControladorCursos::enunciarEjercicio(){
-    cout << ejSel->getDescripcion() << endl;
+ string ControladorCursos::enunciarEjercicio(){
+    return ejSel->getDescripcion();
+ }
+
+ bool ControladorCursos::getTipoEjercicio(){
     if(CompletarPalabra* cp = dynamic_cast<CompletarPalabra*>(ejSel)){
-        cout << cp->getFraseAComp() << endl;
-        cout << "Ingrese las palabras faltantes separadas por un espacio: " << endl;
-        string s;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        getline(cin, s);
-        ingresarSolEjercicio(convertirAVector(s));
-        
+        return true;
     }else if (Traduccion* t = dynamic_cast<Traduccion*>(ejSel)){
-        cout << t->getFraseTrad() << endl;
-        cout << "Ingrese la frase traducida: " << endl;
-        string s;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        getline(cin, s);
-        ingresarSolEjercicio(s);
+        return false;
     }
  }
 

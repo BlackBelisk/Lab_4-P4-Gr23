@@ -20,7 +20,8 @@ class DataEjercicio{
             DataEjercicio(string, string, string);
             DataEjercicio(string, string, vector<string>);
             string getDesc() const; 
-            string toString();//Pendiente      
+            string toString();
+            string mostrarEj();    
 
             //Traducir
             string getFraseT()const;
