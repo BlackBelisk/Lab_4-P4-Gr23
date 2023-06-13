@@ -49,12 +49,6 @@ class Profesor : public Usuario{
 
         //Remueve el curso c de los cursos del profesors
         void removerCurso(Curso* c);
-    
-        vector<int> obtenerPromediosProfesor();
-
-        vector<Idioma*> obtenerIdiomasProfesor();
-
-
 };
 
 #endif
