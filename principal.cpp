@@ -265,6 +265,7 @@ void altaCurso(){
     cc->crearCurso(nombreCurso, descripcionCurso, dc);
 
     //Selecciona las Previas que contendrá el curso (puede contener o no)
+    
     int seleccionador;
     do
         {
@@ -282,30 +283,31 @@ void altaCurso(){
         //Agregar previas
         list<DataCurso> cursos = cc->listarCursosHab();
         if(cursos.size() == 0){
-            throw ExNoExistenCursos();
-        }
-        imprimirListaCursos(cursos);
-        int curso;
+            cout << "No hay cursos habilitados todavia. " << endl;
+        }else{
+            imprimirListaCursos(cursos);
+            int curso;
 
-        //Bucle para agregar tantas previas como quiera
-        do
-        {
+            //Bucle para agregar tantas previas como quiera
             do
             {
-                cout << "Seleccione el curso ingresando el numero o 0 para detenerse: " << endl;
-                cin >> curso;
-                if (curso < 0 || curso > cursos.size())
+                do
                 {
-                    cout << "Numero de curso invalido. Intente nuevamente." << endl;
+                    cout << "Seleccione el curso ingresando el numero o 0 para detenerse: " << endl;
+                    cin >> curso;
+                    if (curso < 0 || curso > cursos.size())
+                    {
+                        cout << "Numero de curso invalido. Intente nuevamente." << endl;
+                    }
+                } while (curso < 0 || curso > cursos.size());
+                if(curso != 0){
+                    //Agrega la previa seleccionada
+                    auto it3 = cursos.begin();
+                    advance(it3, curso - 1);
+                    cc->agregarPrevia(it3->getNomCurso());
                 }
-            } while (curso < 0 || curso > cursos.size());
-            if(curso != 0){
-                //Agrega la previa seleccionada
-                auto it3 = cursos.begin();
-                advance(it3, curso - 1);
-                cc->agregarPrevia(it3->getNomCurso());
-            }
-        } while (seleccionador != 0);
+            } while (curso != 0);
+        }
     }
 
 
