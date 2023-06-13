@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <list>
+#include <set>
 
 using namespace std;
 class Ejercicio;
