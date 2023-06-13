@@ -2,6 +2,7 @@
 #include <iostream>
 #include <set>
 #include "../include/curso.h"
+#include "../include/leccion.h"
 
 using namespace std;
 
@@ -70,7 +71,8 @@ Inscripcion* Curso::encontrarIns(Estudiante* e){
  }
 
  void Curso::nuevaLeccion(string nomTema, string objLeccion){
-    Leccion* L = new Leccion(nomTema, descripcion);
+   cout << nomTema << "|||" << objLeccion;
+    Leccion* L = new Leccion(nomTema, objLeccion);
     lecciones.push_back(L);
  }
 

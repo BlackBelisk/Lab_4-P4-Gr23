@@ -238,7 +238,7 @@ void altaCurso(){
 
     string descripcionCurso;
     cout << "Ingrese la descripcion del curso: " << endl;
-    getline(cin,nombreCurso);
+    getline(cin,descripcionCurso);
 
     int dificultadCurso;
     dif dc;
@@ -269,6 +269,7 @@ void altaCurso(){
     do
         {
             cout << "Si desea agregar previas al curso ingrese 1, si no desea hacerlo, ingrese 0." << endl;
+            cin.ignore();
             cin >> seleccionador;
             if (seleccionador < 0 || seleccionador > 1)
             {
@@ -312,6 +313,7 @@ void altaCurso(){
     do
         {
             cout << "Si desea agregar lecciones al curso ingrese 1, si no desea hacerlo, ingrese 0." << endl;
+            cin.ignore();
             cin >> seleccionador;
             if (seleccionador != 0 && seleccionador != 1)
             {
@@ -325,11 +327,13 @@ void altaCurso(){
             //Agregar lecciones
             cout << "Ingrese el tema del que tratara la leccion: " << endl;
             string tema;
+            cin.ignore();
             getline(cin, tema);
             cout << "Ingrese el objetivo de la leccion: " << endl;
             string obj;
             getline(cin, obj);
             cc->agregarLeccionCN(tema, obj);
+            cout << "Leccion añadida." << endl;
             do
             {
                 cout << "Si desea agregar ejercicios a la leccion ingrese 1, si no desea hacerlo, ingrese 0." << endl;
@@ -342,44 +346,46 @@ void altaCurso(){
 
             if(seleccionador == 1){
                 do{
-                do
-                {
-                    cout << "Si desea agregar un ejercicio de tipo completar ingrese 1, si desea agregar uno de tipo traducir, ingrese 0. Si desea detenerse ingrese -1." << endl;
-                    cin >> seleccionador;
-                    if (seleccionador < -1 || seleccionador > 1)
+                    do
                     {
-                        cout << "Accion incorrecta. Intente nuevamente." << endl;
+                        cout << "Si desea agregar un ejercicio de tipo completar ingrese 1, si desea agregar uno de tipo traducir, ingrese 2. Si desea detenerse ingrese 0." << endl;
+                        cin >> seleccionador;
+                        if (seleccionador < 0 || seleccionador > 2)
+                        {
+                            cout << "Accion incorrecta. Intente nuevamente." << endl;
+                        }
+                    } while (seleccionador < 0 || seleccionador > 2);
+                    //Agregar ejercicios
+                    if(seleccionador != 0){
+                        cout << "Ingrese la descripcion del ejercicio: " << endl;
+                        string desc;
+                        cin.ignore();
+                        getline(cin, desc);
+                        if(seleccionador == 1){
+                            cout << "Ingrese la frase a completar con '-' donde va una palabra: " << endl;
+                            string fraseC;
+                            getline(cin, fraseC);
+                            cout << "Ingrese el conjunto de palabras solucion separadas por un espacio: " << endl;
+                            string solS;
+                            getline(cin, solS);
+                            vector<string> solC = convertirAVector(solS);
+                            cc->agregarEjercicio(desc, fraseC, solC);
+                        }else{
+                            cout << "Ingrese la frase a traducir: " << endl;
+                            string fraseT;
+                            getline(cin, fraseT);
+                            cout << "Ingrese la solucion: " << endl;
+                            string solT;
+                            getline(cin, solT);
+                            cc->agregarEjercicio(desc, fraseT, solT);
+                        }
                     }
-                } while (seleccionador < -1 || seleccionador > 1);
-                //Agregar ejercicios
-                if(seleccionador != -1){
-                    cout << "Ingrese la descripcion del ejercicio: " << endl;
-                    string desc;
-                    getline(cin, desc);
-                    if(seleccionador == 1){
-                        cout << "Ingrese la frase a completar con '-' donde va una palabra: " << endl;
-                        string fraseC;
-                        getline(cin, fraseC);
-                        cout << "Ingrese el conjunto de palabras solucion separadas por un espacio: " << endl;
-                        string solS;
-                        getline(cin, solS);
-                        vector<string> solC = convertirAVector(solS);
-                        cc->agregarEjercicio(desc, fraseC, solC);
-                    }else{
-                        cout << "Ingrese la frase a traducir: " << endl;
-                        string fraseT;
-                        getline(cin, fraseT);
-                        cout << "Ingrese la solucion: " << endl;
-                        string solT;
-                        getline(cin, solT);
-                        cc->agregarEjercicio(desc, fraseT, solT);
-                    }
-                }
-                }while(seleccionador != -1);
+                }while(seleccionador != 0);
             }
             do
             {
                 cout << "Si desea agregar otra leccion, ingrese 1. Si no, ingrese 0." << endl;
+                cin.ignore();
                 cin >> seleccionador;
                 if (seleccionador != 0 && seleccionador != 1)
                 {

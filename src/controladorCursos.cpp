@@ -68,8 +68,9 @@ void ControladorCursos::elegirIdiomaProfesor(DataIdioma di){
 }
 
 void ControladorCursos::crearCurso(string nomCurso, string descCurso, dif difCurso){
-    Curso* curso = new Curso(nomCurso, descCurso, difCurso);
-    cursos.insert(make_pair(nomCurso, curso));
+    Curso* c = new Curso(nomCurso, descCurso, difCurso);
+    cursos.insert(make_pair(nomCurso, c));
+    curso = c;
 }
 
 list<DataCurso> ControladorCursos::listarCursosHab(){
@@ -90,14 +91,13 @@ list<DataCurso> ControladorCursos::listarCursosHab(){
 void ControladorCursos::agregarPrevia(string nPrevia){
     Curso* c = getCurso();
     c->getPrevias().insert(cursos[nPrevia]);
-    lec = c->getLecciones().back();
 }
 
 //Esto en un while mientras se quiera agregar más
 void ControladorCursos::agregarLeccionCN(string nomTema, string objLeccion){
     Curso* c = getCurso();
     c->nuevaLeccion(nomTema, objLeccion);
-
+    lec = c->getLecciones().back();
 }
 
 //Estos en un while mientras se quiera agregar más
@@ -114,12 +114,10 @@ void ControladorCursos::agregarLeccionCN(string nomTema, string objLeccion){
 
  void ControladorCursos::finalizarAltaCurso(){
     Curso* c = getCurso();
-    Profesor* p = getProfesorElegido();
-    Idioma* i = getIdiomaElegido();
-    c->setProfesor(p);
-    c->setIdioma(i);
-    p->agregarCursoAProfesor(c);
-    i->Notificar(c->getNombre());
+    c->setProfesor(profe);
+    c->setIdioma(idi);
+    profe->agregarCursoAProfesor(c);
+    idi->Notificar(c->getNombre());
     curso = nullptr;
     idi = nullptr;
     profe = nullptr;

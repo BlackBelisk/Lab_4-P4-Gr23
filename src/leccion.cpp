@@ -7,8 +7,8 @@ using namespace std;
 
 
 Leccion::Leccion(string t, string o){
-    tema = t;
-    objetivo = o;
+    this->tema = t;
+    this->objetivo = o;
 }
 
 list<DataEjercicio> Leccion::ejsToData(){ 
