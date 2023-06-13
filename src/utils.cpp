@@ -80,4 +80,14 @@ void imprimirListaEjercicios(list<DataEjercicio> ejercicios){
         cout << num << ". " << it->getDesc() << endl;
         num++;
     }
+    
+}
+
+void imprimirListaLeccion(list<DataLeccion> lecciones){
+    int num = 1;
+    for (auto it = lecciones.begin(); it != lecciones.end(); it++)
+    {
+        cout << num << ". " << it->toString()<< endl;
+        num++;
+    } 
 }
