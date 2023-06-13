@@ -4,6 +4,7 @@
 #include <iostream>
 #include <set>
 
+#include "fecha.h"
 using namespace std;
 class Estudiante;
 class Curso;

@@ -6,7 +6,7 @@
 #include <list>
 #include <string>
 #include "IControladorIdiomas.h"
-#include <idioma.h>
+#include "idioma.h"
 #include "dataIdioma.h"
 
 using namespace std;

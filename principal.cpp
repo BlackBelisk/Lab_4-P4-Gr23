@@ -17,7 +17,7 @@
 #include "include/utils.h"
 #include "include/excepciones.h"
 //Controladores
-#include "factory.h"
+#include "include/factory.h"
 
 #include "include/IControladorCursos.h"
 #include "include/ControladorCursos.h"

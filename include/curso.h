@@ -16,7 +16,8 @@ class Idioma;
 class Inscripcion;
 class Leccion;
 class DataCurso;
-
+class DataLeccion;
+class DataInscripcion;
 class Curso{
     private:
             string nomCurso;
@@ -74,4 +75,6 @@ class Curso{
 #include "inscripcion.h"
 #include "leccion.h"
 #include "dataCurso.h"
+#include "dataLeccion.h"
+#include "dataInscripcion.h"
 #endif

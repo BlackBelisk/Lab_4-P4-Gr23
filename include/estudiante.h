@@ -10,8 +10,12 @@
 #include "usuario.h"
 #include "inscripcion.h"
 #include "fecha.h"
-#include "dataUsuario.h"
+
 using namespace std;
+
+class DataUsuario;
+class DataEstudiante;
+
 
 class Estudiante : public Usuario{
     private:
@@ -74,4 +78,5 @@ class Estudiante : public Usuario{
         list<DataCurso> obtenerDataCursosAprobados();
 };
 
+#include "dataUsuario.h"
 #endif
