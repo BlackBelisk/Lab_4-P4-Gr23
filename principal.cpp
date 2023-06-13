@@ -47,7 +47,9 @@ using namespace std;
 
 // Función para cargar los datos de prueba
 void cargarDatosPrueba() {
-   
+   Factory * factory = Factory::getInstance();
+   IControladorUsuarios* cu = factory->getIControladorUsuarios();
+   cu->nuevoEstudiante(DataEstudiante("jpidiom","asdfg123","Soy un apasionado del aprendizaje de idiomas.","Juan Perez", "Argentina", Fecha(15,07,1995)));
 }
 
 void altaUsuario(){
