@@ -52,11 +52,13 @@ Leccion::~Leccion(){
 }
 
 Ejercicio* Leccion::obtenerEj(string descEj){
+    Ejercicio* e = nullptr;
     for(auto it = ejs.begin(); it != ejs.end(); ++it){
         if((*it)->getDescripcion() == descEj){
-            return (*it);
+            e = (*it);
         }
     }
+    return e;
 }
 
 set<Ejercicio*> Leccion::getEjs(){
