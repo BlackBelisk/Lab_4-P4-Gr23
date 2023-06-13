@@ -47,8 +47,8 @@ class ControladorCursos : public IControladorCursos{
             void agregarEjercicio(string desc, string, vector<string>) override;
             void finalizarAltaCurso() override;
             list<DataIdioma> listarIdiomasProfesor() override;
-            void crearTraducir(string desc, string fraseT, string solT) override;
-            void crearCompletar(string desc, string fraseC, vector<string> solC) override;
+            //void crearTraducir(string desc, string fraseT, string solT) override;
+            //void crearCompletar(string desc, string fraseC, vector<string> solC) override;
             void eliminarCurso(string nc) override;
             list<DataCurso> obtenerCursosNoAprobadosEstudiante() override;
             list<DataEjercicio> listarEjerciciosNoAprobados() override;
@@ -56,13 +56,13 @@ class ControladorCursos : public IControladorCursos{
             void comprobarSolucionEjercicio() override;
             bool comprobarCompletarPalabra() override;
             bool comprobarTraducir() override;
-            string mostrarFraseATraducir() override;
-            string mostrarFraseACompletar() override;
+            //string mostrarFraseATraducir() override;
+            //string mostrarFraseACompletar() override;
             void ingresarSolEjercicio(vector<string> respuestas) override;
             string enunciarEjercicio() override;
             list<DataCurso> listarCursos() override;
             void habilitarCurso(string c) override;
-            void obtenerInformacionCurso(DataCurso) override;
+            //void obtenerInformacionCurso(DataCurso) override;
             list<DataCurso> listarCursosDisponibles() override;
             void nuevoCurso(DataCurso) override;
             void insLeccion(string nomCurso, string nomTema, string obj) override;

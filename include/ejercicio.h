@@ -31,7 +31,7 @@ class Ejercicio {
 
 		//Funcion esEjercicioCorrecto virtual pura, cada clase hija (Libro y JuegoMesa) tendra una implementacion distinta
 		
-		virtual DataEjercicio ejToData();
+		virtual DataEjercicio ejToData() = 0;
 
 		//virtual vector<string> getSolucionComp() = 0;
 		virtual string toString() = 0;
