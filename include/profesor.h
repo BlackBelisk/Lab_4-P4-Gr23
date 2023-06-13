@@ -5,14 +5,14 @@
 #include <set>
 #include <string>
 #include "usuario.h"
+#include "dataUsuario.h"
+#include "idioma.h"
+#include "dataIdioma.h"
+#include "IObserver.h"
 
 using namespace std;
 
 class Curso;
-class DataUsuario;
-class DataProfesor;
-class Idioma;
-class DataIdioma;
 
 class Profesor : public Usuario{
     private:
@@ -53,8 +53,5 @@ class Profesor : public Usuario{
         void removerCurso(Curso* c);
 };
 
-#include "dataUsuario.h"
 #include "curso.h"
-#include "idioma.h"
-#include "dataIdioma.h"
 #endif

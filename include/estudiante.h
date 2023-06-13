@@ -5,17 +5,18 @@
 #include <set>
 #include <string>
 #include <map>
-
 #include "usuario.h"
 #include "dataUsuario.h"
 #include "inscripcion.h"
 #include "fecha.h"
+#include "IObserver.h"
 
 using namespace std;
 
 class Inscripcion;
 class DataInscripcion;
 class Curso;
+class DataCurso;
 
 class Estudiante: public Usuario{
     private:
@@ -76,8 +77,8 @@ class Estudiante: public Usuario{
         //Devuelve una list<DataCurso> con los datos de todos los cursos aprobados por el estudiante
         list<DataCurso> obtenerDataCursosAprobados();
 };
-
 #include "curso.h"
 #include "inscripcion.h"
 #include "dataInscripcion.h"
+#include "dataCurso.h"
 #endif
