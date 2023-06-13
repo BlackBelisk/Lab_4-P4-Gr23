@@ -34,6 +34,8 @@ Profesor::Profesor(DataProfesor dp){
 
 string Profesor::getInstituto(){return this->instituto;}
 
+ set<Curso*> Profesor::getCursosProp(){ return this->cursosPropuestos;}
+
 void Profesor::agregarIdioma(Idioma* idi){
     this->especializaciones.insert(idi);
 }

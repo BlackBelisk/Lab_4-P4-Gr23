@@ -31,7 +31,7 @@ class Usuario: public IObserver{
     //Creador abstracto, unicamente para simplificar la creación de un Estudiante y Profesor
     Usuario() = default;
     Usuario(string, string, string, string);
-    virtual ~Usuario();
+    virtual ~Usuario(){};
 
     //Gets
     virtual string getNick() const;
