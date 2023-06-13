@@ -123,7 +123,7 @@ void altaUsuario(){
                     cu->agregarEspecializacion(*it);
                     cout << "Idioma agregado." << endl;
                 }
-            } while (espec <= 0 || espec > listaIdiomas.size());
+            } while (espec!=0);
         }
         else{
             cout << "Opcion invalida. Por favor, seleccione una opcion valida." << endl;
@@ -167,7 +167,7 @@ void altaIdioma(){
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout << "Ingrese el nombre del idioma: " << endl;
     getline(cin, nomIdi);
-    if (ci->existeIdioma(nomIdi))
+    if (ci->existeIdioma(nomIdi)) //Hacer lowercase para verificar ??????
     {
         throw ExYaExisteIdioma();
     }
@@ -180,6 +180,7 @@ void consultarIdiomas(){
     Factory * factory = Factory::getInstance();
     IControladorIdiomas* ci = factory->getIControladorIdiomas();
     list<DataIdioma> listaIdiomas = ci->listarIdiomas();
+    cout << "Idiomas: " << endl;
     imprimirListaDataIdiomas(listaIdiomas);
 } 
 
@@ -727,6 +728,7 @@ void consultarEstadisticas(){
              << endl << "1. Estudiante. "
              << endl << "2. Profesor. "
              << endl << "3. Curso. " << endl;
+        cin >> tipoEstad;
         if (tipoEstad < 0 || tipoEstad > 3)
         {
             cout << "Numero de estadistica invalida. Intente nuevamente" << endl;

@@ -86,6 +86,6 @@ std::ostream & operator<<(std::ostream& os, const DataProfesor& dp){
        << "Descripcion: " << dp.getDescripcion() << endl
        << "Nombre: " << dp.getNombre() << endl
        << "Instituto: " << dp.getInstituto() <<endl
-       << "Idiomas: " << listaAString(dp.getIdiomas()) << endl;
+       << listaAString(dp.getIdiomas()) << endl;
     return os;
 }
