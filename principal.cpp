@@ -331,9 +331,9 @@ void agregarLeccion(){
     string nomTema,obj;
     cout << "Ingrese el nombre del tema de la leccion: " << endl;
     cin.ignore();
-    getline >> nomTema;
+    getline(cin,nomTema);
     cout << "Ingrese el objetivo de la leccion: " << endl;
-    getline >> obj;
+    getline(cin,obj);
 
     cc->insLeccion(it->getNomCurso(), nomTema , obj);
     
@@ -351,11 +351,11 @@ void agregarLeccion(){
             string descT,fraseT,solT;
             cout << "Ingrese la descripcion del ejercicio: " << endl;
             cin.ignore();
-            getline >> descT;
+            getline(cin,descT);
             cout << "Ingrese la frase a traducir: " << endl;
-            getline >> fraseT;
+            getline(cin,fraseT);
             cout << "Ingrese la solucion de la traduccion: " << endl;
-            getline >> solT;
+            getline(cin,solT);
             cout << endl;
 
             cc->agregarEjercicio(descT, fraseT, solT); //lec deberia ser la ultima leccion. entonces creo que esta bien UwU
@@ -365,12 +365,12 @@ void agregarLeccion(){
             string descC,fraseC,solCString;
             cout << "Ingrese la descripcion del ejercicio: " << endl;
             cin.ignore();
-            getline >> descC;
+            getline(cin,descC);
             cout << "Ingrese la frase a completar: " << endl;
-            getline >> fraseC;
+            getline(cin,fraseC);
             cout << "Ingrese la solucion de las palabras faltantes con espacios de esta forma: " << endl;
             cout << "Palabra1 palabra2 palabra3" << endl;
-            getline >> solCString;
+            getline(cin,solCString);
             vector<string> solC = convertirAVector(solCString); 
                                           
             cc->agregarEjercicio(descC, fraseC, solC);
@@ -384,6 +384,81 @@ cout << "Leccion agregada correctamente" << endl;
 }
 
 void agregarEjercicio(){
+
+ Factory* factory = Factory::getInstance();
+    IControladorCursos* cc = factory->getIControladorCursos();
+    list<DataCurso> cursos = cc->listarCursosNA();
+    imprimirListaCursos(cursos);
+    int course;
+        do
+        {
+            cout << "Seleccione el curso deseado ingresando el numero: " << endl;
+            cin >> course;
+            if (course < 0 || course > cursos.size())
+            {
+                cout << "Numero de curso invalido. Intente nuevamente" << endl; 
+            }
+        } while (course < 0 || course > cursos.size());
+    auto itC = cursos.begin();
+    advance(itC, course - 1); 
+
+    seleccionarCurso(itC->getNomCurso());
+    vector<DataLeccion> lex = cc->listarLecciones();
+
+    imprimirListaLeccion(lex);//esta es nueva. si, es con vectores, no con listas como las otras :o
+    int numLec;
+        do
+        {
+            cout << "Seleccione la leccion deseada ingresando el numero: " << endl;
+            cin >> numLec;
+            if (numLec < 0 || numLec > lex.size())
+            {
+                cout << "Numero de leccion invalido. Intente nuevamente" << endl; 
+            }
+        } while (numLec < 0 || numLec > lex.size());
+    auto itL = lex.begin();
+    advance(itL, numLec - 1);
+    cc->seleccionarLeccion(itL);
+
+    int num;
+    do{
+        cout << "Selecciona el tipo de ejercicio para agregar: " << endl;
+        cout << "1. Agregar Traduccion." << endl;
+        cout << "2. Agregar Completar Palabra." << endl;
+        cin<<num;
+        if (num == 1){
+            string descT,fraseT,solT;
+            cout << "Ingrese la descripcion del ejercicio: " << endl;
+            cin.ignore();
+            getline(cin,descT);
+            cout << "Ingrese la frase a traducir: " << endl;
+            getline(cin,fraseT);
+            cout << "Ingrese la solucion de la traduccion: " << endl;
+            getline(cin,solT);
+            cout << endl;
+
+            cc->agregarEjercicio(descT, fraseT, solT);
+            cout << "Ejercicio agregado correctamente" << endl;
+        }
+        else if (num == 2){
+            string descC,fraseC,solCString;
+            cout << "Ingrese la descripcion del ejercicio: " << endl;
+            cin.ignore();
+            getline(cin,descC);
+            cout << "Ingrese la frase a completar: " << endl;
+            getline(cin,fraseC);
+            cout << "Ingrese la solucion de las palabras faltantes con espacios de esta forma: " << endl;
+            cout << "Palabra1 palabra2 palabra3" << endl;
+            getline(cin, solCString);
+            vector<string> solC = convertirAVector(solCString); 
+                                          
+            cc->agregarEjercicio(descC, fraseC, solC);
+            cout << "Ejercicio agregado correctamente" << endl;
+        }
+        else  {cout << "Opcion invalida. Intente nuevamente" << endl; }
+        }while (num != 1 && num != 2);
+
+    cc->darAltaEjercicio();
 
 }
 
