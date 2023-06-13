@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <list>
-#include "dataEstadistica.h"
+#include "../include/dataEstadistica.h"
 #include "dataCurso.h"
 using namespace std;
 

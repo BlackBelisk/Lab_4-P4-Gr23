@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "dataNotificacion.h"
+#include "../include/dataNotificacion.h"
 using namespace std;
 
 DataNotificacion::DataNotificacion(string curso, string idioma){

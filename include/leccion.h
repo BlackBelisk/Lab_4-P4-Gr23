@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <string>
-#include <set>
+#include <list>
 
 using namespace std;
 class Ejercicio;
