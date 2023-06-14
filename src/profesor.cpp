@@ -21,7 +21,7 @@ Profesor::Profesor(DataUsuario du, DataProfesor dp){
     this->setContra(du.getContra());
     this->setDescripcion(du.getDescripcion());
     this->setNombre(du.getNombre());
-    this->instituto = (dp.getInstituto());
+    this->instituto = dp.getInstituto();
 }
 
 Profesor::Profesor(DataProfesor dp){
@@ -29,7 +29,7 @@ Profesor::Profesor(DataProfesor dp){
     this->setContra(dp.getContra());
     this->setDescripcion(dp.getDescripcion());
     this->setNombre(dp.getNombre());
-    this->instituto = (dp.getInstituto());
+    this->instituto = dp.getInstituto();
 }
 
 string Profesor::getInstituto(){return this->instituto;}

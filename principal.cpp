@@ -50,29 +50,72 @@ void cargarDatosPrueba() {
     Factory * factory = Factory::getInstance();
     IControladorIdiomas* ci = factory->getIControladorIdiomas();
     IControladorUsuarios* cu = factory->getIControladorUsuarios();
-    //Idiomas
-    DataIdioma ingles = DataIdioma("Ingles");
-    DataIdioma aleman = DataIdioma("Aleman");
-    DataIdioma portugues = DataIdioma("Portugues");
-    ci->nuevoIdioma(ingles);
-    ci->nuevoIdioma(aleman);
-    ci->nuevoIdioma(portugues);
-    //Idiomas
-    DataEstudiante jpidiom = DataEstudiante("jpidiom","asdfg123","Soy un apasionado del aprendizaje de idiomas.","Juan Perez", "Argentina", Fecha(15,07,1995));
-    cu->nuevoEstudiante(jpidiom);
-    cu->nuevoEstudiante(DataEstudiante("marsilva", "qwer456", "Como amante de los idiomas disfruto explorando nuevas formas de interactuar.", "Maria Silva", "Ecuador", Fecha(28,02,1998)));
-    cu->nuevoEstudiante(DataEstudiante("pero12", "789werty", "Soy un entusiasta del aprendizaje de idiomas.", "Pedro Rodriguez", "Peru", Fecha(10,11,1994)));
-    cu->nuevoEstudiante(DataEstudiante("laugu", "c1v2b3m4", "Estoy fascinada por la forma en que las palabras pueden unir a las personas.", "Laura Gutierrez", "Chile", Fecha(22,04,1997)));
-    // cu->nuevoEstudiante(DataEstudiante("carlo22","tyuipz147","Emocionado por adquirir fluidez en diferentes lenguas.","Carlos Lopez","Uruguay",Fecha(03,09,1996)));
-    // cu->nuevoEstudiante(DataEstudiante("anator","1qsxc36","Disfruto de la belleza de las diferentes estructuras y sonidos.","Ana Torres","Argentina",Fecha(12,01,1999)));
-    // cu->nuevoEstudiante(DataEstudiante("luher24","t7h8y5u6","Emocionada en la riqueza cultural que cada idioma ofrece.","Lucia Hernandez","Colombia",Fecha(25,06,1993)));
-    // cu->nuevoEstudiante(DataEstudiante("dagon","1w2e3r4t5","Aprender nuevas lenguas y sumergirme en diferentes culturas.","David Gonzalez","Uruguay",Fecha(08,12,1997)));
-    // cu->nuevoEstudiante(DataEstudiante("carmor","6yu7i8m9","El aprendizaje de idiomas y expandir mis habilidades comunicativas en diferentes lenguas.","Carmen Morales","Chile",Fecha(17,03,1995)));
-    // cu->nuevoEstudiante(DataEstudiante("jose24","qwj789p","Disfruto del proceso de descubrir nuevas formas de comunicarme","Jose Fernandez","Bolivia",Fecha(02,08,1998)));
-    // cu->nuevoEstudiante(DataEstudiante("","","","","",Fecha()));
+    
+    /* Idiomas */
+    /* DataIdioma */
+    /* I1 */DataIdioma ingles = DataIdioma("Ingles");
+    /* I2 */DataIdioma aleman = DataIdioma("Aleman");
+    /* I3 */DataIdioma portugues = DataIdioma("Portugues");
+    /* DataIdioma */
 
+    /* Ingreso de Idiomas */
+    /* I1 */ci->nuevoIdioma(ingles);
+    /* I2 */ci->nuevoIdioma(aleman);
+    /* I3 */ci->nuevoIdioma(portugues);
+    /* Ingreso de Idiomas */
+    /* Idiomas */
 
-    //Cursos
+    /* Usuarios */ 
+    /* Estudiantes */
+    /* U1 */ DataEstudiante jpidiom = DataEstudiante("jpidiom","asdfg123","Soy un apasionado del aprendizaje de idiomas.","Juan Perez", "Argentina", Fecha(15,7,1995));
+    /* U2 */ DataEstudiante marsilva = DataEstudiante("marsilva", "qwer456", "Como amante de los idiomas disfruto explorando nuevas formas de interactuar.", "Maria Silva", "Ecuador", Fecha(28,2,1998));
+    /* U3 */ DataEstudiante pero12 = DataEstudiante("pero12", "789werty", "Soy un entusiasta del aprendizaje de idiomas.", "Pedro Rodriguez", "Peru", Fecha(10,11,1994));
+    /* U4 */ DataEstudiante laugu = DataEstudiante("laugu", "c1v2b3m4", "Estoy fascinada por la forma en que las palabras pueden unir a las personas.", "Laura Gutierrez", "Chile", Fecha(22,4,1997));
+    /* U5 */ DataEstudiante carlo22 = DataEstudiante("carlo22", "tyuipz147", "Emocionado por adquirir fluidez en diferentes lenguas.", "Carlos Lopez", "Uruguay", Fecha(3,9,1996));
+    /* U6 */ DataEstudiante anator = DataEstudiante("anator", "1qsxc36", "Disfruto de la belleza de las diferentes estructuras y sonidos.", "Ana Torres", "Argentina", Fecha(12,1,1999));
+    /* U7 */ DataEstudiante luher24 = DataEstudiante("luher24", "t7h8y5u6", "Emocionada en la riqueza cultural que cada idioma ofrece.", "Lucia Hernandez", "Colombia", Fecha(25,6,1993));
+    /* U8 */ DataEstudiante dagon = DataEstudiante("dagon", "1w2e3r4t5","Aprender nuevas lenguas y sumergirme en diferentes culturas.", "David Gonzalez", "Uruguay", Fecha(9,12,1997));
+    /* U9 */ DataEstudiante carmor = DataEstudiante("carmor", "6yu7i8m9", "El aprendizaje de idiomas y expandir mis habilidades comunicativas en diferentes lenguas.", "Carmen Morales", "Chile", Fecha(17,3,1995));
+    /*U10 */ DataEstudiante jose24 = DataEstudiante("jose24", "qwj789p", "Disfruto del proceso de descubrir nuevas formas de comunicarme.", "Jose Fernandez", "Bolivia", Fecha(2,8,1998));
+    /* Estudiantes */
+
+    /* Ingreso de estudiantes */
+    /* U1 */ cu->nuevoEstudiante(jpidiom);
+    /* U2 */ cu->nuevoEstudiante(marsilva);
+    /* U3 */ cu->nuevoEstudiante(pero12);
+    /* U4 */ cu->nuevoEstudiante(laugu);
+    /* U5 */ cu->nuevoEstudiante(carlo22);
+    /* U6 */ cu->nuevoEstudiante(anator);
+    /* U7 */ cu->nuevoEstudiante(luher24);
+    /* U8 */ cu->nuevoEstudiante(dagon);
+    /* U9 */ cu->nuevoEstudiante(carmor);
+    /*U10 */ cu->nuevoEstudiante(jose24);
+    /* Ingreso de estudiantes */
+
+    /* Lista de Idiomas para profesores */
+    list<DataIdioma> u11 = {ingles, portugues};
+    list<DataIdioma> u12 = {ingles, aleman, portugues};
+    list<DataIdioma> u13 = {aleman};
+    list<DataIdioma> u14 = {portugues};
+    list<DataIdioma> u15 = {ingles};
+    /* Lista de Idiomas para profesores */
+
+    /* Profesores */
+    /* U11 */ DataProfesor langMaster = DataProfesor("langMaster", "P4s512", "Soy una profesora apasionada por los idiomas.", "Marta Grecia", "Instituto de Idiomas Moderno", u11);
+    /* U12 */ DataProfesor linguaPro = DataProfesor("linguaPro", "Pess23", "Mi objetivo es inspirar a mis estudiantes a explorar nuevas culturas e idiomas", "Carlos Petro", "Centro Global", u12);
+    /* U13 */ DataProfesor talkExpert = DataProfesor("talkExpert","Secret1", "Soy una profesora entusiasta del aprendizaje de idiomas", "Laura Perez","Instituto de Idiomas Vanguardia", u13);
+    /* U14 */ DataProfesor lingoSensei = DataProfesor("lingoSensei","Secure2", "Apasionado en guiar a mis estudiantes en su viaje por nuevos horizontes idiomaticos", "Franco Lopez","Centro de Idiomas", u14);
+    /* U15 */ DataProfesor wordMaestro = DataProfesor("wordMaestro","Passw0","Soy una profesora comprometida en desarrollo de habilidades idiomaticas","Ana Morales","Instituto de Idiomas Progreso",u15);
+    // /* Profesores */
+    // /* Ingreso de profesores */
+    /* U11 */ cu->nuevoProfesor(langMaster);
+    /* U12 */ cu->nuevoProfesor(linguaPro);
+    /* U13 */ cu->nuevoProfesor(talkExpert);
+    /* U14 */ cu->nuevoProfesor(lingoSensei);
+    /* U15 */ cu->nuevoProfesor(wordMaestro);
+    /* Ingreso de profesores */
+   
+    /* Usuarios */
 
 }  
 
@@ -1123,7 +1166,7 @@ int mostrarMenu() {
 
 int main() {
     int opcion;
-    cargarDatosPrueba();
+    //cargarDatosPrueba();
     do {
         opcion = mostrarMenu();
         realizarAccion(opcion);

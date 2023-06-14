@@ -102,8 +102,9 @@ void ControladorUsuarios::nuevoEstudiante(DataEstudiante dataE){
 void ControladorUsuarios::nuevoProfesor(DataProfesor dataP){
     Profesor * p = new Profesor(dataP);
     ControladorIdiomas* ci = ControladorIdiomas::getInstance();
-    for(auto it = dataP.getIdiomas().begin(); it != dataP.getIdiomas().end(); ++it){
-        p->agregarIdioma(ci->encontrarIdioma(it->getNombre()));
+    list<DataIdioma> idiomas = dataP.getIdiomas();
+    for(auto it = idiomas.begin(); it != idiomas.end(); ++it){
+           p->agregarIdioma(ci->encontrarIdioma(it->getNombre()));
     }
     this->usuarios.insert(make_pair(dataP.getNick(),p));
     this->profesores.insert(make_pair(dataP.getNick(),p));

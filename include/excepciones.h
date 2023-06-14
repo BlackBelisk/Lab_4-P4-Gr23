@@ -19,7 +19,7 @@ public:
     ExYaExisteIdioma() = default;
 
     const char* what() const noexcept override {
-        return "El idoma ya se encuentra ingresado en el sistema.";
+        return "El idioma ya se encuentra ingresado en el sistema.";
     }
 };
 
