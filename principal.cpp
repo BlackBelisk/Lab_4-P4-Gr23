@@ -63,8 +63,12 @@ void cargarDatosPrueba() {
     cu->nuevoEstudiante(DataEstudiante("marsilva", "qwer456", "Como amante de los idiomas disfruto explorando nuevas formas de interactuar.", "Maria Silva", "Ecuador", Fecha(28,02,1998)));
     cu->nuevoEstudiante(DataEstudiante("pero12", "789werty", "Soy un entusiasta del aprendizaje de idiomas.", "Pedro Rodriguez", "Peru", Fecha(10,11,1994)));
     cu->nuevoEstudiante(DataEstudiante("laugu", "c1v2b3m4", "Estoy fascinada por la forma en que las palabras pueden unir a las personas.", "Laura Gutierrez", "Chile", Fecha(22,04,1997)));
-    // cu->nuevoEstudiante(DataEstudiante("","","","","",Fecha()));
-    // cu->nuevoEstudiante(DataEstudiante("","","","","",Fecha()));
+    // cu->nuevoEstudiante(DataEstudiante("carlo22","tyuipz147","Emocionado por adquirir fluidez en diferentes lenguas.","Carlos Lopez","Uruguay",Fecha(03,09,1996)));
+    // cu->nuevoEstudiante(DataEstudiante("anator","1qsxc36","Disfruto de la belleza de las diferentes estructuras y sonidos.","Ana Torres","Argentina",Fecha(12,01,1999)));
+    // cu->nuevoEstudiante(DataEstudiante("luher24","t7h8y5u6","Emocionada en la riqueza cultural que cada idioma ofrece.","Lucia Hernandez","Colombia",Fecha(25,06,1993)));
+    // cu->nuevoEstudiante(DataEstudiante("dagon","1w2e3r4t5","Aprender nuevas lenguas y sumergirme en diferentes culturas.","David Gonzalez","Uruguay",Fecha(08,12,1997)));
+    // cu->nuevoEstudiante(DataEstudiante("carmor","6yu7i8m9","El aprendizaje de idiomas y expandir mis habilidades comunicativas en diferentes lenguas.","Carmen Morales","Chile",Fecha(17,03,1995)));
+    // cu->nuevoEstudiante(DataEstudiante("jose24","qwj789p","Disfruto del proceso de descubrir nuevas formas de comunicarme","Jose Fernandez","Bolivia",Fecha(02,08,1998)));
     // cu->nuevoEstudiante(DataEstudiante("","","","","",Fecha()));
 
 
