@@ -473,7 +473,7 @@ void agregarLeccion(){
             cout << endl;
 
             cc->agregarEjercicio(descT, fraseT, solT); //lec deberia ser la ultima leccion. entonces creo que esta bien UwU
-            cout << "Ejercicio agregado correctamente" << endl;
+            cout << "--Ejercicio agregado exitosamente--" << endl;
         }
         else if (num == 2){
             string descC,fraseC,solCString;
@@ -488,7 +488,7 @@ void agregarLeccion(){
             vector<string> solC = convertirAVector(solCString); 
                                           
             cc->agregarEjercicio(descC, fraseC, solC);
-            cout << "Ejercicio agregado correctamente" << endl;
+            cout << "--Ejercicio agregado exitosamente--" << endl;
         }
     }while (num!=3);
 
@@ -548,7 +548,6 @@ void agregarEjercicio(){
             cout << endl;
 
             cc->agregarEjercicio(descT, fraseT, solT);
-            cout << "Ejercicio agregado correctamente" << endl;
         }
         else if (num == 2){
             string descC,fraseC,solCString;
@@ -563,7 +562,6 @@ void agregarEjercicio(){
             vector<string> solC = convertirAVector(solCString); 
                                           
             cc->agregarEjercicio(descC, fraseC, solC);
-            cout << "Ejercicio agregado correctamente" << endl;
         }
         else  {cout << "Opcion invalida. Intente nuevamente" << endl; }
         }while (num != 1 && num != 2);

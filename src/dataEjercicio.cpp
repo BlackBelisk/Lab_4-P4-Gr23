@@ -37,7 +37,7 @@ string DataEjercicio::getSolT()const{
 string DataEjercicio::solToString(){
    string s = "";
    for(int i = 0; i < solComp.size(); i++){
-      s += solComp[i] + " ";
+      s += solComp[i] + ", ";
    }
    return s;
 }
