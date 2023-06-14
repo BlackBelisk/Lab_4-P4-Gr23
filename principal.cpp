@@ -935,11 +935,16 @@ void suscribirseANotificaciones(){
     auto it = usuarios.begin();
     advance(it, user - 1);
     list<DataIdioma> idiomasDisp = cu->suscripcionesDisponibles(*it);
-    imprimirListaDataIdiomas(idiomasDisp);
-    cout << "0. Dejar de ingresar idiomas." << endl;
+    // if (idiomasDisp.size() == 0)
+    // {
+    //     cout << "No hay suscripciones disponibles" << endl;
+    // }
     int susc;
     do
     {
+        cout << "Idiomas disponibles: " << endl;
+        imprimirListaDataIdiomas(idiomasDisp);
+        cout << "0. Dejar de ingresar idiomas." << endl;    
         cout << "Seleccione el idioma al que quiere suscribirse ingresando el numero: " << endl;
         cin >> susc;
         if (susc < 0 || susc > idiomasDisp.size())
@@ -952,9 +957,10 @@ void suscribirseANotificaciones(){
             advance(sus, susc - 1);
             cu->agregarSuscripcionAusuario(*it,*sus);
             ci->ingresarSuscripcionDeUsuarioA(*sus,*it);
+            idiomasDisp.erase(sus);
             cout << "--Suscripción añadida--" << endl;
         }
-    } while (susc !=0 );
+    } while (susc !=0 && idiomasDisp.size()>0);
 }
 
 void consultarNotificaciones(){
@@ -1000,11 +1006,13 @@ void eliminarSuscripciones(){
     auto it = usuarios.begin();
     advance(it, user - 1);
     list<DataIdioma> suscripcionesActuales = cu->obtenerSuscripciones(*it);
-    imprimirListaDataIdiomas(suscripcionesActuales);
-    cout << "0. Dejar de ingresar idiomas." << endl;
+    
     int susc;
     do
     {
+        cout << "Tus suscripciones: " << endl;
+        imprimirListaDataIdiomas(suscripcionesActuales);
+        cout << "0. Dejar de ingresar idiomas." << endl;
         cout << "Seleccione el idioma del que quiere eliminar su suscripcion ingresando el numero: " << endl;
         cin >> susc;
         if (susc < 0 || susc > suscripcionesActuales.size())
@@ -1017,9 +1025,10 @@ void eliminarSuscripciones(){
             advance(sus, susc - 1);
             ci->eliminarSuscriptor(*sus, *it);
             cu->eliminarSuscripcionDeUsuario(*it,*sus);
+            suscripcionesActuales.erase(sus);
             cout << "--Suscripcion removida exitosamente--" << endl << endl;
         }
-    } while (susc !=0 );
+    } while (susc !=0 && suscripcionesActuales.size()>0);
 }
 
 void realizarAccion(int opcion) {
