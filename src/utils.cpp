@@ -96,6 +96,6 @@ void imprimirListaLeccion(vector<DataLeccion> lecciones){
 
 void esperarEnter(){
     cout << "--Presione enter para volver al menú--";
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.sync();
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
