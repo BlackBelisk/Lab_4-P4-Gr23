@@ -5,10 +5,11 @@
 #include "../include/dataLeccion.h"
 
 
-DataLeccion::DataLeccion(string t, string o, list<DataEjercicio> e){
+DataLeccion::DataLeccion(string t, string o, list<DataEjercicio> e, int i){
     tema = t;
     objetivo = o;
     ejs = e;
+    ID = i;
 }
 
 string DataLeccion::getTema()const{
@@ -21,6 +22,10 @@ string DataLeccion::getObjetivo()const{
 
 list<DataEjercicio> DataLeccion::getEjs()const{
     return ejs;
+}
+
+int DataLeccion::getID()const{
+    return ID;
 }
 
 string DataLeccion::ejsToString(){

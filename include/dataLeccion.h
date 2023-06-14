@@ -15,12 +15,14 @@ class DataLeccion{
             string tema;
             string objetivo;
             list<DataEjercicio> ejs;
+            int ID;
     public:
             DataLeccion() = default;
-            DataLeccion(string, string, list<DataEjercicio>);
+            DataLeccion(string, string, list<DataEjercicio>, int);
             string getTema()const;
             string getObjetivo()const;
             list<DataEjercicio> getEjs()const;
+            int getID()const;
 
             string toString();
             string ejsToString();

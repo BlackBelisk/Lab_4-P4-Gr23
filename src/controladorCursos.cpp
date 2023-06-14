@@ -129,16 +129,6 @@ void ControladorCursos::agregarLeccionCN(string nomTema, string objLeccion){
 //
 
 
-/*
- bool ControladorCursos::comprobarCompletarPalabra(){
-    Ejercicio* ej = getEjercicioSeleccionado();
-    vector<string> res = getRespuestaEjercicioCompletar();
-    vector<string> sol = ej->getSolucionComp();
-    return res == sol;
- }
- */
-
-
 //
 //Inicio de habilitar curso
 //
@@ -395,7 +385,7 @@ vector<DataLeccion> ControladorCursos::listarLecciones(){
 
 void ControladorCursos::seleccionarLeccion(DataLeccion l){
     for(int i = 0; i < curso->getLecciones().size(); i++){
-        if(l.getObjetivo() == (curso->getLecciones()[i])->getObj()){
+        if(l.getID() == (curso->getLecciones()[i])->getID()){
             lec = curso->getLecciones()[i];
             break;
         }

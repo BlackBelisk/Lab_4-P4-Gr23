@@ -5,11 +5,13 @@
 
 using namespace std;
 
+int Leccion::IDCount = 0;
 
 Leccion::Leccion(string t, string o){
     this->tema = t;
     this->objetivo = o;
     this->ejs = set<Ejercicio*>();
+    this->ID = ++IDCount;
 }
 
 list<DataEjercicio> Leccion::ejsToData(){ 
@@ -22,7 +24,7 @@ list<DataEjercicio> Leccion::ejsToData(){
 }
 
 DataLeccion Leccion::lToData(){
-    DataLeccion l(tema, objetivo, ejsToData());
+    DataLeccion l(tema, objetivo, ejsToData(), ID);
     return l;
 }
 
@@ -67,10 +69,14 @@ Ejercicio* Leccion::obtenerEj(string descEj){
     return e;
 }
 
-set<Ejercicio*> Leccion::getEjs(){
+set<Ejercicio*> Leccion::getEjs()const{
     return ejs;
 }
 
-string Leccion::getObj(){
+string Leccion::getObj() const{
     return objetivo;
+}
+
+int Leccion::getID()const{
+    return ID;
 }

@@ -16,6 +16,8 @@ class Leccion{
             string tema;
             string objetivo;
             set<Ejercicio*> ejs;
+            static int IDCount;
+            int ID;
     public:
             Leccion(string, string);
             void agregarEjercicio(Ejercicio*);
@@ -26,9 +28,10 @@ class Leccion{
             list<DataEjercicio> ejsToData();  
             DataLeccion lToData();  
 
-            set<Ejercicio*> getEjs();
-            Ejercicio* obtenerEj(string);
-            string getObj();
+            set<Ejercicio*> getEjs() const;
+            Ejercicio* obtenerEj(string) ;
+            string getObj() const;
+            int getID() const;
 
             ~Leccion();
 };
