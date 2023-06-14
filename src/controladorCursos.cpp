@@ -157,13 +157,11 @@ list<DataCurso> ControladorCursos::listarCursosNA(){
 
 bool ControladorCursos::esCursoHabilitable(string c){
     Curso* cur = cursos[c];
-    cout << cur->getNombre();
     bool pasa = true;
     vector<Leccion*> ls = cur->getLecciones();
     int cantLecs = ls.size();
     if(cantLecs != 0){
         for(int i = 0; i < ls.size(); i++){
-            cout << ls[i]->obtenerCantEjerciciosLeccion() << (ls[i])->getObj();
             if(ls[i]->obtenerCantEjerciciosLeccion() == 0){
                 pasa = false;
                 break;
@@ -396,9 +394,9 @@ vector<DataLeccion> ControladorCursos::listarLecciones(){
 //Un cout entre una función y otra
 
 void ControladorCursos::seleccionarLeccion(DataLeccion l){
-    for(auto it = curso->getLecciones().begin(); it != curso->getLecciones().end(); ++it){
-        if(l.getObjetivo() == (*it)->getObj()){
-            lec = (*it);
+    for(int i = 0; i < curso->getLecciones().size(); i++){
+        if(l.getObjetivo() == (curso->getLecciones()[i])->getObj()){
+            lec = curso->getLecciones()[i];
             break;
         }
     }

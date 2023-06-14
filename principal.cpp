@@ -510,9 +510,7 @@ void agregarEjercicio(){
                 cout << "Numero de leccion invalido. Intente nuevamente" << endl; 
             }
         } while (numLec <= 0 || numLec > lex.size());
-    auto itL = lex.begin();
-    advance(itL, numLec - 1);
-    cc->seleccionarLeccion(*itL);
+    cc->seleccionarLeccion(lex[numLec-1]);
 
     int num;
     do{
@@ -550,7 +548,7 @@ void agregarEjercicio(){
             cout << "Ejercicio agregado correctamente" << endl;
         }
         else  {cout << "Opcion invalida. Intente nuevamente" << endl; }
-        }while (num != 1 || num != 2);
+        }while (num != 1 && num != 2);
 
     cc->darAltaEjercicio();
 }
@@ -601,21 +599,25 @@ void consultarCurso(){
     Factory* factory = Factory::getInstance();
     IControladorCursos* cc = factory->getIControladorCursos();
     list<DataCurso> cursos = cc->listarCursos();
-    imprimirListaCursos(cursos);
-    int curso;
-    do
-    {
-        cout << "Seleccione el curso ingresando el numero: " << endl;
-        cin >> curso;
-        if (curso <= 0 || curso > cursos.size())
+    if(cursos.size() == 0){
+        cout << "No hay cursos en el sistema." << endl;
+    }else{
+        imprimirListaCursos(cursos);
+        int curso;
+        do
         {
-            cout << "Numero de curso invalido. Intente nuevamente." << endl;
-        }
-        
-    } while (curso <= 0 || curso > cursos.size());
-    auto iter = cursos.begin();
-    advance(iter, curso - 1);
-    cout << *iter << endl;
+            cout << "Seleccione el curso ingresando el numero: " << endl;
+            cin >> curso;
+            if (curso <= 0 || curso > cursos.size())
+            {
+                cout << "Numero de curso invalido. Intente nuevamente." << endl;
+            }
+            
+        } while (curso <= 0 || curso > cursos.size());
+        auto iter = cursos.begin();
+        advance(iter, curso - 1);
+        cout << *iter << endl; 
+    }
 }
 
 void inscribirseACurso(){
