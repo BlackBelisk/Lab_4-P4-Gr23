@@ -51,16 +51,21 @@ void cargarDatosPrueba() {
     IControladorIdiomas* ci = factory->getIControladorIdiomas();
     IControladorUsuarios* cu = factory->getIControladorUsuarios();
     //Idiomas
-    ci->nuevoIdioma(DataIdioma("Ingles"));
-    ci->nuevoIdioma(DataIdioma("Aleman"));
-    ci->nuevoIdioma(DataIdioma("Portugues"));
+    DataIdioma ingles = DataIdioma("Ingles");
+    DataIdioma aleman = DataIdioma("Aleman");
+    DataIdioma portugues = DataIdioma("Portugues");
+    ci->nuevoIdioma(ingles);
+    ci->nuevoIdioma(aleman);
+    ci->nuevoIdioma(portugues);
     //Idiomas
-
-    cu->nuevoEstudiante(DataEstudiante("jpidiom","asdfg123","Soy un apasionado del aprendizaje de idiomas.","Juan Perez", "Argentina", Fecha(15,07,1995)));
+    DataEstudiante jpidiom = DataEstudiante("jpidiom","asdfg123","Soy un apasionado del aprendizaje de idiomas.","Juan Perez", "Argentina", Fecha(15,07,1995));
+    cu->nuevoEstudiante(jpidiom);
     cu->nuevoEstudiante(DataEstudiante("marsilva", "qwer456", "Como amante de los idiomas disfruto explorando nuevas formas de interactuar.", "Maria Silva", "Ecuador", Fecha(28,02,1998)));
     cu->nuevoEstudiante(DataEstudiante("pero12", "789werty", "Soy un entusiasta del aprendizaje de idiomas.", "Pedro Rodriguez", "Peru", Fecha(10,11,1994)));
     cu->nuevoEstudiante(DataEstudiante("laugu", "c1v2b3m4", "Estoy fascinada por la forma en que las palabras pueden unir a las personas.", "Laura Gutierrez", "Chile", Fecha(22,04,1997)));
-    cu->nuevoEstudiante(DataEstudiante("","","","","",Fecha()));
+    // cu->nuevoEstudiante(DataEstudiante("","","","","",Fecha()));
+    // cu->nuevoEstudiante(DataEstudiante("","","","","",Fecha()));
+    // cu->nuevoEstudiante(DataEstudiante("","","","","",Fecha()));
 
 
     //Cursos
