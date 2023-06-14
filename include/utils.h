@@ -27,3 +27,5 @@ void imprimirListaNotificaciones(list<DataNotificacion> notificaciones);
 void imprimirListaEjercicios(list<DataEjercicio> ejercicios);
 
 void imprimirListaLeccion(vector<DataLeccion> lecciones);
+
+void esperarEnter();

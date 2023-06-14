@@ -62,6 +62,9 @@ void cargarDatosPrueba() {
     cu->nuevoEstudiante(DataEstudiante("laugu", "c1v2b3m4", "Estoy fascinada por la forma en que las palabras pueden unir a las personas.", "Laura Gutierrez", "Chile", Fecha(22,04,1997)));
     cu->nuevoEstudiante(DataEstudiante("","","","","",Fecha()));
 
+
+    //Cursos
+
 }  
 
 void altaUsuario(){
@@ -968,10 +971,12 @@ void realizarAccion(int opcion) {
 		{
 			cout << "Error: " << ex.what() << endl;
 		}
+        esperarEnter();
             break;
         case 2:
             // Consulta de usuario
             consultarUsuario();
+            esperarEnter();
             break;
         case 3:
             try
@@ -982,10 +987,12 @@ void realizarAccion(int opcion) {
             {
                 cout << "Error: " << ex.what() << endl;
             }
+            esperarEnter();
             break;
         case 4:
             // Consultar idiomas
             consultarIdiomas();
+            esperarEnter();
             break;
         case 5:
         // Alta de curso
@@ -998,55 +1005,68 @@ void realizarAccion(int opcion) {
 		    	cout << "Error: " << ex.what() << endl;
 		    }catch (const ExNoExistenCursos& ex){
 		    	cout << "Error: " << ex.what() << endl;
-		    }           
+		    }   
+            esperarEnter();        
             break;
         case 6:
             // Agregar lección
             agregarLeccion();
+            esperarEnter();
             break;
         case 7:
             // Agregar ejercicio
             agregarEjercicio();
+            esperarEnter();
             break;
         case 8:
             // Habilitar curso
             habilitarCurso();
+            esperarEnter();
             break;
         case 9:
             // Eliminar curso
             eliminarCurso();
+            esperarEnter();
             break;
         case 10:
             // Consultar curso
             consultarCurso();
+            esperarEnter();
             break;
         case 11:
             // Inscribirse a curso
             inscribirseACurso();
+            esperarEnter();
             break;
         case 12:
             // Realizar ejercicio
             realizarEjercicio();
+            esperarEnter();
             break;
         case 13:
             // Consultar estadísticas
             consultarEstadisticas();
+            esperarEnter();
             break;
         case 14:
             // Suscribirse a notificaciones
             suscribirseANotificaciones();
+            esperarEnter();
             break;
         case 15:
             // Consulta de notificaciones
             consultarNotificaciones();
+            esperarEnter();
             break;
         case 16:
             // Eliminar suscripciones
             eliminarSuscripciones();
+            esperarEnter();
             break;
         case 17:
             // Opción para cargar los datos de prueba
             cargarDatosPrueba();
+            esperarEnter();
             break;
         case 18:
             // Opción para salir del programa
@@ -1087,6 +1107,7 @@ int mostrarMenu() {
 
 int main() {
     int opcion;
+    cargarDatosPrueba();
     do {
         opcion = mostrarMenu();
         realizarAccion(opcion);

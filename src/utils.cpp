@@ -1,6 +1,8 @@
 #include <vector>
 #include <sstream>
 #include <string>
+#include <iostream>
+#include <limits>
 #include "../include/utils.h"
 
 using namespace std;
@@ -90,4 +92,10 @@ void imprimirListaLeccion(vector<DataLeccion> lecciones){
         cout << num << ". " << it->toString()<< endl;
         num++;
     } 
+}
+
+void esperarEnter(){
+    cout << "--Presione enter para volver al menú--";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
