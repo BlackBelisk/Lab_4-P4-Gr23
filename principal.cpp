@@ -147,6 +147,7 @@ void altaUsuario(){
         }
     } while (tipo != "1" && tipo != "2");
     cu->confirmarAltaUsuario(stoi(tipo));
+    cout << "--Usuario creado exitosamente--" << endl << endl;
 }
 
 void consultarUsuario(){
@@ -191,6 +192,7 @@ void altaIdioma(){
     DataIdioma idioma = DataIdioma(nomIdi);
     ci->ingresarIdioma(idioma);
     ci->confirmarAltaIdioma();
+    cout << "--Idioma creado exitosamente--" << endl << endl;
 }
 
 void consultarIdiomas(){
@@ -414,6 +416,7 @@ void altaCurso(){
         }while(seleccionador != 0);
     }
     cc->finalizarAltaCurso();
+    cout << "--Curso creado exitosamente--" << endl << endl;
 }
 
 void agregarLeccion(){
@@ -490,7 +493,7 @@ void agregarLeccion(){
     }while (num!=3);
 
 cc->finalizarAgLec();
-cout << "Leccion agregada correctamente" << endl;
+cout << "--Leccion agregada exitosamente--" << endl << endl;
 }
 
 void agregarEjercicio(){
@@ -566,6 +569,7 @@ void agregarEjercicio(){
         }while (num != 1 && num != 2);
 
     cc->darAltaEjercicio();
+    cout << "--Ejercicio agregado exitosamente--" << endl << endl;
 }
 
 void habilitarCurso(){
@@ -585,8 +589,11 @@ void habilitarCurso(){
         } while (course <= 0 || course > cursos.size());
     auto it = cursos.begin();
     advance(it, course - 1);    
-    if (cc->esCursoHabilitable((*it).getNomCurso())){cc->habilitarCurso((*it).getNomCurso());}else{
-        cout << "Curso no habilitable." << endl;
+    if (cc->esCursoHabilitable((*it).getNomCurso())){
+        cc->habilitarCurso((*it).getNomCurso());
+        cout << "--Curso habilitado exitosamente--" << endl;    
+    }else{
+        cout << "Curso no habilitable." << endl << endl;
     }
 }
 
@@ -608,6 +615,7 @@ void eliminarCurso(){
     auto it = cursos.begin();
     advance(it, course - 1);
     cc->eliminarCurso(it->getNomCurso());
+    cout << "--Curso eliminado exitosamente--" << endl << endl;
 }
 
 void consultarCurso(){
@@ -682,6 +690,7 @@ void inscribirseACurso(){
     advance(iter, curso - 1);
     cc->seleccionarCurso(iter->getNomCurso());
     cc->finalizarInscripcion();
+    cout << "--Inscripcion realizada exitosamente--" << endl << endl;
 }
 
 void realizarEjercicio(){
@@ -890,7 +899,7 @@ void suscribirseANotificaciones(){
             advance(sus, susc - 1);
             cu->agregarSuscripcionAusuario(*it,*sus);
             ci->ingresarSuscripcionDeUsuarioA(*sus,*it);
-            cout << "Suscripción añadida." << endl;
+            cout << "--Suscripción añadida--" << endl;
         }
     } while (susc < 0 || susc > idiomasDisp.size());
 }
@@ -955,7 +964,7 @@ void eliminarSuscripciones(){
             advance(sus, susc - 1);
             ci->eliminarSuscriptor(*sus, *it);
             cu->eliminarSuscripcionDeUsuario(*it,*sus);
-            cout << "Suscripcion removida." << endl;
+            cout << "--Suscripcion removida exitosamente--" << endl << endl;
         }
     } while (susc < 0 || susc > suscripcionesActuales.size());
 }
