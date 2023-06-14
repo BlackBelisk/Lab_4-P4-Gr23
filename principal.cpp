@@ -951,7 +951,7 @@ void suscribirseANotificaciones(){
             ci->ingresarSuscripcionDeUsuarioA(*sus,*it);
             cout << "--Suscripción añadida--" << endl;
         }
-    } while (susc < 0 || susc > idiomasDisp.size());
+    } while (susc !=0 );
 }
 
 void consultarNotificaciones(){
@@ -1016,7 +1016,7 @@ void eliminarSuscripciones(){
             cu->eliminarSuscripcionDeUsuario(*it,*sus);
             cout << "--Suscripcion removida exitosamente--" << endl << endl;
         }
-    } while (susc < 0 || susc > suscripcionesActuales.size());
+    } while (susc !=0 );
 }
 
 void realizarAccion(int opcion) {
@@ -1166,7 +1166,7 @@ int mostrarMenu() {
 
 int main() {
     int opcion;
-    //cargarDatosPrueba();
+    cargarDatosPrueba();
     do {
         opcion = mostrarMenu();
         realizarAccion(opcion);
