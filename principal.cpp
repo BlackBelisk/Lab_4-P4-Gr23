@@ -53,15 +53,15 @@ void cargarDatosPrueba() {
     
     /* Idiomas */
     /* DataIdioma */
-    /* I1 */DataIdioma ingles = DataIdioma("Ingles");
-    /* I2 */DataIdioma aleman = DataIdioma("Aleman");
-    /* I3 */DataIdioma portugues = DataIdioma("Portugues");
+    /* I1 */ DataIdioma ingles = DataIdioma("Ingles");
+    /* I2 */ DataIdioma aleman = DataIdioma("Aleman");
+    /* I3 */ DataIdioma portugues = DataIdioma("Portugues");
     /* DataIdioma */
 
     /* Ingreso de Idiomas */
-    /* I1 */ci->nuevoIdioma(ingles);
-    /* I2 */ci->nuevoIdioma(aleman);
-    /* I3 */ci->nuevoIdioma(portugues);
+    /* I1 */ ci->nuevoIdioma(ingles);
+    /* I2 */ ci->nuevoIdioma(aleman);
+    /* I3 */ ci->nuevoIdioma(portugues);
     /* Ingreso de Idiomas */
     /* Idiomas */
 
@@ -175,11 +175,13 @@ void altaUsuario(){
 
             IControladorIdiomas* ci = factory->getIControladorIdiomas();
             list<DataIdioma> listaIdiomas = ci->listarIdiomas();
-            imprimirListaDataIdiomas(listaIdiomas);
-            cout << "0. Dejar de ingresar idiomas." << endl; 
+            
             int espec;
             do
             {
+                cout << "Idiomas: " << endl;
+                imprimirListaDataIdiomas(listaIdiomas);
+                cout << "0. Dejar de ingresar idiomas." << endl; 
                 cout << "Seleccione el idioma a agregar ingresando el numero: " << endl;
                 cin >> espec;
                 if (espec < 0 || espec > listaIdiomas.size())
@@ -190,9 +192,10 @@ void altaUsuario(){
                     auto it = listaIdiomas.begin();
                     advance(it, espec - 1);
                     cu->agregarEspecializacion(*it);
+                    listaIdiomas.erase(it);
                     cout << "Idioma agregado." << endl;
                 }
-            } while (espec != 0);
+            } while (espec != 0 && listaIdiomas.size()>0);
         }
         else{
             cout << "Opcion invalida. Por favor, seleccione una opcion valida." << endl;
