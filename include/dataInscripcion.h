@@ -14,16 +14,25 @@ using namespace std;
 class DataEstudiante;
 class DataCurso;
 class DataInscripcion{
-    public:
+    private:
+            string nickEstud;
             string estud;
             string curso;
             DataLeccion lecActual;
             list<DataEjercicio> ejsCompletados;
             Fecha fechaIns;
             bool aprobado;
-
-            DataInscripcion(string, string, DataLeccion, list<DataEjercicio>, Fecha, bool);
+    public:
+            DataInscripcion(string, string, string, DataLeccion, list<DataEjercicio>, Fecha, bool);
             string toString();
+
+            string getNickEstud()const;
+            string getEstudiante()const;
+            string getCurso()const;
+            DataLeccion getLecActual()const;
+            list<DataEjercicio> getEjsCompletados();
+            Fecha getFechaIns()const;
+            bool getAprobado()const;
 };
 
 #include "dataCurso.h"

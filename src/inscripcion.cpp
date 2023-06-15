@@ -16,13 +16,26 @@ Inscripcion::Inscripcion(Estudiante* e, Curso* c, Fecha f){
     aprobado = false;
 }
 
+Inscripcion::Inscripcion(Estudiante* e, Curso* c, Leccion* l, multimap<Leccion*, Ejercicio*> ejs, Fecha f, bool a){
+    estud = e;
+    curso = c;
+    lecActual = l;
+    ejsCompletados = ejs;
+    fechaIns = f;
+    aprobado = a;
+}
+
 DataInscripcion Inscripcion::insToData(){
     list<DataEjercicio> es;
     for(auto it = ejsCompletados.begin(); it != ejsCompletados.end(); ++it){
         DataEjercicio de = (*it).second->ejToData();
         es.insert(es.end(),de);            
     }
-    DataInscripcion di(estud->getNombre(), curso->getNombre(), lecActual->lToData(), es, fechaIns, aprobado);
+    Leccion* act = lecActual;
+    if(act == nullptr){
+        act = curso->getLecciones().back();
+    }
+    DataInscripcion di(estud->getNick(), estud->getNombre(), curso->getNombre(), act->lToData(), es, fechaIns, aprobado);
     return di;
 }
 

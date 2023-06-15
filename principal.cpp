@@ -50,6 +50,7 @@ void cargarDatosPrueba() {
     Factory * factory = Factory::getInstance();
     IControladorIdiomas* ci = factory->getIControladorIdiomas();
     IControladorUsuarios* cu = factory->getIControladorUsuarios();
+    IControladorCursos* cc = factory->getIControladorCursos();
     
     /* Idiomas */
     /* DataIdioma */
@@ -114,9 +115,127 @@ void cargarDatosPrueba() {
     /* U14 */ cu->nuevoProfesor(lingoSensei);
     /* U15 */ cu->nuevoProfesor(wordMaestro);
     /* Ingreso de profesores */
-   
     /* Usuarios */
 
+
+    /* Vectores completar */
+    /* R1 */ vector<string> R1 = {"allow", "myself"};
+    /* R2 */ vector<string> R2 = {"some"};
+    /* R3 */ vector<string> R3 = {"up"};
+    /* R4 */ vector<string> R4 = {"have", "past"};
+    /* Vectores completar */
+
+
+    /* Ejercicios */
+    /* E1 */ DataEjercicio e1 = DataEjercicio("Presentaciones", "Mucho gusto en conocerte", "Nice to meet you");
+    /* E2 */ DataEjercicio e2 = DataEjercicio("Presentaciones formales", "Please — me to introduce —", R1);
+    /* E3 */ DataEjercicio e3 = DataEjercicio("Plurales regulares", "I have two brothers and three sisters", "Tengo dos hermanos y tres hermanas");
+    /* E4 */ DataEjercicio e4 = DataEjercicio("Sustantivos contables en plural", "Can I have — water, please?", R2);
+    /* E5 */ DataEjercicio e5 = DataEjercicio("Actividades diarias", "Wake —", R3);
+    /* E6 */ DataEjercicio e6 = DataEjercicio("Consultas de la hora", "Q: Do you — the time?, A: Yes, it is half — 4", R4);
+    /* E7 */ DataEjercicio e7 = DataEjercicio("Dar consejos o expresar obligacion", "You should visit that museum", "Deberias visitar ese museo");
+    /* E8 */ DataEjercicio e8 = DataEjercicio("Imperativo", "Fale comigo", "Habla conmigo");
+    /* Ejercicios */
+
+
+    /* Listas de Ejercicios */
+    /* L1 */ list<DataEjercicio> L1 = {e1, e2};
+    /* L2 */ list<DataEjercicio> L2 = {e3, e4};
+    /* L3 */ list<DataEjercicio> L3 = {e5};
+    /* L4 */ list<DataEjercicio> L4 = {};
+    /* L5 */ list<DataEjercicio> L5 = {e6};
+    /* L6 */ list<DataEjercicio> L6 = {e7};
+    /* L7 */ list<DataEjercicio> L7 = {e8};
+    /* Listas de Ejercicios */
+
+
+    /* Lecciones */
+    /* L1 */ DataLeccion l1 = DataLeccion("Saludos y Presentaciones", "Aprender a saludar y despedirse", L1, 0);
+    /* L2 */ DataLeccion l2 = DataLeccion("Articulos y Plurales", "Comprender y utilizar los articulos definidos e indefinidos, Aprender a formar los plurales regulares e irregulares de sustantivos", L2, 1);
+    /* L3 */ DataLeccion l3 = DataLeccion("Actividades Cotidianas", "Comprender y utilizar los articulos definidos e indefinidos, Aprender a formar los plurales regulares e irregulares de sustantivos", L3, 2);
+    /* L4 */ DataLeccion l4 = DataLeccion("Presente Simple", "Aprender el uso del presente simple", L4, 3);
+    /* L5 */ DataLeccion l5 = DataLeccion("Conversaciones cotidianas", "Aprender a hacer preguntas y respuestas en situaciones comunes", L5, 4);
+    /* L6 */ DataLeccion l6 = DataLeccion("Uso de modales avanzados", "Explorar el uso de los modales complejos", L6, 5);
+    /* L7 */ DataLeccion l7 = DataLeccion("Lectura y comprension de textos", "Analizar el contenido, vocabulario y estructuras gramaticales utilizadas", L7, 6);
+    /* Lecciones */
+
+
+    /* Listas de Lecciones */
+    /* C1 */ vector<DataLeccion> C1 = {l1, l2};
+    /* C2 */ vector<DataLeccion> C2 = {l3, l4};
+    /* C3 */ vector<DataLeccion> C3 = {l5};
+    /* C4 */ vector<DataLeccion> C4 = {l6};
+    /* C5 */ vector<DataLeccion> C5 = {l7};
+    /* C6 */ vector<DataLeccion> C6 = {};
+    /* Listas de Lecciones */
+
+
+    /* Listas de Ejercicios Aprobados */
+    /* N1 */ list<DataEjercicio> N1 = {e1, e2, e3, e4};
+    /* N2 */ list<DataEjercicio> N2 = {e6};
+    /* N3 */ list<DataEjercicio> N3 = {};
+    /* N4 */ list<DataEjercicio> N4 = {e1,e2};
+    /* N5 */ list<DataEjercicio> N5 = {e1, e2, e4};
+    /* N6 */ list<DataEjercicio> N6 = {};
+    /* N7 */ list<DataEjercicio> N7 = {};
+    /* N8 */ list<DataEjercicio> N8 = {};
+    /* Listas de Ejercicios Aprobados */
+
+
+    /* Fechas de inscripcion */
+    /* N1 */ Fecha f1 = Fecha(01,01,2022);
+    /* N2 */ Fecha f2 = Fecha(12,06,2022);
+    /* N3 */ Fecha f3 = Fecha(02,03,2023);
+    /* N4 */ Fecha f4 = Fecha(02,01,2022);
+    /* N5 */ Fecha f5 = Fecha(02,01,2022);
+    /* N6 */ Fecha f6 = Fecha(03,01,2023);
+    /* N7 */ Fecha f7 = Fecha(03,01,2023);
+    /* N8 */ Fecha f8 = Fecha(05,01,2023);
+    /* Fechas de inscripcion */
+
+
+    /* Lecciones */
+    /* N1 */ DataInscripcion n1 = DataInscripcion(jpidiom.getNick(), jpidiom.getNombre(), "Ingles para principiantes", l2, N1, f1, true);
+    /* N2 */ DataInscripcion n2 = DataInscripcion(jpidiom.getNick(), jpidiom.getNombre(), "Ingles intermedio: mejora tu nivel", l5, N2, f2, true);
+    /* N3 */ DataInscripcion n3 = DataInscripcion(jpidiom.getNick(), jpidiom.getNombre(), "Curso avanzado de ingles", l6, N3, f3, false);
+    /* N4 */ DataInscripcion n4 = DataInscripcion(marsilva.getNick(), marsilva.getNombre(), "Ingles para principiantes", l2, N4, f4, false);
+    /* N5 */ DataInscripcion n5 = DataInscripcion(pero12.getNick(), pero12.getNombre(), "Ingles para principiantes", l2, N5, f5, false);
+    /* N6 */ DataInscripcion n6 = DataInscripcion(laugu.getNick(), laugu.getNombre(), "Ingles para principiantes", l1, N6, f6, false);
+    /* N7 */ DataInscripcion n7 = DataInscripcion(laugu.getNick(), laugu.getNombre(), "Portugues intermedio", l7, N7, f7, false);
+    /* N8 */ DataInscripcion n8 = DataInscripcion(carlo22.getNick(), carlo22.getNombre(), "Portugues intermedio", l7, N8, f8, false);
+    /* Lecciones */
+
+
+    /* Cursos, inscripciones y previas */
+    /* C1 */ list<DataCurso> P1 = {};
+    /* C1 */ list<DataInscripcion> I1 = {n1, n4, n5, n6};
+    /* C1 */ DataCurso c1 = DataCurso("Ingles para principiantes", "Curso para personas con poco o ningun conocimiento de ingles. Se enfoca en vocabulario basico, gramatica y habilidades de conversacion.", Principiante, true, ingles, langMaster, C1, I1, P1, 4);
+    /* C2 */ list<DataCurso> P2 = {};
+    /* C2 */ list<DataInscripcion> I2 = {};
+    /* C2 */ DataCurso c2 = DataCurso("Curso de ingles basico", "Construye una base solida en el idioma. Cubre gramatica, vocabulario, comprension auditiva y expresion oral.", Principiante, false, ingles, langMaster, C2, I2, P2, 1);
+    /* C3 */ list<DataCurso> P3 = {c1};
+    /* C3 */ list<DataInscripcion> I3 = {n2};
+    /* C3 */ DataCurso c3 = DataCurso("Ingles intermedio: mejora tu nivel", "Para estudiantes con conocimientos basicos de ingles que desean avanzar en su habilidad comunicativa. Se centra en la fluidez oral, lectura comprensiva y escritura.", Intermedio, true, ingles, linguaPro, C3, I3, P3, 1);
+    /* C4 */ list<DataCurso> P4 = {c1, c3};
+    /* C4 */ list<DataInscripcion> I4 = {};
+    /* C4 */ DataCurso c4 = DataCurso("Curso avanzado de ingles", "Dirigido a personas con un nivel intermedio-alto que desean perfeccionar sus habilidades en todos los aspectos del idioma. Incluye gramatica avanzada, vocabulario y comprension escrita y auditiva.", Avanzado, true, ingles, linguaPro, C4, I4, P4, 1);
+    /* C5 */ list<DataCurso> P5 = {};
+    /* C5 */ list<DataInscripcion> I5 = {n7, n8};
+    /* C5 */ DataCurso c5 = DataCurso("Portugues intermedio", "Curso para aquellos que tienen conocimientos basicos de portugues y desean mejorar su nivel. Incluye practica de lectura, escritura y comprension auditiva.", Intermedio, true, portugues, linguaPro, C5, I5, P5, 1);
+    /* C6 */ list<DataCurso> P6 = {c5};
+    /* C6 */ list<DataInscripcion> I6 = {};
+    /* C6 */ DataCurso c6 = DataCurso("Portugues avanzado", "Curso avanzado para personas con un nivel intermedio-alto de portugues que desean perfeccionar su fluidez y dominio del idioma. Se trabaja en la gramatica avanzada y la expresion oral.", Avanzado, false, portugues, lingoSensei, C6, I6, P6, 0);
+    /* Cursos y previas */
+
+
+    /* Cursos */
+    /* C1 */ cc->nuevoCurso(c1);
+    /* C2 */ cc->nuevoCurso(c2);
+    /* C3 */ cc->nuevoCurso(c3);
+    /* C4 */ cc->nuevoCurso(c4);
+    /* C5 */ cc->nuevoCurso(c5);
+    /* C6 */ cc->nuevoCurso(c6);
+    /* Cursos */
 }  
 
 void altaUsuario(){
@@ -701,6 +820,9 @@ void inscribirseACurso(){
     IControladorCursos* cc = factory->getIControladorCursos();
     IControladorUsuarios* cu = factory->getIControladorUsuarios();
     list<DataEstudiante> estudiantes = cu->obtenerEstudiantes();
+    if(estudiantes.size() == 0){
+        throw ExNoExistenEstudiantes();
+    }
     imprimirListaDataEstudiantes(estudiantes);
     int estud;
     do
@@ -717,6 +839,9 @@ void inscribirseACurso(){
     advance(iterador, estud - 1);
     cc->seleccionarEstudiante(iterador->getNick());
     list<DataCurso> disponibles = cc->listarCursosDisponibles();
+    if(disponibles.size() == 0){
+        throw ExNoHayCursosDisponibles();
+    }
     int num = 1;
     for (auto it = disponibles.begin(); it != disponibles.end(); it++){
         cout << num << ". " << "Nombre: " << it->getNomCurso() 
@@ -1074,9 +1199,7 @@ void realizarAccion(int opcion) {
 		    	cout << "Error: " << ex.what() << endl;
 		    }catch (const ExProfesorSinIdiomas& ex){
 		    	cout << "Error: " << ex.what() << endl;
-		    }catch (const ExNoExistenCursos& ex){
-		    	cout << "Error: " << ex.what() << endl;
-		    }   
+		    }
             esperarEnter();        
             break;
         case 6:
@@ -1106,7 +1229,13 @@ void realizarAccion(int opcion) {
             break;
         case 11:
             // Inscribirse a curso
-            inscribirseACurso();
+            try{
+                inscribirseACurso();
+            }catch(const ExNoExistenEstudiantes& ex){
+		    	cout << "Error: " << ex.what() << endl;
+		    }catch(const ExNoHayCursosDisponibles& ex){
+		    	cout << "Error: " << ex.what() << endl;
+		    }
             esperarEnter();
             break;
         case 12:

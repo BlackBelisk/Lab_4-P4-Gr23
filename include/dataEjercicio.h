@@ -19,7 +19,8 @@ class DataEjercicio{
     public:
             DataEjercicio(string, string, string);
             DataEjercicio(string, string, vector<string>);
-            string getDesc() const; 
+            string getDesc() const;
+            bool getTipo()const; 
             string toString();
             string mostrarEj();    
 
@@ -31,28 +32,8 @@ class DataEjercicio{
             string getFraseC()const;
             vector<string> getSolC()const;
             string solToString();
-};
-/*
-class DataCompletar: public DataEjercicio{
-    private:
-            vector<string> solucion;
-		    string fraseComp;
-    public:
-            string getFrase()const;
-            vector<string> getSol()const;
-            DataCompletar(string, string, vector<string>);
-            string solToString();
-            string toString();
+
+            bool operator==(const DataEjercicio &de);
 };
 
-class DataTraducir: public DataEjercicio{
-    private:
-            string solucion;
-		    string fraseTrad;
-    public:        
-            string getFrase()const;
-            string getSol()const;
-            DataTraducir(string, string, string);
-            string toString();
-};*/
 #endif

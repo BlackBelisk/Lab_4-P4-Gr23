@@ -14,6 +14,25 @@ Leccion::Leccion(string t, string o){
     this->ID = ++IDCount;
 }
 
+Leccion::Leccion(DataLeccion l){
+    tema = l.getTema();
+    objetivo = l.getObjetivo();
+    list <DataEjercicio> dataEjs = l.getEjs();
+    if(dataEjs.size() != 0){
+        for(auto it = dataEjs.begin(); it != dataEjs.end(); ++it){
+            if((*it).getTipo()){
+                CompletarPalabra* cp = new CompletarPalabra((*it).getDesc(), (*it).getFraseC(), (*it).getSolC());
+                ejs.insert(cp);
+            }else{
+                Traduccion* t = new Traduccion((*it).getDesc(), (*it).getFraseT(), (*it).getSolT());
+                ejs.insert(t);
+            }
+        }
+    }
+    ID = l.getID();
+    IDCount++;
+}
+
 list<DataEjercicio> Leccion::ejsToData(){ 
     list<DataEjercicio> es;
     for(auto it = ejs.begin(); it != ejs.end(); ++it){

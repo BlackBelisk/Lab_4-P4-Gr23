@@ -79,8 +79,12 @@ string DataCurso::enumToString(){
 
  string DataCurso::inscriptosToString(){
    string s = "";
-   for(auto it = inscriptos.begin(); it != inscriptos.end(); ++it){
-      s += (*it).toString() + "\n";
+   if(inscriptos.size() == 0){
+      s = "No tiene";
+   }else{
+      for(auto it = inscriptos.begin(); it != inscriptos.end(); ++it){
+         s += (*it).toString() + "\n";
+      }
    }
    return s;
  }

@@ -23,6 +23,7 @@ class Inscripcion{
 
     public:
             Inscripcion(Estudiante*, Curso*, Fecha);
+            Inscripcion(Estudiante*, Curso*, Leccion*, multimap<Leccion*, Ejercicio*>, Fecha, bool);
             ~Inscripcion();
 
             void agregarCompletado(Leccion*, Ejercicio*);

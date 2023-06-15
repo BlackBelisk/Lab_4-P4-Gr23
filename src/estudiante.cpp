@@ -35,8 +35,12 @@ Estudiante::Estudiante(DataEstudiante dataE){
 DataEstudiante Estudiante::getDataEstudiante(){return DataEstudiante(this->getNick(), "", this->getDescripcion(), this->getNombre(), this->pais, this->fecNac);}
 
 void Estudiante::agregarInscripcion(Inscripcion* ins){
-    this->enCurso.insert(make_pair(ins->getCurso()->getNombre(), ins));
-}
+    if(ins->getAprobado()){
+        this->aprobados.insert(make_pair(ins->getCurso()->getNombre(), ins));
+    }else{
+        this->enCurso.insert(make_pair(ins->getCurso()->getNombre(), ins));
+    }
+}    
 
 void Estudiante::marcarAprobado(Inscripcion* inscripcion){
     if (this->enCurso.find(inscripcion->getCurso()->getNombre()) != this->enCurso.end())

@@ -7,16 +7,19 @@
 using namespace std;
 
 Curso::Curso(string nombreCurso, string desc, dif Dif){
-    nomCurso = nombreCurso;
-    descripcion = desc;
-    dificultad = Dif;
-    habilitado = false;
-    profe = nullptr;
-    idioma = nullptr;
+   nomCurso = nombreCurso;
+   descripcion = desc;
+   dificultad = Dif;
+   habilitado = false;
+   profe = nullptr;
+   idioma = nullptr;
 }
 
 Curso::Curso(DataCurso DataC){
-   
+   nomCurso = DataC.getNomCurso();
+   descripcion = DataC.getDesc();
+   dificultad = DataC.getDif();
+   habilitado = DataC.getHab();
 }
 
 vector<DataLeccion> Curso::lecToData(){
@@ -73,6 +76,11 @@ Inscripcion* Curso::encontrarIns(Estudiante* e){
  void Curso::nuevaLeccion(string nomTema, string objLeccion){
     Leccion* L = new Leccion(nomTema, objLeccion);
     lecciones.push_back(L);
+ }
+
+ void Curso::nuevaLeccion(DataLeccion l){
+   Leccion* L = new Leccion(l);
+   lecciones.push_back(L);
  }
 
  void Curso::eliminarContenido(){
@@ -132,6 +140,21 @@ Inscripcion* Curso::encontrarIns(Estudiante* e){
 
  void Curso::agregarInscripto(Inscripcion* i){
    inscriptos.insert(i);
+ }
+
+ void Curso::agregarPrevia(Curso* c){
+   previas.insert(c);
+ }
+
+ Leccion* Curso::encontrarLeccion(DataLeccion l){
+   Leccion* res;
+   for(int i = 0; i < lecciones.size(); i++){
+      if(lecciones[i]->getID() == l.getID()){
+         res = lecciones[i];
+         break;
+      }
+   }
+   return res;
  }
 
  string Curso::leccionesToString(){

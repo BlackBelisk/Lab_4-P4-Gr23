@@ -4,6 +4,8 @@
 #include <vector>
 #include <map>
 #include <sstream>
+#include <list>
+#include <algorithm>
 #include "../include/controladorCursos.h"
 #include "../include/utils.h"
 using namespace std;
@@ -220,7 +222,59 @@ void ControladorCursos::eliminarCurso(string nc){
 
 void ControladorCursos::nuevoCurso(DataCurso dataC){
     Curso *c = new Curso(dataC);
-    cursos.insert(make_pair(c->getNombre(), curso));
+    cursos.insert(make_pair(c->getNombre(), c));
+    ControladorUsuarios* cu = ControladorUsuarios::getInstance();
+    ControladorIdiomas* ci = ControladorIdiomas::getInstance();
+    c->setProfesor(cu->encontrarProfesor(dataC.getProfe().getNick()));
+    c->setIdioma(ci->encontrarIdioma(dataC.getIdi().getNombre()));
+    if(dataC.getPrevias().size() != 0){
+        list<DataCurso> pres = dataC.getPrevias();
+        for(auto it = pres.begin(); it != pres.end(); ++it){
+            c->agregarPrevia(encontrarCurso((*it).getNomCurso()));
+        }
+    }
+    if(dataC.getLecciones().size() != 0){
+        for(int i = 0; i < dataC.getLecciones().size(); i++){
+            DataLeccion l = dataC.getLecciones()[i];
+            c->nuevaLeccion(l);
+        }
+    }
+    list<DataInscripcion> dataIns = dataC.getIns();
+    if(dataIns.size() != 0){
+        for(auto it = dataIns.begin(); it != dataIns.end(); ++it){
+            multimap<Leccion*, Ejercicio*> ejs;
+            bool fin = false;
+            int largo = c->getLecciones().size();
+            for(int i = 0; i < largo; i++){
+                if(fin){
+                    break;
+                }
+                set<Ejercicio*> ejsLA = c->getLecciones()[i]->getEjs();
+                if(ejsLA.size() != 0){
+                    for(auto itt = ejsLA.begin(); itt != ejsLA.end(); ++itt){
+                        if(c->getLecciones()[i]->getID() != (*it).getLecActual().getID()){
+                            ejs.insert(make_pair(c->getLecciones()[i], (*itt)));
+                        }else{
+                            list<DataEjercicio> complete = (*it).getEjsCompletados();
+                            auto iterador = find(complete.begin(), complete.end(), (*itt)->ejToData());
+                            if(iterador != complete.end()){
+                                ejs.insert(make_pair(c->getLecciones()[i], (*itt)));
+                            }
+                            fin = true;
+                        }
+                    }     
+                }
+            }
+            if(!(*it).getAprobado()){
+                lec = c->encontrarLeccion((*it).getLecActual());
+            }
+
+            Inscripcion* i = new Inscripcion(cu->encontrarEstudiante((*it).getNickEstud()), c, lec, ejs, (*it).getFechaIns(), (*it).getAprobado());
+            c->agregarInscripto(i);
+            cu->encontrarEstudiante(i->getEstudiante()->getNick())->agregarInscripcion(i);
+            lec = nullptr;
+        }
+    }
 }
 
 //

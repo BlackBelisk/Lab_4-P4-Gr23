@@ -36,6 +36,7 @@ class Curso{
             Inscripcion* encontrarIns(Estudiante*);
             bool noAprobadoCurso(Estudiante*);
             void nuevaLeccion(string, string);
+            void nuevaLeccion(DataLeccion);
             void eliminarContenido();
             void eliminarInscripciones();
             void eliminarNotificaciones();
@@ -50,6 +51,9 @@ class Curso{
             DataCurso cursoToData();
             Leccion* siguienteLec(Leccion*);
             void agregarInscripto(Inscripcion*);
+            void agregarPrevia(Curso*);
+            Leccion* encontrarLeccion(DataLeccion);
+            
             
 
             bool getHab();
@@ -65,8 +69,6 @@ class Curso{
             void setProfesor(Profesor* p);
             void setIdioma(Idioma* idi);
             void setHabilitado(bool);
-
-            friend std::ostream& operator<<(std::ostream& os, Curso*& c);
 };
 
 #include "profesor.h"

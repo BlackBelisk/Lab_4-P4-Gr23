@@ -41,12 +41,21 @@ class ExProfesorSinIdiomas : public exception{
         }
 };
 
-class ExNoExistenCursos : public exception{
+class ExNoExistenEstudiantes : public exception{
     public:
-        ExNoExistenCursos() = default;
+        ExNoExistenEstudiantes() = default;
 
         const char* what() const noexcept override{
-            return "No existen cursos en el sistema.";
+            return "No existen estudiantes en el sistema.";
+        }
+};
+
+class ExNoHayCursosDisponibles : public exception{
+    public:
+        ExNoHayCursosDisponibles() = default;
+
+        const char* what() const noexcept override{
+            return "El estudiante seleccionado no tiene cursos disponibles";
         }
 };
 

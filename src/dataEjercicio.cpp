@@ -7,15 +7,19 @@
 
 
 DataEjercicio::DataEjercicio(string d, string f, string s): desc(d), fraseTrad(f), solTrad(s){
-    tipo = 0;
+    tipo = false;
 }
 
 DataEjercicio::DataEjercicio(string d, string f, vector<string> sol): desc(d), fraseComp(f), solComp(sol){
-    tipo = 1;
+    tipo = true;
 }
 
 string DataEjercicio::getDesc()const{
     return desc;
+}
+
+bool DataEjercicio::getTipo()const{
+    return tipo;
 }
 
 string DataEjercicio::getFraseC()const{
@@ -37,7 +41,10 @@ string DataEjercicio::getSolT()const{
 string DataEjercicio::solToString(){
    string s = "";
    for(int i = 0; i < solComp.size(); i++){
-      s += solComp[i] + ", ";
+      s += solComp[i];
+      if(i != solComp.size() - 1){
+        s += ", ";
+      }
    }
    return s;
 }
@@ -56,4 +63,8 @@ string DataEjercicio::mostrarEj(){
     }else{
         return "Descripcion: " + desc + "\n" + "Complete la frase: " + fraseComp + "\n";
     }
+}
+
+bool DataEjercicio::operator==(const DataEjercicio &de){
+   return this->desc == de.getDesc();
 }

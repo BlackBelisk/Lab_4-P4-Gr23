@@ -20,6 +20,7 @@ class Leccion{
             int ID;
     public:
             Leccion(string, string);
+            Leccion(DataLeccion);
             void agregarEjercicio(Ejercicio*);
             void eliminarEjercicios();
             int obtenerCantEjerciciosLeccion();
