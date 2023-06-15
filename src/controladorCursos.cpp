@@ -471,22 +471,28 @@ list<DataCurso> ControladorCursos::listarCursosDisponibles(){
     set<Curso*> inscripto;
     map<string, Inscripcion*> aps = estud->getAprobados();
     map<string, Inscripcion*> ins = estud->getInscripciones();
-    for(auto it = ins.begin(); it != ins.end(); ++it){
-        inscripto.insert((*it).second->getCurso());
-    }
-    for(auto it = cursos.begin(); it != cursos.end(); ++it){
-        bool pasa = false;
-        if((*it).second->cursoToData().getHab() && inscripto.count((*it).second) == 0){
-            pasa = true;
-            for(auto itt = (*it).second->getPrevias().begin(); itt != (*it).second->getPrevias().end(); ++itt){
-                if(aps.count((*itt)->getNombre()) == 0){
-                    pasa = false;
-                    break;
+    if(ins.size() != 0){
+        for(auto it = ins.begin(); it != ins.end(); ++it){
+            inscripto.insert((*it).second->getCurso());
+        }
+        for(auto it = cursos.begin(); it != cursos.end(); ++it){
+            bool pasa = false;
+            DataCurso dc = (*it).second->cursoToData();
+            if(dc.getHab() && inscripto.count((*it).second) == 0){
+                pasa = true;
+                set<Curso*> pres = (*it).second->getPrevias();
+                if(pres.size() != 0){
+                    for(auto itt = pres.begin(); itt != pres.end(); ++itt){
+                        if(aps.count((*itt)->getNombre()) == 0){
+                            pasa = false;
+                            break;
+                        }
+                    }
                 }
             }
-        }
-        if(pasa){
-            disponibles.insert(disponibles.end(), (*it).second->cursoToData());
+            if(pasa){
+                disponibles.insert(disponibles.end(), (*it).second->cursoToData());
+            }
         }
     }
     return disponibles;
