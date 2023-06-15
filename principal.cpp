@@ -953,6 +953,7 @@ void consultarEstadisticas(){
              << endl << "1. Estudiante. "
              << endl << "2. Profesor. "
              << endl << "3. Curso. " << endl;
+        cin >> tipoEstad;
         if (tipoEstad < 0 || tipoEstad > 3)
         {
             cout << "Numero de estadistica invalida. Intente nuevamente" << endl;
