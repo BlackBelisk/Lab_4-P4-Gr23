@@ -964,6 +964,11 @@ void consultarEstadisticas(){
     {
         IControladorUsuarios* cUsers = factory->getIControladorUsuarios();
         list<DataEstudiante> estudiantes = cUsers->obtenerEstudiantes();
+        if (estudiantes.size() == 0)
+        {
+            throw ExNoHayEstudiante();
+        }
+        
         imprimirListaDataEstudiantes(estudiantes);
         int estud;
         do
@@ -979,17 +984,27 @@ void consultarEstadisticas(){
         auto it = estudiantes.begin();
         advance(it, estud - 1);
         DataEstadisticaEstudiante dataEstadEstud = ce->listarEstadisticaEstudiante(*it);
-        cout << "Estadisticas de: " << it->getNick() << endl;
-        for (auto it = dataEstadEstud.getAvances().begin(); it != dataEstadEstud.getAvances().end(); it++)
+        list<DataAvance> avances = dataEstadEstud.getAvances();
+        if (avances.size() == 0)
         {
-            cout << "Curso: " << it->getCurso() << endl; 
-            cout << "Avance: " << it->getAvance() << "%" << endl;
+            throw ExNoEstaInscripto();
+        }
+        cout << "Estadisticas de: " << it->getNick() << endl;
+        for (auto iter = avances.begin(); iter != avances.end(); iter++)
+        {
+            cout << "Curso: " << iter->getCurso() << endl; 
+            cout << "Avance: " << iter->getAvance() << "%" << endl;
         }
     }
     else if (tipoEstad == 2)
     {
         IControladorUsuarios* cUsers = factory->getIControladorUsuarios();
         list<DataProfesor> profesores = cUsers->obtenerProfesores();
+        if (profesores.size() == 0)
+        {
+            throw ExNoHayProfesor();
+        }
+        
         imprimirListaDataProfesores(profesores);
         int profe;
         do
@@ -1005,17 +1020,28 @@ void consultarEstadisticas(){
         auto it = profesores.begin();
         advance(it, profe - 1);
         DataEstadisticaProfesor dataEstadProfe = ce->listarEstadisticaProfesor(*it);
-        cout << "Estadisticas de: " << it->getNick() << endl;
-        for (auto it = dataEstadProfe.getAvances().begin(); it != dataEstadProfe.getAvances().end(); it++)
+        list<DataAvance> avances = dataEstadProfe.getAvances();
+        if (avances.size() == 0)
         {
-            cout << "Curso: " << it->getCurso() << endl;
-            cout << "Avance: " << it->getAvance() << "%" << endl;
+            throw ExNoHaPropuestoCursos();
+        }
+        
+        cout << "Estadisticas de: " << it->getNick() << endl;
+        for (auto iter = avances.begin(); iter != avances.end(); iter++)
+        {
+            cout << "Curso: " << iter->getCurso() << endl;
+            cout << "Avance: " << iter->getAvance() << "%" << endl;
         }
     }
     else if (tipoEstad == 3)
     {
         IControladorCursos* cc = factory->getIControladorCursos();
         list<DataCurso> cursos = cc->listarCursosHab();
+        if (cursos.size() == 0)
+        {
+            throw ExNoExistenCursos();
+        }
+        
         imprimirListaCursos(cursos);
         int curso;
         do
@@ -1246,7 +1272,25 @@ void realizarAccion(int opcion) {
             break;
         case 13:
             // Consultar estadísticas
+            try
+            {
             consultarEstadisticas();
+            }
+            catch (const ExNoHayEstudiante& ex){
+                cout << "Error: " << ex.what() << endl;
+            }
+            catch (const ExNoHayProfesor& ex ){
+                cout << "Error: " << ex.what() << endl;
+            }
+            catch (const ExNoEstaInscripto& ex){
+                cout << ex.what() << endl;
+            }
+            catch (const ExNoHaPropuestoCursos& ex){
+                cout << ex.what() << endl; 
+            }
+            catch (const ExNoExistenCursos& ex){
+                cout << ex.what() << endl;
+            }
             esperarEnter();
             break;
         case 14:
