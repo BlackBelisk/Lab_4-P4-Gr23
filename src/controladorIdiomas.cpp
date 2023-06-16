@@ -2,7 +2,7 @@
 #include <list>
 #include <map>
 #include "../include/IControladorIdiomas.h"
-#include "../include/ControladorIdiomas.h"
+#include "../include/controladorIdiomas.h"
 #include "../include/controladorUsuarios.h"
 #include "../include/idioma.h"
 #include "../include/dataIdioma.h"

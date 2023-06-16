@@ -8,6 +8,14 @@
 
 //Controladores
 
+#include "include/usuario.h"
+#include "include/estudiante.h"
+#include "include/profesor.h"
+#include "include/idioma.h"
+#include "include/curso.h"
+#include "include/leccion.h"
+#include "include/ejercicio.h"
+
 #include "include/dataIdioma.h"
 #include "include/dataUsuario.h"
 #include "include/dataCurso.h"
@@ -18,26 +26,16 @@
 #include "include/dataNotificacion.h"
 #include "include/utils.h"
 
-#include "include/usuario.h"
-#include "include/estudiante.h"
-#include "include/profesor.h"
-#include "include/idioma.h"
-#include "include/curso.h"
-#include "include/leccion.h"
-#include "include/ejercicio.h"
-
-#include "include/factory.h"
 #include "include/IControladorCursos.h"
-#include "include/ControladorCursos.h"
-
 #include "include/IControladorUsuarios.h"
-#include "include/ControladorUsuarios.h"
-
 #include "include/IControladorIdiomas.h"
-#include "include/ControladorIdiomas.h"
-
 #include "include/IControladorEstadisticas.h"
+
+#include "include/controladorCursos.h"
+#include "include/controladorUsuarios.h"
+#include "include/controladorIdiomas.h"
 #include "include/controladorEstadisticas.h"
+#include "include/factory.h"
 //Controladores
 #include "include/excepciones.h"
 //Datausuarios 
@@ -328,6 +326,11 @@ void consultarUsuario(){
     Factory* factory = Factory::getInstance();
     IControladorUsuarios* cu = factory->getIControladorUsuarios();
     list<DataUsuario> usuarios = cu->obtenerUsuarios();
+    if (usuarios.size() == 0)
+    {
+        throw ExNoHayUsuarios();
+    }
+    
     imprimirListaDataUsuarios(usuarios);
     int user;
     do
@@ -1244,7 +1247,14 @@ void realizarAccion(int opcion) {
             break;
         case 2:
             // Consulta de usuario
-            consultarUsuario();
+            try
+            {
+                consultarUsuario();
+            }
+            catch (const ExNoHayUsuarios& ex)
+            {
+                cout << "Error: " << ex.what() << endl;
+            }
             esperarEnter();
             break;
         case 3:

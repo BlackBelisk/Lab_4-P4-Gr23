@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include <set>
-#include "../include/Usuario.h"
+#include "../include/usuario.h"
 #include "../include/estudiante.h"
 #include "../include/profesor.h"
 #include "../include/fecha.h"
