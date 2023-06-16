@@ -73,9 +73,13 @@ void Usuario::eliminarNotificacion(string nomCurso){
 }
 
 void Usuario::eliminarNotificaciones(){
-    for(auto it = this->notificaciones.begin(); it != this->notificaciones.end();it++){
-        Notificacion * noti = it->second;
-        delete(noti);
+    if (this->notificaciones.size() != 0)
+    {
+        for(auto it = this->notificaciones.begin(); it != this->notificaciones.end();it++)
+        {
+            Notificacion * noti = it->second;
+            delete(noti);
+        }
+        this->notificaciones.clear();
     }
-    this->notificaciones.clear();
 }

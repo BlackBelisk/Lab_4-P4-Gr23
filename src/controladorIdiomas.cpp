@@ -88,3 +88,14 @@ void ControladorIdiomas::eliminarSuscriptor(DataIdioma idi, DataUsuario susc){
         Usuario* user = cu->encontrarUsuario(susc.getNick());
         idioma->removerObservador(user);
 }
+
+void ControladorIdiomas::justUseSurtr(){
+    if (this->idiomas.size() != 0)
+    {
+        for (auto it = this->idiomas.begin(); it != this->idiomas.end(); it++)
+        {
+            delete it->second;
+        }
+        this->idiomas.clear();
+    }
+}

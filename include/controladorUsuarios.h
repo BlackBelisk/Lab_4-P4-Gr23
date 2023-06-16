@@ -70,6 +70,7 @@ class ControladorUsuarios: public IControladorUsuarios{
         list<DataIdioma> suscripcionesDisponibles(DataUsuario);
         void agregarSuscripcionAusuario(DataUsuario, DataIdioma);
         void eliminarSuscripcionDeUsuario(DataUsuario, DataIdioma);
+        void nuke();
 };
     
 #endif

@@ -222,3 +222,17 @@ void ControladorUsuarios::eliminarSuscripcionDeUsuario(DataUsuario user, DataIdi
     Idioma* susc = ci->encontrarIdioma(idi.getNombre());
     u->removerSuscripcionAIdioma(susc);
 }
+
+void ControladorUsuarios::nuke(){
+    if (this->usuarios.size() != 0)
+    {
+        for (auto it = this->usuarios.begin(); it != this->usuarios.end(); it++)
+        {
+            it->second->eliminarNotificaciones();
+            delete it->second;
+        }
+        this->usuarios.clear();
+        this->profesores.clear();
+        this->estudiantes.clear();
+    }
+}

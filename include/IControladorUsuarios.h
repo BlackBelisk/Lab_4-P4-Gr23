@@ -52,6 +52,7 @@ class IControladorUsuarios{
         virtual list<DataIdioma> suscripcionesDisponibles(DataUsuario) = 0;
         virtual void agregarSuscripcionAusuario(DataUsuario, DataIdioma) = 0;
         virtual void eliminarSuscripcionDeUsuario(DataUsuario, DataIdioma) = 0;
+        virtual void nuke() = 0;
         virtual ~IControladorUsuarios(){};
 };
 

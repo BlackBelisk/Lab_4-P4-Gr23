@@ -22,6 +22,7 @@ class IControladorIdiomas{
     virtual void nuevoIdioma(DataIdioma) = 0;
     virtual void ingresarSuscripcionDeUsuarioA(DataIdioma, DataUsuario) = 0;
     virtual void eliminarSuscriptor(DataIdioma, DataUsuario) = 0;
+    virtual void justUseSurtr() = 0;
     virtual ~IControladorIdiomas(){};
 };
 

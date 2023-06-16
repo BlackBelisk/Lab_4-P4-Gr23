@@ -1454,6 +1454,8 @@ int main() {
     int opcion;
     Factory* f = Factory::getInstance();
     IControladorCursos* cc = f->getIControladorCursos();
+    IControladorUsuarios* cu = f->getIControladorUsuarios();
+    IControladorIdiomas* ci = f->getIControladorIdiomas();
     cargarDatosPrueba();
     do {
         opcion = mostrarMenu();
@@ -1461,5 +1463,7 @@ int main() {
         cout << endl;
     } while (opcion != 18);
     cc->aMimir();
+    cu->nuke();
+    ci->justUseSurtr();
     return 0;
 }

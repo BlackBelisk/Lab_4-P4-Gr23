@@ -34,6 +34,7 @@ class ControladorIdiomas: public IControladorIdiomas{
         list<DataIdioma> suscripcionesDisponiblesPara(IObserver*);
         void ingresarSuscripcionDeUsuarioA(DataIdioma, DataUsuario);
         void eliminarSuscriptor(DataIdioma, DataUsuario);
+        void justUseSurtr();
 };
 
 #endif
