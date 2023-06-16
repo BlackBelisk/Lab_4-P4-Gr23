@@ -105,8 +105,8 @@ Inscripcion* Curso::encontrarIns(Estudiante* e){
 
  int Curso::obtenerCantEjerciciosCurso(){
     int cec = 0;
-    for(auto it = lecciones.begin(); it != lecciones.end(); ++it){
-        cec += (*it)->obtenerCantEjerciciosLeccion(); 
+    for(int i = 0; i < lecciones.size(); i++){
+        cec += lecciones[i]->obtenerCantEjerciciosLeccion(); 
     }
     return cec;
  }
