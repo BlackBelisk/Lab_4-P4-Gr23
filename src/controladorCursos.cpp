@@ -535,3 +535,20 @@ void ControladorCursos::finalizarInscripcion(){
 //
 //Fin de inscribirse a curso
 //
+
+//
+//A mimir
+//
+
+void ControladorCursos::aMimir(){
+    if(cursos.size() != 0){
+        for(auto it = cursos.begin(); it != cursos.end(); ++it){
+            delete it->second;
+        }
+        cursos.clear();
+    }
+}
+
+//
+//A mimir
+//

@@ -80,6 +80,7 @@ class ControladorCursos : public IControladorCursos{
             void seleccionarCurso(string nombre) override;
             void seleccionarEjercicio(DataEjercicio ej) override;
             void seleccionarLeccion(DataLeccion l) override;
+            void aMimir() override;
 
 
             Estudiante* getEstudianteSeleccionado();

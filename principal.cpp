@@ -462,7 +462,8 @@ void altaCurso(){
     int seleccionador;
     do
         {
-            cout << "Si desea agregar previas al curso ingrese 1, si no desea hacerlo, ingrese 0." << endl;
+            cout << "0. No agregar previas." << endl;
+            cout << "1. Agregar previas." << endl;
             cin.ignore();
             cin >> seleccionador;
             if (seleccionador < 0 || seleccionador > 1)
@@ -622,21 +623,20 @@ void agregarLeccion(){
 
     cc->insLeccion(it->getNomCurso(), nomTema , obj);
     
-   int num=420;
+   cout << "Opcionalmente puede agregar ejercicios a la nueva leccion: " << endl;
+   int num;
    do { cout << endl;
-        if (num==420){ cout << "Opcionalmente puede agregar ejercicios a la nueva leccion: " << endl;} //todo por el disenio
-        else {cout << "Puede agregar otro ejercicio a la nueva leccion: " << endl;}
         do{
+            cout << "0. No agregar ejercicio." << endl;
             cout << "1. Agregar Traduccion." << endl;
             cout << "2. Agregar Completar Palabra." << endl;
-            cout << "3. No agregar ejercicio." << endl;
             cout << endl;
             cin >> num;
-            if (num <= 0 || num > 3)
+            if (num < 0 || num >= 3)
             {
                 cout << "Accion incorrecta. Intente nuevamente." << endl;
             }
-        }while(num <= 0 || num > 3);
+        }while(num < 0 || num >= 3);
         
         if (num == 1){
             string descT,fraseT,solT;
@@ -648,9 +648,9 @@ void agregarLeccion(){
             cout << "Ingrese la solucion de la traduccion: " << endl;
             getline(cin,solT);
             cout << endl;
-
-            cc->agregarEjercicio(descT, fraseT, solT); //lec deberia ser la ultima leccion. entonces creo que esta bien UwU
-            cout << "--Ejercicio agregado exitosamente--" << endl;
+            cc->agregarEjercicio(descT, fraseT, solT);
+            cout << "--Ejercicio agregado exitosamente--" << endl << endl;
+            cout << "Puede agregar otro ejercicio a la nueva leccion: " << endl;
         }
         else if (num == 2){
             string descC,fraseC,solCString;
@@ -659,15 +659,15 @@ void agregarLeccion(){
             getline(cin,descC);
             cout << "Ingrese la frase a completar: " << endl;
             getline(cin,fraseC);
-            cout << "Ingrese la solucion de las palabras faltantes con espacios de esta forma: " << endl;
-            cout << "Palabra1 palabra2 palabra3" << endl;
+            cout << "Ingrese el conjunto solucion de las palabras faltantes separadas con un espacio: " << endl;
             getline(cin,solCString);
             vector<string> solC = convertirAVector(solCString); 
                                           
             cc->agregarEjercicio(descC, fraseC, solC);
-            cout << "--Ejercicio agregado exitosamente--" << endl;
+            cout << "--Ejercicio agregado exitosamente--" << endl << endl;
+            cout << "Puede agregar otro ejercicio a la nueva leccion: " << endl;
         }
-    }while (num!=3);
+    }while (num!=0);
 
 cc->finalizarAgLec();
 cout << "--Leccion agregada exitosamente--" << endl << endl;
@@ -1447,12 +1447,14 @@ int mostrarMenu() {
 
 int main() {
     int opcion;
+    Factory* f = Factory::getInstance();
+    IControladorCursos* cc = f->getIControladorCursos();
     cargarDatosPrueba();
     do {
         opcion = mostrarMenu();
         realizarAccion(opcion);
         cout << endl;
     } while (opcion != 18);
-
+    cc->aMimir();
     return 0;
 }
