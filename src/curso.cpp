@@ -118,7 +118,7 @@ Inscripcion* Curso::encontrarIns(Estudiante* e){
       for(auto it = inscriptos.begin(); it != inscriptos.end(); ++it){
           progT += (*it)->obtenerProgreso();
       }
-      return progT/cantIns*100;
+      return progT/cantIns;
     }
     return 0;
  }
