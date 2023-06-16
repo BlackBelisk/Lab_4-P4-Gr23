@@ -1368,7 +1368,7 @@ void realizarAccion(int opcion) {
                 cout << ex.what() << endl; 
             }
             catch (const ExNoExistenCursos& ex){
-                cout << ex.what() << endl;
+                cout << "Error: " << ex.what() << endl;
             }
             esperarEnter();
             break;
@@ -1380,7 +1380,7 @@ void realizarAccion(int opcion) {
 		    }catch (const ExNoHayUsuarios& ex){
 		    	cout << "Error: " << ex.what() << endl;
 		    }catch (const ExNoHayIdiomasDisponibles& ex){
-		    	cout << "Error: " << ex.what() << endl;
+		    	cout << ex.what() << endl;
 		    }
             esperarEnter();
             break;
@@ -1392,7 +1392,7 @@ void realizarAccion(int opcion) {
 		    }catch (const ExNoHayUsuarios& ex){
 		    	cout << "Error: " << ex.what() << endl;
 		    }catch (const ExNoHayNotificaciones& ex){
-		    	cout << "Error: " << ex.what() << endl;
+		    	cout << ex.what() << endl;
 		    }
             esperarEnter();
             break;
