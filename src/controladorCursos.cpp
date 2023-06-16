@@ -545,7 +545,7 @@ void ControladorCursos::finalizarInscripcion(){
 void ControladorCursos::aMimir(){
     if(cursos.size() != 0){
         for(auto it = cursos.begin(); it != cursos.end(); ++it){
-            delete it->second;
+            eliminarCurso((*it).second->getNombre());
         }
         cursos.clear();
     }
