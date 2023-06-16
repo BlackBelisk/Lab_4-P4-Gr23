@@ -225,7 +225,8 @@ void ControladorCursos::nuevoCurso(DataCurso dataC){
     cursos.insert(make_pair(c->getNombre(), c));
     ControladorUsuarios* cu = ControladorUsuarios::getInstance();
     ControladorIdiomas* ci = ControladorIdiomas::getInstance();
-    c->setProfesor(cu->encontrarProfesor(dataC.getProfe().getNick()));
+    profe = cu->encontrarProfesor(dataC.getProfe().getNick());
+    c->setProfesor(profe);
     c->setIdioma(ci->encontrarIdioma(dataC.getIdi().getNombre()));
     if(dataC.getPrevias().size() != 0){
         list<DataCurso> pres = dataC.getPrevias();
@@ -275,6 +276,8 @@ void ControladorCursos::nuevoCurso(DataCurso dataC){
             lec = nullptr;
         }
     }
+    profe->agregarCursoAProfesor(c);
+    profe = nullptr;
 }
 
 //
