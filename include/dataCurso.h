@@ -26,6 +26,7 @@ class DataCurso{
             list<DataInscripcion> inscriptos;
             list<DataCurso> previas;
             int cantEjercicios;
+            int esPrevia;
     public:
             string getNomCurso()const;
             string getDesc()const;
@@ -37,12 +38,13 @@ class DataCurso{
             list<DataInscripcion> getIns()const;
             list<DataCurso> getPrevias()const;
             int getCantEjercicios()const;
+            int getEsPrevia()const;
 
             string enumToString();
             string leccionesToString();
             string inscriptosToString();
             friend std::ostream& operator<<(std::ostream& os, DataCurso& c);
-            DataCurso(string, string, dif, bool, DataIdioma, DataProfesor, vector<DataLeccion>, list<DataInscripcion>, list<DataCurso>, int);
+            DataCurso(string, string, dif, bool, DataIdioma, DataProfesor, vector<DataLeccion>, list<DataInscripcion>, list<DataCurso>, int, int);
 };
 
 #endif

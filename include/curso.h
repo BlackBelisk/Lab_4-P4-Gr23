@@ -29,6 +29,7 @@ class Curso{
             vector<Leccion*> lecciones;
             set<Inscripcion*> inscriptos;
             set<Curso*> previas;
+            int esPrevia;
             
     public:
             Curso(string, string, dif);    
@@ -53,6 +54,7 @@ class Curso{
             void agregarInscripto(Inscripcion*);
             void agregarPrevia(Curso*);
             Leccion* encontrarLeccion(DataLeccion);
+            void liberarPrevias();
             
             
 
@@ -64,11 +66,13 @@ class Curso{
             string getNombre();
             string getDesc();
             dif getDif();
+            int getEsPrevia();
             
 
             void setProfesor(Profesor* p);
             void setIdioma(Idioma* idi);
             void setHabilitado(bool);
+            void setEsPrevia(int);
 };
 
 #include "profesor.h"

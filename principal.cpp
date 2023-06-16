@@ -209,22 +209,22 @@ void cargarDatosPrueba() {
     /* Cursos, inscripciones y previas */
     /* C1 */ list<DataCurso> P1 = {};
     /* C1 */ list<DataInscripcion> I1 = {n1, n4, n5, n6};
-    /* C1 */ DataCurso c1 = DataCurso("Ingles para principiantes", "Curso para personas con poco o ningun conocimiento de ingles. Se enfoca en vocabulario basico, gramatica y habilidades de conversacion.", Principiante, true, ingles, langMaster, C1, I1, P1, 4);
+    /* C1 */ DataCurso c1 = DataCurso("Ingles para principiantes", "Curso para personas con poco o ningun conocimiento de ingles. Se enfoca en vocabulario basico, gramatica y habilidades de conversacion.", Principiante, true, ingles, langMaster, C1, I1, P1, 4, 2);
     /* C2 */ list<DataCurso> P2 = {};
     /* C2 */ list<DataInscripcion> I2 = {};
-    /* C2 */ DataCurso c2 = DataCurso("Curso de ingles basico", "Construye una base solida en el idioma. Cubre gramatica, vocabulario, comprension auditiva y expresion oral.", Principiante, false, ingles, langMaster, C2, I2, P2, 1);
+    /* C2 */ DataCurso c2 = DataCurso("Curso de ingles basico", "Construye una base solida en el idioma. Cubre gramatica, vocabulario, comprension auditiva y expresion oral.", Principiante, false, ingles, langMaster, C2, I2, P2, 1, 0);
     /* C3 */ list<DataCurso> P3 = {c1};
     /* C3 */ list<DataInscripcion> I3 = {n2};
-    /* C3 */ DataCurso c3 = DataCurso("Ingles intermedio: mejora tu nivel", "Para estudiantes con conocimientos basicos de ingles que desean avanzar en su habilidad comunicativa. Se centra en la fluidez oral, lectura comprensiva y escritura.", Intermedio, true, ingles, linguaPro, C3, I3, P3, 1);
+    /* C3 */ DataCurso c3 = DataCurso("Ingles intermedio: mejora tu nivel", "Para estudiantes con conocimientos basicos de ingles que desean avanzar en su habilidad comunicativa. Se centra en la fluidez oral, lectura comprensiva y escritura.", Intermedio, true, ingles, linguaPro, C3, I3, P3, 1, 1);
     /* C4 */ list<DataCurso> P4 = {c1, c3};
     /* C4 */ list<DataInscripcion> I4 = {};
-    /* C4 */ DataCurso c4 = DataCurso("Curso avanzado de ingles", "Dirigido a personas con un nivel intermedio-alto que desean perfeccionar sus habilidades en todos los aspectos del idioma. Incluye gramatica avanzada, vocabulario y comprension escrita y auditiva.", Avanzado, true, ingles, linguaPro, C4, I4, P4, 1);
+    /* C4 */ DataCurso c4 = DataCurso("Curso avanzado de ingles", "Dirigido a personas con un nivel intermedio-alto que desean perfeccionar sus habilidades en todos los aspectos del idioma. Incluye gramatica avanzada, vocabulario y comprension escrita y auditiva.", Avanzado, true, ingles, linguaPro, C4, I4, P4, 1, 0);
     /* C5 */ list<DataCurso> P5 = {};
     /* C5 */ list<DataInscripcion> I5 = {n7, n8};
-    /* C5 */ DataCurso c5 = DataCurso("Portugues intermedio", "Curso para aquellos que tienen conocimientos basicos de portugues y desean mejorar su nivel. Incluye practica de lectura, escritura y comprension auditiva.", Intermedio, true, portugues, linguaPro, C5, I5, P5, 1);
+    /* C5 */ DataCurso c5 = DataCurso("Portugues intermedio", "Curso para aquellos que tienen conocimientos basicos de portugues y desean mejorar su nivel. Incluye practica de lectura, escritura y comprension auditiva.", Intermedio, true, portugues, linguaPro, C5, I5, P5, 1, 1);
     /* C6 */ list<DataCurso> P6 = {c5};
     /* C6 */ list<DataInscripcion> I6 = {};
-    /* C6 */ DataCurso c6 = DataCurso("Portugues avanzado", "Curso avanzado para personas con un nivel intermedio-alto de portugues que desean perfeccionar su fluidez y dominio del idioma. Se trabaja en la gramatica avanzada y la expresion oral.", Avanzado, false, portugues, lingoSensei, C6, I6, P6, 0);
+    /* C6 */ DataCurso c6 = DataCurso("Portugues avanzado", "Curso avanzado para personas con un nivel intermedio-alto de portugues que desean perfeccionar su fluidez y dominio del idioma. Se trabaja en la gramatica avanzada y la expresion oral.", Avanzado, false, portugues, lingoSensei, C6, I6, P6, 0, 0);
     /* Cursos y previas */
 
 
@@ -784,6 +784,9 @@ void eliminarCurso(){
     Factory* factory = Factory::getInstance();
     IControladorCursos* cc = factory->getIControladorCursos();
     list<DataCurso> cursos = cc->listarCursos();
+    if(cursos.size() == 0){
+        throw ExNoExistenCursos();
+    }
     imprimirListaCursos(cursos);
     int course;
     do
@@ -797,6 +800,9 @@ void eliminarCurso(){
     } while (course <= 0 || course > cursos.size());
     auto it = cursos.begin();
     advance(it, course - 1);
+    if((*it).getEsPrevia() != 0){
+        throw ExCursoEsPrevia();
+    }
     cc->eliminarCurso(it->getNomCurso());
     cout << "--Curso eliminado exitosamente--" << endl << endl;
 }
@@ -1097,28 +1103,31 @@ void suscribirseANotificaciones(){
     IControladorUsuarios* cu = factory->getIControladorUsuarios();
     IControladorIdiomas* ci = factory->getIControladorIdiomas();
     list<DataUsuario> usuarios = cu->obtenerUsuarios();
+    if(usuarios.size() == 0){
+        throw ExNoHayUsuarios();
+    }
     imprimirListaDataUsuarios(usuarios);
     int user;
     do
     {
         cout << "Seleccione el usuario ingresando el numero: " << endl;
         cin >> user;
-        if (user < 0 || user > usuarios.size())
+        if (user <= 0 || user > usuarios.size())
         {
             cout << "Numero de usuario invalido. Intente nuevamente" << endl; 
         }
-    } while (user < 0 || user > usuarios.size());
+    } while (user <= 0 || user > usuarios.size());
     auto it = usuarios.begin();
     advance(it, user - 1);
     list<DataIdioma> idiomasDisp = cu->suscripcionesDisponibles(*it);
-    // if (idiomasDisp.size() == 0)
-    // {
-    //     cout << "No hay suscripciones disponibles" << endl;
-    // }
+    if (idiomasDisp.size() == 0)
+    {
+        throw ExNoHayIdiomasDisponibles();
+    }
     int susc;
     do
     {
-        cout << "Idiomas disponibles: " << endl;
+        cout << "Idiomas disponibles: " << endl << endl;
         imprimirListaDataIdiomas(idiomasDisp);
         cout << "0. Dejar de ingresar idiomas." << endl;    
         cout << "Seleccione el idioma al que quiere suscribirse ingresando el numero: " << endl;
@@ -1134,32 +1143,36 @@ void suscribirseANotificaciones(){
             cu->agregarSuscripcionAusuario(*it,*sus);
             ci->ingresarSuscripcionDeUsuarioA(*sus,*it);
             idiomasDisp.erase(sus);
-            cout << "--Suscripción añadida--" << endl;
+            cout << "--Suscripción añadida exitosamente--" << endl;
         }
-    } while (susc !=0 && idiomasDisp.size()>0);
+    } while (susc != 0 && idiomasDisp.size()>0);
 }
 
 void consultarNotificaciones(){
     Factory * factory = Factory::getInstance();
     IControladorUsuarios* cu = factory->getIControladorUsuarios();
     list<DataUsuario> usuarios = cu->obtenerUsuarios();
+    if(usuarios.size() == 0){
+        throw ExNoHayUsuarios();
+    }
     imprimirListaDataUsuarios(usuarios);
     int user;
     do
     {
         cout << "Seleccione el usuario ingresando el numero: " << endl;
         cin >> user;
-        if (user < 0 || user > usuarios.size())
+        if (user <= 0 || user > usuarios.size())
         {
             cout << "Numero de usuario invalido. Intente nuevamente" << endl; 
         }
-    } while (user < 0 || user > usuarios.size());
+    } while (user <= 0 || user > usuarios.size());
     auto it = usuarios.begin();
     advance(it, user - 1);
     list<DataNotificacion> notificaciones = cu->consultarNotificaciones(*it);
+    if(notificaciones.size() == 0){
+        throw ExNoHayNotificaciones();
+    }
     imprimirListaNotificaciones(notificaciones);
-    cout << "Presione enter para continuar.";
-    getchar();
     cu->limpiarNotificaciones(*it);
 }
 
@@ -1168,21 +1181,26 @@ void eliminarSuscripciones(){
     IControladorUsuarios* cu = factory->getIControladorUsuarios();
     IControladorIdiomas* ci = factory->getIControladorIdiomas();
     list<DataUsuario> usuarios = cu->obtenerUsuarios();
+    if(usuarios.size() == 0){
+        throw ExNoHayUsuarios();
+    }
     imprimirListaDataUsuarios(usuarios);
     int user;
     do
     {
         cout << "Seleccione el usuario ingresando el numero: " << endl;
         cin >> user;
-        if (user < 0 || user > usuarios.size())
+        if (user <= 0 || user > usuarios.size())
         {
             cout << "Numero de usuario invalido. Intente nuevamente" << endl; 
         }
-    } while (user < 0 || user > usuarios.size());
+    } while (user <= 0 || user > usuarios.size());
     auto it = usuarios.begin();
     advance(it, user - 1);
     list<DataIdioma> suscripcionesActuales = cu->obtenerSuscripciones(*it);
-    
+    if(suscripcionesActuales.size() == 0){
+        throw ExNoHaySuscripciones();
+    }
     int susc;
     do
     {
@@ -1288,7 +1306,14 @@ void realizarAccion(int opcion) {
             break;
         case 9:
             // Eliminar curso
-            eliminarCurso();
+            try
+		    {
+                eliminarCurso();
+		    }catch (const ExCursoEsPrevia& ex){
+		    	cout << "Error: " << ex.what() << endl;
+		    }catch (const ExNoExistenCursos& ex){
+		    	cout << "Error: " << ex.what() << endl;
+		    }
             esperarEnter();
             break;
         case 10:
@@ -1345,17 +1370,38 @@ void realizarAccion(int opcion) {
             break;
         case 14:
             // Suscribirse a notificaciones
-            suscribirseANotificaciones();
+            try
+		    {
+                suscribirseANotificaciones();
+		    }catch (const ExNoHayUsuarios& ex){
+		    	cout << "Error: " << ex.what() << endl;
+		    }catch (const ExNoHayIdiomasDisponibles& ex){
+		    	cout << "Error: " << ex.what() << endl;
+		    }
             esperarEnter();
             break;
         case 15:
             // Consulta de notificaciones
-            consultarNotificaciones();
+            try
+		    {
+                consultarNotificaciones();
+		    }catch (const ExNoHayUsuarios& ex){
+		    	cout << "Error: " << ex.what() << endl;
+		    }catch (const ExNoHayNotificaciones& ex){
+		    	cout << "Error: " << ex.what() << endl;
+		    }
             esperarEnter();
             break;
         case 16:
             // Eliminar suscripciones
-            eliminarSuscripciones();
+             try
+		    {
+                eliminarSuscripciones();
+		    }catch (const ExNoHayUsuarios& ex){
+		    	cout << "Error: " << ex.what() << endl;
+		    }catch (const ExNoHaySuscripciones& ex){
+		    	cout << "Error: " << ex.what() << endl;
+		    }
             esperarEnter();
             break;
         case 17:

@@ -13,6 +13,7 @@ Curso::Curso(string nombreCurso, string desc, dif Dif){
    habilitado = false;
    profe = nullptr;
    idioma = nullptr;
+   esPrevia = 0;
 }
 
 Curso::Curso(DataCurso DataC){
@@ -20,6 +21,7 @@ Curso::Curso(DataCurso DataC){
    descripcion = DataC.getDesc();
    dificultad = DataC.getDif();
    habilitado = DataC.getHab();
+   esPrevia = 0;
 }
 
 vector<DataLeccion> Curso::lecToData(){
@@ -50,7 +52,7 @@ list<DataCurso> Curso::preToData(){
 }
 
 DataCurso Curso::cursoToData(){
-   DataCurso dc(nomCurso, descripcion, dificultad, habilitado, idioma->getDataIdioma(), profe->getDataProfesor(), lecToData(), insToData(), preToData(), this->obtenerCantEjerciciosCurso());
+   DataCurso dc(nomCurso, descripcion, dificultad, habilitado, idioma->getDataIdioma(), profe->getDataProfesor(), lecToData(), insToData(), preToData(), this->obtenerCantEjerciciosCurso(), esPrevia);
    return dc;
 }
 
@@ -103,6 +105,14 @@ Inscripcion* Curso::encontrarIns(Estudiante* e){
     idioma->eliminarNotif(nomCurso);
  }
 
+ void Curso::liberarPrevias(){
+   if(previas.size() != 0){
+        for(auto it = previas.begin(); it != previas.end(); ++it){
+            (*it)->setEsPrevia(-1);
+    }
+   }
+ }
+
  int Curso::obtenerCantEjerciciosCurso(){
     int cec = 0;
     for(int i = 0; i < lecciones.size(); i++){
@@ -144,6 +154,7 @@ Inscripcion* Curso::encontrarIns(Estudiante* e){
 
  void Curso::agregarPrevia(Curso* c){
    previas.insert(c);
+   c->setEsPrevia(1);
  }
 
  Leccion* Curso::encontrarLeccion(DataLeccion l){
@@ -239,6 +250,10 @@ Inscripcion* Curso::encontrarIns(Estudiante* e){
    habilitado = t;
  }
 
+ void Curso::setEsPrevia(int i){
+   esPrevia += i;
+ }
+
  string Curso::getNombre(){
    return nomCurso;
  }
@@ -247,4 +262,8 @@ string Curso::getDesc(){
 }
 dif Curso::getDif(){
    return dificultad;
+}
+
+int Curso::getEsPrevia(){
+   return esPrevia;
 }

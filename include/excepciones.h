@@ -109,4 +109,44 @@ class ExNoHayLeccionesEnCurso : public exception{
             return "El curso elegido no posee ninguna leccion.";
         }
 };
+
+class ExCursoEsPrevia : public exception{
+     public:
+        ExCursoEsPrevia() = default;
+        const char* what() const noexcept override{
+            return "Este curso es previa de otro(s) y por lo tanto no puede eliminarse.";
+        }
+};
+
+class ExNoHayUsuarios : public exception{
+     public:
+        ExNoHayUsuarios() = default;
+        const char* what() const noexcept override{
+            return "No hay usuarios ingresados en el sistema.";
+        }
+};
+
+class ExNoHayIdiomasDisponibles : public exception{
+     public:
+        ExNoHayIdiomasDisponibles() = default;
+        const char* what() const noexcept override{
+            return "No hay suscripciones disponibles.";
+        }
+};
+
+class ExNoHayNotificaciones : public exception{
+     public:
+        ExNoHayNotificaciones() = default;
+        const char* what() const noexcept override{
+            return "No hay notificaciones pendientes.";
+        }
+};
+
+class ExNoHaySuscripciones : public exception{
+     public:
+        ExNoHaySuscripciones() = default;
+        const char* what() const noexcept override{
+            return "Este usuario no esta suscrito a ningun idioma.";
+        }
+};
 #endif

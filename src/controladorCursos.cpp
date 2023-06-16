@@ -194,6 +194,7 @@ void ControladorCursos::eliminarCurso(string nc){
     Curso* c = cursos[nc];
     cursos.erase(nc);
     Profesor* prof = c->getProfesor();
+    c->liberarPrevias();
     c->eliminarContenido();
     c->eliminarInscripciones();
     c->eliminarNotificaciones();
