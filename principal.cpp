@@ -508,7 +508,8 @@ void altaCurso(){
     //Agregar Lecciones y Ejercicios al Curso (puede no agregar)
     do
         {
-            cout << "Si desea agregar lecciones al curso ingrese 1, si no desea hacerlo, ingrese 0." << endl;
+            cout << "0. No agregar leccion." << endl;
+            cout << "1. Agregar leccion." << endl;
             cin.ignore();
             cin >> seleccionador;
             if (seleccionador != 0 && seleccionador != 1)
@@ -532,7 +533,8 @@ void altaCurso(){
             cout << "Leccion añadida." << endl;
             do
             {
-                cout << "Si desea agregar ejercicios a la leccion ingrese 1, si no desea hacerlo, ingrese 0." << endl;
+                cout << "0. No agregar ejercicio." << endl;
+                cout << "1. Agregar ejercicio." << endl;
                 cin >> seleccionador;
                 if (seleccionador != 0 && seleccionador != 1)
                 {
@@ -544,7 +546,9 @@ void altaCurso(){
                 do{
                     do
                     {
-                        cout << "Si desea agregar un ejercicio de tipo completar ingrese 1, si desea agregar uno de tipo traducir, ingrese 2. Si desea detenerse ingrese 0." << endl;
+                        cout << "0. No agregar mas ejercicios." << endl;
+                        cout << "1. Agregar tipo completar." << endl;
+                        cout << "2. Agregar tipo traducir." << endl;
                         cin >> seleccionador;
                         if (seleccionador < 0 || seleccionador > 2)
                         {
@@ -580,7 +584,8 @@ void altaCurso(){
             }
             do
             {
-                cout << "Si desea agregar otra leccion, ingrese 1. Si no, ingrese 0." << endl;
+                cout << "0. No agregar mas lecciones." << endl;
+                cout << "1. Seguir agregando lecciones." << endl;
                 cin.ignore();
                 cin >> seleccionador;
                 if (seleccionador != 0 && seleccionador != 1)
