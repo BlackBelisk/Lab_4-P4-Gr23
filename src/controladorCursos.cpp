@@ -119,7 +119,6 @@ void ControladorCursos::agregarLeccionCN(string nomTema, string objLeccion){
     c->setProfesor(profe);
     c->setIdioma(idi);
     profe->agregarCursoAProfesor(c);
-    idi->Notificar(c->getNombre());
     curso = nullptr;
     idi = nullptr;
     profe = nullptr;
@@ -168,7 +167,10 @@ bool ControladorCursos::esCursoHabilitable(string c){
 //Pre: Un curso se puede habilitar solo si tiene al menos una lección y un ejercicio, y no tiene lecciones sin ejercicios.
 //Pre: C es el nombre de un curso de los listados previamente
 void ControladorCursos::habilitarCurso(string c){
-    cursos[c]->setHabilitado(true);
+    Curso* cu = encontrarCurso(c);
+    cu->setHabilitado(true);
+    Idioma* i = cu->getIdioma();
+    i->Notificar(c);
 }
 
 //
