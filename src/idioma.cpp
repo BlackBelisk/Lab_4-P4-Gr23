@@ -46,8 +46,10 @@ void Idioma::Notificar(string nomCurso){
 }
 
 void Idioma::eliminarNotif(string nomCurso){
-    for(auto it = this->suscriptores.begin(); it != this->suscriptores.end();it++){
-        (*it)->eliminarNotificacion(nomCurso);
+    if(suscriptores.size() != 0){
+        for(auto it = this->suscriptores.begin(); it != this->suscriptores.end();it++){
+            (*it)->eliminarNotificacion(nomCurso);
+        }
     }
 }
 
