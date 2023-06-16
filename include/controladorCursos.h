@@ -53,7 +53,7 @@ class ControladorCursos : public IControladorCursos{
             list<DataCurso> obtenerCursosNoAprobadosEstudiante() override;
             list<DataEjercicio> listarEjerciciosNoAprobados() override;
             void ingresarSolEjercicio(string resp) override;
-            void comprobarSolucionEjercicio() override;
+            bool comprobarSolucionEjercicio() override;
             bool comprobarCompletarPalabra() override;
             bool comprobarTraducir() override;
             //string mostrarFraseATraducir() override;
@@ -72,6 +72,7 @@ class ControladorCursos : public IControladorCursos{
             void finalizarInscripcion() override;
             bool getTipoEjercicio() override;
             bool esCursoHabilitable(string c) override;
+            void seleccionarInscripcion() override;
 
             void elegirProfesor(string nickProfesor) override;
             void elegirIdiomaProfesor(DataIdioma) override;

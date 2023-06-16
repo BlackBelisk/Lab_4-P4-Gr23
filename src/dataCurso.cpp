@@ -104,7 +104,7 @@ std::ostream& operator<<(std::ostream& os, DataCurso& c) {
     << "Idioma: " << c.getIdi().getNombre() << endl
     << "Profesor: " << c.getProfe().getNombre() << endl
     << "Habilitado: " << s << endl
-    << "Lecciones: " << endl << c.leccionesToString() << endl
+    << "Lecciones: " << endl << endl << c.leccionesToString()
     << "Inscriptos: " << c.inscriptosToString() << endl;
     return os;
   }

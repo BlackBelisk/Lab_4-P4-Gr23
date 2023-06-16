@@ -38,7 +38,7 @@ class IControladorCursos{//Interfaz
         virtual void seleccionarCurso(string nombre) = 0;
         virtual list<DataEjercicio> listarEjerciciosNoAprobados() = 0;
         virtual void ingresarSolEjercicio(string resp) = 0;
-        virtual void comprobarSolucionEjercicio() = 0;
+        virtual bool comprobarSolucionEjercicio() = 0;
         virtual bool comprobarCompletarPalabra() = 0;
         virtual bool comprobarTraducir() = 0;
         //virtual string mostrarFraseATraducir() = 0;
@@ -61,6 +61,7 @@ class IControladorCursos{//Interfaz
         virtual void finalizarInscripcion() = 0;
         virtual bool getTipoEjercicio() = 0;
         virtual bool esCursoHabilitable(string c) = 0;
+        virtual void seleccionarInscripcion() = 0;
         virtual ~IControladorCursos(){};
 };
 #endif

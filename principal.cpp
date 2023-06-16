@@ -597,6 +597,9 @@ void agregarLeccion(){
     Factory* factory = Factory::getInstance();
     IControladorCursos* cc = factory->getIControladorCursos();
     list<DataCurso> cursos = cc->listarCursosNA();
+    if(cursos.size() == 0){
+        throw ExNoHayCursosNoHabilitados();
+    }
     imprimirListaCursos(cursos);
     int course;
         do
@@ -674,6 +677,9 @@ void agregarEjercicio(){
     Factory* factory = Factory::getInstance();
     IControladorCursos* cc = factory->getIControladorCursos();
     list<DataCurso> cursos = cc->listarCursosNA();
+    if(cursos.size() == 0){
+        throw ExNoHayCursosNoHabilitados();
+    }
     imprimirListaCursos(cursos);
     int course;
         do
@@ -690,7 +696,9 @@ void agregarEjercicio(){
 
     cc->seleccionarCurso(itC->getNomCurso());
     vector<DataLeccion> lex = cc->listarLecciones();
-
+    if(lex.size() == 0){
+        throw ExNoHayLeccionesEnCurso();
+    }
     imprimirListaLeccion(lex);//esta es nueva. si, es con vectores, no con listas como las otras :o
     int numLec;
         do
@@ -748,6 +756,9 @@ void habilitarCurso(){
     Factory* factory = Factory::getInstance();
     IControladorCursos* cc = factory->getIControladorCursos();
     list<DataCurso> cursos = cc->listarCursosNA();
+    if(cursos.size() == 0){
+        throw ExNoHayCursosNoHabilitados();
+    }
     imprimirListaCursos(cursos);
     int course;
         do
@@ -821,7 +832,7 @@ void inscribirseACurso(){
     IControladorUsuarios* cu = factory->getIControladorUsuarios();
     list<DataEstudiante> estudiantes = cu->obtenerEstudiantes();
     if(estudiantes.size() == 0){
-        throw ExNoExistenEstudiantes();
+        throw ExNoHayEstudiante();
     }
     imprimirListaDataEstudiantes(estudiantes);
     int estud;
@@ -913,6 +924,7 @@ void realizarEjercicio(){
     auto iter = cursos.begin();
     advance(iter, cur - 1);
     cc->seleccionarCurso(iter->getNomCurso());
+    cc->seleccionarInscripcion();
     list<DataEjercicio> ejercicios = cc->listarEjerciciosNoAprobados();
     imprimirListaEjercicios(ejercicios);
     int ej;
@@ -930,7 +942,7 @@ void realizarEjercicio(){
     advance(otroiter, ej - 1);
     cc->seleccionarEjercicio(*otroiter);
     string letra = cc->enunciarEjercicio();
-    cout << letra << endl;
+    cout << "Letra del ejercicio: " << endl << letra << endl;
     if(cc->getTipoEjercicio()){
         cout << (*otroiter).getFraseC() << endl;
         cout << "Ingrese las palabras faltantes separadas por un espacio: " << endl;
@@ -947,7 +959,12 @@ void realizarEjercicio(){
         getline(cin, s);
         cc->ingresarSolEjercicio(s);
     }
-    cc->comprobarSolucionEjercicio();
+    if(cc->comprobarSolucionEjercicio()){
+        cout << "¡Ejercicio resuelto!" << endl;
+    }else{
+        cout << "Solucion incorrecta." << endl;
+    }
+    
 }
 
 void consultarEstadisticas(){
@@ -1238,17 +1255,35 @@ void realizarAccion(int opcion) {
             break;
         case 6:
             // Agregar lección
-            agregarLeccion();
+            try
+		    {
+                agregarLeccion();
+		    }catch (const ExNoHayCursosNoHabilitados& ex){
+		    	cout << "Error: " << ex.what() << endl;
+		    }
             esperarEnter();
             break;
         case 7:
             // Agregar ejercicio
-            agregarEjercicio();
+            try
+		    {
+                agregarEjercicio();
+		    }catch (const ExNoHayCursosNoHabilitados& ex){
+		    	cout << "Error: " << ex.what() << endl;
+		    }catch (const ExNoHayLeccionesEnCurso& ex){
+		    	cout << "Error: " << ex.what() << endl;
+		    }
             esperarEnter();
             break;
         case 8:
             // Habilitar curso
+            try
+            {
             habilitarCurso();
+            }
+            catch (const ExNoHayCursosNoHabilitados& ex){
+                cout << "Error: " << ex.what() << endl;
+            }
             esperarEnter();
             break;
         case 9:
@@ -1265,7 +1300,7 @@ void realizarAccion(int opcion) {
             // Inscribirse a curso
             try{
                 inscribirseACurso();
-            }catch(const ExNoExistenEstudiantes& ex){
+            }catch(const ExNoHayEstudiante& ex){
 		    	cout << "Error: " << ex.what() << endl;
 		    }catch(const ExNoHayCursosDisponibles& ex){
 		    	cout << "Error: " << ex.what() << endl;
