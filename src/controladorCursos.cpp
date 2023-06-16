@@ -301,6 +301,10 @@ list<DataCurso> ControladorCursos::obtenerCursosNoAprobadosEstudiante(){
     curso = cursos[nombre];
  }
 
+ void ControladorCursos::seleccionarInscripcion(){
+    ins = curso->encontrarIns(estud);
+}
+
  list<DataEjercicio> ControladorCursos::listarEjerciciosNoAprobados(){
     list<DataEjercicio> le;
     Estudiante* e = getEstudianteSeleccionado();
@@ -363,7 +367,7 @@ void ControladorCursos::ingresarSolEjercicio(vector<string> s){
     tipo = 1;
 }
 
-void ControladorCursos::comprobarSolucionEjercicio(){
+bool ControladorCursos::comprobarSolucionEjercicio(){
     bool solucionado;
     if(tipo == 0){
         solucionado = comprobarTraducir();
@@ -384,6 +388,7 @@ void ControladorCursos::comprobarSolucionEjercicio(){
     curso = nullptr;
     ejSel = nullptr;
     estud = nullptr;
+    return solucionado;
 }
 
 //En caso traducir
@@ -505,7 +510,7 @@ list<DataCurso> ControladorCursos::listarCursosDisponibles(){
         }
     }else{
         for(auto it = cursos.begin(); it != cursos.end(); ++it){
-            if((*it).second->getPrevias().size() == 0){
+            if((*it).second->getHab() && (*it).second->getPrevias().size() == 0){
                 disponibles.insert(disponibles.end(), (*it).second->cursoToData());
             }
         }
