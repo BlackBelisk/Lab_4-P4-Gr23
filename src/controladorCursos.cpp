@@ -482,12 +482,17 @@ list<DataCurso> ControladorCursos::listarCursosDisponibles(){
                 pasa = true;
                 set<Curso*> pres = (*it).second->getPrevias();
                 if(pres.size() != 0){
-                    for(auto itt = pres.begin(); itt != pres.end(); ++itt){
-                        if(aps.count((*itt)->getNombre()) == 0){
-                            pasa = false;
-                            break;
+                    if(aps.size() != 0){
+                        for(auto itt = pres.begin(); itt != pres.end(); ++itt){
+                            if(aps.count((*itt)->getNombre()) == 0){
+                                pasa = false;
+                                break;
+                            }
                         }
+                    }else{
+                        pasa = false;
                     }
+                    
                 }
             }
             if(pasa){
