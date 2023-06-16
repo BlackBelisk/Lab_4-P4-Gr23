@@ -64,15 +64,18 @@ list<DataNotificacion> Usuario::obtenerNotificaciones(){
 }
 
 void Usuario::eliminarNotificacion(string nomCurso){
-    Notificacion * borrar = this->notificaciones.find(nomCurso)->second;
-    this->notificaciones.erase(nomCurso);
-    delete(borrar);
+    if (this->notificaciones.count(nomCurso)>0)
+    {
+        Notificacion * borrar = this->notificaciones.find(nomCurso)->second;
+        this->notificaciones.erase(nomCurso);
+        delete(borrar);
+    }
 }
 
 void Usuario::eliminarNotificaciones(){
     for(auto it = this->notificaciones.begin(); it != this->notificaciones.end();it++){
         Notificacion * noti = it->second;
-        this->notificaciones.erase(it);
         delete(noti);
     }
+    this->notificaciones.clear();
 }
