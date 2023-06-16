@@ -850,7 +850,7 @@ void inscribirseACurso(){
             << endl << "Profesor: " << it->getProfe()
             << endl << "Dificultad: " << it->enumToString()
             << endl << "Cantidad de Lecciones: " << it->getLecciones().size()
-            << endl << "Cantidad de Ejercicios: " << it->getCantEjercicios() << endl;
+            << endl << "Cantidad de Ejercicios: " << it->getCantEjercicios() << endl << endl;
         num++;
     }
     int curso;

@@ -491,6 +491,12 @@ list<DataCurso> ControladorCursos::listarCursosDisponibles(){
                 }
             }
             if(pasa){
+                disponibles.insert(disponibles.end(), dc);
+            }
+        }
+    }else{
+        for(auto it = cursos.begin(); it != cursos.end(); ++it){
+            if((*it).second->getPrevias().size() == 0){
                 disponibles.insert(disponibles.end(), (*it).second->cursoToData());
             }
         }
