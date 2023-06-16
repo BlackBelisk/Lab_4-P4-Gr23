@@ -904,27 +904,28 @@ void realizarEjercicio(){
     {
         cout << "Seleccione el curso ingresando el numero: " << endl;
         cin >> cur;
-        if (cur < 0 || cur >= cursos.size())
+        if (cur <= 0 || cur > cursos.size())
         {
             cout << "Numero de curso invalido. Intente nuevamente." << endl;
         }
         
-    } while (cur < 0 || cur >= cursos.size());
+    } while (cur <= 0 || cur > cursos.size());
     auto iter = cursos.begin();
     advance(iter, cur - 1);
     cc->seleccionarCurso(iter->getNomCurso());
     list<DataEjercicio> ejercicios = cc->listarEjerciciosNoAprobados();
+    imprimirListaEjercicios(ejercicios);
     int ej;
     do
     {
         cout << "Seleccione el ejercicio ingresando el numero: " << endl;
         cin >> ej;
-        if (ej < 0 || ej >= ejercicios.size())
+        if (ej <= 0 || ej > ejercicios.size())
         {
             cout << "Numero de ejercicio invalido. Intente nuevamente." << endl;
         }
         
-    } while (ej < 0 || ej >= ejercicios.size());
+    } while (ej <= 0 || ej > ejercicios.size());
     auto otroiter = ejercicios.begin();
     advance(otroiter, ej - 1);
     cc->seleccionarEjercicio(*otroiter);

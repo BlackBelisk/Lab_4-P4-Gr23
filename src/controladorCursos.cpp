@@ -307,7 +307,8 @@ list<DataCurso> ControladorCursos::obtenerCursosNoAprobadosEstudiante(){
     Curso* c = getCurso();
     Inscripcion* i = e->encontrarInscripcion(c->getNombre());
     Leccion* l = i->getLecActual();
-    for(auto it = l->getEjs().begin(); it != l->getEjs().end(); ++it){
+    set<Ejercicio*> es = l->getEjs(); 
+    for(auto it = es.begin(); it != es.end(); ++it){
         bool encontrado = false;
         for (const auto& pair : i->getEjsCompletados()) {
             if (pair.second == (*it)) {
