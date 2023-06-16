@@ -47,9 +47,10 @@ float Inscripcion::obtenerProgreso(){
     if(aprobado){
         return 100;
     }else{
-        int cantEjRes = ejsCompletados.size();
-        int cec = curso->obtenerCantEjerciciosCurso();
-        return cantEjRes/cec*100;
+        float cantEjRes = ejsCompletados.size();
+        float cec = curso->obtenerCantEjerciciosCurso();
+        float progreso = cantEjRes/cec*100; 
+        return progreso;
     }
 }
 

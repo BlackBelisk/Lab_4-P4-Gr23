@@ -112,9 +112,9 @@ Inscripcion* Curso::encontrarIns(Estudiante* e){
  }
 
  float Curso::obtenerPromedioCurso(){
-    int cantIns = inscriptos.size();
+    float cantIns = inscriptos.size();
     if(cantIns != 0){
-      int progT = 0;
+      float progT = 0;
       for(auto it = inscriptos.begin(); it != inscriptos.end(); ++it){
           progT += (*it)->obtenerProgreso();
       }
