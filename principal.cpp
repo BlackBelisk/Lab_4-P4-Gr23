@@ -1456,7 +1456,6 @@ int main() {
     IControladorCursos* cc = f->getIControladorCursos();
     IControladorUsuarios* cu = f->getIControladorUsuarios();
     IControladorIdiomas* ci = f->getIControladorIdiomas();
-    cargarDatosPrueba();
     do {
         opcion = mostrarMenu();
         realizarAccion(opcion);
