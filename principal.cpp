@@ -876,6 +876,9 @@ void realizarEjercicio(){
     IControladorCursos* cc = factory->getIControladorCursos();
     IControladorUsuarios* cu = factory->getIControladorUsuarios();
     list<DataEstudiante> estudiantes = cu->obtenerEstudiantes();
+    if(estudiantes.size() == 0){
+        throw ExNoHayEstudiante();
+    }
     imprimirListaDataEstudiantes(estudiantes);
     int estud;
     do
@@ -892,6 +895,9 @@ void realizarEjercicio(){
     advance(iterador, estud - 1);
     cc->seleccionarEstudiante(iterador->getNick());
     list<DataCurso> cursos = cc->obtenerCursosNoAprobadosEstudiante();
+    if(cursos.size() == 0){
+        throw ExNoCursosEnCurso();
+    }
     imprimirListaCursos(cursos);
     int cur;
     do
@@ -1267,7 +1273,15 @@ void realizarAccion(int opcion) {
             break;
         case 12:
             // Realizar ejercicio
+            try
+            {
             realizarEjercicio();
+            }
+            catch (const ExNoHayEstudiante& ex){
+                cout << "Error: " << ex.what() << endl;
+            }catch (const ExNoCursosEnCurso& ex){
+                cout << "Error: " << ex.what() << endl;
+            }
             esperarEnter();
             break;
         case 13:

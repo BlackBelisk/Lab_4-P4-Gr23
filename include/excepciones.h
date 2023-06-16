@@ -85,11 +85,20 @@ class ExNoHaPropuestoCursos : public exception{
             return "El profesor seleccionado no ha propuesto/imparte algún curso";
         }
 };
+
 class ExNoExistenCursos : public exception{
      public:
         ExNoExistenCursos() = default;
         const char* what() const noexcept override{
             return "No existen cursos en el sistema.";
+        }
+};
+
+class ExNoCursosEnCurso : public exception{
+     public:
+        ExNoCursosEnCurso() = default;
+        const char* what() const noexcept override{
+            return "El estudiante no tiene ningun curso en progreso.";
         }
 };
 #endif
