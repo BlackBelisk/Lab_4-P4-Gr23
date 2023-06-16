@@ -23,12 +23,30 @@ public:
     }
 };
 
+class ExNoHayEstudiante : public exception{
+    public:
+        ExNoHayEstudiante() = default;
+
+        const char* what() const noexcept override{
+            return "No existen estudiantes ingresados en el sistema.";
+        }
+};
+
+class ExNoEstaInscripto : public exception{
+    public:
+        ExNoEstaInscripto() = default;
+
+        const char* what() const noexcept override{
+            return "El estudiante seleccionado no se encuentra inscripto a ningún curso. ";
+        }
+};
+
 class ExNoHayProfesor : public exception{
     public:
         ExNoHayProfesor() = default;
 
         const char* what() const noexcept override{
-            return "No existe profesor ingresado en el sistema.";
+            return "No existen profesores ingresados en el sistema.";
         }
 };
 
@@ -59,4 +77,19 @@ class ExNoHayCursosDisponibles : public exception{
         }
 };
 
+class ExNoHaPropuestoCursos : public exception{
+    public:
+        ExNoHaPropuestoCursos() = default;
+
+        const char* what() const noexcept override{
+            return "El profesor seleccionado no ha propuesto/imparte algún curso";
+        }
+};
+class ExNoExistenCursos : public exception{
+     public:
+        ExNoExistenCursos() = default;
+        const char* what() const noexcept override{
+            return "No existen cursos en el sistema.";
+        }
+};
 #endif
