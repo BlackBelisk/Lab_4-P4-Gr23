@@ -978,7 +978,9 @@ void realizarEjercicio(){
     }else{
         cout << "Solucion incorrecta." << endl;
     }
-    
+    if(cc->finDeRealizarEjercicio()){
+        cout << "¡Curso aprobado, felicidades!" << endl;
+    }
 }
 
 void consultarEstadisticas(){

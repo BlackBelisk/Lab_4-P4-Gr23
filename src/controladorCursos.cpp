@@ -387,10 +387,6 @@ bool ControladorCursos::comprobarSolucionEjercicio(){
             }
         }
     }
-    ins = nullptr;
-    curso = nullptr;
-    ejSel = nullptr;
-    estud = nullptr;
     return solucionado;
 }
 
@@ -403,6 +399,18 @@ bool ControladorCursos::comprobarTraducir(){
 bool ControladorCursos::comprobarCompletarPalabra(){
     CompletarPalabra* ej = dynamic_cast<CompletarPalabra*>(getEjercicioSeleccionado());
     return ej->getSolucionComp() == resComp;
+}
+
+bool ControladorCursos::finDeRealizarEjercicio(){
+    bool b = false;
+    if(ins->getAprobado()){
+        b = true;
+    }
+    ins = nullptr;
+    curso = nullptr;
+    ejSel = nullptr;
+    estud = nullptr;
+    return b;
 }
 
 //

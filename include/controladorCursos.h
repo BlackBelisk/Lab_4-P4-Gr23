@@ -73,6 +73,7 @@ class ControladorCursos : public IControladorCursos{
             bool getTipoEjercicio() override;
             bool esCursoHabilitable(string c) override;
             void seleccionarInscripcion() override;
+            bool finDeRealizarEjercicio() override;
 
             void elegirProfesor(string nickProfesor) override;
             void elegirIdiomaProfesor(DataIdioma) override;

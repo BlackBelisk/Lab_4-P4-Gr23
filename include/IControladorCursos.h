@@ -63,6 +63,7 @@ class IControladorCursos{//Interfaz
         virtual bool esCursoHabilitable(string c) = 0;
         virtual void seleccionarInscripcion() = 0;
         virtual void aMimir() = 0;
+        virtual bool finDeRealizarEjercicio() = 0;
         virtual ~IControladorCursos(){};
 };
 #endif
