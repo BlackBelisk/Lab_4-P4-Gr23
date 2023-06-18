@@ -149,4 +149,12 @@ class ExNoHaySuscripciones : public exception{
             return "Este usuario no esta suscrito a ningun idioma.";
         }
 };
+
+class ExNoHayIdiomas : public exception{
+    public:
+        ExNoHayIdiomas() = default;
+        const char* what() const noexcept override{
+            return "No hay idiomas ingresados en el sistema.";
+        }
+};
 #endif
