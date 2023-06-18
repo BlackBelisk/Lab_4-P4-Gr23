@@ -376,6 +376,11 @@ void consultarIdiomas(){
     Factory * factory = Factory::getInstance();
     IControladorIdiomas* ci = factory->getIControladorIdiomas();
     list<DataIdioma> listaIdiomas = ci->listarIdiomas();
+    if (listaIdiomas.size() == 0)
+    {
+        throw ExNoHayIdiomas();
+    }
+    
     imprimirListaDataIdiomas(listaIdiomas);
 } 
 
@@ -1246,7 +1251,7 @@ void realizarAccion(int opcion) {
 			cout << "Error: " << ex.what() << endl;
 		}
         esperarEnter();
-            break;
+        break;
         case 2:
             // Consulta de usuario
             try
@@ -1272,7 +1277,14 @@ void realizarAccion(int opcion) {
             break;
         case 4:
             // Consultar idiomas
-            consultarIdiomas();
+            try
+            {
+                consultarIdiomas();
+            }
+            catch (const ExNoHayIdiomas& ex)
+            {
+                cout << "Error: " << ex.what() << endl;
+            }
             esperarEnter();
             break;
         case 5:
