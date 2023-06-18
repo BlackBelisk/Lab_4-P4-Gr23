@@ -44,7 +44,8 @@
 using namespace std;
 
 // Función para cargar los datos de prueba
-void cargarDatosPrueba() {
+void cargarDatosPrueba(bool b) {
+    if(b){
     cout << "Cargando datos..." << endl;
     Factory * factory = Factory::getInstance();
     IControladorIdiomas* ci = factory->getIControladorIdiomas();
@@ -237,6 +238,9 @@ void cargarDatosPrueba() {
     /* Cursos */
 
     cout << "--Datos cargados exitosamente--" << endl;
+    }else{
+        cout << "Los datos de prueba ya fueron cargados." << endl;
+    }
 }  
 
 void altaUsuario(){
@@ -1246,7 +1250,7 @@ void eliminarSuscripciones(){
     } while (susc !=0 && suscripcionesActuales.size()>0);
 }
 
-void realizarAccion(int opcion) {
+void realizarAccion(int opcion, bool b) {
     switch (opcion) {
         case 1:
            try
@@ -1441,7 +1445,7 @@ void realizarAccion(int opcion) {
             break;
         case 17:
             // Opción para cargar los datos de prueba
-            cargarDatosPrueba();
+            cargarDatosPrueba(b);
             esperarEnter();
             break;
         case 18:
@@ -1482,6 +1486,7 @@ int mostrarMenu() {
 }
 
 int main() {
+    bool cargable = true;
     int opcion;
     Factory* f = Factory::getInstance();
     IControladorCursos* cc = f->getIControladorCursos();
@@ -1489,7 +1494,10 @@ int main() {
     IControladorIdiomas* ci = f->getIControladorIdiomas();
     do {
         opcion = mostrarMenu();
-        realizarAccion(opcion);
+        realizarAccion(opcion, cargable);
+        if (opcion == 17){
+            cargable = false;
+        }
         cout << endl;
     } while (opcion != 18);
     cc->aMimir();
