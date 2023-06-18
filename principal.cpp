@@ -46,199 +46,201 @@ using namespace std;
 // Función para cargar los datos de prueba
 void cargarDatosPrueba(bool b) {
     if(b){
-    cout << "Cargando datos..." << endl;
-    Factory * factory = Factory::getInstance();
-    IControladorIdiomas* ci = factory->getIControladorIdiomas();
-    IControladorUsuarios* cu = factory->getIControladorUsuarios();
-    IControladorCursos* cc = factory->getIControladorCursos();
-    
-    /* Idiomas */
-    /* DataIdioma */
-    /* I1 */ DataIdioma ingles = DataIdioma("Ingles");
-    /* I2 */ DataIdioma aleman = DataIdioma("Aleman");
-    /* I3 */ DataIdioma portugues = DataIdioma("Portugues");
-    /* DataIdioma */
+        cout << "Cargando datos..." << endl;
+        Factory * factory = Factory::getInstance();
+        IControladorIdiomas* ci = factory->getIControladorIdiomas();
+        IControladorUsuarios* cu = factory->getIControladorUsuarios();
+        IControladorCursos* cc = factory->getIControladorCursos();
 
-    /* Ingreso de Idiomas */
-    /* I1 */ ci->nuevoIdioma(ingles);
-    /* I2 */ ci->nuevoIdioma(aleman);
-    /* I3 */ ci->nuevoIdioma(portugues);
-    /* Ingreso de Idiomas */
-    /* Idiomas */
+        /* Idiomas */
+        /* DataIdioma */
+        /* I1 */ DataIdioma ingles = DataIdioma("Ingles");
+        /* I2 */ DataIdioma aleman = DataIdioma("Aleman");
+        /* I3 */ DataIdioma portugues = DataIdioma("Portugues");
+        /* DataIdioma */
 
-    /* Usuarios */ 
-    /* Estudiantes */
-    /* U1 */ DataEstudiante jpidiom = DataEstudiante("jpidiom","asdfg123","Soy un apasionado del aprendizaje de idiomas.","Juan Perez", "Argentina", Fecha(15,7,1995));
-    /* U2 */ DataEstudiante marsilva = DataEstudiante("marsilva", "qwer456", "Como amante de los idiomas disfruto explorando nuevas formas de interactuar.", "Maria Silva", "Ecuador", Fecha(28,2,1998));
-    /* U3 */ DataEstudiante pero12 = DataEstudiante("pero12", "789werty", "Soy un entusiasta del aprendizaje de idiomas.", "Pedro Rodriguez", "Peru", Fecha(10,11,1994));
-    /* U4 */ DataEstudiante laugu = DataEstudiante("laugu", "c1v2b3m4", "Estoy fascinada por la forma en que las palabras pueden unir a las personas.", "Laura Gutierrez", "Chile", Fecha(22,4,1997));
-    /* U5 */ DataEstudiante carlo22 = DataEstudiante("carlo22", "tyuipz147", "Emocionado por adquirir fluidez en diferentes lenguas.", "Carlos Lopez", "Uruguay", Fecha(3,9,1996));
-    /* U6 */ DataEstudiante anator = DataEstudiante("anator", "1qsxc36", "Disfruto de la belleza de las diferentes estructuras y sonidos.", "Ana Torres", "Argentina", Fecha(12,1,1999));
-    /* U7 */ DataEstudiante luher24 = DataEstudiante("luher24", "t7h8y5u6", "Emocionada en la riqueza cultural que cada idioma ofrece.", "Lucia Hernandez", "Colombia", Fecha(25,6,1993));
-    /* U8 */ DataEstudiante dagon = DataEstudiante("dagon", "1w2e3r4t5","Aprender nuevas lenguas y sumergirme en diferentes culturas.", "David Gonzalez", "Uruguay", Fecha(9,12,1997));
-    /* U9 */ DataEstudiante carmor = DataEstudiante("carmor", "6yu7i8m9", "El aprendizaje de idiomas y expandir mis habilidades comunicativas en diferentes lenguas.", "Carmen Morales", "Chile", Fecha(17,3,1995));
-    /*U10 */ DataEstudiante jose24 = DataEstudiante("jose24", "qwj789p", "Disfruto del proceso de descubrir nuevas formas de comunicarme.", "Jose Fernandez", "Bolivia", Fecha(2,8,1998));
-    /* Estudiantes */
+        /* Ingreso de Idiomas */
+        /* I1 */ ci->nuevoIdioma(ingles);
+        /* I2 */ ci->nuevoIdioma(aleman);
+        /* I3 */ ci->nuevoIdioma(portugues);
+        /* Ingreso de Idiomas */
+        /* Idiomas */
 
-    /* Ingreso de estudiantes */
-    /* U1 */ cu->nuevoEstudiante(jpidiom);
-    /* U2 */ cu->nuevoEstudiante(marsilva);
-    /* U3 */ cu->nuevoEstudiante(pero12);
-    /* U4 */ cu->nuevoEstudiante(laugu);
-    /* U5 */ cu->nuevoEstudiante(carlo22);
-    /* U6 */ cu->nuevoEstudiante(anator);
-    /* U7 */ cu->nuevoEstudiante(luher24);
-    /* U8 */ cu->nuevoEstudiante(dagon);
-    /* U9 */ cu->nuevoEstudiante(carmor);
-    /*U10 */ cu->nuevoEstudiante(jose24);
-    /* Ingreso de estudiantes */
+        /* Usuarios */ 
+        /* Estudiantes */
+        /* U1 */ DataEstudiante jpidiom = DataEstudiante("jpidiom","asdfg123","Soy un apasionado del aprendizaje de idiomas.","Juan Perez", "Argentina", Fecha(15,7,1995));
+        /* U2 */ DataEstudiante marsilva = DataEstudiante("marsilva", "qwer456", "Como amante de los idiomas disfruto explorando nuevas formas de interactuar.", "Maria Silva", "Ecuador", Fecha(28,2,1998));
+        /* U3 */ DataEstudiante pero12 = DataEstudiante("pero12", "789werty", "Soy un entusiasta del aprendizaje de idiomas.", "Pedro Rodriguez", "Peru", Fecha(10,11,1994));
+        /* U4 */ DataEstudiante laugu = DataEstudiante("laugu", "c1v2b3m4", "Estoy fascinada por la forma en que las palabras pueden unir a las personas.", "Laura Gutierrez", "Chile", Fecha(22,4,1997));
+        /* U5 */ DataEstudiante carlo22 = DataEstudiante("carlo22", "tyuipz147", "Emocionado por adquirir fluidez en diferentes lenguas.", "Carlos Lopez", "Uruguay", Fecha(3,9,1996));
+        /* U6 */ DataEstudiante anator = DataEstudiante("anator", "1qsxc36", "Disfruto de la belleza de las diferentes estructuras y sonidos.", "Ana Torres", "Argentina", Fecha(12,1,1999));
+        /* U7 */ DataEstudiante luher24 = DataEstudiante("luher24", "t7h8y5u6", "Emocionada en la riqueza cultural que cada idioma ofrece.", "Lucia Hernandez", "Colombia", Fecha(25,6,1993));
+        /* U8 */ DataEstudiante dagon = DataEstudiante("dagon", "1w2e3r4t5","Aprender nuevas lenguas y sumergirme en diferentes culturas.", "David Gonzalez", "Uruguay", Fecha(9,12,1997));
+        /* U9 */ DataEstudiante carmor = DataEstudiante("carmor", "6yu7i8m9", "El aprendizaje de idiomas y expandir mis habilidades comunicativas en diferentes lenguas.", "Carmen Morales", "Chile", Fecha(17,3,1995));
+        /*U10 */ DataEstudiante jose24 = DataEstudiante("jose24", "qwj789p", "Disfruto del proceso de descubrir nuevas formas de comunicarme.", "Jose Fernandez", "Bolivia", Fecha(2,8,1998));
+        /* Estudiantes */
 
-    /* Lista de Idiomas para profesores */
-    list<DataIdioma> u11 = {ingles, portugues};
-    list<DataIdioma> u12 = {ingles, aleman, portugues};
-    list<DataIdioma> u13 = {aleman};
-    list<DataIdioma> u14 = {portugues};
-    list<DataIdioma> u15 = {ingles};
-    /* Lista de Idiomas para profesores */
+        /* Ingreso de estudiantes */
+        /* U1 */ cu->nuevoEstudiante(jpidiom);
+        /* U2 */ cu->nuevoEstudiante(marsilva);
+        /* U3 */ cu->nuevoEstudiante(pero12);
+        /* U4 */ cu->nuevoEstudiante(laugu);
+        /* U5 */ cu->nuevoEstudiante(carlo22);
+        /* U6 */ cu->nuevoEstudiante(anator);
+        /* U7 */ cu->nuevoEstudiante(luher24);
+        /* U8 */ cu->nuevoEstudiante(dagon);
+        /* U9 */ cu->nuevoEstudiante(carmor);
+        /*U10 */ cu->nuevoEstudiante(jose24);
+        /* Ingreso de estudiantes */
 
-    /* Profesores */
-    /* U11 */ DataProfesor langMaster = DataProfesor("langMaster", "P4s512", "Soy una profesora apasionada por los idiomas.", "Marta Grecia", "Instituto de Idiomas Moderno", u11);
-    /* U12 */ DataProfesor linguaPro = DataProfesor("linguaPro", "Pess23", "Mi objetivo es inspirar a mis estudiantes a explorar nuevas culturas e idiomas", "Carlos Petro", "Centro Global", u12);
-    /* U13 */ DataProfesor talkExpert = DataProfesor("talkExpert","Secret1", "Soy una profesora entusiasta del aprendizaje de idiomas", "Laura Perez","Instituto de Idiomas Vanguardia", u13);
-    /* U14 */ DataProfesor lingoSensei = DataProfesor("lingoSensei","Secure2", "Apasionado en guiar a mis estudiantes en su viaje por nuevos horizontes idiomaticos", "Franco Lopez","Centro de Idiomas", u14);
-    /* U15 */ DataProfesor wordMaestro = DataProfesor("wordMaestro","Passw0","Soy una profesora comprometida en desarrollo de habilidades idiomaticas","Ana Morales","Instituto de Idiomas Progreso",u15);
-    // /* Profesores */
-    // /* Ingreso de profesores */
-    /* U11 */ cu->nuevoProfesor(langMaster);
-    /* U12 */ cu->nuevoProfesor(linguaPro);
-    /* U13 */ cu->nuevoProfesor(talkExpert);
-    /* U14 */ cu->nuevoProfesor(lingoSensei);
-    /* U15 */ cu->nuevoProfesor(wordMaestro);
-    /* Ingreso de profesores */
-    /* Usuarios */
+        /* Lista de Idiomas para profesores */
+        list<DataIdioma> u11 = {ingles, portugues};
+        list<DataIdioma> u12 = {ingles, aleman, portugues};
+        list<DataIdioma> u13 = {aleman};
+        list<DataIdioma> u14 = {portugues};
+        list<DataIdioma> u15 = {ingles};
+        /* Lista de Idiomas para profesores */
 
-
-    /* Vectores completar */
-    /* R1 */ vector<string> R1 = {"allow", "myself"};
-    /* R2 */ vector<string> R2 = {"some"};
-    /* R3 */ vector<string> R3 = {"up"};
-    /* R4 */ vector<string> R4 = {"have", "past"};
-    /* Vectores completar */
+        /* Profesores */
+        /* U11 */ DataProfesor langMaster = DataProfesor("langMaster", "P4s512", "Soy una profesora apasionada por los idiomas.", "Marta Grecia", "Instituto de Idiomas Moderno", u11);
+        /* U12 */ DataProfesor linguaPro = DataProfesor("linguaPro", "Pess23", "Mi objetivo es inspirar a mis estudiantes a explorar nuevas culturas e idiomas", "Carlos Petro", "Centro Global", u12);
+        /* U13 */ DataProfesor talkExpert = DataProfesor("talkExpert","Secret1", "Soy una profesora entusiasta del aprendizaje de idiomas", "Laura Perez","Instituto de Idiomas Vanguardia", u13);
+        /* U14 */ DataProfesor lingoSensei = DataProfesor("lingoSensei","Secure2", "Apasionado en guiar a mis estudiantes en su viaje por nuevos horizontes idiomaticos", "Franco Lopez","Centro de Idiomas", u14);
+        /* U15 */ DataProfesor wordMaestro = DataProfesor("wordMaestro","Passw0","Soy una profesora comprometida en desarrollo de habilidades idiomaticas","Ana Morales","Instituto de Idiomas Progreso",u15);
+        // /* Profesores */
+        // /* Ingreso de profesores */
+        /* U11 */ cu->nuevoProfesor(langMaster);
+        /* U12 */ cu->nuevoProfesor(linguaPro);
+        /* U13 */ cu->nuevoProfesor(talkExpert);
+        /* U14 */ cu->nuevoProfesor(lingoSensei);
+        /* U15 */ cu->nuevoProfesor(wordMaestro);
+        /* Ingreso de profesores */
+        /* Usuarios */
 
 
-    /* Ejercicios */
-    /* E1 */ DataEjercicio e1 = DataEjercicio("Presentaciones", "Mucho gusto en conocerte", "Nice to meet you");
-    /* E2 */ DataEjercicio e2 = DataEjercicio("Presentaciones formales", "Please — me to introduce —", R1);
-    /* E3 */ DataEjercicio e3 = DataEjercicio("Plurales regulares", "I have two brothers and three sisters", "Tengo dos hermanos y tres hermanas");
-    /* E4 */ DataEjercicio e4 = DataEjercicio("Sustantivos contables en plural", "Can I have — water, please?", R2);
-    /* E5 */ DataEjercicio e5 = DataEjercicio("Actividades diarias", "Wake —", R3);
-    /* E6 */ DataEjercicio e6 = DataEjercicio("Consultas de la hora", "Q: Do you — the time?, A: Yes, it is half — 4", R4);
-    /* E7 */ DataEjercicio e7 = DataEjercicio("Dar consejos o expresar obligacion", "You should visit that museum", "Deberias visitar ese museo");
-    /* E8 */ DataEjercicio e8 = DataEjercicio("Imperativo", "Fale comigo", "Habla conmigo");
-    /* Ejercicios */
+        /* Vectores completar */
+        /* R1 */ vector<string> R1 = {"allow", "myself"};
+        /* R2 */ vector<string> R2 = {"some"};
+        /* R3 */ vector<string> R3 = {"up"};
+        /* R4 */ vector<string> R4 = {"have", "past"};
+        /* Vectores completar */
 
 
-    /* Listas de Ejercicios */
-    /* L1 */ list<DataEjercicio> L1 = {e1, e2};
-    /* L2 */ list<DataEjercicio> L2 = {e3, e4};
-    /* L3 */ list<DataEjercicio> L3 = {e5};
-    /* L4 */ list<DataEjercicio> L4 = {};
-    /* L5 */ list<DataEjercicio> L5 = {e6};
-    /* L6 */ list<DataEjercicio> L6 = {e7};
-    /* L7 */ list<DataEjercicio> L7 = {e8};
-    /* Listas de Ejercicios */
+        /* Ejercicios */
+        /* E1 */ DataEjercicio e1 = DataEjercicio("Presentaciones", "Mucho gusto en conocerte", "Nice to meet you");
+        /* E2 */ DataEjercicio e2 = DataEjercicio("Presentaciones formales", "Please — me to introduce —", R1);
+        /* E3 */ DataEjercicio e3 = DataEjercicio("Plurales regulares", "I have two brothers and three sisters", "Tengo dos hermanos y tres hermanas");
+        /* E4 */ DataEjercicio e4 = DataEjercicio("Sustantivos contables en plural", "Can I have — water, please?", R2);
+        /* E5 */ DataEjercicio e5 = DataEjercicio("Actividades diarias", "Wake —", R3);
+        /* E6 */ DataEjercicio e6 = DataEjercicio("Consultas de la hora", "Q: Do you — the time?, A: Yes, it is half — 4", R4);
+        /* E7 */ DataEjercicio e7 = DataEjercicio("Dar consejos o expresar obligacion", "You should visit that museum", "Deberias visitar ese museo");
+        /* E8 */ DataEjercicio e8 = DataEjercicio("Imperativo", "Fale comigo", "Habla conmigo");
+        /* Ejercicios */
 
 
-    /* Lecciones */
-    /* L1 */ DataLeccion l1 = DataLeccion("Saludos y Presentaciones", "Aprender a saludar y despedirse", L1, 0);
-    /* L2 */ DataLeccion l2 = DataLeccion("Articulos y Plurales", "Comprender y utilizar los articulos definidos e indefinidos, Aprender a formar los plurales regulares e irregulares de sustantivos", L2, 1);
-    /* L3 */ DataLeccion l3 = DataLeccion("Actividades Cotidianas", "Comprender y utilizar los articulos definidos e indefinidos, Aprender a formar los plurales regulares e irregulares de sustantivos", L3, 2);
-    /* L4 */ DataLeccion l4 = DataLeccion("Presente Simple", "Aprender el uso del presente simple", L4, 3);
-    /* L5 */ DataLeccion l5 = DataLeccion("Conversaciones cotidianas", "Aprender a hacer preguntas y respuestas en situaciones comunes", L5, 4);
-    /* L6 */ DataLeccion l6 = DataLeccion("Uso de modales avanzados", "Explorar el uso de los modales complejos", L6, 5);
-    /* L7 */ DataLeccion l7 = DataLeccion("Lectura y comprension de textos", "Analizar el contenido, vocabulario y estructuras gramaticales utilizadas", L7, 6);
-    /* Lecciones */
+        /* Listas de Ejercicios */
+        /* L1 */ list<DataEjercicio> L1 = {e1, e2};
+        /* L2 */ list<DataEjercicio> L2 = {e3, e4};
+        /* L3 */ list<DataEjercicio> L3 = {e5};
+        /* L4 */ list<DataEjercicio> L4 = {};
+        /* L5 */ list<DataEjercicio> L5 = {e6};
+        /* L6 */ list<DataEjercicio> L6 = {e7};
+        /* L7 */ list<DataEjercicio> L7 = {e8};
+        /* Listas de Ejercicios */
 
 
-    /* Listas de Lecciones */
-    /* C1 */ vector<DataLeccion> C1 = {l1, l2};
-    /* C2 */ vector<DataLeccion> C2 = {l3, l4};
-    /* C3 */ vector<DataLeccion> C3 = {l5};
-    /* C4 */ vector<DataLeccion> C4 = {l6};
-    /* C5 */ vector<DataLeccion> C5 = {l7};
-    /* C6 */ vector<DataLeccion> C6 = {};
-    /* Listas de Lecciones */
+        /* Lecciones */
+        /* L1 */ DataLeccion l1 = DataLeccion("Saludos y Presentaciones", "Aprender a saludar y despedirse", L1, 0);
+        /* L2 */ DataLeccion l2 = DataLeccion("Articulos y Plurales", "Comprender y utilizar los articulos definidos e indefinidos, Aprender a formar los plurales regulares e irregulares de sustantivos", L2, 1);
+        /* L3 */ DataLeccion l3 = DataLeccion("Actividades Cotidianas", "Comprender y utilizar los articulos definidos e indefinidos, Aprender a formar los plurales regulares e irregulares de sustantivos", L3, 2);
+        /* L4 */ DataLeccion l4 = DataLeccion("Presente Simple", "Aprender el uso del presente simple", L4, 3);
+        /* L5 */ DataLeccion l5 = DataLeccion("Conversaciones cotidianas", "Aprender a hacer preguntas y respuestas en situaciones comunes", L5, 4);
+        /* L6 */ DataLeccion l6 = DataLeccion("Uso de modales avanzados", "Explorar el uso de los modales complejos", L6, 5);
+        /* L7 */ DataLeccion l7 = DataLeccion("Lectura y comprension de textos", "Analizar el contenido, vocabulario y estructuras gramaticales utilizadas", L7, 6);
+        /* Lecciones */
 
 
-    /* Listas de Ejercicios Aprobados */
-    /* N1 */ list<DataEjercicio> N1 = {e1, e2, e3, e4};
-    /* N2 */ list<DataEjercicio> N2 = {e6};
-    /* N3 */ list<DataEjercicio> N3 = {};
-    /* N4 */ list<DataEjercicio> N4 = {e1,e2};
-    /* N5 */ list<DataEjercicio> N5 = {e1, e2, e4};
-    /* N6 */ list<DataEjercicio> N6 = {};
-    /* N7 */ list<DataEjercicio> N7 = {};
-    /* N8 */ list<DataEjercicio> N8 = {};
-    /* Listas de Ejercicios Aprobados */
+        /* Listas de Lecciones */
+        /* C1 */ vector<DataLeccion> C1 = {l1, l2};
+        /* C2 */ vector<DataLeccion> C2 = {l3, l4};
+        /* C3 */ vector<DataLeccion> C3 = {l5};
+        /* C4 */ vector<DataLeccion> C4 = {l6};
+        /* C5 */ vector<DataLeccion> C5 = {l7};
+        /* C6 */ vector<DataLeccion> C6 = {};
+        /* Listas de Lecciones */
 
 
-    /* Fechas de inscripcion */
-    /* N1 */ Fecha f1 = Fecha(01,01,2022);
-    /* N2 */ Fecha f2 = Fecha(12,06,2022);
-    /* N3 */ Fecha f3 = Fecha(02,03,2023);
-    /* N4 */ Fecha f4 = Fecha(02,01,2022);
-    /* N5 */ Fecha f5 = Fecha(02,01,2022);
-    /* N6 */ Fecha f6 = Fecha(03,01,2023);
-    /* N7 */ Fecha f7 = Fecha(03,01,2023);
-    /* N8 */ Fecha f8 = Fecha(05,01,2023);
-    /* Fechas de inscripcion */
+        /* Listas de Ejercicios Aprobados */
+        /* N1 */ list<DataEjercicio> N1 = {e1, e2, e3, e4};
+        /* N2 */ list<DataEjercicio> N2 = {e6};
+        /* N3 */ list<DataEjercicio> N3 = {};
+        /* N4 */ list<DataEjercicio> N4 = {e1,e2};
+        /* N5 */ list<DataEjercicio> N5 = {e1, e2, e4};
+        /* N6 */ list<DataEjercicio> N6 = {};
+        /* N7 */ list<DataEjercicio> N7 = {};
+        /* N8 */ list<DataEjercicio> N8 = {};
+        /* Listas de Ejercicios Aprobados */
 
 
-    /* Lecciones */
-    /* N1 */ DataInscripcion n1 = DataInscripcion(jpidiom.getNick(), jpidiom.getNombre(), "Ingles para principiantes", l2, N1, f1, true);
-    /* N2 */ DataInscripcion n2 = DataInscripcion(jpidiom.getNick(), jpidiom.getNombre(), "Ingles intermedio: mejora tu nivel", l5, N2, f2, true);
-    /* N3 */ DataInscripcion n3 = DataInscripcion(jpidiom.getNick(), jpidiom.getNombre(), "Curso avanzado de ingles", l6, N3, f3, false);
-    /* N4 */ DataInscripcion n4 = DataInscripcion(marsilva.getNick(), marsilva.getNombre(), "Ingles para principiantes", l2, N4, f4, false);
-    /* N5 */ DataInscripcion n5 = DataInscripcion(pero12.getNick(), pero12.getNombre(), "Ingles para principiantes", l2, N5, f5, false);
-    /* N6 */ DataInscripcion n6 = DataInscripcion(laugu.getNick(), laugu.getNombre(), "Ingles para principiantes", l1, N6, f6, false);
-    /* N7 */ DataInscripcion n7 = DataInscripcion(laugu.getNick(), laugu.getNombre(), "Portugues intermedio", l7, N7, f7, false);
-    /* N8 */ DataInscripcion n8 = DataInscripcion(carlo22.getNick(), carlo22.getNombre(), "Portugues intermedio", l7, N8, f8, false);
-    /* Lecciones */
+        /* Fechas de inscripcion */
+        /* N1 */ Fecha f1 = Fecha(01,01,2022);
+        /* N2 */ Fecha f2 = Fecha(12,06,2022);
+        /* N3 */ Fecha f3 = Fecha(02,03,2023);
+        /* N4 */ Fecha f4 = Fecha(02,01,2022);
+        /* N5 */ Fecha f5 = Fecha(02,01,2022);
+        /* N6 */ Fecha f6 = Fecha(03,01,2023);
+        /* N7 */ Fecha f7 = Fecha(03,01,2023);
+        /* N8 */ Fecha f8 = Fecha(05,01,2023);
+        /* Fechas de inscripcion */
 
 
-    /* Cursos, inscripciones y previas */
-    /* C1 */ list<DataCurso> P1 = {};
-    /* C1 */ list<DataInscripcion> I1 = {n1, n4, n5, n6};
-    /* C1 */ DataCurso c1 = DataCurso("Ingles para principiantes", "Curso para personas con poco o ningun conocimiento de ingles. Se enfoca en vocabulario basico, gramatica y habilidades de conversacion.", Principiante, true, ingles, langMaster, C1, I1, P1, 4, 2);
-    /* C2 */ list<DataCurso> P2 = {};
-    /* C2 */ list<DataInscripcion> I2 = {};
-    /* C2 */ DataCurso c2 = DataCurso("Curso de ingles basico", "Construye una base solida en el idioma. Cubre gramatica, vocabulario, comprension auditiva y expresion oral.", Principiante, false, ingles, langMaster, C2, I2, P2, 1, 0);
-    /* C3 */ list<DataCurso> P3 = {c1};
-    /* C3 */ list<DataInscripcion> I3 = {n2};
-    /* C3 */ DataCurso c3 = DataCurso("Ingles intermedio: mejora tu nivel", "Para estudiantes con conocimientos basicos de ingles que desean avanzar en su habilidad comunicativa. Se centra en la fluidez oral, lectura comprensiva y escritura.", Intermedio, true, ingles, linguaPro, C3, I3, P3, 1, 1);
-    /* C4 */ list<DataCurso> P4 = {c1, c3};
-    /* C4 */ list<DataInscripcion> I4 = {};
-    /* C4 */ DataCurso c4 = DataCurso("Curso avanzado de ingles", "Dirigido a personas con un nivel intermedio-alto que desean perfeccionar sus habilidades en todos los aspectos del idioma. Incluye gramatica avanzada, vocabulario y comprension escrita y auditiva.", Avanzado, true, ingles, linguaPro, C4, I4, P4, 1, 0);
-    /* C5 */ list<DataCurso> P5 = {};
-    /* C5 */ list<DataInscripcion> I5 = {n7, n8};
-    /* C5 */ DataCurso c5 = DataCurso("Portugues intermedio", "Curso para aquellos que tienen conocimientos basicos de portugues y desean mejorar su nivel. Incluye practica de lectura, escritura y comprension auditiva.", Intermedio, true, portugues, linguaPro, C5, I5, P5, 1, 1);
-    /* C6 */ list<DataCurso> P6 = {c5};
-    /* C6 */ list<DataInscripcion> I6 = {};
-    /* C6 */ DataCurso c6 = DataCurso("Portugues avanzado", "Curso avanzado para personas con un nivel intermedio-alto de portugues que desean perfeccionar su fluidez y dominio del idioma. Se trabaja en la gramatica avanzada y la expresion oral.", Avanzado, false, portugues, lingoSensei, C6, I6, P6, 0, 0);
-    /* Cursos y previas */
+        /* Lecciones */
+        /* N1 */ DataInscripcion n1 = DataInscripcion(jpidiom.getNick(), jpidiom.getNombre(), "Ingles para principiantes", l2, N1, f1, true);
+        /* N2 */ DataInscripcion n2 = DataInscripcion(jpidiom.getNick(), jpidiom.getNombre(), "Ingles intermedio: mejora tu nivel", l5, N2, f2, true);
+        /* N3 */ DataInscripcion n3 = DataInscripcion(jpidiom.getNick(), jpidiom.getNombre(), "Curso avanzado de ingles", l6, N3, f3, false);
+        /* N4 */ DataInscripcion n4 = DataInscripcion(marsilva.getNick(), marsilva.getNombre(), "Ingles para principiantes", l2, N4, f4, false);
+        /* N5 */ DataInscripcion n5 = DataInscripcion(pero12.getNick(), pero12.getNombre(), "Ingles para principiantes", l2, N5, f5, false);
+        /* N6 */ DataInscripcion n6 = DataInscripcion(laugu.getNick(), laugu.getNombre(), "Ingles para principiantes", l1, N6, f6, false);
+        /* N7 */ DataInscripcion n7 = DataInscripcion(laugu.getNick(), laugu.getNombre(), "Portugues intermedio", l7, N7, f7, false);
+        /* N8 */ DataInscripcion n8 = DataInscripcion(carlo22.getNick(), carlo22.getNombre(), "Portugues intermedio", l7, N8, f8, false);
+        /* Lecciones */
 
 
-    /* Cursos */
-    /* C1 */ cc->nuevoCurso(c1);
-    /* C2 */ cc->nuevoCurso(c2);
-    /* C3 */ cc->nuevoCurso(c3);
-    /* C4 */ cc->nuevoCurso(c4);
-    /* C5 */ cc->nuevoCurso(c5);
-    /* C6 */ cc->nuevoCurso(c6);
-    /* Cursos */
+        /* Cursos, inscripciones y previas */
+        /* C1 */ list<DataCurso> P1 = {};
+        /* C1 */ list<DataInscripcion> I1 = {n1, n4, n5, n6};
+        /* C1 */ DataCurso c1 = DataCurso("Ingles para principiantes", "Curso para personas con poco o ningun conocimiento de ingles. Se enfoca en vocabulario basico, gramatica y habilidades de conversacion.", Principiante, true, ingles, langMaster, C1, I1, P1, 4, 2);
+        /* C2 */ list<DataCurso> P2 = {};
+        /* C2 */ list<DataInscripcion> I2 = {};
+        /* C2 */ DataCurso c2 = DataCurso("Curso de ingles basico", "Construye una base solida en el idioma. Cubre gramatica, vocabulario, comprension auditiva y expresion oral.", Principiante, false, ingles, langMaster, C2, I2, P2, 1, 0);
+        /* C3 */ list<DataCurso> P3 = {c1};
+        /* C3 */ list<DataInscripcion> I3 = {n2};
+        /* C3 */ DataCurso c3 = DataCurso("Ingles intermedio: mejora tu nivel", "Para estudiantes con conocimientos basicos de ingles que desean avanzar en su habilidad comunicativa. Se centra en la fluidez oral, lectura comprensiva y escritura.", Intermedio, true, ingles, linguaPro, C3, I3, P3, 1, 1);
+        /* C4 */ list<DataCurso> P4 = {c1, c3};
+        /* C4 */ list<DataInscripcion> I4 = {};
+        /* C4 */ DataCurso c4 = DataCurso("Curso avanzado de ingles", "Dirigido a personas con un nivel intermedio-alto que desean perfeccionar sus habilidades en todos los aspectos del idioma. Incluye gramatica avanzada, vocabulario y comprension escrita y auditiva.", Avanzado, true, ingles, linguaPro, C4, I4, P4, 1, 0);
+        /* C5 */ list<DataCurso> P5 = {};
+        /* C5 */ list<DataInscripcion> I5 = {n7, n8};
+        /* C5 */ DataCurso c5 = DataCurso("Portugues intermedio", "Curso para aquellos que tienen conocimientos basicos de portugues y desean mejorar su nivel. Incluye practica de lectura, escritura y comprension auditiva.", Intermedio, true, portugues, linguaPro, C5, I5, P5, 1, 1);
+        /* C6 */ list<DataCurso> P6 = {c5};
+        /* C6 */ list<DataInscripcion> I6 = {};
+        /* C6 */ DataCurso c6 = DataCurso("Portugues avanzado", "Curso avanzado para personas con un nivel intermedio-alto de portugues que desean perfeccionar su fluidez y dominio del idioma. Se trabaja en la gramatica avanzada y la expresion oral.", Avanzado, false, portugues, lingoSensei, C6, I6, P6, 0, 0);
+        /* Cursos y previas */
 
-    cout << "--Datos cargados exitosamente--" << endl;
-    }else{
+
+        /* Cursos */
+        /* C1 */ cc->nuevoCurso(c1);
+        /* C2 */ cc->nuevoCurso(c2);
+        /* C3 */ cc->nuevoCurso(c3);
+        /* C4 */ cc->nuevoCurso(c4);
+        /* C5 */ cc->nuevoCurso(c5);
+        /* C6 */ cc->nuevoCurso(c6);
+        /* Cursos */
+
+        cout << "--Datos cargados exitosamente--" << endl;
+    }
+    else
+    {
         cout << "Los datos de prueba ya fueron cargados." << endl;
     }
 }  
