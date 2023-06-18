@@ -98,5 +98,5 @@ void esperarEnter(){
     cout << "--Presione enter para volver al menú--";
     cin.sync();
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    cin.get();
+    cin.get();//Solo Linux
 }

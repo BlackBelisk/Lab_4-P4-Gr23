@@ -45,6 +45,7 @@ using namespace std;
 
 // Función para cargar los datos de prueba
 void cargarDatosPrueba() {
+    cout << "Cargando datos..." << endl;
     Factory * factory = Factory::getInstance();
     IControladorIdiomas* ci = factory->getIControladorIdiomas();
     IControladorUsuarios* cu = factory->getIControladorUsuarios();
@@ -234,6 +235,8 @@ void cargarDatosPrueba() {
     /* C5 */ cc->nuevoCurso(c5);
     /* C6 */ cc->nuevoCurso(c6);
     /* Cursos */
+
+    cout << "--Datos cargados exitosamente--" << endl;
 }  
 
 void altaUsuario(){
@@ -482,12 +485,12 @@ void altaCurso(){
         if(cursos.size() == 0){
             cout << "No hay cursos habilitados todavia. " << endl;
         }else{
-            imprimirListaCursos(cursos);
             int curso;
 
             //Bucle para agregar tantas previas como quiera
             do
             {
+                imprimirListaCursos(cursos);
                 do
                 {
                     cout << "Seleccione el curso ingresando el numero o 0 para detenerse: " << endl;
@@ -502,8 +505,10 @@ void altaCurso(){
                     auto it3 = cursos.begin();
                     advance(it3, curso - 1);
                     cc->agregarPrevia(it3->getNomCurso());
+                    cursos.erase(it3);
+                    cout << "Previa agregada." << endl;
                 }
-            } while (curso != 0);
+            } while (curso != 0 && cursos.size() != 0);
         }
     }
 
@@ -533,7 +538,7 @@ void altaCurso(){
             string obj;
             getline(cin, obj);
             cc->agregarLeccionCN(tema, obj);
-            cout << "Leccion añadida." << endl;
+            cout << "Leccion agregada." << endl;
             do
             {
                 cout << "0. No agregar ejercicio." << endl;
@@ -573,6 +578,7 @@ void altaCurso(){
                             getline(cin, solS);
                             vector<string> solC = convertirAVector(solS);
                             cc->agregarEjercicio(desc, fraseC, solC);
+                            cout << "Ejercicio agregado." << endl;
                         }else{
                             cout << "Ingrese la frase a traducir: " << endl;
                             string fraseT;
@@ -581,6 +587,7 @@ void altaCurso(){
                             string solT;
                             getline(cin, solT);
                             cc->agregarEjercicio(desc, fraseT, solT);
+                            cout << "Ejercicio agregado." << endl;
                         }
                     }
                 }while(seleccionador != 0);

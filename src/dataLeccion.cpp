@@ -31,7 +31,7 @@ int DataLeccion::getID()const{
 string DataLeccion::ejsToString(){
    string s = "\n";
    if(ejs.size() == 0){
-    s = "No tiene";
+    s = "No tiene \n";
    }else{
         int i = 1;
         for(auto it = ejs.begin(); it != ejs.end(); ++it){
